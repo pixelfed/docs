@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Pixelfed',
+  title: 'Pixelfed Documentation',
   description: 'Documentation for pixelfed',
   base: '/docs/',
 
@@ -15,19 +15,23 @@ module.exports = {
     ],
   ],
 
+  serviceWorker: false,
   themeConfig: {
-    logo: 'https://pixelfed.social/img/pixelfed-icon-color.svg',
-    repo: 'pixelfed/pixelfed',
-    displayAllHeaders: true,
+    logo: 'https://avatars0.githubusercontent.com/u/38410642?s=200&v=4',
+    repo: 'pixelfed/docs',
+    editLinks: true,
+    displayAllHeaders: false,
     sidebarDepth: 1,
 
     nav: [
-      {text: 'Home', link: 'https://pixelfed.org'},
-       {text: 'Version', link: '/', items: [{text: '1.0', link: '/1.0/'}]},
+       {text: 'Version', link: '/', items: [
+         {text: 'Master', link: '/master/'}
+       ]},
+       {text: 'Pixelfed.org', link: 'https://pixelfed.org'},
     ],
 
     sidebar: {
-      '/1.0/': require('./1.0'),
+      '/master/': require('./master')
     },
   },
 };
