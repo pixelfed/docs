@@ -43,6 +43,7 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 | ```REDIS_HOST``` | **Redis Host** <br> The redis server host address. | ```localhost``` | n |
 | ```REDIS_PASSWORD``` | **Redis Password** <br> The redis server host password. | ```null``` | n |
 | ```REDIS_PORT``` | **Redis Port** <br> The redis server port. | ```6379``` | n |
+| ```REDIS_DB```| **Redis Database** <br> The redis server database index number. | ```0``` | n |
 
 
 ### Pixelfed Configuration
