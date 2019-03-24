@@ -7,7 +7,7 @@ Pixelfed is still a work in progress. We do not recommending running an instance
 :::
 
 ::: tip
-You can install pixelfed using Git or Composer. Using the composer method is recommended, its easier to install and update.
+You can install Pixelfed using Git or Composer. Using the composer method is recommended, its easier to install and update.
 :::
 
 ## Download Source via Git
@@ -42,9 +42,14 @@ $ cd pixelfed
 If you Download Source via Composer, you don't need to copy the ```.env.example```, run ```composer install``` or set the application key as that happens automatically.
 :::
 
-By default pixelfed comes with a ```.env.example``` file. You'll need to rename this file to just ```.env``` regardless of what environment you're working on.
+::: tip
+You can find a list of additional configuration settings on the [Configuration](configuration.html) page.
+:::
+
+By default Pixelfed comes with a ```.env.example``` file. You'll need to rename this file to just ```.env``` regardless of what environment you're working on.
 
 It's now just a case of editing this new ```.env``` file and setting the values of your setup.
+
 
 ```text
 APP_NAME="PixelFed Test"
@@ -81,7 +86,7 @@ MAIL_PORT=2525
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="pixelfed@example.com"
+MAIL_FROM_ADDRESS="Pixelfed@example.com"
 MAIL_FROM_NAME="Pixelfed"
 
 SESSION_DOMAIN="${APP_DOMAIN}"
