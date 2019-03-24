@@ -80,9 +80,8 @@ server {
     ssl_certificate_key /etc/nginx/ssl/server.key;
 
     ssl_protocols TLSv1.2;
-    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+    ssl_ciphers EECDH+AESGCM:EECDH+CHACHA20:EECDH+AES;
     ssl_prefer_server_ciphers on;
-    ssl_dhparam /etc/nginx/dhparams.pem;
 
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
