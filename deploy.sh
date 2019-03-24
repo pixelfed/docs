@@ -12,6 +12,6 @@ cd .vuepress/dist
 git add -A
 git commit -m 'deploy'
 
-git push -f origin gh-pages
+git push -f origin master:gh-pages
 
 cd -
