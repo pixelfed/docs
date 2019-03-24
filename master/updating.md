@@ -16,5 +16,5 @@ $ composer update
 
 ```bash
 $ cd /home/pixelfed # Or wherever you chose to install web applications
-$ git pull
+$ git pull origin dev
 ```
