@@ -22,7 +22,7 @@ Whenever you edit the ```.env``` file, you must run ```php artisan config:cache`
 | ```APP_DEBUG``` | **Application Debug Mode** <br> This is only used for development, for security reasons it should always be set to ```false``` on production or public instances since this can expose all configuration settings | ```true``` | y |
 | ```APP_URL``` | **Application URL** <br> This is used to generate URLs, set this to your instance URL. | ```https://example.org``` | y |
 | ```APP_DOMAIN``` | **Application Domain** <br> This value is used for routing, set it to the domain of your instance. | ```example.org``` | y |
-| ```ADMIN_DOMAIN``` | **Admin Dashboard Domain** <br> This value is used for your admin dashboard domain, its possible to use the same value as ```APP_DOMAIN``` or use a sub-domain. | y |
+| ```ADMIN_DOMAIN``` | **Admin Dashboard Domain** <br> This value is used for your admin dashboard domain, its possible to use the same value as ```APP_DOMAIN``` or use a sub-domain. | ```example.org``` | y |
 | ```LOG_CHANNEL``` | **Log Channel** <br> This option defines the default log channel that gets used when writing messages to the logs. The name specified in this option should match one of the channels defined in the "channels" configuration array. | ```stack``` | n |
 
 ### Database Configuration
