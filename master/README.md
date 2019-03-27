@@ -10,6 +10,7 @@ The docs are still a work in progress.
 ### [Configuration](configuration.html)
 ### [Deployment](deployment.html)
 ### [Updating](updating.html)
+### [Administration](administration.html)
 
 <br>
 
