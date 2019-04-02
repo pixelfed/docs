@@ -120,3 +120,10 @@ HORIZON_DARKMODE=true
 ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
 ```
+
+Then you need to setup the secret key:
+```
+php artisan key:generate --show
+```
+
+Check if it has been added to your `.env` file (on `APP_KEY=`), and if not, copy/paste the entire line.
