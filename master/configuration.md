@@ -30,7 +30,7 @@ Whenever you edit the ```.env``` file, you must run ```php artisan config:cache`
 | --- | --- | --- | --- |
 | ```DB_CONNECTION``` | **Database Driver** <br> Supported drivers: ```mysql``` | ```mysql``` | y |
 | ```DB_HOST``` | **Database Host** <br> The database host address. | ```127.0.0.1``` | y |
-| ```DB_PORT``` | **Database Port** <br> The database host port. | ```127.0.0.1``` | y |
+| ```DB_PORT``` | **Database Port** <br> The database host port. | ```3306``` | y |
 | ```DB_DATABASE``` | **Database Name** <br> The database name. | ```pixelfed``` | y |
 | ```DB_USERNAME``` | **Database Username** <br> The database username. |  | y |
 | ```DB_PASSWORD``` | **Database Password** <br> The database user password. |  | y |
