@@ -18,4 +18,5 @@ $ php artisan config:cache
 $ php artisan route:cache
 $ php artisan migrate --force
 $ php artisan horizon:purge
+$ php artisan storage:link
 ```
