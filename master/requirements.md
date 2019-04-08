@@ -21,6 +21,8 @@ Before you install pixelfed, you will need to setup the required dependencies an
  - XML PHP Extension
  - Ctype PHP Extension
  - JSON PHP Extension
+ - BCMath PHP Extension
+ - Curl PHP Extension
  - Internationalization PHP Extension
  - JpegOptim
  - Optipng
