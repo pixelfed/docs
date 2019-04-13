@@ -7,6 +7,7 @@ The docs are still a work in progress.
 ## Getting Started
 ### [Requirements](requirements.html)
 ### [Installation](installation.html)
+### [Docker](docker.html)
 ### [Configuration](configuration.html)
 ### [Deployment](deployment.html)
 ### [Updating](updating.html)
