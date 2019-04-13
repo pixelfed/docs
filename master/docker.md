@@ -10,12 +10,9 @@ Complete the steps in the standard configuration page.
 
 ```bash
 $ docker-compose build
-$ docker-compose run --rm web php artisan config:cache
-$ docker-compose run --rm web php artisan route:cache
+$ docker-compose run --rm app php artisan example:example
 $ docker-compose up -d
 ```
-
-
 
 ## Updating docker instance
 
@@ -23,4 +20,6 @@ $ docker-compose up -d
 $ git fetch
 $ git checkout v2.8.0
 $ docker-compose build --pull
+$ docker-compose run --rm app php artisan upgrade:example
+$ docker-compose up -d
 ```
