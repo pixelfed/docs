@@ -28,7 +28,7 @@ Whenever you edit the ```.env``` file, you must run ```php artisan config:cache`
 ### Database Configuration
 | name | description | default value | required |
 | --- | --- | --- | --- |
-| ```DB_CONNECTION``` | **Database Driver** <br> Supported drivers: ```mysql sqlite pgsql sqlsrv```  | ```mysql``` | y |
+| ```DB_CONNECTION``` | **Database Driver** <br> Supported drivers: ```mysql sqlite pgsql```  | ```mysql``` | y |
 | ```DB_HOST``` | **Database Host** <br> The database host address. | ```127.0.0.1``` | y |
 | ```DB_PORT``` | **Database Port** <br> The database host port. | ```3306``` | y |
 | ```DB_DATABASE``` | **Database Name** <br> The database name. | ```pixelfed``` | y |
