@@ -11,13 +11,10 @@ Complete the steps in the standard configuration page.
 ```bash
 $ docker-compose build
 $ docker-compose run --rm app php artisan migrate --force  # Initializes an empty DB
-
-$ docker-compose run --rm app php artisan config:cache  # ?
-$ docker-compose run --rm app php artisan route:cache  # ?
-$ docker-compose run --rm app php artisan horizon:purge  # ?
-
 $ docker-compose up -d
 ```
+
+
 
 ## Updating docker instance
 
