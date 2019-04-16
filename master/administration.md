@@ -11,7 +11,8 @@ Optionally, you can do it manually
 ```
 $ php artisan tinker
 # then follow these steps:
-$user = User::whereUsername('shleetest')->firstOrFail();
+## Note: Username is case sensitive
+$user = User::whereUsername('Username')->firstOrFail();
 $user->is_admin = true;
 $user->save();
 ```
