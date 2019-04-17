@@ -12,6 +12,7 @@ The docs are still a work in progress.
 ### [Deployment](deployment.html)
 ### [Updating](updating.html)
 ### [Administration](administration.html)
+### [Troubleshooting](troubleshooting.html)
 
 <br>
 
