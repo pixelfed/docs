@@ -1,2 +1,5 @@
 ### Unable to delete posts
-Known Cause 1: Confirm the Horizon is not running.
+* Confirm the Horizon is running.
+
+### Profile pages are empty
+* `php artisan view:cache`
