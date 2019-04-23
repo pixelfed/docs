@@ -13,10 +13,12 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
+## Commands to run on new instance
 ```
 $ php artisan migrate --force  # Initializes an empty DB
 $ php artisan horizon:assets  # Creates Horizon dashboard resources```
 
+```
 
 ## Updating docker instance
 
@@ -24,6 +26,5 @@ $ php artisan horizon:assets  # Creates Horizon dashboard resources```
 $ git fetch
 $ git checkout v2.8.0
 $ docker-compose build --pull
-$ docker-compose run --rm app php artisan upgrade:example
 $ docker-compose up -d
 ```
