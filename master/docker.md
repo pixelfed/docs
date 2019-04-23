@@ -10,10 +10,12 @@ Complete the steps in the standard configuration page.
 
 ```bash
 $ docker-compose build
-$ docker-compose run --rm app php artisan migrate --force  # Initializes an empty DB
 $ docker-compose up -d
 ```
 
+```
+$ php artisan migrate --force  # Initializes an empty DB
+$ php artisan horizon:assets  # Creates Horizon dashboard resources```
 
 
 ## Updating docker instance
