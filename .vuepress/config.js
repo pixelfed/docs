@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Pixelfed Documentation',
   description: 'Documentation for pixelfed',
-  base: '/',
+  base: '/docs/',
 
   head: [
     [

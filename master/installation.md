@@ -6,41 +6,16 @@
 Pixelfed is still a work in progress. We do not recommending running an instance in production unless you know what you are doing!
 :::
 
-::: tip
-You can install Pixelfed using Git or Composer. Using the composer method is recommended, its easier to install and update.
-:::
-
 ## Download Source via Git
 
 ```bash
 $ cd /home # Or wherever you chose to install web applications
-$ git clone https://github.com/pixelfed/pixelfed.git pixelfed
-$ cd pixelfed
-$ git tag -l 
-
-v0.1.9
-v0.5.9
-v0.6.0
-v0.6.1
-v0.7.6
-v0.8.0
-
-$ git checkout v0.8.0
-```
-
-## Download Source via Composer
-
-```bash
-$ cd /home # Or wherever you chose to install web applications
-$ composer create-project --prefer-dist pixelfed/pixelfed pixelfed
+$ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
 $ cd pixelfed
 ```
 
 ## Basic Configuration
 
-::: tip
-If you Download Source via Composer, you don't need to copy the ```.env.example```, run ```composer install``` or set the application key as that happens automatically.
-:::
 
 ::: tip
 You can find a list of additional configuration settings on the [Configuration](configuration.html) page.
@@ -53,9 +28,9 @@ It's now just a case of editing this new ```.env``` file and setting the values 
 
 ```text
 APP_NAME="PixelFed Test"
-APP_ENV=local
+APP_ENV=production
 APP_KEY=
-APP_DEBUG=true
+APP_DEBUG=false
 APP_URL=http://localhost
 
 ADMIN_DOMAIN="localhost"
@@ -123,7 +98,5 @@ REMOTE_FOLLOW=false
 
 Then you need to setup the secret key:
 ```
-php artisan key:generate --show
+php artisan key:generate
 ```
-
-Check if it has been added to your `.env` file (on `APP_KEY=`), and if not, copy/paste the entire line.
