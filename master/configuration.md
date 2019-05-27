@@ -28,7 +28,7 @@ Whenever you edit the ```.env``` file, you must run ```php artisan config:cache`
 ### Database Configuration
 | name | description | default value | required |
 | --- | --- | --- | --- |
-| ```DB_CONNECTION``` | **Database Driver** <br> Supported drivers: ```mysql``` | ```mysql``` | y |
+| ```DB_CONNECTION``` | **Database Driver** <br> Supported drivers: ```mysql sqlite pgsql```  | ```mysql``` | y |
 | ```DB_HOST``` | **Database Host** <br> The database host address. | ```127.0.0.1``` | y |
 | ```DB_PORT``` | **Database Port** <br> The database host port. | ```3306``` | y |
 | ```DB_DATABASE``` | **Database Name** <br> The database name. | ```pixelfed``` | y |
@@ -61,4 +61,17 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 | ```MAX_ALBUM_LENGTH``` | **Album size limit** <br> The max number of photos allowed per post. | ```4``` | n |
 | ```IMAGE_QUALITY``` | **Image Quality** <br> Set the image optimization quality, must be a value between 1-100. | ```80``` | n |
 
+### ActivityPub Configuration
+
+| name | description | default value | required |
+| --- | --- | --- | --- |
+| ```ACTIVITYPUB_INBOX``` | **?** <br> ??. | ```false``` | n |
+| ```ACTIVITYPUB_SHAREDINBOX``` | **?** <br> ??. | ```false``` | n |
+| ```ACTIVITY_PUB``` | **?** <br> ??. | ```false``` | n |
+| ```REMOTE_FOLLOW``` | **?** <br> ??. | ```false``` | n |
+
+
+### Optional Configuration
+
+* USERNAME_BLACKLIST
 
