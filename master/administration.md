@@ -10,9 +10,12 @@ Optionally, you can do it manually
 
 ```
 $ php artisan tinker
-# then follow these steps:
-## Note: Username is case sensitive
-$user = User::whereUsername('Username')->firstOrFail();
-$user->is_admin = true;
-$user->save();
+
+>>> $username = 'username_here';
+
+>>> $user = User::whereUsername($username)->firstOrFail();
+
+>>> $user->is_admin = true;
+
+>>> $user->save();
 ```

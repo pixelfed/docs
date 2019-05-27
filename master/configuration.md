@@ -51,7 +51,6 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 | name | description | default value | required |
 | --- | --- | --- | --- |
 | ```OPEN_REGISTRATION``` | **Open Registration** <br> Allow new user registrations. | ```true``` | n |
-| ```RECAPTCHA_ENABLED``` | **Use Recaptcha for Auth** <br> Use Recaptcha on login and register forms. Requires ```RECAPTCHA_PUBLIC_KEY``` and ```RECAPTCHA_PRIVATE_KEY``` | ```false``` | n |
 | ```ENFORCE_EMAIL_VERIFICATION``` | **Enforce Email Verification** <br> Require new users to verify their email before they can do anything. | ```true``` | n |
 | ```MAX_ACCOUNT_SIZE``` | **Account file size limit** <br> Update the max account size, the per user limit of files in KB. Requires ```LIMIT_ACCOUNT_SIZE``` to be set to ```true```. | ```1000000``` (1GB) | n |
 | ```MAX_PHOTO_SIZE``` | **Photo file size limit** <br> Update the max photo size, in KB. | ```15000``` (15MB) | n |
@@ -65,13 +64,6 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 
 | name | description | default value | required |
 | --- | --- | --- | --- |
-| ```ACTIVITYPUB_INBOX``` | **?** <br> ??. | ```false``` | n |
-| ```ACTIVITYPUB_SHAREDINBOX``` | **?** <br> ??. | ```false``` | n |
-| ```ACTIVITY_PUB``` | **?** <br> ??. | ```false``` | n |
-| ```REMOTE_FOLLOW``` | **?** <br> ??. | ```false``` | n |
+| ```ACTIVITY_PUB``` | Enable ActivityPub federation. | ```false``` | n |
 
-
-### Optional Configuration
-
-* USERNAME_BLACKLIST
 
