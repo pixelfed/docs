@@ -9,30 +9,7 @@ Before you install pixelfed, you will need to setup the required dependencies an
 
 ## Dependencies
 
- - PHP >= 7.1.3 (7.2+ recommended for stable version)
- - MySQL >= 5.7, Mariadb >= 10.2.7, Postgres (sqlite is not supported yet)
- - Redis
- - Composer
- - GD or ImageMagick
- - OpenSSL PHP Extension
- - PDO PHP Extension
- - Mbstring PHP Extension
- - Tokenizer PHP Extension
- - XML PHP Extension
- - Ctype PHP Extension
- - JSON PHP Extension
- - BCMath PHP Extension
- - Curl PHP Extension
- - Internationalization PHP Extension
- - JpegOptim
- - Optipng
- - Pngquant 2
-
-## Composer
-
-Pixelfed uses the composer package manager, you can download it [here](https://getcomposer.org/download/)
-
-## Database
+### Database
 
 You can choose one of three supported database drivers:
  - MySQL (5.7+)
@@ -47,16 +24,46 @@ php artisan backup:run --only-db
 ```
 :::
 
+### PHP
+Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version) with the following extensions:
+- `openssl`
+- `pdo_*` for your database of choice
+- `mbstring`
+- `tokenizer`
+- `xml`
+- `ctype`
+- `json`
+- `bcmath`
+- `curl`
+- `intl`
+
+::: tip WARNING
+Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the predis library, so the presence of the `redis` extension will cause issues.
+:::
+
+#### Composer
+
+Pixelfed uses the composer package manager, you can download it [here](https://getcomposer.org/download/)
+
+### Additional libraries and programs
+
+- Redis
+- GD or ImageMagick
+
+- [`jpegoptim`](https://github.com/tjko/jpegoptim)
+- [`optipng`](http://optipng.sourceforge.net/)
+- [`pngquant`](https://pngquant.org/)
+
 ## Webserver Configuration
 
 ::: warning
-The web server must set the base directory to ```public/``` and not ```/``` or it will not function properly.
+The web server must set the base directory to `public/` and not `/` or it will not function properly.
 :::
 
 ### Apache
-Pixelfed includes a ```public/.htaccess``` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the ```mod_rewrite``` module so the ```.htaccess``` file will be honored by the server.
+Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module so the `.htaccess` file will be honored by the server.
 
-If the ```.htaccess``` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
+If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
 ```php
 Options +FollowSymLinks -Indexes
 RewriteEngine On
