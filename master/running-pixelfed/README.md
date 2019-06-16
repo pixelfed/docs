@@ -91,7 +91,7 @@ Example Nginx + PHP 7.2 server configuration
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name .pixelfed.dev;
+    server_name pixelfed.example;
     root /home/pixelfed/public;
 
     ssl_certificate /etc/nginx/ssl/server.crt;
