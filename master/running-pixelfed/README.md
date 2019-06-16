@@ -1,20 +1,36 @@
-# Requirements
+# Running a Pixelfed instance
 
-::: tip WARNING
-Before you install pixelfed, you will need to setup the required dependencies and a webserver.
+::: tip Warning
+The docs are still a work in progress.
 :::
 
-    
 [[toc]]
 
-## Dependencies
+<!---->
+
+## Pre-requisites
+
+Before you install pixelfed, you will need to setup a webserver with the required dependencies.
+
+### HTTP Web server
+The following web servers are supported:
+- Apache
+- nginx
+
+### External programs
+
+- Redis
+- GD or ImageMagick
+- [`jpegoptim`](https://github.com/tjko/jpegoptim)
+- [`optipng`](http://optipng.sourceforge.net/)
+- [`pngquant`](https://pngquant.org/)
 
 ### Database
 
 You can choose one of three supported database drivers:
- - MySQL (5.7+)
- - MariaDB (10.2.7+)
- - Postgres
+- MySQL (5.7+)
+- MariaDB (10.2.7+)
+- Postgres
 
 ::: tip
 If you decide to change database drivers later, please run a backup first!
@@ -27,7 +43,7 @@ php artisan backup:run --only-db
 ### PHP
 Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version) with the following extensions:
 - `openssl`
-- `pdo_*` for your database of choice
+- `pdo_*` driver for your database of choice -- either `pdo_mysql` for MySQL/MariaDB, or `pdo_pgqsl` for Postgres
 - `mbstring`
 - `tokenizer`
 - `xml`
@@ -38,27 +54,18 @@ Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version)
 - `intl`
 
 ::: tip WARNING
-Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the predis library, so the presence of the `redis` extension will cause issues.
+Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
 :::
 
 #### Composer
 
-Pixelfed uses the composer package manager, you can download it [here](https://getcomposer.org/download/)
+Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PHP.
 
-### Additional libraries and programs
-
-- Redis
-- GD or ImageMagick
-
-- [`jpegoptim`](https://github.com/tjko/jpegoptim)
-- [`optipng`](http://optipng.sourceforge.net/)
-- [`pngquant`](https://pngquant.org/)
+<!---->
 
 ## Webserver Configuration
 
-::: warning
-The web server must set the base directory to `public/` and not `/` or it will not function properly.
-:::
+To translate web requests to PHP workers,
 
 ### Apache
 Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module so the `.htaccess` file will be honored by the server.
