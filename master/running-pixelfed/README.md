@@ -6,7 +6,7 @@ The docs are still a work in progress.
 
 [[toc]]
 
-<!---->
+<!----------------------------------------------------------------------------->
 
 ## Pre-requisites
 
@@ -62,7 +62,7 @@ Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed 
 
 Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PHP.
 
-<!---->
+<!----------------------------------------------------------------------------->
 
 ## Installation process
 
@@ -193,11 +193,11 @@ Example Nginx + PHP-FPM server configuration
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name pixelfed.example;
-    root /home/pixelfed/public;
+    server_name pixelfed.example;                    # change this to your fqdn
+    root /home/pixelfed/public;                      # path to repo/public
 
-    ssl_certificate /etc/nginx/ssl/server.crt;
-    ssl_certificate_key /etc/nginx/ssl/server.key;
+    ssl_certificate /etc/nginx/ssl/server.crt;       # generate your own
+    ssl_certificate_key /etc/nginx/ssl/server.key;   # or use letsencrypt
 
     ssl_protocols TLSv1.2;
     ssl_ciphers EECDH+AESGCM:EECDH+CHACHA20:EECDH+AES;
@@ -222,7 +222,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php-fpm.sock; # make sure this is correct
         fastcgi_index index.php;
         include fastcgi_params;
     }
@@ -231,4 +231,13 @@ server {
         deny all;
     }
 }
+
+server {                                             # Redirect http to https
+    server_name pixelfed.example;                    # change this to your fqdn
+    listen 80;
+    listen [::]:80;
+    return 301 https://$host$request_uri;
+}
 ```
+
+Make sure to use the correct `fastcgi_pass` socket path for your distribution.
