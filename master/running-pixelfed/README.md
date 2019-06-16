@@ -92,77 +92,69 @@ $ sudo chown -R http:http pixelfed/
 
 ### Configure environment variables
 
-::: tip
-You can find a list of additional configuration settings on the [Configuration](configuration.html) page.
-:::
-
-By default Pixelfed comes with a `.env.example` file. You'll need to rename this file to just `.env` regardless of what environment you're working on.
-
-It's now just a case of editing this new `.env` file and setting the values of your setup.
+By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
 
 ```bash
 $ cd pixelfed
-$ cp .env.example .env # copy example file and start editing
+$ cp .env.example .env # for production deployments
+$ cp .env.testing .env # for debug deployments
 ```
 
-Edit `.env`
+You can now edit `.env` and change values for your setup.
 
-```text
-APP_NAME="PixelFed Test"
-APP_ENV=production
-APP_KEY=
-APP_DEBUG=false
-APP_URL=http://localhost
+::: tip
+You can find a list of additional configuration settings on the [Configuration](configuration.md) page, but the important variables will be listed in the below subsections.
+:::
 
-ADMIN_DOMAIN="localhost"
-APP_DOMAIN="localhost"
+#### App variables
 
-LOG_CHANNEL=stack
+- Set `APP_NAME` to your desired title. This will be shown in the header bar and other places.
+- Ensure that `APP_DEBUG` is false for production environments, or true for debug environments.
+- Set your `APP_URL` to the URL that you wish to serve Pixelfed through.
+- Set `APP_DOMAIN` and `ADMIN_DOMAIN` to the domain name you will be using for Pixelfed.
 
+#### Database variables
+
+- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or ``
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
+```
 
-BROADCAST_DRIVER=log
-CACHE_DRIVER=redis
-SESSION_DRIVER=redis
-SESSION_LIFETIME=120
-QUEUE_DRIVER=redis
-
+- Set
+```
 REDIS_HOST=127.0.0.1
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+```
 
+#### Email variables
+
+- Set
+```
 MAIL_DRIVER=log
 MAIL_HOST=smtp.mailtrap.io
 MAIL_PORT=2525
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="Pixelfed@example.com"
-MAIL_FROM_NAME="Pixelfed"
+MAIL_FROM_ADDRESS="pixelfed@pixelfed.example"
+MAIL_FROM_NAME="pixelfed.example mailer"
+```
 
-SESSION_DOMAIN="${APP_DOMAIN}"
-SESSION_SECURE_COOKIE=true
-API_BASE="/api/1/"
-API_SEARCH="/api/search"
+#### Additional variables
 
+```
 OPEN_REGISTRATION=true
-RECAPTCHA_ENABLED=false
-ENFORCE_EMAIL_VERIFICATION=true
+ENFORCE_EMAIL_VERIFICATION=true # can be "false" for testing
 
 MAX_PHOTO_SIZE=15000
 MAX_CAPTION_LENGTH=150
 MAX_ALBUM_LENGTH=4
-
-MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
-MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
-MIX_APP_URL="${APP_URL}"
-MIX_API_BASE="${API_BASE}"
-MIX_API_SEARCH="${API_SEARCH}"
 
 ACTIVITYPUB_INBOX=false
 ACTIVITYPUB_SHAREDINBOX=false
@@ -177,9 +169,12 @@ ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
 ```
 
-Then you need to setup the secret key:
-```
-php artisan key:generate
+#### Generate an application secret key
+
+If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
+
+```bash
+$ php artisan key:generate
 ```
 
 ### Configure your web server
