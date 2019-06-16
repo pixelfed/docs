@@ -66,18 +66,28 @@ Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PH
 
 ## Installation process
 
-Make sure you have all prerequisites installed and the appropriate services running/enabled.
-
 ::: warning WARNING
 Pixelfed is still a work in progress. We do not recommending running an instance in production unless you know what you are doing!
 :::
 
+Make sure you have all prerequisites installed and the appropriate services running/enabled.
+
 ### Download source via Git
 
+::: tip
+Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
+
 ```bash
-$ cd /home # Or wherever you chose to install web applications
-$ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
-$ cd pixelfed
+$ cd /home # or wherever you chose to install web applications
+$ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
+```
+
+### Set correct permissions
+
+Your web/php server processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running the server processes through the `http` user/group, then run the following command:
+
+```bash
+$ sudo chown -R http:http pixelfed/
 ```
 
 ### Configure environment variables
@@ -86,10 +96,16 @@ $ cd pixelfed
 You can find a list of additional configuration settings on the [Configuration](configuration.html) page.
 :::
 
-By default Pixelfed comes with a ```.env.example``` file. You'll need to rename this file to just ```.env``` regardless of what environment you're working on.
+By default Pixelfed comes with a `.env.example` file. You'll need to rename this file to just `.env` regardless of what environment you're working on.
 
-It's now just a case of editing this new ```.env``` file and setting the values of your setup.
+It's now just a case of editing this new `.env` file and setting the values of your setup.
 
+```bash
+$ cd pixelfed
+$ cp .env.example .env # copy example file and start editing
+```
+
+Edit `.env`
 
 ```text
 APP_NAME="PixelFed Test"
@@ -171,7 +187,7 @@ php artisan key:generate
 To translate web requests to PHP workers,
 
 #### Apache
-Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module so the `.htaccess` file will be honored by the server.
+Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
 
 If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
 ```php
@@ -222,9 +238,10 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php-fpm.sock; # make sure this is correct
+        fastcgi_pass unix:/run/php-fpm/php-fpm.sock; # make sure this is correct
         fastcgi_index index.php;
         include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; # or $request_filename
     }
 
     location ~ /\.(?!well-known).* {
