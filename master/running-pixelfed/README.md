@@ -85,7 +85,7 @@ RewriteRule ^ index.php [L]
 ```
 ### Nginx
 
-Example Nginx + PHP 7.2 server configuration
+Example Nginx + PHP-FPM server configuration
 
 ```nginx
 server {
@@ -120,7 +120,7 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
     }
