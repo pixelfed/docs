@@ -42,16 +42,17 @@ php artisan backup:run --only-db
 
 ### PHP
 Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version) with the following extensions:
+- `bcmath`
+- `ctype`
+- `curl`
+- `iconv`
+- `intl`
+- `json`
+- `mbstring`
 - `openssl`
 - `pdo_*` driver for your database of choice -- either `pdo_mysql` for MySQL/MariaDB, or `pdo_pgqsl` for Postgres
-- `mbstring`
 - `tokenizer`
 - `xml`
-- `ctype`
-- `json`
-- `bcmath`
-- `curl`
-- `intl`
 
 ::: tip WARNING
 Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
