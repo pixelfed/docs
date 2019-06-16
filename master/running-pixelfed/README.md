@@ -84,10 +84,12 @@ $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout 
 
 ### Set correct permissions
 
-Your web/php server processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running the server processes through the `http` user/group, then run the following command:
+Your web/php server processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running the server processes through the `http` user/group, then run the following:
 
 ```bash
-$ sudo chown -R http:http pixelfed/
+$ sudo chown -R http:http pixelfed/ # change user/group of pixelfed/ to http user and http group
+$ sudo find pixelfed\ -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
+$ sudo find pixelfed\ -type f -exec chmod 664 {} \; # set all files to rw by user/group
 ```
 
 ### Configure environment variables
