@@ -29,8 +29,24 @@ The following web servers are officially supported:
 
 You can choose one of three supported database drivers:
 - MySQL (5.7+)
-- MariaDB (10.2.7+)
-- Postgres
+- MariaDB (10.2.7+ -- 10.3.5+ recommended)
+- PostgreSQL
+
+::: tip WARNING
+PostgreSQL support is not complete -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
+:::
+
+You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
+
+```bash
+$ sudo mysql -u root -p
+```
+
+```sql
+create database pixelfed;
+grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
+flush privileges;
+```
 
 ::: tip
 If you decide to change database drivers later, please run a backup first!
@@ -41,18 +57,28 @@ php artisan backup:run --only-db
 :::
 
 ### PHP
-Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version) with the following extensions:
-- `bcmath`
+
+::: tip
+You can check your currently installed version of PHP by running `php -v`. You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section;
+:::
+
+Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version).
+
+Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
+- `bcmath` *
 - `ctype`
 - `curl`
-- `iconv`
-- `intl`
+- `iconv` *
+- `intl` *
 - `json`
 - `mbstring`
 - `openssl`
-- `pdo_*` driver for your database of choice -- either `pdo_mysql` for MySQL/MariaDB, or `pdo_pgqsl` for Postgres
 - `tokenizer`
 - `xml`
+
+Additionally, you will need to enable extensions for database drivers.
+- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
+- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
 
 ::: tip WARNING
 Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
@@ -92,7 +118,11 @@ $ sudo find pixelfed\ -type d -exec chmod 775 {} \; # set all directories to rwx
 $ sudo find pixelfed\ -type f -exec chmod 664 {} \; # set all files to rw by user/group
 ```
 
-### Configure environment variables
+::: tip WARNING
+Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`.
+:::
+
+### Configuration
 
 By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
 
@@ -117,22 +147,20 @@ You can find a list of additional configuration settings on the [Configuration](
 
 #### Database variables
 
-- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or ``
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
-```
+- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or `pgsql???` if you are using PostgreSQL.
+- Set `DB_HOST` to the IP of the machine
+- Set `DB_PORT` to the port on which your database server is exposed
+- Set `DB_DATABASE` to the name of the database created for Pixelfed
+- Set `DB_USERNAME` to the user that was granted privileges for that database
+- Set `DB_PASSWORD` to the password that identifies the user with privileges to the database
 
-- Set
-```
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-```
+#### Redis variables
+
+If you are running Redis on the same machine as Pixelfed, then the default settings will work. If you are running Redis on another machine:
+
+- Set `REDIS_HOST` to the IP of the machine your Redis server is running on
+- Set `REDIS_PORT` to the port on which Redis is exposed
+- Set `REDIS_PASSWORD` to the password of that Redis server
 
 #### Email variables
 
@@ -169,6 +197,14 @@ HORIZON_DARKMODE=true
 #   php artisan optimize
 ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
+```
+
+### Initialize PHP environment
+
+If you have not already done so, run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
+
+```bash
+composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 ```
 
 #### Generate an application secret key
