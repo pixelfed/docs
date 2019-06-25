@@ -19,4 +19,32 @@ $ php artisan route:cache
 $ php artisan migrate --force
 $ php artisan horizon:purge
 $ php artisan storage:link
+$ php artisan horizon:install
+$ php artisan horizon:assets
 ```
+
+### Background Task Runner
+
+Create the file `/etc/systemd/system/pixelfed-queue.service` with the following content:
+
+```
+[Unit]
+Description=Pixelfed task queueing via Laravel Horizon
+After=network.target
+Requires=php7.2-fpm.service
+Requires=redis.service
+Requires=postgresql.service
+Wants=nginx.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /home/pixelfed/artisan horizon
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+You might want to change the required services (for example replace `postgresql` with `mariadb` when using that db) and the path to the pixelfed installation.
+
+Afterwards reload services by runnning `systemctl daemon-reload` and enable (and start) the service with `systemctl enable --now pixelfed-queue`.
