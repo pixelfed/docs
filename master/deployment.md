@@ -33,7 +33,7 @@ Description=Pixelfed task queueing via Laravel Horizon
 After=network.target
 Requires=php7.2-fpm.service
 Requires=redis.service
-Requires=postgresql.service
+Requires=mariadb.service
 Wants=nginx.service
 
 [Service]
@@ -45,6 +45,8 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-You might want to change the required services (for example replace `postgresql` with `mariadb` when using that db) and the path to the pixelfed installation.
+You might want to change the required services (for example replace `mariadb` with `postgresql` when using that db, and replace `nginx` with `apache2` if you use apache).
+
+The path in the line starting with `ExecStart` should be the path to the pixelfed installation.
 
 Afterwards reload services by runnning `systemctl daemon-reload` and enable (and start) the service with `systemctl enable --now pixelfed-queue`.
