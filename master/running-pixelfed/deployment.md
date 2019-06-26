@@ -12,113 +12,45 @@ Depending on the release notes of a specific version, it may require additional 
 
 ### Background Task Runner
 
-Pixelfed needs a process running in the background to handle jobs. Below are example configurations for some init systems.
+Pixelfed needs a process running in the background to handle jobs.
 
-#### init
+The program which is used for that is called Supervisor. Information on how to install it is available in [their docs](http://supervisord.org/installing.html#installing-a-distribution-package).
 
-Create the file `/etc/init.d/pixelfed-queue.sh` with the following content:
+> Use the package management tools of your distribution to check availability; e.g. on Debian/Ubuntu you can run `apt search supervisor`, and on CentOS you can run `yum info supervisor`.
 
-```
-#!/bin/sh
-### BEGIN INIT INFO
-# Provides:          pixelfed-queue
-# Required-Start:    $local_fs $network $named $time $syslog
-# Required-Stop:     $local_fs $network $named $time $syslog
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Description:       Pixelfed task queueing via Laravel Horizon
-### END INIT INFO
+After installing supervisor, you need to create a configuration file for the service. When installing the Debian package of supervisor, the file resides in `/etc/supervisor/conf.d/` and is called `pixelfed-horizon.conf`. If your installation has a `supervisor.d` directory instead of `conf.d`, the file should be called `pixelfed-horizon.ini`.
 
-SCRIPT=/usr/bin/php /home/pixelfed/artisan horizon
-RUNAS=<USERNAME>
-
-PIDFILE=/var/run/pixelfed-queue.pid
-LOGFILE=/var/log/pixelfed-queue.log
-
-start() {
-  if [ -f /var/run/$PIDFILE ] && kill -0 $(cat /var/run/$PIDFILE); then
-    echo 'Service already running' >&2
-    return 1
-  fi
-  echo 'Starting service…' >&2
-  local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
-  su -c "$CMD" $RUNAS > "$PIDFILE"
-  echo 'Service started' >&2
-}
-
-stop() {
-  if [ ! -f "$PIDFILE" ] || ! kill -0 $(cat "$PIDFILE"); then
-    echo 'Service not running' >&2
-    return 1
-  fi
-  echo 'Stopping service…' >&2
-  kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
-  echo 'Service stopped' >&2
-}
-
-uninstall() {
-  echo -n "Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "
-  local SURE
-  read SURE
-  if [ "$SURE" = "yes" ]; then
-    stop
-    rm -f "$PIDFILE"
-    echo "Notice: log file is not be removed: '$LOGFILE'" >&2
-    update-rc.d -f <NAME> remove
-    rm -fv "$0"
-  fi
-}
-
-case "$1" in
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  uninstall)
-    uninstall
-    ;;
-  restart)
-    stop
-    start
-    ;;
-  *)
-    echo "Usage: $0 {start|stop|restart|uninstall}"
-esac
-```
-
-You need to replace `<USERNAME>` with a username privileged to access the pixelfed directory (for example `www-data` on some setups). Additionally the path in the line starting with `SCRIPT` needs to be adapted to the path to the pixelfed installation.
-
-The service will log into `/var/log/pixelfed-queue.log`.
-
-#### systemd
-
-Create the file `/etc/systemd/system/pixelfed-queue.service` with the following content:
+Put the following content into the file, modify it to match your setup and check if the path to the Pixelfed installation and the logfile is writable by the given user.
 
 ```
-[Unit]
-Description=Pixelfed task queueing via Laravel Horizon
-After=network.target
-Requires=php7.2-fpm.service
-Requires=redis.service
-Requires=mariadb.service
-Wants=nginx.service
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/php /home/pixelfed/artisan horizon
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
+[program:horizon]
+command=php /home/pixelfed/artisan horizon
+stdout_logfile=/home/pixelfed/horizon.log
+user=www-data
+autostart=true
+autorestart=true
+redirect_stderr=true
+process_name=%(program_name)s
 ```
 
-You might want to change the required services (for example replace `mariadb` with `postgresql` when using that, and replace `nginx` with `apache2` if you use apache). When not using PHP 7.2, `php7.2-fpm` also must be changed.
+Depending on your init system, you can then enable and start supervisor.
 
-The path in the line starting with `ExecStart` should match the path to the pixelfed installation.
+Example for systemd: 
+```
+$ systemctl enable --now supervisor
+```
 
-Afterwards reload services by runnning `systemctl daemon-reload` and enable (and start) the service with `systemctl enable --now pixelfed-queue`.
+After that, load the configuration we just created and start horizon:
+```
+$ supervisorctl reread
+$ supervisorctl update
+$ supervisorctl start horizon
+```
+
+You can then check the running services using:
+```
+$ supervisorctl status
+```
 
 ### Post Deployment Commands
 ```bash
@@ -131,10 +63,7 @@ $ php artisan horizon:purge
 $ php artisan storage:link
 $ php artisan horizon:install
 $ php artisan horizon:assets
-
-# adapt to your init system
-$ sudo systemctl restart pixelfed-queue
-$ sudo /etc/init.d/pixelfed-queue.sh restart
+$ supervisorctl restart horizon
 ```
 
 # Updating
@@ -142,4 +71,5 @@ $ sudo /etc/init.d/pixelfed-queue.sh restart
 ```bash
 $ cd /home/pixelfed # Or wherever you chose to install web applications
 $ git pull origin dev
+$ php artisan optimize
 ```
