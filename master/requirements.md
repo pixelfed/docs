@@ -11,19 +11,20 @@ Before you install pixelfed, you will need to setup the required dependencies an
 
  - PHP >= 7.1.3 (7.2+ recommended for stable version)
  - MySQL >= 5.7, Mariadb >= 10.2.7, Postgres (sqlite is not supported yet)
- - Redis
- - Composer
+ - [Redis](https://redis.io/topics/quickstart)
+ - [Composer](https://getcomposer.org/doc/00-intro.md)
  - GD or ImageMagick
- - OpenSSL PHP Extension
- - PDO PHP Extension
- - Mbstring PHP Extension
- - Tokenizer PHP Extension
- - XML PHP Extension
- - Ctype PHP Extension
- - JSON PHP Extension
- - BCMath PHP Extension
- - Curl PHP Extension
- - Internationalization PHP Extension
+ - PHP Extensions:
+   - BCMath 
+   - Ctype 
+   - Curl 
+   - Internationalization 
+   - JSON 
+   - Mbstring 
+   - OpenSSL 
+   - PDO 
+   - Tokenizer 
+   - XML 
  - JpegOptim
  - Optipng
  - Pngquant 2
