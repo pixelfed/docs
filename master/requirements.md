@@ -25,6 +25,7 @@ Before you install pixelfed, you will need to setup the required dependencies an
    - PDO 
    - Tokenizer 
    - XML 
+   - Zip
  - JpegOptim
  - Optipng
  - Pngquant 2
