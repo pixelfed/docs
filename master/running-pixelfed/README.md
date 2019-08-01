@@ -122,7 +122,7 @@ $ sudo find pixelfed\ -type f -exec chmod 664 {} \; # set all files to rw by use
 Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`.
 :::
 
-### Configuration
+### Configure Pixelfed
 
 By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
 
@@ -165,7 +165,7 @@ If you are running Redis on the same machine as Pixelfed, then the default setti
 #### Email variables
 
 - Set
-```
+```bash
 MAIL_DRIVER=log
 MAIL_HOST=smtp.mailtrap.io
 MAIL_PORT=2525
@@ -178,7 +178,7 @@ MAIL_FROM_NAME="pixelfed.example mailer"
 
 #### Additional variables
 
-```
+```bash
 OPEN_REGISTRATION=true
 ENFORCE_EMAIL_VERIFICATION=true # can be "false" for testing
 
@@ -204,7 +204,7 @@ REMOTE_FOLLOW=false
 If you have not already done so, run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
 
 ```bash
-composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+$ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 ```
 
 #### Generate an application secret key
@@ -215,7 +215,11 @@ If you copied `.env.testing` to set up a development environment, the secret is 
 $ php artisan key:generate
 ```
 
-### Configure your web server
+### Configure your PHP settings
+
+- php.ini upload filesize limit
+
+### Configure your HTTP reverse proxy
 
 To translate web requests to PHP workers,
 
@@ -223,6 +227,7 @@ To translate web requests to PHP workers,
 Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
 
 If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
+
 ```php
 Options +FollowSymLinks -Indexes
 RewriteEngine On
@@ -291,3 +296,19 @@ server {                                             # Redirect http to https
 ```
 
 Make sure to use the correct `fastcgi_pass` socket path for your distribution.
+
+### Final steps
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan migrate --force
+php artisan horizon:purge
+php artisan storage:link
+```
+
+### Update
+
+```bash
+$ git pull origin dev
+```
