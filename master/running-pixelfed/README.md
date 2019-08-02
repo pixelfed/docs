@@ -4,5 +4,5 @@
 The docs are still a work in progress.
 :::
 
-[Installation](installation.md)
-[Administration](administration.md)
+## [Installation](installation.md)
+## [Administration](administration.md)
