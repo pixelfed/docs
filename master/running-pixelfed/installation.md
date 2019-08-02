@@ -56,7 +56,7 @@ php artisan backup:run --only-db
 You can check your currently installed version of PHP by running `php -v`. You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section;
 :::
 
-Make sure you are running **PHP >= 7.1.3** (7.2+ recommended for stable version).
+Make sure you are running **PHP >= 7.3**.
 
 Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
 - `bcmath` *
