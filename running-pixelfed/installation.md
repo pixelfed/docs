@@ -94,7 +94,6 @@ Make sure you have all prerequisites installed and the appropriate services runn
 
 ### Download source via Git
 
-::: tip
 Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
 
 ```bash
@@ -301,7 +300,7 @@ php artisan horizon:purge
 php artisan storage:link
 ```
 
-### Update
+## Update
 
 ```bash
 $ git pull origin dev
