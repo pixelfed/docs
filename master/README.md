@@ -4,16 +4,12 @@
 The docs are still a work in progress.
 :::
 
-## Getting Started
-### [Requirements](requirements.md)
-### [Installation](installation.md)
-### [Configuration](configuration.md)
-### [Deployment](deployment.md)
-### [Updating](updating.md)
-### [Administration](administration.md)
+## [Running Pixelfed](running-pixelfed/README.md)
+### [Installation](running-pixelfed/installation.md)
+### [Administration](running-pixelfed/administration.md)
 
-<br>
+## [Using Pixelfed](running-pixelfed/README.md)
 
-## Running an instance
-### [Artisan Commands](running-an-instance/artisan-command.md)
-### [Job Queue](running-an-instance/job-queue.md)
+## [Technical Documentation](technical-documentation/README.md)
+### [API](technical-documentation/api.md)
+### [Environment variables](technical-documentation/env.md)
