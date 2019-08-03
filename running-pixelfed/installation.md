@@ -24,10 +24,10 @@ The following web servers are officially supported:
 You can choose one of three supported database drivers:
 - MySQL (5.7+)
 - MariaDB (10.2.7+ -- 10.3.5+ recommended)
-- PostgreSQL
+- PostgreSQL (10+)
 
 ::: tip WARNING
-PostgreSQL support is not complete -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
+PostgreSQL support is not primary -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
 :::
 
 You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
@@ -140,7 +140,7 @@ You can find a list of additional configuration settings on the [Configuration](
 
 #### Database variables
 
-- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or `pgsql???` if you are using PostgreSQL.
+- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or `pgsql` if you are using PostgreSQL.
 - Set `DB_HOST` to the IP of the machine
 - Set `DB_PORT` to the port on which your database server is exposed
 - Set `DB_DATABASE` to the name of the database created for Pixelfed
@@ -214,7 +214,7 @@ $ php artisan key:generate
 
 ### Configure your HTTP reverse proxy
 
-To translate web requests to PHP workers,
+To translate HTTP web requests to PHP workers, you will need to configure a reverse proxy.
 
 #### Apache
 Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
