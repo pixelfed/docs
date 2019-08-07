@@ -13,17 +13,14 @@ module.exports = {
     repo: 'pixelfed/docs',
     editLinks: true,
     displayAllHeaders: false,
-    sidebarDepth: 1,
+    sidebarDepth: 2,
 
     nav: [
-       {text: 'Version', link: '/', items: [
-         {text: 'Master', link: '/master/'}
-       ]},
-       {text: 'Pixelfed.org', link: 'https://pixelfed.org'},
+       {text: 'pixelfed.org', link: 'https://pixelfed.org'},
     ],
 
     sidebar: {
-      '/master/': require('./master')
+      '/': require('./sidebar')
     },
   },
 };
