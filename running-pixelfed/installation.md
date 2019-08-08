@@ -97,7 +97,7 @@ Make sure you have all prerequisites installed and the appropriate services runn
 Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
 
 ```bash
-$ cd /home # or wherever you chose to install web applications
+$ cd /home # or wherever you choose to install web applications
 $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
 ```
 
@@ -114,6 +114,22 @@ $ sudo find pixelfed\ -type f -exec chmod 664 {} \; # set all files to rw by use
 ::: tip WARNING
 Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`.
 :::
+
+### Initialize PHP dependencies
+
+If you have not already done so, run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
+
+```bash
+$ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+```
+
+#### Generate an application secret key
+
+If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
+
+```bash
+$ php artisan key:generate
+```
 
 ### Configure Pixelfed
 
@@ -190,22 +206,6 @@ HORIZON_DARKMODE=true
 #   php artisan optimize
 ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
-```
-
-### Initialize PHP environment
-
-If you have not already done so, run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
-
-```bash
-$ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
-```
-
-#### Generate an application secret key
-
-If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
-
-```bash
-$ php artisan key:generate
 ```
 
 ### Configure your PHP settings
@@ -292,16 +292,26 @@ Make sure to use the correct `fastcgi_pass` socket path for your distribution.
 
 ### Final steps
 
+Every time you edit your .env file, you must run this command to have the changes take effect:
+
 ```bash
 php artisan config:cache
+```
+
+
+
+```bash
 php artisan route:cache
 php artisan migrate --force
 php artisan horizon:purge
 php artisan storage:link
 ```
 
-## Update
+## Post-installation
+
+After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch.
 
 ```bash
+$ cd /home/pixelfed  # or wherever you installed pixelfed
 $ git pull origin dev
 ```
