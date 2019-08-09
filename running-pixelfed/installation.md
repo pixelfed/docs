@@ -123,14 +123,6 @@ If you have not already done so, run `composer install` to fetch the dependencie
 $ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 ```
 
-#### Generate an application secret key
-
-If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
-
-```bash
-$ php artisan key:generate
-```
-
 ### Configure Pixelfed
 
 By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
@@ -205,6 +197,13 @@ HORIZON_DARKMODE=true
 #   php artisan optimize
 ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
+```
+#### Generate an application secret key
+
+If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
+
+```bash
+$ php artisan key:generate
 ```
 
 ### Configure your PHP settings
