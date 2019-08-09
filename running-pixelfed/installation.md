@@ -107,8 +107,8 @@ Your web/php server processes need to be able to write to the `pixelfed` directo
 
 ```bash
 $ sudo chown -R http:http pixelfed/ # change user/group of pixelfed/ to http user and http group
-$ sudo find pixelfed\ -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
-$ sudo find pixelfed\ -type f -exec chmod 664 {} \; # set all files to rw by user/group
+$ sudo find pixelfed/ -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
+$ sudo find pixelfed/ -type f -exec chmod 664 {} \; # set all files to rw by user/group
 ```
 
 ::: tip WARNING
@@ -136,7 +136,6 @@ $ php artisan key:generate
 By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
 
 ```bash
-$ cd pixelfed
 $ cp .env.example .env # for production deployments
 $ cp .env.testing .env # for debug deployments
 ```
