@@ -78,9 +78,16 @@ Additionally, you will need to enable extensions for database drivers.
 Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
 :::
 
+Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
+- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
+- `file_uploads` (default On, which it needs to be)
+- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
+- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
+- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
+
 #### Composer
 
-Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PHP.
+Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PHP. Make sure you have composer.
 
 <!----------------------------------------------------------------------------->
 
@@ -205,10 +212,6 @@ If you copied `.env.testing` to set up a development environment, the secret is 
 ```bash
 $ php artisan key:generate
 ```
-
-### Configure your PHP settings
-
-- php.ini upload filesize limit
 
 ### Configure your HTTP reverse proxy
 
