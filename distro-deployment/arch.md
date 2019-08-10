@@ -9,7 +9,7 @@ These instructions will install Pixelfed with the following:
 - Repo cloned at `/home/pixelfed`
 - No other sites/services running on this machine
 
-## Pre-requisites
+## Preparing a machine
 
 You will need a machine running Arch Linux with access to the root account.
 

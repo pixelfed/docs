@@ -11,14 +11,6 @@ The following web servers are officially supported:
 - Apache
 - nginx
 
-### External programs
-- Git (for fetching updates)
-- Redis (in-memory caching)
-- GD or ImageMagick (image processing)
-- [`jpegoptim`](https://github.com/tjko/jpegoptim)
-- [`optipng`](http://optipng.sourceforge.net/)
-- [`pngquant`](https://pngquant.org/)
-
 ### Database
 
 You can choose one of three supported database drivers:
@@ -26,7 +18,7 @@ You can choose one of three supported database drivers:
 - MariaDB (10.2.7+ -- 10.3.5+ recommended)
 - PostgreSQL (10+)
 
-::: tip WARNING
+::: warning A note on using PostgreSQL:
 PostgreSQL support is not primary -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
 :::
 
@@ -36,29 +28,23 @@ You will need to create a database and grant permission to an SQL user identifie
 $ sudo mysql -u root -p
 ```
 
+You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
+
 ```sql
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
 flush privileges;
 ```
 
-::: tip
-If you decide to change database drivers later, please run a backup first!
-
-```bash
-php artisan backup:run --only-db
-```
+::: tip Changing database drivers:
+If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
 :::
 
 ### PHP
 
-::: tip
-You can check your currently installed version of PHP by running `php -v`. You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section;
-:::
+You can check your currently installed version of PHP by running `php -v`. Make sure you are running **PHP >= 7.3**.
 
-Make sure you are running **PHP >= 7.3**.
-
-Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
+You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section. Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
 - `bcmath` *
 - `ctype`
 - `curl`
@@ -74,7 +60,7 @@ Additionally, you will need to enable extensions for database drivers.
 - For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
 - For PostgreSQL: enable `pdo_pgsql` and `pgsql`
 
-::: tip WARNING
+::: danger A note about php-redis vs. predis:
 Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
 :::
 
@@ -85,9 +71,14 @@ Finally, make sure to set the desired upload limits for your PHP processes. You 
 - `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
 - `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
 
-#### Composer
-
-Pixelfed uses the [composer](https://getcomposer.org/) dependency manager for PHP. Make sure you have composer.
+### External programs
+- [Composer](https://getcomposer.org/) (PHP dependency manager)
+- Git (for fetching updates)
+- Redis (in-memory caching)
+- GD or ImageMagick (image processing)
+- [JPEGOptim](https://github.com/tjko/jpegoptim)
+- [OptiPNG](http://optipng.sourceforge.net/)
+- [PNGQuant](https://pngquant.org/)
 
 <!----------------------------------------------------------------------------->
 
@@ -110,7 +101,7 @@ $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout 
 
 ### Set correct permissions
 
-Your web/php server processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running the server processes through the `http` user/group, then run the following:
+Your web server and PHP processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
 
 ```bash
 $ sudo chown -R http:http pixelfed/ # change user/group of pixelfed/ to http user and http group
@@ -118,13 +109,13 @@ $ sudo find pixelfed/ -type d -exec chmod 775 {} \; # set all directories to rwx
 $ sudo find pixelfed/ -type f -exec chmod 664 {} \; # set all files to rw by user/group
 ```
 
-::: tip WARNING
+::: danger WARNING
 Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`.
 :::
 
 ### Initialize PHP dependencies
 
-If you have not already done so, run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
+Run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
 
 ```bash
 $ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
