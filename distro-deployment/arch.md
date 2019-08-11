@@ -59,6 +59,10 @@ http {
     include /home/pixelfed/nginx.conf    # we will make this file later
 }
 ```
+7. Start/enable services:
+```bash
+systemctl {start,enable} {nginx,redis,php-fpm}
+```
 
 ## Pixelfed setup
 1. Clone the repo and set correct permissions.
@@ -69,9 +73,22 @@ chown -R pixelfed:http pixelfed/
 find pixelfed/ -type d -exec chmod 775 {} \;
 find pixelfed/ -type f -exec chmod 664 {} \;
 ```
-2. Switch to the `pixelfed` user:
+2. Setup environment variables and nginx:
+```bash
+cd pixelfed
+cp contrib/nginx.conf nginx.conf
+```
+3. Switch to the `pixelfed` user:
 ```bash
 su pixelfed
 ```
-
-You should now be ready to follow [the rest of the installation guide!](../running-pixelfed/installation.md#initialize-php-dependencies)
+4. Deploy:
+```bash
+composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+php artisan storage:link
+php artisan horizon:terminate
+php artisan config:cache
+php artisan route:cache
+php artisan migrate --force
+```
+5. Switch back to root and start/enable services

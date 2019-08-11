@@ -30,7 +30,7 @@ $ sudo mysql -u root -p
 
 You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
 
-```sql
+```sql{1,2}
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
 flush privileges;
@@ -94,7 +94,7 @@ Make sure you have all prerequisites installed and the appropriate services runn
 
 Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
 
-```bash
+```bash{1}
 $ cd /home # or wherever you choose to install web applications
 $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
 ```
@@ -103,7 +103,7 @@ $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout 
 
 Your web server and PHP processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
 
-```bash
+```bash{1}
 $ sudo chown -R http:http pixelfed/ # change user/group of pixelfed/ to http user and http group
 $ sudo find pixelfed/ -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
 $ sudo find pixelfed/ -type f -exec chmod 664 {} \; # set all files to rw by user/group
@@ -228,7 +228,7 @@ RewriteRule ^ index.php [L]
 
 Example Nginx + PHP-FPM server configuration
 
-```nginx
+```nginx{4,5,7,8,33,36,45}
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
