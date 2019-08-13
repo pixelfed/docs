@@ -300,20 +300,31 @@ Every time you edit your .env file, you must run this command to have the change
 php artisan config:cache
 ```
 
-
+One time only, the `storage/` directory must be linked to the application:
 
 ```bash
-php artisan route:cache
-php artisan migrate --force
-php artisan horizon:purge
 php artisan storage:link
+```
+
+Database migrations must be run:
+
+```bash
+php artisan migrate --force
+```
+
+Routes should be cached whenever the source code changes:
+```bash
+php artisan route:cache
 ```
 
 ## Post-installation
 
-After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch.
+After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch and doing necessary updates/migration/caching:
 
 ```bash
 $ cd /home/pixelfed  # or wherever you installed pixelfed
 $ git pull origin dev
+$ composer install
+$ php artisan route:cache
+$ php artisan migrate --force
 ```
