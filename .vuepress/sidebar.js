@@ -1,10 +1,16 @@
 module.exports = [
-
+  {
+    title: 'Installing Pixelfed',
+    collapsable: false,
+    children: prefix('installing-pixelfed', [
+      'installation',
+      'arch',
+      ]),
+  },
   {
     title: 'Running Pixelfed',
     collapsable: false,
     children: prefix('running-pixelfed', [
-      'installation',
       'administration',
       ]),
   },
