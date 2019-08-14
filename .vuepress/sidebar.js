@@ -5,9 +5,7 @@ module.exports = [
     children: prefix('installing-pixelfed', [
       'prerequisites',
       'installation',
-      prefix('guides', [
-          'arch',
-        ]),
+      'postinstall',
       ]),
   },
   {
@@ -24,6 +22,13 @@ module.exports = [
       'api',
       'env',
       ]),
+  },
+  {
+    title: 'Distro-specific Guides',
+    collapsable: true,
+    children: prefix('installing-pixelfed/guides', [
+      'arch',
+    ]),
   },
 
 ]

@@ -1,9 +1,8 @@
 # Pre-requisites
 
-[[toc]]
-
-
 Before you install Pixelfed, you will need to setup a webserver with the required dependencies.
+
+[[toc]]
 
 ## HTTP Web server
 The following web servers are officially supported:
