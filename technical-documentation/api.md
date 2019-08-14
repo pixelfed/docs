@@ -1,5 +1,9 @@
 # v1 API
 
+::: warning WARNING
+This page is a stub. The Pixelfed APIs are currently being worked on.
+:::
+
 [[toc]]
 
 ## Prerequisites

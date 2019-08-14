@@ -1,10 +1,17 @@
 module.exports = [
-
+  {
+    title: 'Installing Pixelfed',
+    collapsable: false,
+    children: prefix('installing-pixelfed', [
+      'prerequisites',
+      'installation',
+      'postinstall',
+      ]),
+  },
   {
     title: 'Running Pixelfed',
     collapsable: false,
     children: prefix('running-pixelfed', [
-      'installation',
       'administration',
       ]),
   },
@@ -15,6 +22,13 @@ module.exports = [
       'api',
       'env',
       ]),
+  },
+  {
+    title: 'Distro-specific Guides',
+    collapsable: true,
+    children: prefix('installing-pixelfed/guides', [
+      'arch',
+    ]),
   },
 
 ]
