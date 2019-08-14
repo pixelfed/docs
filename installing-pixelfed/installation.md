@@ -52,7 +52,7 @@ $ cp .env.testing .env # for debug deployments
 You can now edit `.env` and change values for your setup.
 
 ::: tip List of environment variables
-You can find a list of additional configuration settings on the [Configuration](configuration.md) page, but the important variables will be listed in the below subsections.
+You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/env.md) page, but the important variables will be listed in the below subsections.
 :::
 
 ### App variables
@@ -106,36 +106,17 @@ Using a UNIX socket is optional, but may provide faster access since it does not
 
 ### Email variables
 
-- Set TODO
-```bash
-MAIL_DRIVER=log
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="pixelfed@pixelfed.example"
-MAIL_FROM_NAME="pixelfed.example mailer"
-```
+By default, Pixelfed will not send any emails, but will instead write messages to the Laravel log. 
+
+To setup a mailer for production deployments, you have several options for supported mail services. [Configuration#mail](../technical-documentation/env.md)
 
 ### Additional variables
 
-TODO
-```bash
-OPEN_REGISTRATION=true
-ENFORCE_EMAIL_VERIFICATION=true # can be "false" for testing
+For testing environments:
 
-MAX_PHOTO_SIZE=15000
-MAX_CAPTION_LENGTH=150
-MAX_ALBUM_LENGTH=4
+- Set `ENFORCE_EMAIL_VERIFICATION` to `false`
 
-ACTIVITYPUB_INBOX=false
-ACTIVITYPUB_SHAREDINBOX=false
-HORIZON_DARKMODE=true
-
-ACTIVITY_PUB=false
-REMOTE_FOLLOW=false
-```
+For production environments, you will probably want to set various config values related to your deployment. A full list of environment variables can be found [here.](../technical-documentation/env.md)
 
 ## Final steps
 
