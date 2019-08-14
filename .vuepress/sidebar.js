@@ -3,8 +3,11 @@ module.exports = [
     title: 'Installing Pixelfed',
     collapsable: false,
     children: prefix('installing-pixelfed', [
+      'prerequisites',
       'installation',
-      'arch',
+      prefix('guides', [
+          'arch',
+        ]),
       ]),
   },
   {

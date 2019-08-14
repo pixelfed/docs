@@ -1,96 +1,17 @@
-# Pixelfed installation process
+# Generic installation process
 
 [[toc]]
 
-## Pre-requisites
-
-Before you install Pixelfed, you will need to setup a webserver with the required dependencies.
-
-### HTTP Web server
-The following web servers are officially supported:
-- Apache
-- nginx
-
-### Database
-
-You can choose one of three supported database drivers:
-- MySQL (5.7+)
-- MariaDB (10.2.7+ -- 10.3.5+ recommended)
-- PostgreSQL (10+)
-
-::: warning A note on using PostgreSQL:
-PostgreSQL support is not primary -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
-:::
-
-You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
-
-```bash
-$ sudo mysql -u root -p
-```
-
-You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
-
-```sql{1,2}
-create database pixelfed;
-grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
-flush privileges;
-```
-
-::: tip Changing database drivers:
-If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
-:::
-
-### PHP
-
-You can check your currently installed version of PHP by running `php -v`. Make sure you are running **PHP >= 7.3**.
-
-You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section. Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
-- `bcmath` *
-- `ctype`
-- `curl`
-- `iconv` *
-- `intl` *
-- `json`
-- `mbstring`
-- `openssl`
-- `tokenizer`
-- `xml`
-
-Additionally, you will need to enable extensions for database drivers.
-- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
-- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
-
-::: danger A note about php-redis vs. predis:
-Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
-:::
-
-Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
-- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
-- `file_uploads` (default On, which it needs to be)
-- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
-- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
-- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
-
-### External programs
-- [Composer](https://getcomposer.org/) (PHP dependency manager)
-- Git (for fetching updates)
-- Redis (in-memory caching)
-- GD or ImageMagick (image processing)
-- [JPEGOptim](https://github.com/tjko/jpegoptim)
-- [OptiPNG](http://optipng.sourceforge.net/)
-- [PNGQuant](https://pngquant.org/)
-
 <!----------------------------------------------------------------------------->
 
-## Installation
 
 ::: warning WARNING
-Pixelfed is still a work in progress. We do not recommending running an instance in production unless you know what you are doing!
+Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
 :::
 
 Make sure you have all prerequisites installed and the appropriate services running/enabled.
 
-### Download source via Git
+## Download source via Git
 
 Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
 
@@ -99,29 +20,30 @@ $ cd /home # or wherever you choose to install web applications
 $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
 ```
 
-### Set correct permissions
+## Set correct permissions
 
 Your web server and PHP processes need to be able to write to the `pixelfed` directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
 
-```bash{1}
-$ sudo chown -R http:http pixelfed/ # change user/group of pixelfed/ to http user and http group
-$ sudo find pixelfed/ -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
-$ sudo find pixelfed/ -type f -exec chmod 664 {} \; # set all files to rw by user/group
+```bash{2}
+$ cd pixelfed
+$ sudo chown -R http:http . # change user/group to http user and http group
+$ sudo find . -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
+$ sudo find . -type f -exec chmod 664 {} \; # set all files to rw by user/group
 ```
 
 ::: danger WARNING
 Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`.
 :::
 
-### Initialize PHP dependencies
+## Initialize PHP dependencies
 
-Run `composer install` to fetch the dependencies needed by Pixelfed. Pixelfed recommends running with the following flags:
+Run `composer install` to fetch the dependencies needed by Pixelfed. It is recommended to run with the following flags:
 
 ```bash
 $ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 ```
 
-### Configure Pixelfed
+## Configure Pixelfed
 
 By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
 
@@ -136,31 +58,56 @@ You can now edit `.env` and change values for your setup.
 You can find a list of additional configuration settings on the [Configuration](configuration.md) page, but the important variables will be listed in the below subsections.
 :::
 
-#### App variables
+### App variables
 
-- Set `APP_NAME` to your desired title. This will be shown in the header bar and other places.
-- Ensure that `APP_DEBUG` is false for production environments, or true for debug environments.
-- Set your `APP_URL` to the URL that you wish to serve Pixelfed through.
-- Set `APP_DOMAIN` and `ADMIN_DOMAIN` to the domain name you will be using for Pixelfed.
+- Set `APP_NAME` to your desired title, e.g. `Pixelfed`. This will be shown in the header bar and other places.
+- Ensure that `APP_DEBUG` is `false` for production environments, or `true` for debug environments.
+- Set your `APP_URL` to the HTTPS URL that you wish to serve Pixelfed through, e.g. `https://pixelfed.example`
+- Set `APP_DOMAIN`, `ADMIN_DOMAIN`, and `SESSION_DOMAIN` to the domain name you will be using for Pixelfed, e.g. `pixelfed.example`
 
-#### Database variables
+### Database variables
 
-- Set `DB_CONNECTION` to `mysql` if you are using MySQL or MariaDB, or `pgsql` if you are using PostgreSQL.
+By default, the values provided will allow connecting to MySQL or MariaDB over the default localhost TCP connection.
+
+If you are running Postgres:
+
+- Set `DB_CONNECTION` to `pgsql` instead of `mysql`.
+
+If you are running your SQL server on a different machine or port:
+
 - Set `DB_HOST` to the IP of the machine
 - Set `DB_PORT` to the port on which your database server is exposed
+
+To connect to the database you created:
+
 - Set `DB_DATABASE` to the name of the database created for Pixelfed
 - Set `DB_USERNAME` to the user that was granted privileges for that database
 - Set `DB_PASSWORD` to the password that identifies the user with privileges to the database
 
-#### Redis variables
+### Redis variables
 
-If you are running Redis on the same machine as Pixelfed, then the default settings will work. If you are running Redis on another machine:
+If you are running Redis over TCP on the same machine as Pixelfed, then the default settings will work.
+
+If you are running Redis on another machine:
 
 - Set `REDIS_HOST` to the IP of the machine your Redis server is running on
 - Set `REDIS_PORT` to the port on which Redis is exposed
 - Set `REDIS_PASSWORD` to the password of that Redis server
 
-#### Email variables
+If you are using a UNIX socket for Redis, then:
+
+- Set `REDIS_SCHEME` to `unix`
+- Set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
+
+::: tip TCP server vs. UNIX socket
+Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
+
+Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, the HTTP/PHP users should have permission to access the socket, e.g. by being added to the `redis` group.
+
+Using a UNIX socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
+:::
+
+### Email variables
 
 - Set
 ```bash
@@ -174,7 +121,7 @@ MAIL_FROM_ADDRESS="pixelfed@pixelfed.example"
 MAIL_FROM_NAME="pixelfed.example mailer"
 ```
 
-#### Additional variables
+### Additional variables
 
 ```bash
 OPEN_REGISTRATION=true
@@ -196,7 +143,7 @@ HORIZON_DARKMODE=true
 ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
 ```
-#### Generate an application secret key
+### Generate an application secret key
 
 If you copied `.env.testing` to set up a development environment, the secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
 
@@ -204,11 +151,56 @@ If you copied `.env.testing` to set up a development environment, the secret is 
 $ php artisan key:generate
 ```
 
-### Configure your HTTP reverse proxy
+## Artisan deployment hooks
 
-To translate HTTP web requests to PHP workers, you will need to configure a reverse proxy.
+Every time you edit your .env file, you must run this command to have the changes take effect:
 
-#### Apache
+```bash
+php artisan config:cache
+```
+
+One time only, the `storage/` directory must be linked to the application:
+
+```bash
+php artisan storage:link
+```
+
+Database migrations must be run:
+
+```bash
+php artisan migrate --force
+```
+
+Routes should be cached whenever the source code changes:
+```bash
+php artisan route:cache
+```
+
+## Background task queue
+
+::: danger Make sure Horizon is running!
+If Horizon is not running, you will notice that many things will fail, such as thumbnail generation, image optimization, avatar changes, and so on.
+:::
+
+Pixelfed uses Laravel Horizon for running tasks. It is vital to 
+
+## Post-installation
+
+After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch and doing necessary updates/migration/caching:
+
+```bash
+$ cd /home/pixelfed  # or wherever you installed pixelfed
+$ git pull origin dev
+$ composer install
+$ php artisan route:cache
+$ php artisan migrate --force
+```
+
+## Configure your HTTPS reverse proxy
+
+To translate HTTPS web requests to PHP workers, you will need to configure a reverse proxy.
+
+### Apache
 Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
 
 If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
@@ -224,7 +216,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 ```
-#### Nginx
+### Nginx
 
 Pixelfed includes a sample NGINX configuration at `contrib/nginx.conf`. You can copy the contents of this file or include it within your `nginx.conf`. Take note of the comments, and make sure to set the correct domain name and root path.
 
@@ -284,47 +276,13 @@ server {                                             # Redirect http to https
 Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php7.3-fpm.sock`, on Debian it may be `/var/run/php/php7.3-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
 :::
 
-For local development, you may generate a self-signed SSL certificate with the following command:
+### HTTPS Certificate
+
+For local development, you may generate a self-signed SSL certificate. For example:
 
 ```bash
+$ sudo mkdir /etc/nginx/ssl
 $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
 ```
 
-
-
-### Final steps
-
-Every time you edit your .env file, you must run this command to have the changes take effect:
-
-```bash
-php artisan config:cache
-```
-
-One time only, the `storage/` directory must be linked to the application:
-
-```bash
-php artisan storage:link
-```
-
-Database migrations must be run:
-
-```bash
-php artisan migrate --force
-```
-
-Routes should be cached whenever the source code changes:
-```bash
-php artisan route:cache
-```
-
-## Post-installation
-
-After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch and doing necessary updates/migration/caching:
-
-```bash
-$ cd /home/pixelfed  # or wherever you installed pixelfed
-$ git pull origin dev
-$ composer install
-$ php artisan route:cache
-$ php artisan migrate --force
-```
+For production deployments, you will need to obtain a certificate from a certificate authority. You may automate certification from LetsEncrypt, a free certificate authority, by using a utility such as [EFF Certbot](https://certbot.eff.org/) or [acme.sh](https://acme.sh).
