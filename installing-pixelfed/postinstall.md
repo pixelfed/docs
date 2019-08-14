@@ -1,14 +1,51 @@
 # Post-installation
 
-[toc]
+[[toc]]
 
 ## Background task queue
 
-::: danger Make sure Horizon is running!
+::: danger Make sure you set up Horizon!
 If Horizon is not running, you will notice that many things will fail, such as thumbnail generation, image optimization, avatar changes, and so on.
 :::
 
-Pixelfed uses Laravel Horizon for running tasks. It is vital to 
+Pixelfed uses Laravel Horizon for running tasks.
+
+If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.
+
+If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue.
+
+### Using systemd
+
+An example systemd unit file is as such:
+
+```bash
+[Unit]
+Description=Pixelfed task queueing via Laravel Horizon
+After=network.target
+Requires=mariadb  # or mysql, or postgresql
+Requires=php-fpm  # may require version number in your distro, e.g. php7.3-fpm
+Requires=redis
+Requires=nginx    # or apache
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /home/pixelfed/artisan horizon  # use paths to your distro's php and to pixelfed installation -- e.g. /usr/bin/php7.3
+User=http  # use the app user (http, www-data, pixelfed) or remove this line entirely to use the system.slice
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+If you create or copy this file to `/etc/systemd/system/pixelfed.service`, then you can use systemd to manage Pixelfed like any other background service:
+
+```bash
+$ sudo systemctl {start,enable} pixelfed
+```
+
+### Using Supervisor
+
+It is also possible to use Supervisor to manage Horizon queues, but this method is currently not officially supported by Pixelfed. [Laravel Docs: Supervisor Configuation](https://laravel.com/docs/5.8/queues#supervisor-configuration)
 
 ## Configure your HTTPS reverse proxy
 
@@ -100,15 +137,3 @@ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ss
 ```
 
 For production deployments, you will need to obtain a certificate from a certificate authority. You may automate certification from LetsEncrypt, a free certificate authority, by using a utility such as [EFF Certbot](https://certbot.eff.org/) or [acme.sh](https://acme.sh).
-
-## Updating Pixelfed
-
-After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch and doing necessary updates/migration/caching:
-
-```bash
-$ cd /home/pixelfed  # or wherever you installed pixelfed
-$ git pull origin dev
-$ composer install
-$ php artisan route:cache
-$ php artisan migrate --force
-```

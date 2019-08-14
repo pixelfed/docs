@@ -19,17 +19,17 @@ $ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout 
 
 ## Set correct permissions
 
-Your web server and PHP processes need to be able to write to the Pixelfed directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
+Your web server and app processes need to be able to write to the Pixelfed directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
 
 ```bash{2}
 $ cd pixelfed
 $ sudo chown -R http:http . # change user/group to http user and http group
-$ sudo find . -type d -exec chmod 775 {} \; # set all directories to rwx by user/group
-$ sudo find . -type f -exec chmod 664 {} \; # set all files to rw by user/group
+$ sudo find . -type d -exec chmod 755 {} \; # set all directories to rwx by user/group
+$ sudo find . -type f -exec chmod 644 {} \; # set all files to rw by user/group
 ```
 
 ::: danger User and group permissions
-Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`. Also, if you are using a dedicated user, make sure they are added to this group!
+Make sure to use the correct user/group name for your system. This user may be `http`, `www-data`, or `pixelfed` (if using a dedicated user). The group will likely be `http` or `www-data`. Additionally, if you are using a dedicated user, make sure they are added to this group! Also, you will need to set 775 for directories and 664 for files, so that both your dedicated app user and your HTTP user can read and write to files in the Pixelfed installation.
 :::
 
 ## Initialize PHP dependencies
@@ -99,7 +99,7 @@ If you are using a UNIX socket for Redis, then:
 ::: tip TCP server vs. UNIX socket
 Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
 
-Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, the HTTP/PHP users should have permission to access the socket, e.g. by being added to the `redis` group.
+Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, the HTTP/app users should have permission to access the socket, e.g. by being added to the `redis` group.
 
 Using a UNIX socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
 :::
