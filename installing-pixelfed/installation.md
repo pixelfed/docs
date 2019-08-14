@@ -137,7 +137,7 @@ ACTIVITY_PUB=false
 REMOTE_FOLLOW=false
 ```
 
-## Artisan deployment hooks
+## Final steps
 
 If you copied `.env.testing` to set up a development environment, the application secret is pre-generated for you. If you copied `.env.example` to set up a production environment, then you need to generate the secret `APP_KEY`:
 

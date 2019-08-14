@@ -1,4 +1,4 @@
-::: tip Warning
+::: warning Warning
 The docs are still a work in progress.
 :::
 
