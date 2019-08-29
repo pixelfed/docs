@@ -15,9 +15,9 @@ These instructions will install Pixelfed with the following:
 You will need a machine running Arch Linux with access to the root account.
 
 1. Login as `root`.
-2. Create the `pixelfed` user:
+2. Create the `pixelfed` user and group:
 ```bash
-useradd -r -G http,redis -s /bin/bash pixelfed
+useradd -rU -s /bin/bash pixelfed
 ```
 3. Install dependencies:
 ```bash
@@ -32,6 +32,7 @@ mysql_secure_installation
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
 ```
 extension=bcmath
+extension=gd
 extension=iconv
 extension=intl
 extension=mysqli
@@ -48,10 +49,6 @@ max_file_uploads = 20
 port 6379    # change this to "port 0" to disable network packets
 unixsocket /run/redis/redis.sock    # 
 unixsocketperm 770    # give permission to "redis" user and group
-```
-Also add users to the `redis` group:
-```bash
-usermod -aG redis {pixelfed,http}
 ```
 7. Edit `/etc/nginx/nginx.conf`:
 ```nginx
@@ -75,6 +72,11 @@ http {
 systemctl enable {nginx,redis,php-fpm}
 systemctl start {redis,php-fpm} # nginx will fail if started now
 ```
+9. Add users to groups:
+```bash
+usermod -aG pixelfed http  # give web user permission to serve pixelfed
+usermod -aG redis {pixelfed,http} # give app/web users access to redis
+```
 
 ## Pixelfed setup
 1. Clone the repo:
@@ -93,7 +95,7 @@ cp .env.example .env
 ```
 3. Set permissions:
 ```bash
-chown -R pixelfed:http .
+chown -R pixelfed:pixelfed .
 find . -type d -exec chmod 775 {} \;
 find . -type f -exec chmod 664 {} \;
 ```
