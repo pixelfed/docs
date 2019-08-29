@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # abort on errors
 set -e
@@ -12,9 +12,7 @@ cd .vuepress/dist
 echo 'docs.pixelfed.org' > CNAME
 
 git init
-git add -A
-git commit -S -m 'deploy'
+git add .
+git commit -m 'deploy'
 
 git push -f https://github.com/pixelfed/docs.git master:gh-pages
-
-cd -
