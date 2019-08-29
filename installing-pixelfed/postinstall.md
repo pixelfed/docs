@@ -41,6 +41,10 @@ WantedBy=multi-user.target
 The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /home/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
 
 - Replacing `mariadb` with `postgresql` or `mysql`
+- Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php7.3-fpm`
+- Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
+- Replacing `/usr/bin/php` or `/home/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
+- Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
 :::
 
 If you create or copy this file to `/etc/systemd/system/pixelfed.service`, then you can use systemd to manage Pixelfed like any other background service:

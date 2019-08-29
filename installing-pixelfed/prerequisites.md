@@ -1,8 +1,18 @@
 # Pre-requisites
 
-Before you install Pixelfed, you will need to setup a webserver with the required dependencies.
+Before you install Pixelfed, you will need to setup a webserver with the required dependencies:
 
-[[toc]]
+- An HTTP server
+- An SQL database server
+- A PHP-FPM server
+- [Composer](https://getcomposer.org/), for PHP dependency management
+- [Git](https://git-scm.com/), for fetching updates
+- [Redis](https://redis.io/), for in-memory caching and background task queueing
+- [GD](https://libgd.github.io/) or [ImageMagick](https://imagemagick.org), for image processing
+- [JPEGOptim](https://github.com/tjko/jpegoptim), for optimizing JPG
+- [OptiPNG](http://optipng.sourceforge.net/), for lossless PNG
+- [PNGQuant](https://pngquant.org/), for lossy PNG
+
 
 ## HTTP Web server
 The following web servers are officially supported:
@@ -44,17 +54,20 @@ If you decide to change database drivers later, please run a backup first! You c
 
 You can check your currently installed version of PHP by running `php -v`. Make sure you are running **PHP >= 7.3**.
 
-You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing `/etc/php/php.ini` and uncommenting the appropriate line under the "Dynamic extensions" section. Make sure the following extensions are loaded (extensions generally not loaded by default will be marked with an asterisk):
-- `bcmath` *
+You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
+- `bcmath`
 - `ctype`
 - `curl`
-- `iconv` *
-- `intl` *
+- `iconv`
+- `intl`
 - `json`
 - `mbstring`
 - `openssl`
 - `tokenizer`
 - `xml`
+- `zip`
+
+For image processing, you will need to enable either `gd` for GD, or `imagick` for ImageMagick. 
 
 Additionally, you will need to enable extensions for database drivers.
 - For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
@@ -70,12 +83,3 @@ Finally, make sure to set the desired upload limits for your PHP processes. You 
 - `upload_max_filesize` (default 2M, set this <= `post_max_size`)
 - `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
 - `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
-
-## External programs
-- [Composer](https://getcomposer.org/) (PHP dependency manager)
-- Git (for fetching updates)
-- Redis (in-memory caching)
-- GD or ImageMagick (image processing)
-- [JPEGOptim](https://github.com/tjko/jpegoptim)
-- [OptiPNG](http://optipng.sourceforge.net/)
-- [PNGQuant](https://pngquant.org/)
