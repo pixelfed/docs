@@ -67,9 +67,11 @@ You can check your currently loaded extensions by running `php -m`. Modules are 
 - `xml`
 - `zip`
 
-For image processing, you will need to enable either `gd` for GD, or `imagick` for ImageMagick. 
+You will also need to enable extensions for image processing drivers:
+- For GD: enable `gd`
+- For ImageMagick: enable `imagick`
 
-Additionally, you will need to enable extensions for database drivers.
+Additionally, you will need to enable extensions for database drivers:
 - For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
 - For PostgreSQL: enable `pdo_pgsql` and `pgsql`
 

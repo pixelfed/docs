@@ -5,4 +5,5 @@ The docs are still a work in progress.
 :::
 
 ## [API](api.md)
+## [Artisan](artisan.md)
 ## [Environment configuration](configuration.md)
