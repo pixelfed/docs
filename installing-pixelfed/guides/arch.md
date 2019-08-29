@@ -75,7 +75,7 @@ systemctl start {redis,php-fpm} # nginx will fail if started now
 9. Add users to groups:
 ```bash
 usermod -aG pixelfed http  # give web user permission to serve pixelfed
-usermod -aG redis {pixelfed,http} # give app/web users access to redis
+usermod -aG redis pixelfed # give app user access to redis for queues
 ```
 
 ## Pixelfed setup

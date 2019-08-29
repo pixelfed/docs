@@ -20,6 +20,7 @@ module.exports = [
     collapsable: false,
     children: prefix('technical-documentation', [
       'api',
+      'artisan',
       'env',
       ]),
   },
