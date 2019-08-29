@@ -95,6 +95,7 @@ cp .env.example .env
 ```
 3. Set permissions:
 ```bash
+echo 'umask 002' > .bash_profile
 chown -R pixelfed:pixelfed .
 find . -type d -exec chmod 775 {} \;
 find . -type f -exec chmod 664 {} \;
