@@ -18,24 +18,30 @@ If you are running in production, it is more ideal to create a background servic
 
 An example systemd unit file is as such:
 
-```bash
+```bash{4,5,7,11,12}
 [Unit]
 Description=Pixelfed task queueing via Laravel Horizon
 After=network.target
-Requires=mariadb  # or mysql, or postgresql
-Requires=php-fpm  # may require version number in your distro, e.g. php7.3-fpm
+Requires=mariadb
+Requires=php-fpm
 Requires=redis
-Requires=nginx    # or apache
+Requires=nginx
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/php /home/pixelfed/artisan horizon  # use paths to your distro's php and to pixelfed installation -- e.g. /usr/bin/php7.3
-User=http  # use the app user (http, www-data, pixelfed) or remove this line entirely to use the system.slice
+ExecStart=/usr/bin/php /home/pixelfed/artisan horizon
+User=http
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+::: tip Using correct paths and service names
+The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /home/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
+
+- Replacing `mariadb` with `postgresql` or `mysql`
+:::
 
 If you create or copy this file to `/etc/systemd/system/pixelfed.service`, then you can use systemd to manage Pixelfed like any other background service:
 
