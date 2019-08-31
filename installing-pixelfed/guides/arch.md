@@ -5,8 +5,9 @@ These instructions will install Pixelfed with the following:
 - Nginx (instead of Apache)
 - MariaDB (instead of PostgreSQL)
 - PHP-FPM (latest version)
+- ImageMagick (instead of GD)
 - Redis and PHP-FPM running via sockets instead of TCP
-- `pixelfed` user
+- `pixelfed` user for running Horizon queues, `http` user for running web processes (Arch default)
 - Repo cloned at `/home/pixelfed`
 - No other sites/services running on this machine
 
@@ -21,7 +22,7 @@ useradd -rU -s /bin/bash pixelfed
 ```
 3. Install dependencies:
 ```bash
-pacman -S --needed nginx mariadb redis git php-fpm php-intl composer jpegoptim optipng pngquant imagemagick unzip
+pacman -S --needed nginx mariadb redis git php-fpm php-intl php-imagick composer jpegoptim optipng pngquant imagemagick unzip
 ```
 4. Setup database. During `mysql_secure_installation`, hit Enter to use the default options. Make sure to set a password for the SQL user `root` (as by default, there is no password).
 ```bash
@@ -44,11 +45,15 @@ post_max_size = 8M
 upload_max_filesize = 2M
 max_file_uploads = 20
 ```
+Edit `/etc/php/conf.d/imagick.ini` and uncomment:
+```
+extension=imagick
+```
 6. Edit `/etc/redis.conf` and edit the following lines:
 ```
-port 6379    # change this to "port 0" to disable network packets
+port 6379                           # change this to "port 0" to disable network packets
 unixsocket /run/redis/redis.sock    # 
-unixsocketperm 770    # give permission to "redis" user and group
+unixsocketperm 770                  # give permission to "redis" user and group
 ```
 7. Edit `/etc/nginx/nginx.conf`:
 ```nginx
@@ -67,16 +72,16 @@ http {
     include /home/pixelfed/nginx.conf;    # we will make this file later
 }
 ```
-8. Enable services:
-```bash
-systemctl enable {nginx,redis,php-fpm}
-systemctl start {redis,php-fpm} # nginx will fail if started now
-```
-9. Add users to groups:
+8. Add users to groups:
 ```bash
 usermod -aG pixelfed http  # give web user permission to serve pixelfed
 usermod -aG redis pixelfed # give app user access to redis for queues
 usermod -aG redis http     # allow web user to proxy php-fpm to redis
+```
+9. Enable services:
+```bash
+systemctl enable {nginx,redis,php-fpm}
+systemctl start {redis,php-fpm} # nginx will fail if started now
 ```
 
 ## Pixelfed setup
@@ -90,9 +95,14 @@ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
 cd pixelfed
 cp contrib/nginx.conf nginx.conf
 # edit nginx.conf
+## in particular, set the correct domain name
 systemctl start nginx
 cp .env.example .env
 # edit .env
+## in particular, set:
+### REDIS_SCHEME = unix
+### REDIS_PATH = /run/redis/redis.sock
+## wait for https://github.com/pixelfed/pixelfed/pull/1649 to be merged, though
 ```
 3. Set permissions:
 ```bash
