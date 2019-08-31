@@ -26,7 +26,7 @@ pacman -S --needed nginx mariadb redis git php-fpm php-intl composer jpegoptim o
 4. Setup database. During `mysql_secure_installation`, hit Enter to use the default options. Make sure to set a password for the SQL user `root` (as by default, there is no password).
 ```bash
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-systemctl {start, enable} mariadb
+systemctl enable --now mariadb
 mysql_secure_installation
 ```
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
@@ -76,6 +76,7 @@ systemctl start {redis,php-fpm} # nginx will fail if started now
 ```bash
 usermod -aG pixelfed http  # give web user permission to serve pixelfed
 usermod -aG redis pixelfed # give app user access to redis for queues
+usermod -aG redis http     # allow web user to proxy php-fpm to redis
 ```
 
 ## Pixelfed setup
