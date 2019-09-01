@@ -33,7 +33,6 @@ mysql_secure_installation
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
 ```
 extension=bcmath
-extension=gd
 extension=iconv
 extension=intl
 extension=mysqli
@@ -118,6 +117,7 @@ su - pixelfed
 5. Deploy:
 ```bash
 composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+php artisan key:generate
 php artisan storage:link
 php artisan horizon:terminate
 php artisan config:cache
