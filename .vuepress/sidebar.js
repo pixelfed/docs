@@ -13,6 +13,8 @@ module.exports = [
     collapsable: false,
     children: prefix('running-pixelfed', [
       'administration',
+      'migration',
+      'troubleshooting',
       ]),
   },
   {
