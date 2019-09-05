@@ -39,7 +39,7 @@ If you created a dedicated app user, make sure to either add the app user to the
 Run `composer install` to fetch the dependencies needed by Pixelfed. It is recommended to run with the following flags:
 
 ```bash
-$ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+$ composer install --no-ansi --no-interaction --optimize-autoloader
 ```
 
 ## Configure Pixelfed
@@ -114,6 +114,10 @@ To setup a mailer for production deployments, you have several options for suppo
 
 ### Additional variables
 
+If you are using ImageMagick, then:
+
+- Set `IMAGE_DRIVER` to `imagick`
+
 For testing environments:
 
 - Set `ENFORCE_EMAIL_VERIFICATION` to `false`
@@ -131,22 +135,29 @@ $ php artisan key:generate
 Every time you edit your .env file, you must run this command to have the changes take effect:
 
 ```bash
-php artisan config:cache
+$ php artisan config:cache
 ```
 
 One time only, the `storage/` directory must be linked to the application:
 
 ```bash
-php artisan storage:link
+$ php artisan storage:link
 ```
 
 Database migrations must be run:
 
 ```bash
-php artisan migrate --force
+$ php artisan migrate --force
+```
+
+If you want to access the Horizon web dashboard:
+
+```bash
+$ php artisan horizon:install
+$ php artisan horizon:assets
 ```
 
 Routes should be cached whenever the source code changes:
 ```bash
-php artisan route:cache
+$ php artisan route:cache
 ```

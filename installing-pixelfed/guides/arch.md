@@ -6,7 +6,7 @@ These instructions will install Pixelfed with the following:
 - MariaDB (instead of PostgreSQL)
 - PHP-FPM (latest version)
 - ImageMagick (instead of GD)
-- Redis and PHP-FPM running via sockets instead of TCP
+- Redis and PHP-FPM running via sockets instead of TCP (same machine)
 - `pixelfed` user for running Horizon queues, `http` user for running web processes (Arch default)
 - Repo cloned at `/home/pixelfed`
 - No other sites/services running on this machine
@@ -30,10 +30,14 @@ mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 systemctl enable --now mariadb
 mysql_secure_installation
 ```
+```sql
+create database pixelfed;
+grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
+flush privileges;
+```
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
 ```
 extension=bcmath
-extension=gd
 extension=iconv
 extension=intl
 extension=mysqli
@@ -72,6 +76,11 @@ http {
     include /home/pixelfed/nginx.conf;    # we will make this file later
 }
 ```
+Generate SSL cert:
+```bash
+mkdir /etc/nginx/ssl
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
+```
 8. Add users to groups:
 ```bash
 usermod -aG pixelfed http  # give web user permission to serve pixelfed
@@ -102,7 +111,7 @@ cp .env.example .env
 ## in particular, set:
 ### REDIS_SCHEME = unix
 ### REDIS_PATH = /run/redis/redis.sock
-## wait for https://github.com/pixelfed/pixelfed/pull/1649 to be merged, though
+### IMAGE_DRIVER = imagick
 ```
 3. Set permissions:
 ```bash
@@ -110,6 +119,7 @@ echo 'umask 002' > .bash_profile
 chown -R pixelfed:pixelfed .
 find . -type d -exec chmod 775 {} \;
 find . -type f -exec chmod 664 {} \;
+chmod g+s .
 ```
 4. Switch to the `pixelfed` user:
 ```bash
@@ -118,6 +128,7 @@ su - pixelfed
 5. Deploy:
 ```bash
 composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+php artisan key:generate
 php artisan storage:link
 php artisan horizon:terminate
 php artisan config:cache
