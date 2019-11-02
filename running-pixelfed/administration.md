@@ -31,3 +31,7 @@ $ php artisan tinker
 
 >>> $user->save();
 ```
+
+## Remove unused Media
+
+With the command `php artisan media:gc` you can trigger the garbage collection on the media files. This frees up disk space. All files being older than one hour and which are not used in any status are removed.
