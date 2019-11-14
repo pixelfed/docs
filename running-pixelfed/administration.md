@@ -31,3 +31,7 @@ $ php artisan tinker
 
 >>> $user->save();
 ```
+
+## Fix accounts with reserved names
+
+You can run the "php artisan fix:usernames" command to fix accounts created before that username was reserved.
