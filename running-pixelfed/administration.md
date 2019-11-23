@@ -31,3 +31,11 @@ $ php artisan tinker
 
 >>> $user->save();
 ```
+
+## Delete a user
+
+The command to delete a user account is:
+
+```
+php artisan user:delete {username}
+```
