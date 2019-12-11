@@ -137,6 +137,11 @@ server {                                             # Redirect http to https
 Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php7.3-fpm.sock`, on Debian it may be `/var/run/php/php7.3-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
 :::
 
+::: tip Nginx web root
+Make sure to use the `/public` folder as your server root. Example:`server {root /var/www/pixelfed/public;)`.
+If you set root to the install directory (example: `server {root /var/www/pixelfed;)` Pixelfed will not work.
+:::
+
 ### HTTPS Certificate
 
 For local development, you may generate a self-signed SSL certificate. For example:
