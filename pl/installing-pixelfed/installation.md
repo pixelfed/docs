@@ -1,105 +1,105 @@
-# Generic installation process
+# Ogólny proces instalacji
 
 ::: warning WARNING
-Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
+Pixelfed jest wciąż w fazie rozwoju. Nie polecamy uruchamiania instancji na produkcji w tym etapie, chyba że na pewno wiesz co robisz!
 :::
 
-Make sure you have all prerequisites installed and the appropriate services running/enabled.
+Upewnij się, że spełniasz wszystkie wymagania wstępne i wymagane usługi są włączone.
 
 [[toc]]
 
-## Download source via Git
+## Pobieranie źródła z Gita
 
-Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `master`, with `dev` branch being used for development and testing.
+Pixelfed Beta obecnie używa gałęzi `dev` dla kodu mającego być wdrażany. Po wydaniu v1.0, stabilną gałęzią zostanie `master`, a `dev` będzie używana do rozwoju i testów.
 
 ```bash{1}
-$ cd /home # or wherever you choose to install web applications
-$ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
+$ cd /home # lub tam, gdzie wolisz instalować aplikacje webowe
+$ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # pobierz gałąź dev do folderu „pixelfed”
 ```
 
-## Set correct permissions
+## Ustawienie odpowiednich uprawnień
 
-Your web server and app processes need to be able to write to the Pixelfed directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
+Serwer webowy i procesy aplikacji muszą mieć możliwość zapisu w katalogu Pixelfeda. Upewnij się, że nadasz im odpowiednie uprawnienia. Na przykład, jeżeli te procesy są uruchamiane przez użytkownika/grupę `http`, wykonaj następujące polecenie:
 
 ```bash{2}
 $ cd pixelfed
-$ sudo chown -R http:http . # change user/group to http user and http group
-$ sudo find . -type d -exec chmod 755 {} \; # set all directories to rwx by user/group
-$ sudo find . -type f -exec chmod 644 {} \; # set all files to rw by user/group
+$ sudo chown -R http:http . # zmień użytkownika/grupę na użytkownika http i grupę http
+$ sudo find . -type d -exec chmod 755 {} \; # ustaw wszystkie katalogi jako rwx dla użytkownika/grupy
+$ sudo find . -type f -exec chmod 644 {} \; # ustaw wszystkie pliki jako rw dla użytkownika/grupy
 ```
 
-::: danger User and group permissions
-Make sure to use the correct user/group name for your system. This may be `http`, `www-data`, or `pixelfed` (if using a dedicated user).
+::: danger Uprawnienia użytkownika i grupy
+Upewnij się, że użyjesz prawidłowej nazwy użytkownika/grupy dla swojego systemu. Może to być `http`, `www-data` lub `pixelfed` (jeżeli używasz oddzielnego konta).
 
-If you created a dedicated app user, make sure to either add the app user to the web group, or add the web user to the app group. Also, you will need to set 775 for directories and 664 for files, so that both your dedicated app user and your web user can read and write to files in the Pixelfed installation.
+Jeżeli utworzono dedykowanego użytkownika dla aplikacji, musi zostać dodany do grupy sieci, lub użytkownik sieci musi zostać dodany do grupy aplikacji. Musisz też ustawić 775 dla katalogów i 664 dla plików, aby zarówno użytkownik aplikacji, jak i użytkownik sieci mogli odczytywać i zapisywać pliki instalacji Pixelfeda.
 :::
 
-## Initialize PHP dependencies
+## Inicjalizacja zależności PHP
 
-Run `composer install` to fetch the dependencies needed by Pixelfed. It is recommended to run with the following flags:
+Wykonaj `composer install`, aby uzyskać zależności wymagane przez Pixelfed. Zalecane jest wykonanie polecenia z następującymi flagami:
 
 ```bash
 $ composer install --no-ansi --no-interaction --optimize-autoloader
 ```
 
-## Configure Pixelfed
+## Konfiguracja Pixelfeda
 
-By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
+Domyślnie Pixelfed zawiera plik `.env.example` dla wdrażania produkcyjnego i `.env.testing` dla wdrażania przy debugowaniu. Musisz zmienić nazwę lub skopiować jeden z nich do `.env`, niezależnie w jakim środowisku pracujesz.
 
 ```bash
-$ cp .env.example .env # for production deployments
-$ cp .env.testing .env # for debug deployments
+$ cp .env.example .env # dla wdrażania na produkcji
+$ cp .env.testing .env # dla wdrażania do debugowania
 ```
 
-You can now edit `.env` and change values for your setup.
+Możesz teraz edytować `.env` i zmienić wartości pod swoją konfigurację.
 
-::: tip List of environment variables
-You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/env.md) page, but the important variables will be listed in the below subsections.
+::: tip Lista zmiennych środowiskowych
+Możesz znaleźć dogłębną listę dodatkowych opcji konfiguracyjnych na stronie [Konfiguracja](../technical-documentation/env.md), ale te ważniejsze zostaną wypisany w poniższych sekcjach.
 :::
 
-### App variables
+### Zmienne aplikacji
 
-- Set `APP_NAME` to your desired title, e.g. `Pixelfed`. This will be shown in the header bar and other places.
-- Ensure that `APP_DEBUG` is `false` for production environments, or `true` for debug environments.
-- Set your `APP_URL` to the HTTPS URL that you wish to serve Pixelfed through, e.g. `https://pixelfed.example`
-- Set `APP_DOMAIN`, `ADMIN_DOMAIN`, and `SESSION_DOMAIN` to the domain name you will be using for Pixelfed, e.g. `pixelfed.example`
+- Ustaw `APP_NAME` jako wybraną nazwę, np. `Pixelfed`. Będzie wyświetlana w nagłówku i innych miejscach.
+- Upewnij się, że `APP_DEBUG` jest równe `false` w środowisku produkcyjnym, a `true` w środowisku debugowania.
+- Ustaw `APP_URL` na adres URL HTTPS, pod którym chcesz, aby dostępny był Pixelfed, np. `https://pixelfed.example`
+- Ustaw `APP_DOMAIN`, `ADMIN_DOMAIN` i `SESSION_DOMAIN` na nazwę domeny, którą użyjesz dla Pixelfeda, np. `pixelfed.example`
 
-### Database variables
+### Zmienne bazy danych
 
-By default, the values provided will allow connecting to MySQL or MariaDB over the default localhost TCP connection.
+Domyślnie, dostarczone wartości pozwolą na połączenie z MySQL lub MariaDB pod domyślnym połączeniem localhost przez TCP.
 
-If you are running Postgres:
+Jeżeli używasz Postgresa:
 
-- Set `DB_CONNECTION` to `pgsql` instead of `mysql`.
+- Ustaw `DB_CONNECTION` na `pgsql` zamiast `mysql`.
 
-If you are running your SQL server on a different machine or port:
+Jeżeli masz serwer SQL na innym urządzeniu lub pod innym portem:
 
-- Set `DB_HOST` to the IP of the machine
-- Set `DB_PORT` to the port on which your database server is exposed
+- Ustaw `DB_HOST` na adres IP urządzenia
+- Ustaw `DB_PORT` na port, pod którym dostępny jest serwer bazy danych
 
-To connect to the database you created:
+Aby połączyć się z utworzoną bazą danych:
 
-- Set `DB_DATABASE` to the name of the database created for Pixelfed
-- Set `DB_USERNAME` to the user that was granted privileges for that database
-- Set `DB_PASSWORD` to the password that identifies the user with privileges to the database
+- Ustaw `DB_DATABASE` na nazwę bazy danych utworzonej dla Pixelfeda
+- Ustaw `DB_USERNAME` na nazwę użytkownika z przydzielonymi uprawnieniami do tej bazy danych
+- Ustaw `DB_PASSWORD` na hasło użytkownika z uprawnieniami do bazy danych
 
-### Redis variables
+### Zmienne Redisa
 
-If you are running Redis over TCP on the same machine as Pixelfed, then the default settings will work.
+Jeżeli masz uruchomionego Redisa przez TCP na urządzeniu razzem z Pixelfedem, domyślne ustawienia zadziałają.
 
-If you are running Redis on another machine:
+Jeżeli Redis jest uruchomiony na innym urządzeniu:
 
-- Set `REDIS_HOST` to the IP of the machine your Redis server is running on
-- Set `REDIS_PORT` to the port on which Redis is exposed
-- Set `REDIS_PASSWORD` to the password of that Redis server
+- Ustaw `REDIS_HOST` na adres IP urządzenia na którym uruchomiony jest Redis
+- Ustaw `REDIS_PORT` na port na którym dostępny jest Redis
+- Ustaw `REDIS_PASSWORD` na hasło tego serwera Redisa
 
-If you are using a UNIX socket for Redis, then:
+Jeżeli używasz Redisa przez socket UNIX:
 
-- Set `REDIS_SCHEME` to `unix`
-- Set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Ustaw `REDIS_SCHEME` na `unix`
+- Ustaw `REDIS_PATH` na adres tego socketu, np. `/run/redis/redis.sock`
 
-::: tip TCP server vs. UNIX socket
-Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
+::: tip Serwer TCP vs. socket UNIX
+Redis zwykle jest domyślnie skonfigurowany na żądzania TCP na lokalnym urządzeniu po porcie 6379. W konfiguracji Redisa, zwykle w pliku `/etc/redis.conf`, odpowiednie wiersze to `bind 127.0.0.1` i `port 6379`.
 
 Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, both the app user and web user should have permission to access the socket, e.g. by being added to the `redis` group.
 

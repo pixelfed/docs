@@ -14,47 +14,47 @@ Zanim zainstalujesz Pixelfeda, musisz skonfigurować serwer z następującymi za
 - [PNGQuant](https://pngquant.org/), do kompresji stratnej PNG
 
 
-## HTTP Web server
-The following web servers are officially supported:
+## Serwer HTTP
+Następujące serwery webowe są oficjalnie wspierane:
 - Apache
 - nginx
 
-Pixelfed uses HTTPS URIs, so you will need to have HTTPS set up at the perimeter of your network before you proxy requests internally.
+Pixelfed korzysta z adresów URI HTTPS, więc musisz skonfigurować HTTPS na poziomie sieci.
 
-## Database
+## Bazy danych
 
-You can choose one of three supported database drivers:
+Możesz wybrać jeden z trzech obsługiwanych sterowników bazy danych:
 - MySQL (5.7+)
-- MariaDB (10.2.7+ -- 10.3.5+ recommended)
+- MariaDB (10.2.7+ -- zalecana 10.3.5+)
 - PostgreSQL (10+)
 
-::: warning A note on using PostgreSQL:
-PostgreSQL support is not primary -- there may be Postgre-specific bugs within Pixelfed. If you encounter any issues while running Postgre as a database, please file those issues on our [Github tracker](https://github.com/pixelfed/pixelfed/issues).
+::: warning Dla użytkowników PostgreSQL:
+Obsługa PostgreSQL nie jest na pierwszym planie -- mogą występować błędy dotyczące wyłącznie Postgre. Jeżeli napotkasz na problemy podczas korzystania z Postgre jako bazy danych, zgłoś je na naszym [Githubie](https://github.com/pixelfed/pixelfed/issues).
 :::
 
-You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
+Musisz utworzyć bazę danych i udzielić uprawnień użytkownikowi SQL uwierzytelnianemu hasłem. Aby to zrobić używając MySQL lub MariaDB, wykonaj następujące polecenie:
 
 ```bash
 $ sudo mysql -u root -p
 ```
 
-You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
+Teraz możesz utworzyć bazę danych i udzielić uprawnień użytkownikowi SQL. Następujące polecenia SQL utworzą bazę danych o nazwie `pixelfed` i pozwoli na modyfikację jej użytkownikowi `pixelfed` z hasłem `silne_haslo`:
 
 ```sql{1,2}
 create database pixelfed;
-grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
+grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'silne_haslo';
 flush privileges;
 ```
 
-::: tip Changing database drivers:
-If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
+::: tip Zmiana sterownika bazy danych:
+Jeżeli zdecydujesz się później na zmianę sterownika bazy danych, wykonaj wcześniej kopię zapasową! Możesz to zrobić poleceniem `php artisan backup:run --only-db`
 :::
 
 ## PHP
 
-You can check your currently installed version of PHP by running `php -v`. Make sure you are running **PHP >= 7.3**.
+Możesz sprawdzić zainstalowaną obecnie wersję PHP poleceniem `php -v`. Upewnij się, że używasz **PHP >= 7.3**.
 
-You can check your currently loaded extensions by running `php -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
+Możesz sprawdzić obecnie załadowane rozszerzenia poleceniem `php -m`. Moduły zwykle aktywuje się edytując plik konfiguracyjny PHP i odkomentowując odpowiednie wiersze w sekcji „Dynamic extensions”. Upewnij się, że zainstalowane i załadowane są następujące rozszerzenia:
 - `bcmath`
 - `ctype`
 - `curl`
@@ -67,21 +67,21 @@ You can check your currently loaded extensions by running `php -m`. Modules are 
 - `xml`
 - `zip`
 
-You will also need to enable extensions for image processing drivers:
-- For GD: enable `gd`
-- For ImageMagick: enable `imagick`
+Musisz też aktywować rozszerzenie dla używanego sterownika przetwarzania obrazów:
+- W przypadku GD: włącz `gd`
+- Dla ImageMagick: włącz `imagick`
 
-Additionally, you will need to enable extensions for database drivers:
-- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
-- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
+Dodatkowo musisz aktywować rozszerzenie sterownika bazy danych:
+- Dla MySQL i MariaDB: włącz `pdo_mysql` i `mysqli`
+- Dla PostgreSQL: włącz `pdo_pgsql` i `pgsql`
 
-::: danger A note about php-redis vs. predis:
-Make sure you do NOT have the `redis` PHP extension installed/enabled! Pixelfed uses the [predis](https://github.com/nrk/predis) library internally, so the presence of any Redis extensions can cause issues.
+::: danger Informacja o php-redis vs. predis:
+Upewnij się, że NIE masz zainstalowanego/włączonego rozszerzenia PHP `redis`! Pixelfed używa wewnętrznie biblioteki [predis](https://github.com/nrk/predis), więc obecność innego rozszerzenia Redisa może spowodować problemy.
 :::
 
-Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
-- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
-- `file_uploads` (default On, which it needs to be)
-- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
-- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
-- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
+Na koniec, pamiętaj o ustawieniu oczekiwanych limitów wysyłania dla procesów PHP. Musisz sprawdzić następujące:
+- `post_max_size` (domyślnie 8M, ustaw na trochę więcej, niż ustawisz ograniczenie rozmiaru wysyłanych zdjęć)
+- `file_uploads` (domyślnie On, tak ma zostać)
+- `upload_max_filesize` (domyślnie 2M, ustaw na mniejsze lub równe `post_max_size`)
+- `max_file_uploads` (domyślnie 20, ale upewnij się że jest większe lub równe limitowi załączników)
+- `max_execution_time` (domyślnie 30, pomyśl o podniesieniu do 600 lub więcej, aby dłuższe zadania nie były przerywane)
