@@ -6,7 +6,7 @@ The docs are still a work in progress.
 
 <p align="center">
 <a href="https://circleci.com/gh/pixelfed/pixelfed"><img src="https://circleci.com/gh/pixelfed/pixelfed.svg?style=svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/pixelfed/pixelfed"><img src="https://poser.pugx.org/pixelfed/pixelfed/d/total.svg" alt="Total Downloads"></a>
+<a href="https://codeclimate.com/github/pixelfed/pixelfed/maintainability"><img src="https://api.codeclimate.com/v1/badges/0b038ebb94ab9080ef59/maintainability" /></a>
 <a href="https://packagist.org/packages/pixelfed/pixelfed"><img src="https://poser.pugx.org/pixelfed/pixelfed/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/pixelfed/pixelfed"><img src="https://poser.pugx.org/pixelfed/pixelfed/license.svg" alt="License"></a>
 </p>
@@ -36,4 +36,8 @@ Matrix](https://matrix.to/#/#freenode_#pixelfed:matrix.org))
 
 We would like to extend our thanks to the following sponsors for funding Pixelfed development. If you are interested in becoming a sponsor, please visit the Pixelfed [Patreon Page](https://www.patreon.com/dansup/overview)
 
+- [NLnet Foundation](https://nlnet.nl) and [NGI0
+Discovery](https://nlnet.nl/discovery/), part of the [Next Generation
+Internet](https://ngi.eu) initiative.
 - [<img src="https://td-misc-public.s3.amazonaws.com/OscillasLogo.png" width="100px">](https://oscillas.com/)
+- Managed Pixelfed Hosting by [Spacebear](https://app.spacebear.ee/)

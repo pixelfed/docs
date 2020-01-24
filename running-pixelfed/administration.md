@@ -35,3 +35,7 @@ $ php artisan tinker
 ## Fix accounts with reserved names
 
 You can run the "php artisan fix:usernames" command to fix accounts created before that username was reserved.
+
+## Remove unused Media
+
+With the command `php artisan media:gc` you can trigger the garbage collection on the media files. This frees up disk space. All files being older than one hour and which are not used in any status are removed.
