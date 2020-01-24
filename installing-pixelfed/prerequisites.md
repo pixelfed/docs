@@ -58,6 +58,7 @@ You can check your currently loaded extensions by running `php -m`. Modules are 
 - `bcmath`
 - `ctype`
 - `curl`
+- `exif`
 - `iconv`
 - `intl`
 - `json`
