@@ -32,6 +32,14 @@ $ php artisan tinker
 >>> $user->save();
 ```
 
+## Delete a user
+
+The command to delete a user account is:
+
+```
+php artisan user:delete {username}
+```
+
 ## Fix accounts with reserved names
 
 You can run the "php artisan fix:usernames" command to fix accounts created before that username was reserved.
