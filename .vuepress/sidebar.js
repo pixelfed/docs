@@ -1,15 +1,18 @@
 module.exports = [
   {
-    title: 'Installing Pixelfed',
+    title: 'Installation',
     collapsable: false,
     children: prefix('installing-pixelfed', [
       'prerequisites',
       'installation',
+      'configuring-mail',
+      'configuring-queue',
+      'configuring-scheduler',
       'postinstall',
       ]),
   },
   {
-    title: 'Running Pixelfed',
+    title: 'Admin Guide',
     collapsable: false,
     children: prefix('running-pixelfed', [
       'administration',

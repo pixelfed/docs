@@ -1,63 +1,8 @@
-# Post-installation
+# Post-Installation
 
 [[toc]]
 
-## Background task queue
-
-::: danger Make sure you set up Horizon!
-If Horizon is not running, you will notice that many things will fail, such as thumbnail generation, image optimization, avatar changes, and so on.
-:::
-
-Pixelfed uses Laravel Horizon for running tasks.
-
-If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.
-
-If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue.
-
-### Using systemd
-
-An example systemd unit file is as such:
-
-```bash{4,5,7,11,12}
-[Unit]
-Description=Pixelfed task queueing via Laravel Horizon
-After=network.target
-Requires=mariadb
-Requires=php-fpm
-Requires=redis
-Requires=nginx
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/php /home/pixelfed/artisan horizon
-User=http
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-```
-
-::: tip Using correct paths and service names
-The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /home/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
-
-- Replacing `mariadb` with `postgresql` or `mysql`
-- Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php7.3-fpm`
-- Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
-- Replacing `/usr/bin/php` or `/home/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
-- Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
-:::
-
-If you create or copy this file to `/etc/systemd/system/pixelfed.service`, then you can use systemd to manage Pixelfed like any other background service:
-
-```bash
-$ sudo systemctl {start,enable} pixelfed
-```
-
-### Using Supervisor
-
-It is also possible to use Supervisor to manage Horizon queues, but this method is currently not officially supported by Pixelfed. [Laravel Docs: Supervisor Configuation](https://laravel.com/docs/5.8/queues#supervisor-configuration)
-
-## Configure your HTTPS reverse proxy
+## Webserver Configuration
 
 To translate HTTPS web requests to PHP workers, you will need to configure a reverse proxy.
 
