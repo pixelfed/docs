@@ -7,6 +7,7 @@ Before you install Pixelfed, you will need to setup a webserver that meets the r
 - **PHP 7.2+** with the following extensions: bcmath, ctype, curl, exif, iconv, intl, json, mbstring, openssl, tokenizer, xml and zip
 - **Redis** for in-memory caching and background task queueing
 - **ImageMagick** for image processing
+- **ffmpeg** for video processing
 
 ::: tip Image Optimization
 If you want to enable image optimization including striping exif data, make sure you have ```JPEGOptim```, ```OptiPNG``` , ```PNGQuant``` and ```gifsicle``` installed (```Svgo``` Optional).
