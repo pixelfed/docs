@@ -9,7 +9,7 @@ Before you install Pixelfed, you will need to setup a webserver that meets the r
 - **ImageMagick** for image processing
 
 ::: tip Image Optimization
-If you want to enable image optimization which strips exif data and optimizes jpeg + png photos, make sure you have ```JPEGOptim```, ```OptiPNG``` , ```PNGQuant```, ```Svgo``` and ```gifsicle``` installed.
+If you want to enable image optimization including striping exif data, make sure you have ```JPEGOptim```, ```OptiPNG``` , ```PNGQuant``` and ```gifsicle``` installed (```Svgo``` Optional).
 :::
 
 ::: tip Shared Hosting
