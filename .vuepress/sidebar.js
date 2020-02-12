@@ -16,7 +16,6 @@ module.exports = [
     collapsable: false,
     children: prefix('running-pixelfed', [
       'administration',
-      'migration',
       'troubleshooting',
       ]),
   },
@@ -24,7 +23,7 @@ module.exports = [
     title: 'Technical documentation',
     collapsable: false,
     children: prefix('technical-documentation', [
-      'api',
+      'api-v1',
       'artisan',
       'env',
       ]),

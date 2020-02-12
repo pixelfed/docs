@@ -2,6 +2,13 @@
 
 [[toc]]
 
+## Import Places Data
+Run the following command after installation to import the Places data.
+
+```bash
+php artisan import:cities
+```
+
 ## Webserver Configuration
 
 To translate HTTPS web requests to PHP workers, you will need to configure a reverse proxy.

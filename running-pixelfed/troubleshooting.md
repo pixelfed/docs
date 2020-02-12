@@ -1,4 +1,4 @@
-# Troubleshooting your Pixelfed installation
+# Troubleshooting
 
 ## Horizon is not working
 This means that your permissions are wrong somewhere. Make sure that you have run `php artisan horizon` as a user that has access to both your repo and to Redis.
