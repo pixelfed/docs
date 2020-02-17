@@ -1,8 +1,6 @@
 # Laravel Artisan
 
-::: warning WIP
-This page is a stub.
-:::
+Laravel Artisan is a command line tool that you use to run migrations, cache the config and more.
 
 Usage:
 ```bash{1}

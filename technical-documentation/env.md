@@ -1,9 +1,5 @@
 # Configuration
 
-::: warning WARNING
-This page is heavily out of date. It is currently in the process of being updated significantly.
-:::
-
 Pixelfed uses the ```.env``` environment configuration file, it is created automatically by the installer, otherwise you need to copy the ```.env.example``` file to ```.env``` manually. Some of these values do not exist in .env.example but you can add them to .env.
 
 ::: warning
