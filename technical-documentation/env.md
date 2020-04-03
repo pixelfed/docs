@@ -40,9 +40,11 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 
 | name | description | default value | required |
 | --- | --- | --- | --- |
-| ```REDIS_HOST``` | **Redis Host** <br> The redis server host address. | ```localhost``` | n |
-| ```REDIS_PASSWORD``` | **Redis Password** <br> The redis server host password. | ```null``` | n |
-| ```REDIS_PORT``` | **Redis Port** <br> The redis server port. | ```6379``` | n |
+| ```REDIS_SCHEME``` | **Redis Scheme** <br> Type of connection to the redis server (```tcp``` or ```unix```-socket). | ```tcp``` | n |
+| ```REDIS_HOST``` | **Redis Host** <br> The redis server host address (only needed for ```REDIS_SCHEME=tcp```). | ```localhost``` | n |
+| ```REDIS_PASSWORD``` | **Redis Password** <br> The redis server host password (only needed for ```REDIS_SCHEME=tcp```). | ```null``` | n |
+| ```REDIS_PORT``` | **Redis Port** <br> The redis server port (only needed for ```REDIS_SCHEME=tcp```). | ```6379``` | n |
+| ```REDIS_PATH``` | **Redis Socket** <br> Path to the redis socket (only needed for ```REDIS_SCHEME=unix```). | ```null``` | n |
 | ```REDIS_DB```| **Redis Database** <br> The redis server database index number. | ```0``` | n |
 
 
