@@ -3,7 +3,7 @@
 Pixelfed uses the ```.env``` environment configuration file, it is created automatically by the installer, otherwise you need to copy the ```.env.example``` file to ```.env``` manually. Some of these values do not exist in .env.example but you can add them to .env.
 
 ::: warning
-Whenever you edit the ```.env``` file, you must run ```php artisan config:cache``` in the root directory for the changes to take effect.
+Whenever you edit the ```.env``` file, you must run ```php artisan config:cache``` in the root directory for the changes to take effect. If you changed route related configuration (url, domains), you must also run ```php artisan route:cache```
 :::
 
 <br>
