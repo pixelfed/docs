@@ -50,12 +50,19 @@ If you get a database error when running the migrations, ensure you updated the 
 :::
 
 ### Cache + Optimization Commands
-Running the following commands is recommend when running Pixelfed in production
+Running the following commands is recommend when running Pixelfed in production.
 
 ```bash
 $ php artisan config:cache
 $ php artisan route:cache
 $ php artisan view:cache
+```
+
+### Storage
+Running the following command will link your storage properly.
+
+```bash
+$ php artisan storage:link
 ```
 ----
 ::: tip Troubleshooting Installation
