@@ -29,6 +29,29 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 ```
+
+To use Apache as a reverse proxy you'll need something like the following:
+
+```php
+<VirtualHost *:443>
+    ServerName pixelfed.example.com
+
+    # Notify the server that the connection is secure
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
+
+    ProxyPreserveHost On
+    ProxyPass "/" "http://127.0.0.1:8000/"
+    ProxyPassReverse "/" "http://127.0.0.1:8000/"
+
+    Include path_to_ssl_conf_file
+    SSLCertificateFile path_to_cert_file
+    SSLCertificateKeyFile path_to_cert_key_file
+</VirtualHost>
+```
+
+Note that without setting the request headers image upload previews will appear broken.
+
 ### Nginx
 
 Pixelfed includes a sample NGINX configuration at `contrib/nginx.conf`. You can copy the contents of this file or include it within your `nginx.conf`. Take note of the comments, and make sure to set the correct domain name and root path.
@@ -104,3 +127,38 @@ $ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ss
 ```
 
 For production deployments, you will need to obtain a certificate from a certificate authority. You may automate certification from LetsEncrypt, a free certificate authority, by using a utility such as [EFF Certbot](https://certbot.eff.org/) or [acme.sh](https://acme.sh).
+
+
+### SystemD
+
+To run Pixelfed on startup using systemd you can add a service for it:
+
+Create: `/etc/systemd/system/pixelfed.service` with:
+```bash
+[Unit]
+Description=Pixelfed
+
+[Service]
+User=pixelfed
+ExecStart=/usr/bin/php ~/pixelfed/artisan serve
+
+[Install]
+WantedBy=multi-user.target
+```
+
+and enable it with `sudo systemctl enable pixelfed.service`
+
+Similarly for queue workers:
+
+```bash
+[Unit]
+Description=Pixelfed queue workers
+
+[Service]
+User=pixelfed
+Restart=always
+ExecStart=/usr/bin/php ~/pixelfed/artisan queue:work --daemon --env=production
+
+[Install]
+WantedBy=multi-user.target
+```
