@@ -61,6 +61,7 @@ Using redis for the ```QUEUE_DRIVER```, ```CACHE_DRIVER``` and ```SESSION_DRIVER
 | ```MAX_NAME_LENGTH``` | **User name length limit** <br> Change the length limit for user names. | ```30``` | n |
 | ```MAX_ALBUM_LENGTH``` | **Album size limit** <br> The max number of photos allowed per post. | ```4``` | n |
 | ```IMAGE_QUALITY``` | **Image Quality** <br> Set the image optimization quality, must be a value between 1-100. | ```80``` | n |
+| ```STORIES_ENABLED``` | **Stories** <br> Enable the stories route . | ```false``` | n |
 
 ### ActivityPub Configuration
 
