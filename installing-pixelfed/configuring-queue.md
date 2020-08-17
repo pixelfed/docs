@@ -29,6 +29,8 @@ stdout_logfile=/home/forge/app.com/horizon.log
 stopwaitsecs=3600
 ```
 
+__You need to be [admin](https://docs.pixelfed.org/running-pixelfed/administration.html#admin-user) to see the horizon page__
+
 ## Using Queue Worker
 Pixelfed includes a queue worker that will process new jobs as they are pushed onto the queue. You may run the worker using the ```queue:work``` Artisan command. Note that once the ```queue:work``` command has started, it will continue to run until it is manually stopped or you close your terminal:
 
