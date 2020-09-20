@@ -13,7 +13,7 @@ module.exports = {
     repo: 'pixelfed/docs',
     editLinks: true,
     displayAllHeaders: false,
-    sidebarDepth: 2,
+    sidebarDepth: 1,
 
     nav: [
        {text: 'pixelfed.org', link: 'https://pixelfed.org'},

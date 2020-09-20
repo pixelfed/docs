@@ -1,20 +1,10 @@
 module.exports = [
   {
-    title: 'Installation',
-    collapsable: false,
-    children: prefix('installing-pixelfed', [
-      'prerequisites',
-      'installation',
-      'configuring-mail',
-      'configuring-queue',
-      'configuring-scheduler',
-      'postinstall',
-      ]),
-  },
-  {
-    title: 'Admin Guide',
+    title: 'Run your own Pixelfed website',
     collapsable: false,
     children: prefix('running-pixelfed', [
+      'prerequisites',
+      'installation',
       'administration',
       'troubleshooting',
       ]),
@@ -29,9 +19,9 @@ module.exports = [
       ]),
   },
   {
-    title: 'Distro-specific Guides',
+    title: 'Distro-specific deploy guides',
     collapsable: true,
-    children: prefix('installing-pixelfed/guides', [
+    children: prefix('install-guides', [
       'arch',
     ]),
   },

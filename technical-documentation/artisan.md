@@ -3,13 +3,13 @@
 Laravel Artisan is a command line tool that you use to run migrations, cache the config and more.
 
 Usage:
-```bash{1}
+```bash
 $ command [options] [arguments]
 ```
 
 
 Example:
-```bash{1}
+```bash
 $ php artisan cache:clear
 ```
 
