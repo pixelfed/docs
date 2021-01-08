@@ -21,7 +21,7 @@ php artisan migrate --force
 
 - `user:admin`	Make a user an admin, or remove admin privileges.
 - `user:create`	Create a new user
-user:delete	Delete account
+- `user:delete`	Delete account
 - `user:show`	Show user info
 - `user:suspend`	Suspend a local user.
 - `user:unsuspend`	Unsuspend a local user.
