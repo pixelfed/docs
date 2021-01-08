@@ -12,6 +12,7 @@ Before you install Pixelfed, you will need to setup a webserver with the require
 - [JPEGOptim](https://github.com/tjko/jpegoptim), for optimizing JPG
 - [OptiPNG](http://optipng.sourceforge.net/), for lossless PNG
 - [PNGQuant](https://pngquant.org/), for lossy PNG
+- [ffmpeg](https://ffmpeg.org/), for generating video thumbnails
 
 ::: tip Shared Hosting
 At this stage, it's not possible to install Pixelfed by downloading a ZIP file and uploading the files to your web server. This is because Composer needs to run on the command line.

@@ -212,7 +212,7 @@ If you want to enable support for location data:
 php artisan import:cities
 ```
 
-Routes should be cached whenever the source code changes:
+Routes should be cached whenever the source code changes or whenever you change routes:
 ```bash
 php artisan route:cache
 php artisan view:cache
@@ -224,13 +224,25 @@ Every time you edit your .env file, you must run this command to have the change
 php artisan config:cache
 ```
 
+
+::: tip Running Pixelfed without a cache
+
+It is possible to not use a cache by not running the above cache commands, but it is recommended to run these for production deployments. If you choose not to run these commands, then you can freely edit the .env file and source code instead, and your changes will be reflected instantly, but performance may take a slight hit. You can also undo these commands by running `:clear` commands:
+
+```bash
+php artisan route:clear
+php artisan view:clear
+php artisan config:clear
+```
+:::
+
 ### Job queueing
 
 Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/6.x/horizon) and [Queue Workers](https://laravel.com/docs/6.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
 
 #### Using Laravel Horizon
 
-If you want to access the Horizon web dashboard, you will need to run the following commands:
+If you want admins to be able to access the Horizon web dashboard, you will need to run the following commands:
 
 ```bash
 php artisan horizon:install
@@ -350,6 +362,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
 ```
+
 #### Nginx
 
 Pixelfed includes a sample NGINX configuration at `contrib/nginx.conf`. You can copy the contents of this file or include it within your `nginx.conf`. Take note of the comments, and make sure to set the correct domain name and root path.
@@ -359,7 +372,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
     server_name pixelfed.example;                    # change this to your fqdn
-    root /home/pixelfed/public;                      # path to repo/public
+    root /usr/share/webapps/pixelfed/public;         # path to repo/public
 
     ssl_certificate /etc/nginx/ssl/server.crt;       # generate your own
     ssl_certificate_key /etc/nginx/ssl/server.key;   # or use letsencrypt
