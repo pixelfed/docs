@@ -1,14 +1,14 @@
 # Laravel Artisan
 
-Laravel Artisan is a command line tool that you use to run migrations, cache the config and more.
+Laravel Artisan je komand line alat koji koristite za pokretanje migracija, cache konfiguracije i još mnogo toga.
 
-Usage:
+Korištenje:
 ```bash
 $ command [options] [arguments]
 ```
 
 
-Example:
+Primjer:
 ```bash
 $ php artisan cache:clear
 ```
