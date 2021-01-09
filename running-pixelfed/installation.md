@@ -1,27 +1,27 @@
-# Generic installation guide
+# Generički vodič za instalaciju
 
-::: warning WARNING
-Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
+::: warning UPOZORENJE
+Pixelfed je još u toku proizvodnje. Ne preporučujemo da se u ovoj fazi vodi slučaj osim ako znate šta radite!
 :::
 
-Make sure you have all prerequisites installed and the appropriate services running/enabled before continuing.
+Prije nastavka provjerite jesu li instalirani svi preduslovi i odgovarajuće usluge pokrenute/omogućene.
 
 [[toc]]
 
-## Setting up Pixelfed files
+## Postavljanje Pixelfed datoteka
 
-### Download source via Git
+### Preuzmi izvor putem Git-a
 
-Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `stable`, with `dev` branch being used for development and testing.
+Pixel fed Beta trenutno koristi `dev` branch za raspoređivanje koda. Kada v1.0 je pušten, stabilan branch će biti promijenit u `stable`, sa `dev` branch koristi za razvoj i testiranje.
 
 ```bash{1}
 cd /usr/share/webapps # or wherever you choose to install web applications
 git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
 ```
 
-### Set correct permissions
+### Postavite tačne dozvole
 
-Your web server and app processes need to be able to write to the Pixelfed directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
+Vaš web server i proces aplikacije mora imati mogućnost da piše u direktorij sa Pixelfed. Obavezno postavite odgovarajuće dozvole. Na primjer, ako pokrenete svoje procese preko `http` korisnika/grupe, onda pokrenite sljedeće:
 
 ```bash{2}
 cd pixelfed
@@ -30,112 +30,110 @@ sudo find . -type d -exec chmod 755 {} \; # set all directories to rwx by user/g
 sudo find . -type f -exec chmod 644 {} \; # set all files to rw by user/group
 ```
 
-::: danger User and group permissions
-Make sure to use the correct user/group name for your system. This may be `http`, `www-data`, or `pixelfed` (if using a dedicated user).
+::: danger Dozvole za korisnike i grupe
+Provjerite da li koristite ispravno korisničko/grupno ime za vaš sistem. Ovo može biti `http`, `www-data`, ili `pixelfed` (ako koristite posvećen korisnik).
 :::
 
-### Initialize PHP dependencies
+### Inicijaliziraj ovisnosti PHP
 
-Run `composer install` to fetch the dependencies needed by Pixelfed. It is recommended to run with the following flags:
+Pokrenite `composer install` da biste dobili ovisnosti potrebne od pixelfed-a. Preporučuje se da se radi uz sljedeće zastave:
 
 ```bash
 composer install --no-ansi --no-interaction --optimize-autoloader
 ```
 
-## Configure environment variables
+## Konfiguriši varijable okruženja
 
-By default Pixelfed comes with a `.env.example` file for production deployments, and a `.env.testing` file for debug deployments. You'll need to rename or copy one of these files to `.env` regardless of which environment you're working on.
+Uobičajeno Pixel polje dolazi sa `.env.primjer` fajl za izradu produkcije, i `.env.testing` datoteku za odstranjivanje debug. Moraćete preimenovati ili kopirati jednu od ovih datoteka u `.env` bez obzira na koje okruženje radite.
 
 ```bash
-cp .env.example .env # for production deployments
-cp .env.testing .env # for debug deployments
+cp .env.example .env # za proizvodnju razmještanja
+cp .env.testing .env # za debug razmještanja
 ```
 
-You can now edit `.env` and change values for your setup.
+Sada možete urediti `.env` i promijenite vrijednosti za vaše postavljanje.
 
-::: tip List of environment variables
-You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/env.md) page, but the important variables will be listed in the below subsections.
+::: tip Lista od environment varijabli
+Možete naći listu dodatni konfiguracija postavke u dubinu na [Configuration](../technical-documentation/env.md) stranici, ali važne varijable će biti napisane ispod podsekcijama.
 :::
 
-### App variables
+### App varijable
 
-- Set `APP_NAME` to your desired title, e.g. `Pixelfed`. This will be shown in the header bar and other places.
-- Ensure that `APP_DEBUG` is `false` for production environments, or `true` for debug environments.
-- Set your `APP_URL` to the HTTPS URL that you wish to serve Pixelfed through, e.g. `https://pixelfed.example`
-- Set `APP_DOMAIN`, `ADMIN_DOMAIN`, and `SESSION_DOMAIN` to the domain name you will be using for Pixelfed, e.g. `pixelfed.example`
+- Postavite `APP_NAME` na željeni naslov, npr. `Pixelfed`. To će biti prikazano na traci zaglavlja i na drugim mjestima.
+- Provjerite je li `APP_DEBUG` `false` za proizvodnju environments, ili `true` za debug environments.
+- Postavite svoj `APP_URL` na HTTPS URL putem kojeg želite posluživati Pixelfed, npr. `https://pixelfed.example`
+- Postavite `APP_DOMAIN`,` ADMIN_DOMAIN` i `SESSION_DOMAIN` na ime domene koje ćete koristiti za Pixelfed, npr. `pixelfed.example`
 
-### Database variables
+### Varijable bazu datoteka
 
-By default, the values provided will allow connecting to MySQL or MariaDB over the default localhost TCP connection.
-
+Uobičajeno, navedene vrijednosti će omogućiti povezivanje sa MySQL ili MariaDB oko uobičajene localhost TCP konekcije.
 If you are running Postgres:
 
-- Set `DB_CONNECTION` to `pgsql` instead of `mysql`.
+- Postavi `DB_CONNECTION` na `pgsql` umjesto `mysql`.
 
-If you are running your SQL server on a different machine or port:
+Ako koristite svoj SQL server na drugoj mašini ili portu:
 
-- Set `DB_HOST` to the IP of the machine
-- Set `DB_PORT` to the port on which your database server is exposed
+- Postavi `DB_HOST` na IP od mašine
+- Postavi `DB_PORT` port na kojem je vaš server podataka izložen
 
-To connect to the database you created:
+Da se povežete na database koju ste napravili:
 
-- Set `DB_DATABASE` to the name of the database created for Pixelfed
-- Set `DB_USERNAME` to the user that was granted privileges for that database
-- Set `DB_PASSWORD` to the password that identifies the user with privileges to the database
+- Postavi `DB_DATABASE` na ime od database napravljen za Pixelfed
+- Postavi `DB_USERNAME` na koristnika koji ima privilegije za taj database
+- Postavi `DB_PASSWORD` na lozinku koja identifikuje korisnika sa privilegije za database
 
-### Redis variables
+### Redis varijable
 
-If you are running Redis over TCP on the same machine as Pixelfed, then the default settings will work.
+Ako koristiš Redis preko TCP na istoj mašini kao Pixelfed, onda će uobičajene postavke raditi
 
-If you are running Redis on another machine:
+Ako Ako koristiš Redis na drugoj mašini:
 
-- Set `REDIS_HOST` to the IP of the machine your Redis server is running on
-- Set `REDIS_PORT` to the port on which Redis is exposed
-- Set `REDIS_PASSWORD` to the password of that Redis server
+- Postavi `REDIS_HOST` na IP od mašine na kojoj tvoj Redis server koristi
+- Postavi `REDIS_PORT` na port na kojoj Redis je izložen
+- Postavi `REDIS_PASSWORD` na lozinku od tog Redis servera
 
-If you are using a UNIX socket for Redis, then:
+Ako koristiš UNIX socket za Redis, onda:
 
-- Set `REDIS_SCHEME` to `unix`
-- Set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Postavi `REDIS_SCHEME` na `unix`
+- Postavi `REDIS_PATH` do puta socket-a, npr. `/run/redis/redis.sock`
 
 ::: tip TCP server vs. UNIX socket
-Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
+Redis inače dodje unaprijed konfiguriran za sluša za TCP zahtjeve na lokalnoj mašini kroz port 6379. U tvojoj Redis configuraciji, inače kod `etc/redis.conf`, relevantne linije su `bind 127.0.0.1` i `port 6379`
 
-Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, both the app user and web user should have permission to access the socket, e.g. by being added to the `redis` group.
+Mjenjanje druge linije na `port 0` će ugasiti TCP slušanje, onda će se morati Redis configurirati da ima pristup na socket. Linije kao `unixsocket /run/redis/redis.sock` i `unixsocketperm 770` mora biti postavljeno da omogući pristup socket-u. Dodatno, app korisnik i web korisnik trebali bi imati permisije da pristupe socket-u.
 
-Using a UNIX socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
+korištenje UNIX socket je optionalno, ali može dati brži pristup zato što ne mora da pravi TCP pakete. TCP je inače korišten preko mreže, i bilo bi potrebno ako je Redis korišten na drugoj mašini od tvoga web servera.
 :::
 
-### Email variables
+### Email varijable 
 
-By default, Pixelfed will not send any emails, but will instead write messages to the Laravel log. 
+Po defaultu, Pixelfed neće slati nikakve e-mailove, nego će pisati poruke na Laravel log.
+Da postavite jedan mailer za produktivne delpoyments, imaš vise opcija za podržane mail usluge. Pixelfed trenutno podržava SMTP, Mailgun, Postmark, Amazon SES, i `sendmail` za slati e-mailova korisnikama 
 
-To setup a mailer for production deployments, you have several options for supported mail services. Pixelfed currently supports SMTP, Mailgun, Postmark, Amazon SES, and `sendmail` for sending emails to users.
-
-- Set `MAIL_FROM_ADDRESS` to the email address you want to send from
-- Set `MAIL_FROM_NAME` to the name you want to appear on emails
-- Set `MAIL_ENCRYPTION` to `tls` in order to have emails be properly delivered
+- Postavi `MAIL_FROM_ADDRESS` na email adresu od kojeg želite slati e-mailove
+- Postavi `MAIL_FROM_NAME` na ime koje želite da se pokažuje na e-mailu
+- Postavi `MAIL_ENCRYPTION` na `tls` da se e-mailovi pravilno pošalju
 
 #### SMTP (Mailtrap)
 
-Set up your SMTP server. Or, create an account with [Mailtrap](https://mailtrap.io).
+Napravi svoj SMTP server. Ili, napravi račun sa [Mailtrap](https://mailtrap.io).
 
-- Set `MAIL_DRIVER` to `smtp`
-- Set `MAIL_HOST` to your host, e.g. `smtp.mailtrap.io`
-- Set `MAIL_PORT` to your port, e.g. `587` or `2525`
-- Set `MAIL_USERNAME` and `MAIL_PASSWORD` if your SMTP server requires authorization. (Mailtrap.io does not.)
+- Postavi `MAIL_DRIVER` na `smtp`
+- Postavi `MAIL_HOST` na tvoj host, npr. `smtp.mailtrap.io`
+- Postavi `MAIL_PORT` na tvoj port, npr. `587` ili `2525`
+- Postavi `MAIL_USERNAME` i `MAIL_PASSWORD` ako tvoj SMTP server treba autorizaciju. (Mailtrap.io ne treba.)
 
 #### Mailgun
 
-Create an account with [Mailgun](https://mailgun.com/).
+Napravi račun sa [Mailgun](https://mailgun.com/).
 
-- Set `MAIL_DRIVER` to `mailgun`
-- Set `MAIL_HOST` to `smtp.mailgun.org`
-- Set `MAIL_PORT` to `587`
-- Set `MAIL_USERNAME` to your Mailgun domain
-- Set `MAIL_PASSWORD` to your Mailgun API key
+- Postavi `MAIL_DRIVER` na `mailgun`
+- Postavi `MAIL_HOST` na `smtp.mailgun.org`
+- Postavi `MAIL_PORT` na `587`
+- Postavi `MAIL_USERNAME` na tvoj Mailgun domena
+- Postavi `MAIL_PASSWORD` na tvoj Mailgun API key
 
-If you are not using the "US" [Mailgun region](https://documentation.mailgun.com/en/latest/api-intro.html#mailgun-regions), you may define your region's endpoint in the `services.php` configuration file located in the `config/` directory:
+Ako ne koristiš "US" [Mailgun region](https://documentation.mailgun.com/en/latest/api-intro.html#mailgun-regions), možes definirati tvoj regijonalni endpoint u `services.php` konfiguracijskoj datoteki koja se nalazi kod `config/` direktorij:
 
 ```php{4}
 'mailgun' => [
@@ -147,13 +145,13 @@ If you are not using the "US" [Mailgun region](https://documentation.mailgun.com
 
 #### Postmark
 
-To use the Postmark driver, install Postmark's SwiftMailer transport via Composer:
+Da koristiš Postmark drajver, instaliraj Postmark-ov SwiftMailer transport kroz Composer:
 
 ```bash
 composer require wildbit/swiftmailer-postmark
 ```
 
-Next, install Guzzle and set the `driver` option in your `config/mail.php` configuration file to `postmark`. Finally, verify that your `config/services.php` configuration file contains the following options:
+Sljedeće, instaliraj Guzzle i stavi `driver` opciju u tvoj `config/mail.php` konfiguracijskom fajlu na `postmark`. Kao zadnje, potvrdi da tvoj `config/services.php` konfiguracijski fajl sadrži sljedeće opcije:
 
 ```php
 'postmark' => [
@@ -163,71 +161,73 @@ Next, install Guzzle and set the `driver` option in your `config/mail.php` confi
 
 #### Amazon SES
 
-Create an account with Amazon AWS.
+Napravi račun sa Amazon AWS.
 
-- Set `MAIL_DRIVER` to `ses`
-- Set `SES_KEY`
-- Set `SES_SECRET`
-- Set `SES_REGION` (if not using the default of `us-east-1`)
+- Postavi `MAIL_DRIVER` na `ses`
+- Postavi `SES_KEY`
+- Postavi `SES_SECRET`
+- Postavi `SES_REGION` (ako se ne koristi zadana vrijednost kao `us-east-1`)
 
 #### sendmail
 
-- Set `MAIL_DRIVER` to `sendmail`
+- Postavi `MAIL_DRIVER` na `sendmail`
 
-### Additional variables
+### Dodatne varijable
 
-If you are using ImageMagick, then:
+Ako koristiš  ImageMagick, onda:
 
-- Set `IMAGE_DRIVER` to `imagick`
+- Postavi `IMAGE_DRIVER` na `imagick`
 
-If you want to enable ActivityPub federation:
+Ako želite omogućiti ActivityPub federaciju:
 
-- Set `ACTIVITY_PUB` to `true`
-- Set `AP_REMOTE_FOLLOW` to `true`
+- Postavi `ACTIVITY_PUB` na `true`
+- Postavi `AP_REMOTE_FOLLOW` na `true`
 
-## Setting up services
+## Postavljanje usluga
 
-### One-time setup tasks
+### Jednokratni zadaci postavljanja
 
-One time only, you need to generate the secret `APP_KEY`:
+Samo jednom, trebate generirati tajnu `APP_KEY`:
 
 ```bash
 php artisan key:generate
 ```
 
-One time only, the `storage/` directory must be linked to the application:
+Samo jednom `storage/` direktorij mora biti povezan na aplikaciji:
 
 ```bash
 php artisan storage:link
 ```
 
-Database migrations must be run:
+Database migracije moraju biti pokrenute:
 
 ```bash
 php artisan migrate --force
 ```
 
-If you want to enable support for location data:
+Ako želite omogućiti podršku za podatke o lokaciji:
+
 ```bash
 php artisan import:cities
 ```
 
-Routes should be cached whenever the source code changes or whenever you change routes:
+Ruutes treba cechati kad god se promijeni izvorni kod ili kad promijenite routes:
+
 ```bash
 php artisan route:cache
 php artisan view:cache
 ```
 
-Every time you edit your .env file, you must run this command to have the changes take effect:
+Svaki put kad uredite svoj .env fajl, moraš pokrenuti ovu komandu da promjene stupe na snagu:
 
 ```bash
 php artisan config:cache
 ```
 
 
-::: tip Running Pixelfed without a cache
+::: tip Korištenje Pixelfed bez cache
 
-It is possible to not use a cache by not running the above cache commands, but it is recommended to run these for production deployments. If you choose not to run these commands, then you can freely edit the .env file and source code instead, and your changes will be reflected instantly, but performance may take a slight hit. You can also undo these commands by running `:clear` commands:
+Moguće je da se ne koristi cache ako ne koristite gornje cache komande, ali je preporučeno da se koriste za produktivne implementacije. Ako se odlučis da ne koristiš ove komande, možes uređivati .env fajl i izvorni kod, i tvoje urede će odmah se odraziti, ali tvoj performanse će biti relativno sporiji. Možete isto poništi ove komande ako koristite `:clear` koamndu: 
 
 ```bash
 php artisan route:clear
@@ -236,24 +236,26 @@ php artisan config:clear
 ```
 :::
 
-### Job queueing
+### Redovi posla
 
-Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/6.x/horizon) and [Queue Workers](https://laravel.com/docs/6.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
+Pixelfed podržava oboje [Laravel Horizon](https://laravel.com/docs/6.x/horizon) i [Queue Workers](https://laravel.com/docs/6.x/queues) za pokretanje reda poslova. 
 
-#### Using Laravel Horizon
+Glavna razlika između Horizon i Queue Worker je dashboard obezbjeđeno od Horizon-a također i napredni balansiranje tereta. Mi preporučujemo da koristite Horizon. Horizon obezbjeđeva preljepi dashboard koji ti dozvoljava da možeš lako nadgledati glavne metrike od tvog sistemnog redova, poput propusnosti posla, vrjeme izvođenja i neuspjeha posla
 
-If you want admins to be able to access the Horizon web dashboard, you will need to run the following commands:
+#### Korištenje Laravel Horizon
+
+Ako želite da administratori imaju dostup Horzon-ovu web dashboard, morate koristiti sljedeće komande:
 
 ```bash
 php artisan horizon:install
 php artisan horizon:assets
 ```
 
-If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.
+Ako tvoj korisnik ima tačne dozvole da dostupi Redis i Pixelfed instalacijski folder, onda jednostavno pokrenite `php artisan horizon` kao taj korisnik u terminalu. Ovo može biti uredu, ali ako zatvorite taj terminal onda će i Horizon prekinuti. Pokrećanje direktno je preporučeno samo u implementacije gdje terminal može raditi bez prekida, npr. u VM ili korištenje GNU Screen ili tmux.
 
-If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue. You will need to use a task manager like systemd or Supervisor. For more information, refer to the [Laravel Documentation](https://laravel.com/docs/6.x/horizon#deploying-horizon).
+Ako koristite u produkciji, više je idealno da napravite pozadinsku usluga za pokrećanje Pixelfed-ov red zadataka. Trebaćes koristiti upravitelj zadataka kao systemd ili Supervisor. Za više informacija, uputite se kod [Laravel Documentation](https://laravel.com/docs/6.x/horizon#deploying-horizon).
 
-Most distributions will already come with systemd, so you may set up this unit file at `/etc/systemd/system/pixelfed.service`:
+Puno distribucija danas koriste već systemd, tako da možete postaviti unit fajl kod `/etc/systemd/system/pixelfed.service`:
 
 ```{4-7,11-12}
 [Unit]
@@ -274,23 +276,26 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-::: tip Using correct paths and service names
+::: tip Korištenje tačni puteva i naziv usluga
 The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /home/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
 
-- Replacing `mariadb` with `postgresql` or `mysql`
-- Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php7.3-fpm`
-- Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
-- Replacing `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
-- Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
+Gornji primjer pretpostavlja da koristite MariaDB i Nginx, da u tvojoj distribuciji PHP paketi nemaju verzijski imena, i da tvoja distribucija koristi `http` koristnika da služi Nginx. Ono također pretpostavlja da si Pixelfed instaliro kod /home/pixelfed u skladu s ostatkom dokumentacije procesa instalacije.
+Neke promjene koje ćete možda morati uraditi:
+
+- Zamjenite `mariadb` sa `postgresql` ili `mysql`.
+- Zamjenite `php-fpm` sa nazivom vašeg PHP-FPM paketa za distribuciju, npr. `php7.3-fpm`.
+- Zamjenite `nginx` sa `apache`, ili zamjenite `Requires` sa `Wants` ako ne radite u proizvodnom enviorment.
+- Zamjenite `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`.
+- Zamjenite `User=http` da reflektira app korisnika, npr. `User=pixelfed` ili komentiranje ove linije kako bi se pokrenuo u sistemskom odsječku.
 :::
 
-You can now use systemd to manage Pixelfed like any other background service:
+Sad možete koristiti systemd da upravljate Pixelfed kao svaku drugu pozadinsku uslugu
 
 ```bash
 sudo systemctl enable --now pixelfed
 ```
 
-Alternatively, if you do not wish to use systemd, then you can install Supervisor and create this sample Supervisor configuration file at `/etc/supervisor/conf.d/pixelfed.conf`, making sure to use the correct path to your Pixelfed installation and the appropriate app-user:
+alternativno, ako neželite korisititi systemd, onda možete instalirati Supervisor da napravite ovaj primjerni Supervisor konfiguracijski fajl kod `/etc/supervisor/conf.d/pixelfed.conf`, obavezno koristite ispravan put do vaše Pixelfed instalacije i odgovarajućeg korisnika aplikacije:
 
 ```{2,3,6}
 [program:pixelfed]
@@ -301,11 +306,11 @@ redirect_stderr=true
 stdout_logfile=/usr/share/webapps/pixelfed/horizon.log
 stopwaitsecs=3600
 ```
-:::tip Using correct paths
-You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
+:::tip Korištenje pravih paths
+Možda ćete trebati zamijeniti `/usr/bin/php` ili `/usr/share/webapps/pixelfed/artisan` sa tačnim paths, npr. `/usr/bin/php7.3` ili `/path/to/pixelfed/artisan`
 :::
 
-You will then need to run these commands:
+Moraćete koristiti ove komande:
 
 ```bash
 sudo supervisorctl reread
@@ -313,43 +318,44 @@ sudo supervisorctl update
 sudo supervisorctl start pixelfed
 ```
 
-#### Using Queue Worker
-Pixelfed also includes a queue worker that will process new jobs as they are pushed onto the queue. You may run the worker using the `queue:work` command. Note that once the command has started, it will continue to run until it is manually stopped or you close your terminal:
+#### Korištenje Queue Worker
+Pixelfed također uključuje radnika u redu koji će obrađivati nove poslove kad ih se gurne u red. Možete pokrenuti radnike pomoću `queue:work` komande. imajte na umu da kad pokrenete ovu komandu, nastavit će raditi dok se ručno ne zaustavi ili zatvorite terminal:
 
 ```bash
 php artisan queue:work
 ```
 
-Again, you can use Supervisor or systemd as described above, substituting `horizon` for `queue:work`.
+Opet možete koristiti Supervisor ili systemd kako je gore opisano, zamjenjujući `horizon` za `red:work`.
 
-### Scheduling periodic tasks
+### Zakazivanje periodičnih zadataka
 
-The task scheduler is used to run periodic commands in the background, such as media optimization, garbage collection, and other time-based tasks that should be run every once in a while.
+Planer zadataka koristi se za pokretanje periodičnih komandi u pozadini, kao što su optimizacija medija, prikupljanje smeća i drugi zadaci što su vezani za vrijeme koji bi se trebalo svako malo izvoditi.
 
-To set up scheduled tasks using Cron:
+Za postavljanje planiranih zadataka pomoću Cron:
 
 ```bash
 EDITOR=nano crontab -e
 ```
 
-Paste the following cronjob into your crontab:
+Zalijepite ovaj cronjob u svoj crontab:
 
 ```
 * * * * * /usr/bin/php /usr/share/webapps/pixelfed/artisan schedule:run >> /dev/null 2>&1
 ```
 
-:::tip Using correct paths
-You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
+:::tip Korištenje tačni paths
+Možda ćete trebati zamijeniti `/usr/bin/php` ili `/usr/share/webapps/pixelfed/artisan` sa tačnim paths, npr. `/usr/bin/php7.3` ili `/path/to/pixelfed/artisan`
 :::
 
-### Handling web requests
+### Baratanje web zahtjeva
 
-To translate HTTPS web requests to PHP workers, you will need to configure a reverse proxy.
+Da biste prevodili HTTPS web zahtjeve radnicima PHP-a, morat ćete konfigurirati obrnuti proxy.
 
 #### Apache
-Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
 
-If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
+Pixelfed uključuje `public/.htaccess` fajl koji je korišten da obezbijediti URL-ove bez index.php prednji kontroler u path-u. Prije služenje Pixelfed sa Apache, omogući `mod_rewrite` modul u tvojem Apache konfiguraciji tako da `.htaccess` fajl bit će počašćen od strane servera.
+
+Ako `.htaccess` fajl koji se isporučuje s Pixelfed-om ne radi s vašom Apache instalacijom, isprobajte ovu alternativu:
 
 ```php
 Options +FollowSymLinks -Indexes
@@ -365,17 +371,17 @@ RewriteRule ^ index.php [L]
 
 #### Nginx
 
-Pixelfed includes a sample NGINX configuration at `contrib/nginx.conf`. You can copy the contents of this file or include it within your `nginx.conf`. Take note of the comments, and make sure to set the correct domain name and root path.
+Pixelfed uključuje primjerne NGINX konfiguracije na `contrib/nginx.conf`. Možete kopirati sadržaj ovoga fajla ili ga uključite ga u svoj `nginx.conf`. Zabilježite komentare i pobrinite se da postavite ispravno ime domene i root path.
 
 ```nginx{4,5,7,8,33,36,45}
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name pixelfed.example;                    # change this to your fqdn
-    root /usr/share/webapps/pixelfed/public;         # path to repo/public
+    server_name pixelfed.example;                    # promjeni ovo na svoj fqdn
+    root /usr/share/webapps/pixelfed/public;         # path do repo/public
 
-    ssl_certificate /etc/nginx/ssl/server.crt;       # generate your own
-    ssl_certificate_key /etc/nginx/ssl/server.key;   # or use letsencrypt
+    ssl_certificate /etc/nginx/ssl/server.crt;       # generiraj svoj
+    ssl_certificate_key /etc/nginx/ssl/server.key;   # ili koristi letsencrypt
 
     ssl_protocols TLSv1.2;
     ssl_ciphers EECDH+AESGCM:EECDH+CHACHA20:EECDH+AES;
@@ -400,10 +406,10 @@ server {
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/run/php-fpm/php-fpm.sock; # make sure this is correct
+        fastcgi_pass unix:/run/php-fpm/php-fpm.sock; # Budite sigurni da je ovo tačno
         fastcgi_index index.php;
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; # or $request_filename
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; # ili $request_filename
     }
 
     location ~ /\.(?!well-known).* {
@@ -411,8 +417,8 @@ server {
     }
 }
 
-server {                                             # Redirect http to https
-    server_name pixelfed.example;                    # change this to your fqdn
+server {                                             # Preusmjeri http na https
+    server_name pixelfed.example;                    # promjeni ovo na tvoj fqdn
     listen 80;
     listen [::]:80;
     return 301 https://$host$request_uri;
@@ -420,26 +426,26 @@ server {                                             # Redirect http to https
 ```
 
 ::: tip FastCGI path
-Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php7.3-fpm.sock`, on Debian it may be `/var/run/php/php7.3-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
+Budi siguran da koristiš tačan `fastcgi_pass` socket path za tvoju distribuciju i verziju od PHP-FPM. Na primjer, na Arch-u, ovo je `/run/php-fpm/php-fpm.sock`, ali na Ubuntu može biti `/run/php/php7.3-fpm.sock`, na Debian-u može biti `/var/run/php/php7.3-fpm.sock`, i tako dalje. Ako si konfiguriro PHP server preko TCP, možes isto proslijediti na njegov IP port, npr. `localhost:9000` po defaultu.
 :::
 
 ::: tip Nginx web root
-Make sure to use the `/public` folder as your server root. Example:`server {root /var/www/pixelfed/public;)`.
-If you set root to the install directory (example: `server {root /var/www/pixelfed;)` Pixelfed will not work.
+Budite sigurni da koristite `/public` direktoriju kao vaš server root, npr. `server {root /var/www/pixelfed/public;)`.
+Ako ste stavili root za instalacijski direktorij (npr. `server {root /var/www/pixelfed;)` Pixelfed neće raditi.
 :::
 
-#### Obtaining an HTTPS certificate
+#### Dobivanje HTTPS certifikata
 
-For testing deployments, you may generate a self-signed SSL certificate. For example:
+Za testiranje implementacije, možete generirati samopotpisani SSL certifikat. Na primjer:
 
 ```bash
 sudo mkdir /etc/nginx/ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
 ```
 
-For production deployments, you will need to obtain a certificate from a certificate authority. You may automate certification from LetsEncrypt, a free certificate authority, by using a utility such as [EFF Certbot](https://certbot.eff.org/) or [acme.sh](https://acme.sh).
+Za proizvodne implementacije morat ćete pribaviti certifikat od tijela za izdavanje certifikata. Možete automatizirati certificiranje od LetsEncrypt, besplatni izdavač certifikata, pomoću uslužnog programa kao što je [EFF Certbot](https://certbot.eff.org/) ili [acme.sh](https://acme.sh).
 
-Sample usage of certbot:
+Primjer upotrebe certbot-a:
 ```bash
 certbot --nginx -d pixelfed.example
 ```
