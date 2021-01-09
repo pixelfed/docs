@@ -1,9 +1,9 @@
-# Configuration
+# Konfiguracija
 
-All configuration files are located in the `config/` folder of your Pixelfed installation. These are the environment variables you can set in your `.env` file; note that some variables are currently unused and do nothing.
+Sve konfiguracijske datoteke nalaze se u `config/` folderu vaše Pixelfed instalacije. Ovo su varijable od enviorment-a koje možete postaviti u datoteci `.env`; imajte na umu da se neke varijable trenutno ne koriste i ne rade ništa.
 
-::: tip Summary of important variables
-For a user-facing guide to which environment variables you might want to set, check out the [installation guide](../running-pixelfed/installation.md#configure-environment-variables) instead.
+::: tip Sažetak važnih varijabli
+Za korisnički vodič kroz koje biste varijable okruženja možda željeli postaviti, pogledajte [installation guide](../running-pixelfed/installation.md#configure-environment-variables).
 :::
 
 [[toc]]
@@ -24,15 +24,15 @@ For a user-facing guide to which environment variables you might want to set, ch
 ### `APP_FALLBACK_LOCALE`
 `en`
 ### `APP_KEY`
-A random 32-character string to be used as an encryption key. No default value; use `php artisan key:generate` to generate.
+Slučajni niz od 32 znaka koji će se koristiti kao ključ za šifriranje. Nema zadane vrijednosti; koristite `php artisan key:generate` za generisanje.
 
 ## broadcasting
 ### `BROADCAST_DRIVER`
-Possible values:
+Moguće vrijednosti:
 - `pusher`
 - `redis`
 - `log`
-- `null` (default)
+- `null` (zadano)
 ### `PUSHER_APP_KEY`
 ### `PUSHER_APP_SECRET`
 ### `PUSHER_APP_ID`
@@ -42,9 +42,9 @@ Possible values:
 
 ## cache
 ### `CACHE_DRIVER`
-Defaults to `file`.
+Zadano na `file`.
 ### `CACHE_PREFIX`
-Defaults to `APP_NAME_cache`, or `laravel_cache` if no `APP_NAME` is set.
+Zadano na `APP_NAME_cache`, ili `laravel_cache` ako ne `APP_NAME` je stavit.
 ### `MEMCACHED_PERSISTENT_ID`
 ### `MEMCACHED_USERNAME`
 ### `MEMCACHED_PASSWORD`
@@ -69,44 +69,44 @@ No default value.
 
 ## costar
 ### `CS_BLOCKED_DOMAINS`
-Comma-separated list of domains to block. Defaults to `null`.
+Lista domena koje treba odvojiti zarezom. Zadano je `null`.
 ### `CS_CW_DOMAINS`
-Comma-separated list of domains to add warnings. Defaults to `null`.
+Lista domena odvojenih zarezom za dodavanje upozorenja. Zadano je`null`.
 ### `CS_UNLISTED_DOMAINS`
-Comma-separated list of domains to remove from public timelines. Defaults to `null`.
+Lista domena odvojenih zarezom za uklanjanje s javnih vremenskih traka. Zadano je `null`.
 ### `CS_BLOCKED_KEYWORDS`
-Comma-separated list of keywords to block. Defaults to `null`.
+Lista ključnih riječi odvojenih zarezom koje treba blokirati. Zadano je `null`.
 ### `CS_CW_KEYWORDS`
-Comma-separated list of keywords to add warnings. Defaults to `null`.
+Lista ključnih riječi odvojenih zarezom za dodavanje upozorenja. Zadano je `null`.
 ### `CS_UNLISTED_KEYWORDS`
-Comma-separated list of keywords to remove from public timelines. Defaults to `null`.
+Popis ključnih riječi odvojenih zarezom za uklanjanje s javnih vremenskih linija. Zadano je `null`.
 ### `CS_BLOCKED_ACTOR`
 ### `CS_CW_ACTOR`
 ### `CS_UNLISTED_ACTOR`
 
 ## database
 ### `DB_CONNECTION`
-Sets the database driver. Defaults to `mysql`.
+Postavlja database driver. Zadano je`mysql`.
 ### `DB_DATABASE`
-When using `sqlite` for `DB_CONNECTION`. Defaults to `database.sqlite`
+Kad koristite `sqlite` za `DB_CONNECTION`. Zadano je `database.sqlite`
 ### `DB_HOST`
-Defaults to `127.0.0.1` when using `mysql` or `pgsql` for `DB_CONNECTION`, or `localhost` when using `sqlsrv`.
+Zadano je `127.0.0.1` kad koristite `mysql` ili `pgsql` za `DB_CONNECTION`, ili `localhost` kad koristite `sqlsrv`.
 ### `DB_PORT`
-Defaults to `3306` for `mysql`, `5432` for `pgsql`, or `1433` for `sqlsrv`.
+Zadano je `3306` za `mysql`, `5432` za `pgsql`, ili `1433` za `sqlsrv`.
 ### `DB_DATABASE`
-Defaults to `forge`
+Zadano je `forge`
 ### `DB_USERNAME`
-Defaults to `forge`
+Zadano je `forge`
 ### `DB_PASSWORD`
-Defaults to an empty string.
+Zadan je prazan string.
 ### `DB_SOCKET`
-Defaults to an empty string.
+Zadan je prazan string.
 ### `REDIS_CLIENT`
 `predis`
 ### `REDIS_SCHEME`
 `tcp`
 ### `REDIS_PATH`
-No default value.
+nema zadane vrijednosti
 ### `REDIS_HOST`
 `127.0.0.1`
 ### `REDIS_PASSWORD`
@@ -174,9 +174,9 @@ No default value.
 `v3MsJ1Hgnlma8YPrD3f4sW6vAn6zLnkuh6vOpKnR5IKkLqDGIk7TCADS2igpEN4ADrtXkkzV2E8HBfzpz7BreDzQqVOYDMeb4cJ1xhDhDwDeicZVUPyrxihHDaMWpTsP`
 
 ## hashing
-Possible drivers are `bcrypt` and `argon`, but this requires manual editing of `driver` (which is hardcoded as `bcrypt`).
+Moguć driveri su `bcrypt` i `argon`, ali ovo zahtijeva ručno uređivanje `driver` (koji je hardkodiran kao `bcrypt`).
 ### `BCRYPT_COST`
-How many rounds of hashing to use. Defaults to `10`.
+Koliko rundi heširanja koristiti. Zadano je `10`.
 ### `ARGON_MEM`
 `1024`
 ### `ARGON_THREADS`
@@ -186,13 +186,13 @@ How many rounds of hashing to use. Defaults to `10`.
 
 ## horizon
 ### `HORIZON_PREFIX`
-Defaults to `horizon-xxxxxxxx:`, where `xxxxxxxx` is a random 8-character string.
+Zadano je `horizon-xxxxxxxx:`, gdje `xxxxxxxx` ide jedan slučajni niz od 8 znakova.
 ### `HORIZON_DARKMODE`
 `false`
 
 ## image
 ### `IMAGE_DRIVER`
-Pixelfed supports GD or ImageMagick to process images. Defaults to `gd`. Set `IMAGE_DRIVER='imagick'` to use ImageMagick instead.
+Pixelfed podržava GD ili ImageMagick da procesira slike. Zadano je `gd`. Postavi `IMAGE_DRIVER='imagick'` da koristite ImageMagick.
 
 ## instance
 ### `INSTANCE_DESCRIPTION`
@@ -228,7 +228,7 @@ No default value.
 
 ## logging
 ### `LOG_CHANNEL`
-Possible values:
+Moguće vrijednosti:
 - `single`
 - `daily`
 - `slack`
@@ -236,14 +236,14 @@ Possible values:
 - `errorlog`
 - `monolog`
 - `custom`
-- `stack` (default)
+- `stack` (Zadano)
 ### `LOG_SLACK_WEBHOOK_URL`
-No default value.
+Nije zadano.
 
 ## mail
 ### `MAIL_DRIVER`
-Possible values:
-- `smtp` (default)
+Moguće vrijednosti:
+- `smtp` (Zadano)
 - `sendmail`
 - `mailgun`
 - `mandrill`
@@ -262,16 +262,16 @@ Possible values:
 ### `MAIL_ENCRYPTION`
 `tls`
 ### `MAIL_USERNAME`
-No default value.
+Nije zadano.
 ### `MAIL_PASSWORD`
-No default value.
+Nije zadano.
 
 ## media
 ### `MEDIA_EXIF_DATABASE`
 `false`
 
 ## passport
-By default, encryption keys are stored as local files, but can be set as environment variables if that is more convenient.
+Ključevi za šifriranje se prema zadanim postavkama pohranjuju kao lokalne datoteke, ali se mogu postaviti kao varijable okruženja ako je to prikladnije.
 ### `PASSPORT_PRIVATE_KEY`
 ### `PASSPORT_PUBLIC_KEY`
 
@@ -283,9 +283,9 @@ By default, encryption keys are stored as local files, but can be set as environ
 ### `OPEN_REGISTRATION`
 `true`
 ### `MAX_ACCOUNT_SIZE`
-Per-user file-size limit in KB. Defaults to `1000000` (1GB).
+Ograničenje veličine datoteke po korisniku u KB. Zadana vrijednost je `1000000` (1GB).
 ### `MAX_PHOTO_SIZE`
-Per-file file-size limit in KB. Defaults to `15000` (15MB).
+Ograničenje veličine datoteke po datoteci u KB. Zadana vrijednost je `15000` (15MB).
 ### `MAX_AVATAR_SIZE`
 `2000` (2MB)
 ### `MAX_CAPTION_LENGTH`
@@ -299,11 +299,11 @@ Per-file file-size limit in KB. Defaults to `15000` (15MB).
 ### ENFORCE_EMAIL_VERIFICATION
 `true`
 ### `IMAGE_QUALITY`
-0-100 value for optimization level. Defaults to `80`.
+Vrijednost 0-100 za nivo optimizacije. Zadana vrijednost je `80`.
 ### `ACCOUNT_DELETION`
 `true`
 ### `ACCOUNT_DELETE_AFTER`
-Queue account deletion for X days. Defaults to `false`, i.e., immediately.
+Brisanje računa u redu čekanja za X dana. Zadana vrijednost je "false", npr. istog trena.
 ### `PF_ENABLE_CLOUD`
 `false`
 ### `PF_MAX_USERS`
@@ -383,11 +383,11 @@ Queue account deletion for X days. Defaults to `false`, i.e., immediately.
 ### `SESSION_LIFETIME`
 `86400`
 ### `SESSION_DOMAIN`
-Defaults to the value of `APP_DOMAIN`, or null.
+Zadana vrijednost je "APP_DOMAIN" ili null.
 
 ## trustedproxy
 ### `TRUST_PROXIES`
-Defaults to empty string.
+Zadan je prazan string.
 
 ## websockets
 ### `PUSHER_APP_ID`
