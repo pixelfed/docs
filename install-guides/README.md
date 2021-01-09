@@ -1,4 +1,4 @@
-# Installing Pixelfed
+# Instaliranje Pixelfed
 
 - [Prerequisites](prerequisites.md)
 - [Installation](installation.md)
