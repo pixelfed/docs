@@ -1,10 +1,10 @@
-# Administering your website
+# Upravljanje svojom web stranicom
 
 [[toc]]
 
-## Updating Pixelfed
+## Ažuriranje Pixelfed-a
 
-After you have installed Pixelfed, you may update to the latest commits by pulling the dev branch and doing necessary updates/migration/caching:
+Nakon što si instaliro Pixelfed, možes ažurirati na najnoviji commits povlačenjem dev branch i obavljanjem potrebnih ažuriranja/migracije/caching
 
 ```bash
 cd /path/to/pixelfed
@@ -15,36 +15,37 @@ php artisan route:cache
 php artisan migrate --force
 ```
 
-## Artisan commands
+## Artisan komande
 
-### User management
+### Upravljanje korisnicima
 
-- `user:admin`	Make a user an admin, or remove admin privileges.
-- `user:create`	Create a new user
-- `user:delete`	Delete account
-- `user:show`	Show user info
-- `user:suspend`	Suspend a local user.
-- `user:unsuspend`	Unsuspend a local user.
-- `user:table`	Display latest users
+- `user:admin`	Napraviti od korisnika administratora, ili ukloniti administrativne privilegije.
+- `user:create`	Napravite novog korisnika
+- `user:delete`	Izbriši korisnika
+- `user:show`	Pokaži informacije korisnika
+- `user:suspend`	Suspendirajte lokalnog korisnika.
+- `user:unsuspend`	Unsuspendiraj lokalnog korisnika.
+- `user:table`	Prikaži najnovije korisnike
 
 
-For example, you can give a user the admin role with the following command:
+Na primjer, možete korisniku dati administratorsku ulogu pomoću sljedeće komande:
 
 ```bash
 php artisan user:admin username_here
 ```
 
 
-### Fix accounts with reserved names
+### Popravite račune s rezerviranim imenima
 
-You can run this command to fix accounts created before that username was reserved.
+Ovu komandu možete koristiti da popravite račune kreirane prije rezerviranja tog korisničkog imena.
+
 ```bash
 php artisan fix:usernames
 ``` 
 
-### Remove unused media
+### Ukloni neiskorištene medije
 
-With this command you can trigger the garbage collection on the media files. This frees up disk space. All files being older than one hour and which are not used in any status are removed.
+Sa ovom komandom možeš da pokreneš kolekciju smeća na medijskim fajlovima. Ovo oslobađa prostor na disku. Sve datoteke koje su starije od sat vremena i koje se ne koriste u bilo kom statusu su uklonjene.
 
 ```bash
 php artisan media:gc
