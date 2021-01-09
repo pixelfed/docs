@@ -1,7 +1,7 @@
 # Pokrenite svoju Pixelfed stranicu
 
 ::: warning UPOZORENJE
-Pixelfed je još u toku proizvodnje. Ne preporučujemo da se u ovoj fazi vodi slučaj ukoliko ne znate šta radite!
+Pixelfed je još u toku proizvodnje. Ne preporučujemo da se u ovoj fazi vodi slučaj osim ako znate šta radite!
 :::
 
 Prije nastavka provjerite jesu li instalirani svi preduslovi i odgovarajuće usluge pokrenute/omogućene.
