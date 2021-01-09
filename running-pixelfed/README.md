@@ -1,12 +1,12 @@
-# Run your own Pixelfed website
+# Pokrenite svoju Pixelfed stranicu
 
-::: warning WARNING
-Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
+::: warning UPOZORENJE
+Pixelfed je još u toku proizvodnje. Ne preporučujemo da se u ovoj fazi vodi slučaj ukoliko ne znate šta radite!
 :::
 
-Make sure you have all prerequisites installed and the appropriate services running/enabled before continuing.
+Prije nastavka provjerite jesu li instalirani svi preduslovi i odgovarajuće usluge pokrenute/omogućene.
 
-## Installation
+## Instaliranje
 
 - [Pre-requisites](prerequisites.md)
 - [Administration](administration.md)
