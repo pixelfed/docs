@@ -1,12 +1,12 @@
-## Requirements
+## Zahtjevi
 - Git
 - PHP
 - Composer
 - Node
 - NPM
 
-## Development Setup
-For local/non-production use only.
+## Postavljanje razvoja
+Samo za lokalnu / neproizvodnu upotrebu.
 ```bash
 git clone https://github.com/pixelfed/pixelfed
 cd pixelfed
