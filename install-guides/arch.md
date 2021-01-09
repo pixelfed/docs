@@ -1,30 +1,30 @@
-# Deploying Pixelfed on Arch Linux
+# Izvršiti Pixelfed na Arch Linux
 
-## Assumptions
-These instructions will install Pixelfed with the following:
-- Nginx (instead of Apache)
-- MariaDB (instead of PostgreSQL)
-- PHP-FPM (latest version)
-- ImageMagick (instead of GD)
-- Redis and PHP-FPM running via sockets instead of TCP (same machine)
-- `pixelfed` user for running Horizon queues, `http` user for running web processes (Arch default)
-- Repo cloned at `/srv/http/pixelfed`
-- No other sites/services running on this machine
+## Pretpostavke
+Ove instruktcije će instalirati Pixelfed sa sljedećim:
+- Nginx (umjesto Apache)
+- MariaDB (umjesto PostgreSQL)
+- PHP-FPM (Najnovija verzija)
+- ImageMagick (umjesto GD)
+- Redis i PHP-FPM korištenje sockets umjesto TCP (ista mašina)
+- `pixelfed` koristnik za korištenja Horizon redova, `http` koristnik za korištenje web procesa (Arch default)
+- Repo kloniran u `/srv/http/pixelfed`
+- Nijedna druga lokacija / usluga ne rade na ovoj mašini
 
-## Preparing a machine
+## Priprema mašine
 
-You will need a machine running Arch Linux with access to the root account.
+Trebat će vam mašina koja koristi Arch Linux s pristupom root računu.
 
-1. Login as `root`.
-2. Create the `pixelfed` user and group:
+1. Prijavi se kao `root`.
+2. Napravi `pixelfed` korisnik i grupu:
 ```bash
 useradd -rU -s /bin/bash pixelfed
 ```
-3. Install dependencies:
+3. Instaliraj zavisnosti:
 ```bash
 pacman -S --needed nginx mariadb redis git php-fpm php-intl php-imagick php-redis composer jpegoptim optipng pngquant imagemagick unzip certbot certbot-nginx
 ```
-4. Setup database. During `mysql_secure_installation`, hit Enter to use the default options. Make sure to set a password for the SQL user `root` (as by default, there is no password).
+4. Postavljanje bazu podataka. Tokom `mysql_secure_installation`, stisni Enter da koristite zadane opcije. obavezno postavite lozinku za SQL korisnika `root` (kao po defaultu, nema lozinke).
 ```bash
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 systemctl enable --now mariadb
@@ -35,7 +35,7 @@ create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
 flush privileges;
 ```
-5. Edit `/etc/php/php.ini` and uncomment the following lines:
+5. Uredi `/etc/php/php.ini` i nekomentiraj sljedeće redove:
 ```
 extension=bcmath
 extension=iconv
@@ -43,31 +43,31 @@ extension=intl
 extension=mysqli
 extension=pdo_mysql
 ```
-Edit the following lines to your desired upload limits:
+Uredite sljedeće redove prema vašim željenim ograničenjima prijenosa:
 ```
 post_max_size = 8M
 upload_max_filesize = 2M
 max_file_uploads = 20
 ```
-Edit `/etc/php/conf.d/imagick.ini` and uncomment:
+Uredi `/etc/php/conf.d/imagick.ini` i nekomentiraj:
 ```
 extension=imagick
 ```
-Edit `/etc/php/conf.d/redis.ini` and uncomment:
+Uredi `/etc/php/conf.d/redis.ini` i nekomentiraj:
 ```
 extension=redis
 ```
-Edit `/etc/php/conf.d/igbinary.ini` and uncomment:
+Uredi `/etc/php/conf.d/igbinary.ini` i nekomentiraj:
 ```
 extension=igbinary
 ```
-Create a PHP-FPM pool for Pixelfed:
+Napravi jedan PHP-FPM pool za Pixelfed:
 ```bash
 cd /etc/php/php-fpm.d/
 cp www.conf pixelfed.conf
 $EDITOR pixelfed.conf
 ```
-Make the following changes to the PHP-FPM pool:
+Napravi sljedeće promjene u PHP-FPM pool:
 ```
 ;     use the username of the app-user as the pool name, e.g. pixelfed
 [pixelfed]
@@ -84,13 +84,13 @@ listen.group = http
 listen.mode = 0660
 [...]
 ```
-6. Edit `/etc/redis.conf` and edit the following lines:
+6. Uredi `/etc/redis.conf` i uredite sljedeće redove:
 ```
 port 6379                           # change this to "port 0" to disable network packets
 unixsocket /run/redis/redis.sock    # 
 unixsocketperm 770                  # give permission to "redis" user and group
 ```
-7. Edit `/etc/nginx/nginx.conf`:
+7. Uredi `/etc/nginx/nginx.conf`:
 ```nginx
 worker_processes 1;    # change to auto, or 1 x your CPU cores, but 1 is enough
 events {
@@ -107,30 +107,30 @@ http {
     include /usr/share/webapps/pixelfed/nginx.conf;    # we will make this file later
 }
 ```
-Generate SSL cert:
+Generiraj SSL cert:
 ```bash
 mkdir /etc/nginx/ssl
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
 ```
-8. Add users to groups:
+8. Dodaj Koristnike u grupu:
 ```bash
 usermod -aG pixelfed http  # give web user permission to serve pixelfed
 usermod -aG redis pixelfed # give app user access to redis for queues
 usermod -aG redis http     # allow web user to proxy php-fpm to redis
 ```
-9. Enable services:
+9. Omogućite usluge:
 ```bash
 systemctl enable {nginx,redis,php-fpm}
 systemctl start {redis,php-fpm} # nginx will fail if started now
 ```
 
-## Pixelfed setup
-1. Clone the repo:
+## Pixelfed Postavljanje:
+1. Kloniraj repo:
 ```
 cd /srv/http
 git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
 ```
-2. Setup environment variables and nginx:
+2. Postavi environment varijable i nginx:
 ```bash
 cd pixelfed
 cp contrib/nginx.conf nginx.conf
@@ -147,17 +147,17 @@ cp .env.example .env
 ### REDIS_PATH = /run/redis/redis.sock
 ### IMAGE_DRIVER = imagick
 ```
-3. Set permissions:
+3. Postavite dozvole:
 ```bash
 chown -R pixelfed:pixelfed .
 find . -type d -exec chmod 755 {} \;
 find . -type f -exec chmod 644 {} \;
 ```
-4. Switch to the `pixelfed` user:
+4. Prebaci na `pixelfed` koristnik:
 ```bash
 su - pixelfed
 ```
-5. Deploy:
+5. Izvrši:
 ```bash
 composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 php artisan key:generate
@@ -167,17 +167,17 @@ php artisan horizon:install
 php artisan horizon:assets
 php artisan migrate --force
 ```
-Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:
+Eventualno, koristi keš [NAPOMENA: Ako pokrenete ove komande, moraćete ih pokrenuti svaki put kad promijenite .env ili Ažurirate Pixelfed]:
 ```bash
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 ```
-Import Places data:
+Uvezi Places podatke:
 ```bash
 php artisan import:cities
 ```
-6. Create the following file at `/etc/systemd/system/pixelfed.conf`:
+6. Napravi novu datoteku na `/etc/systemd/system/pixelfed.conf`:
 ```
 [Unit]
 Description=Pixelfed task queueing via Laravel Horizon
@@ -196,7 +196,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
-7. Start Horizon task queue:
+7. Pokreni Horizon zadatak:
 ```bash
 sudo systemctl enable --now pixelfed
 ```
