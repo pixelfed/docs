@@ -1,47 +1,46 @@
-# Preparing your machine
+# Priprema vašeg uređaja
 
-Before you install Pixelfed, you will need to setup a webserver with the required dependencies:
+Prije neg što instalirate Pixelfed, trebaćete postaviti jedan webserver sa potrebnim zavisnostima:
 
-- An HTTP server
-- An SQL database server
-- A PHP-FPM server
-- [Composer](https://getcomposer.org/), for PHP dependency management
-- [Git](https://git-scm.com/), for fetching updates
-- [Redis](https://redis.io/), for in-memory caching and background task queueing
-- [GD](https://libgd.github.io/) or [ImageMagick](https://imagemagick.org), for image processing
-- [JPEGOptim](https://github.com/tjko/jpegoptim), for optimizing JPG
-- [OptiPNG](http://optipng.sourceforge.net/), for lossless PNG
-- [PNGQuant](https://pngquant.org/), for lossy PNG
-- [ffmpeg](https://ffmpeg.org/), for generating video thumbnails
+- HTTP server
+- SQL database server
+- PHP-FPM server
+- [Composer](https://getcomposer.org/), za PHP upravljanje zavisnošćima
+- [Git](https://git-scm.com/), za preuzimanje ažuriranja
+- [Redis](https://redis.io/), za in-memory cachanja i pozadinsko čekanje zadataka
+- [GD](https://libgd.github.io/) ili [ImageMagick](https://imagemagick.org), za obradu slika
+- [JPEGOptim](https://github.com/tjko/jpegoptim), za optimiziranje JPG
+- [OptiPNG](http://optipng.sourceforge.net/), za gubitak PNG
+- [PNGQuant](https://pngquant.org/), kompresija s gubicima PNG
+- [ffmpeg](https://ffmpeg.org/), za generiranje video sličica
 
-::: tip Shared Hosting
-At this stage, it's not possible to install Pixelfed by downloading a ZIP file and uploading the files to your web server. This is because Composer needs to run on the command line.
-
-This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH access, through which you should be able to install Composer and Pixelfed just fine.
+::: tip Zajednički hosting
+U ovoj stazi nije moguće instalirati Pixelfed kroz preuzimanje ZIP fajla i prenositi ga na faljove od vašeg web servera. Ovo je zato što Composer treba da se pokreće na komand liniji.
+Ovo neznači obavezno da vam treba VPS. Neki zajednički hosts daju ti SSH pristup, kroz koji bi trebao moći instalirati Composer i Pixelfed bez problema.
 :::
 
-
 ## HTTP Web server
-The following web servers are officially supported:
-- Apache (with `mod_rewrite` enabled)
+Sljedeći web serveri su službeno podržani:
+- Apache (sa `mod_rewrite` uključeno)
 - nginx
 
-Pixelfed uses HTTPS URIs, so you will need to have HTTPS set up at the perimeter of your network before you proxy requests internally.
+Pixelfed koristi HTTPS URLs, to znači da morate imati HTTPS na obodu vaše mreže prije nego što interno zatražite proxy.
 
 ## Database
 
-You can choose one of three supported database drivers:
+Možete izabrati jedan od ovih tri podržani database drivera:
+
 - MySQL (5.7+)
-- MariaDB (10.2.7+ -- 10.3.5+ recommended)
+- MariaDB (10.2.7+ -- 10.3.5+ preporučeno)
 - PostgreSQL (10+)
 
-You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
+Trebaćete napraviti jedan database i odobriti dozvolu za jednog SQL korisnika koji je identificiran od lozinke. Da uradite ovo sa MySQL ili MariaDB, uradite kao što sljedi:
 
 ```bash
 sudo mysql -u root -p
 ```
 
-You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
+Onda možete napraviti jedan database i dati privilegije na tvoj SQL korisnik. Sljedeće SQL komande će napraviti jedan database sa imenom `pixelfed` i dopustiti da njime upravlja korisnik `pixelfed` sa lozinkom `strong_password`:
 
 ```sql{1,2}
 create database pixelfed;
@@ -49,26 +48,29 @@ grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'stro
 flush privileges;
 ```
 
-To do this with PostgreSQL instead, do the following:
+Da uradite ovo sa PostgreSQL uradite kao što sljedi:
+
 ```bash
 sudo -u postgres psql
 ```
 
-Once in the psql shell, do the following:
+Kad ste u psql shell, uradite kao što sljedi:
+
 ```
 CREATE USER pixelfed CREATEDB;
 \q
 ```
 
-::: tip Changing database drivers:
-If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
+::: tip Mjenjanje database drivera:
+Ako odlučite da zamjenite database drivere kasnije, molimo vas da napravite kopiju kao prvo! To možete uraditi sa `php artisan backup:run --only-db`
 :::
 
 ## PHP-FPM
 
-You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 7.3**.
+Možete provjeriti svoju instaliranu verziju PHP-FPM sa `php-fpm -v`. Budite sigurni da koristite verziju **PHP >= 7.3**.
 
-You can check your currently loaded extensions by running `php-fpm -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
+Možete provjeriti svoje trenutno učitane ekstenzije sa `php-fpm -m`. Moduli su obično omogućeni kroz uređivanje PHP konfiguriracijski fajl i unkomentirati odgovarajuće linije u odjeljku "Dinamička proširenja". Obavezno instalirajte i učitajte sljedeća ekstenzije:
+
 - `bcmath`
 - `ctype`
 - `curl`
@@ -83,30 +85,33 @@ You can check your currently loaded extensions by running `php-fpm -m`. Modules 
 - `xml`
 - `zip`
 
-You will also need to enable extensions for image processing drivers:
-- For GD: enable `gd`
-- For ImageMagick: enable `imagick`
+Trebaće te isto uključiti ekstenzije za obradu slika:
 
-Additionally, you will need to enable extensions for database drivers:
-- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
-- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
+- Za GD: uključi `gd`
+- Za ImageMagick: uključi `imagick`
 
-Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
-- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
-- `file_uploads` (default On, which it needs to be)
-- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
-- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
-- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
+Pored toga, trebat ćete omogućiti ekstenzije za database drivere:
 
-## Creating a dedicated app-user and using UNIX sockets (optional)
+- Za MySQL ili MariaDB: uključi `pdo_mysql` i `mysqli`
+- Za PostgreSQL: uključi `pdo_pgsql` i `pgsql`
 
-For added security, you may want to create a dedicated user specifically for running Pixelfed. To do this:
+Na kraju, budite sigurni da stavite želju za ograničenje prijenosa za vaš PHP proces. Morali biste provjeriti sljedeće:
+
+- `post_max_size` (zadano je 8M, postavite ovo oko ili malo veće od vaše željene granice veličine posta)
+- `file_uploads` (zadano je On, kao što treba biti)
+- `upload_max_filesize` (zadano je 2M, set this <= `post_max_size`)
+- `max_file_uploads` (zadano je 20, ali budite sigurni da je >= vaše željeno ograničenje privitka)
+- `max_execution_time` (zadano je 30, razmislite o podizanju ovog broja na 600 ili više tako da se duži zadaci ne bi prekidali)
+
+## Stvaranje namjenskog korisnika aplikacije i korištenje UNIX sockets (opcionalno)
+
+Za dodatnu sigurnost, možda ćete htjeti stvoriti namjenskog korisnika posebno za pokretanje Pixelfed-a. Da biste to učinili:
 
 ```bash
 useradd -rU -s /bin/bash pixelfed
 ```
 
-### Configuring PHP-FPM pool and socket
+### Konfiguriranje PHP-FPM pool i socket
 
 ```bash{1}
 cd /etc/php/php-fpm.d/
@@ -114,25 +119,25 @@ cp www.conf pixelfed.conf
 $EDITOR pixelfed.conf
 ```
 
-::: tip Where to define custom PHP-FPM pools
-The exact directory you should `cd` to will vary according to your distribution:
-- Arch Linux uses `/etc/php/php-fpm.d`
-- Debian and Ubuntu use `/etc/php/7.3/fpm/pool.d/` (dependent on PHP version)
-- For other distributions, check your php-fpm.conf to see where exactly you can define `*.conf` with `include=`
+::: tip Gdje definirati prilagođeni PHP-FPM pools
+Tačan direktorij u kojem biste trebali `cd` razlikovat će se ovisno o vašoj distribuciji:
+- Arch Linux koristi `/etc/php/php-fpm.d`
+- Debian i Ubuntu koriste `/etc/php/7.3/fpm/pool.d/` (zavisi na verziju od PHP)
+- Za ostale distribucije, provjerite svoj php-fpm.conf da vidite gdje tačno možete definirati `* .conf` sa` include =`
 :::
 
+Napravite sljedeće promjene u PHP-FPM pool:
 
-Make the following changes to the PHP-FPM pool:
 ```
-;     use the username of the app-user as the pool name, e.g. pixelfed
+;     koristite ime korisnika aplikacije kao ime pool-a, npr. pixelfed
 [pixelfed]
 user = pixelfed
 group = pixelfed
-;    to use a tcp socket, e.g. if running php-fpm on a different machine than your app:
-;    (note that the port 9001 is used, since php-fpm defaults to running on port 9000;)
-;    (however, the port can be whatever you want)
+;    da koristite TCP socket, npr. ako pokrećete php-fpm na mašini koji je drugačiji od tvoga APP-a:
+;    (imajte na umu da se koristi port 9001, jer php-fpm po defaultu radi na portu 9000;)
+;    (međutim, otaj port može biti šta god želite)
 ; listen = 127.0.0.1:9001;
-;    but it's better to use a socket if you're running locally on the same machine:
+;    ali bolje je koristiti socket ako lokalno radite na istoj mašini:
 listen = /run/php-fpm/pixelfed.sock
 listen.owner = http
 listen.group = http
@@ -140,18 +145,18 @@ listen.mode = 0660
 [...]
 ```
 
-### Configuring Redis socket
+### Konfiguriranje Redis socket-a
 
-Edit `redis.conf` and edit the following lines:
+Uredi `redis.conf` i uredite sljedeće redove
 ```
-port 6379                           # change this to "port 0" to disable network packets
+port 6379                           # uredite ovo na "port 0" da ugasite mrežne pakete
 unixsocket /run/redis/redis.sock    # 
-unixsocketperm 770                  # give permission to "redis" user and group
+unixsocketperm 770                  # dati dozvolu "redis" korisniku i grupi
 ```
 
-::: tip Where to find redis.conf
-The exact location will vary according to your distribution:
-- Arch Linux uses `/etc/redis.conf`
-- Debian and Ubuntu use `/etc/redis/redis.conf`
-- For other distributions, check your documentation
+::: tip Gdje naći redis.conf
+Tačna lokacija ovisit će o vašoj distribuciji:
+- Arch Linux koristi `/etc/redis.conf`
+- Debian i Ubuntu koriste `/etc/redis/redis.conf`
+- Za ostale distribucije provjerite svoje dokumentacije
 :::
