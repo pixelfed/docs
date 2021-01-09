@@ -13,109 +13,108 @@ Primjer:
 $ php artisan cache:clear
 ```
 
+Ovo će u terminalu pokazati na engleskom, ali možete ovde pogledati šta sve znači.
 
 
-
-| Options:| Info |
+| Opcije:| Informacije |
 | ------ | ------ |
-|  -h, --help            | Display this help message |
-|  -q, --quiet           | Do not output any message |
-|  -V, --version         | Display this application version |
-|      --ansi            | Force ANSI output |
-|      --no-ansi         | Disable ANSI output |
-|  -n, --no-interaction  | Do not ask any interactive question |
-|      --env[=ENV]       | The environment the command should run under |
-|  -v vv vvv, --verbose  | Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug |
+|  -h, --help            | Prikažite ovu poruku pomoći |
+|  -q, --quiet           | Ne izlazite nijednu poruku |
+|  -V, --version         | Prikažite verziju ove aplikacije |
+|      --ansi            | Prisili ANSI izlaz |
+|      --no-ansi         | Onemogući ANSI izlaz |
+|  -n, --no-interaction  | Ne postavljajte interaktivna pitanja |
+|      --env[=ENV]       | Okruženje pod kojim bi komanda trebala raditi |
+|  -v vv vvv, --verbose  | Povećajte preopširnost poruka: 1 za normalni izlaz, 2 za više detaljnih rezultata i 3 za debug |
+                        
 
-
-
-| Available commands: | Info |
+| Dostupne komande: | Informacije |
 | ------ | ------ |
-|  down                    | Put the application into maintenance mode |
-|  env                     | Display the current framework environment |
-|  help                    | Displays help for a command |
-|  migrate                 | Run the database migrations |
-|  optimize                | Cache the framework bootstrap files |
-|  self-diagnosis          | Perform application self diagnosis. |
-|  tinker                  | Interact with your application |
-|  up                      | Bring the application out of maintenance mode |
+|  down                    | Stavite aplikaciju u mode za održavanje |
+|  env                     | Prikažite trenutno okruženje okvira |
+|  help                    | Prikazuje pomoć za komande |
+|  migrate                 | Pokrenite migracije database-a |
+|  optimize                | Cache framework bootstrap datoteke |
+|  self-diagnosis          | Izvršite samodijagnozu |
+|  tinker                  | Interaktiraj sa vašom aplikacijom |
+|  up                      | Izbacite aplikaciju iz mode za održavanje |
 | **auth** |  | 
-|  auth:clear-resets       | Flush expired password reset tokens |
+|  auth:clear-resets       | Izbriši istekle lozinke i resetiraj tokene |
 | **backup** |  | 
-|  backup:clean            | Remove all backups older than specified number of days in config. |
-|  backup:list             | Display a list of all backups. |
-|  backup:monitor          | Monitor the health of all backups. |
-|  backup:run              | Run the backup. |
+|  backup:clean            | Uklonite sve kopije starije od određenog broja dana u konfiguraciji |
+|  backup:list             | Prikažiti listu svih kopija |
+|  backup:monitor          | Nadgledajte zdravlje svih kopija |
+|  backup:run              | Pokrenite kopiranje |
 | **cache** |  | 
-|  cache:clear             | Flush the application cache | 
-|  cache:forget            | Remove an item from the cache | 
+|  cache:clear             | Izbrišite aplikacijski cache | 
+|  cache:forget            | Uklonite stavku iz cache | 
 | **config** |  | 
-|  config:cache             | Create a cache file for faster configuration loading | 
-|  config:clear             | Remove the configuration cache file | 
+|  config:cache             | Stvorite cache za brže učitavanje konfiguracije | 
+|  config:clear             | Uklonite konfiguracijiski cache fajl | 
 | **email** | | 
-|  email:bancheck          | Checks user emails for banned domains | 
+|  email:bancheck          | Provjeravi korisničku e-poštu za zabranjene domene | 
 | **fix** | | 
-|  fix:avatars             | Replace old svg identicon avatars with default png avatar | 
-|  fix:hashtags            | Fix Hashtags | 
-|  fix:likes               | Fix Like counts | 
-|  fix:profile:duplicates   | Fix duplicate profiles | 
-|  fix:usernames           | Fix invalid usernames | 
+|  fix:avatars             | Zamjeni stare svg identicon avatars sa zadanim png avatar | 
+|  fix:hashtags            | Popravi Hashtags | 
+|  fix:likes               | Popravi Like counts | 
+|  fix:profile:duplicates   | Popravi duplicirane račune | 
+|  fix:usernames           | Popravi neispravne korisnička imena | 
 | **horizon** |  | 
-|  horizon:assets           | Re-publish the Horizon assets | 
-|  horizon:continue         | Instruct the master supervisor to continue processing jobs | 
-|  horizon:install          | Install all of the Horizon resources | 
-|  horizon:list             | List all of the deployed machines | 
-|  horizon:pause            | Pause the master supervisor | 
-|  horizon:purge            | Terminate any rogue Horizon processes | 
-|  horizon:snapshot         | Store a snapshot of the queue metrics | 
-|  horizon:status           | Get the current status of Horizon | 
-|  horizon:supervisors      | List all of the supervisors | 
-|  horizon:terminate        | Terminate the master supervisor so it can be restarted | 
+|  horizon:assets           | Ponovno objavite sredstva Horizon-a | 
+|  horizon:continue         | Uputite glavnog supervisor-a da nastavi obradu poslova | 
+|  horizon:install          | Instalirajte sve resurse od programa Horizon | 
+|  horizon:list             | Navedite sve postavljene mašine | 
+|  horizon:pause            | Pauziraj glavni supervisor | 
+|  horizon:purge            | Završite bilo koji nevaljali Horizon proces | 
+|  horizon:snapshot         | Pohranite snimak mjernih podataka | 
+|  horizon:status           | Dohvatite trenutni status Horizon-a | 
+|  horizon:supervisors      | Navedi sve supervisors | 
+|  horizon:terminate        | Završite glavnog supervisor-a kako bi ste mogli ponovo pokrenuti | 
 | **import** |  | 
-|  import:cities            | Import Cities to database | 
+|  import:cities            | Uvoz gradova u bazu podataka | 
 | **key** |  | 
-|  key:generate             | Set the application key | 
+|  key:generate             | Postavite aplikacijski ključ | 
 | **media** |  | 
-|  media:gc                 | Delete media uploads not attached to any active statuses | 
-|  media:optimize           | Find and optimize media that has not yet been optimized. | 
+|  media:gc                 | Izbrišite prijenose medija koji nisu pridruženi nijednom aktivnom statusu | 
+|  media:optimize           | Pronađite i optimizirajte medije koji još nisu optimizirani | 
 | **migrate** |  | 
-|  migrate:install          | Create the migration repository | 
+|  migrate:install          | Izradi migracijski repository | 
 | **optimize** |  | 
-|  optimize:clear           | Remove the cached bootstrap files | 
+|  optimize:clear           | Uklonite cached bootstrap fajlove | 
 | **passport** |  | 
-|  passport:client          | Create a client for issuing access tokens | 
-|  passport:install         | Run the commands necessary to prepare Passport for use | 
-|  passport:keys            | Create the encryption keys for API authentication | 
+|  passport:client          | Kreirajte klijenta za izdavanje pristupnih tokena | 
+|  passport:install         | Pokrenite naredbe potrebne za pripremu Passport-a za upotrebu | 
+|  passport:keys            | Stvorite ključeve za šifriranje za autentifikaciju API-ja | 
 | **queue** |  | 
-|  queue:failed             | List all of the failed queue jobs | 
-|  queue:flush              | Flush all of the failed queue jobs | 
-|  queue:forget             | Delete a failed queue job | 
-|  queue:listen             | Listen to a given queue | 
-|  queue:restart            | Restart queue worker daemons after their current job | 
-|  queue:retry              | Retry a failed queue job | 
-|  queue:work               | Start processing jobs on the queue as a daemon | 
+|  queue:failed             | Navedite sve neuspjele poslove reda | 
+|  queue:flush              | Izbrišite sve neuspjele poslove reda | 
+|  queue:forget             | Izbrišite neuspjeli posao u redu | 
+|  queue:listen             | Slušajte zadati red | 
+|  queue:restart            | Ponovo pokrenite daemon radnika u redu čekanja nakon njihovog trenutnog posla | 
+|  queue:retry              | Pokušajte ponovo sa neuspjelim zadatkom reda | 
+|  queue:work               | Počnite obrađivati poslove u redu kao daemon | 
 | **regenerate** |  | 
-|  regenerate:thumbnails    | Regenerate thumbnails | 
+|  regenerate:thumbnails    | Obnovite sličice | 
 | **route** |  | 
-|  route:cache              | Create a route cache file for faster route registration | 
-|  route:clear              | Remove the route cache file | 
-|  route:list               | List all registered routes | 
+|  route:cache              | stvorite datoteku cache route za bržu registraciju route | 
+|  route:clear              | Uklonite datoteku cache route | 
+|  route:list               | Navedi sve registrovane routes | 
 | **schedule** |  | 
-|  schedule:run             | Run the scheduled commands | 
+|  schedule:run             | Pokrenite zakazane komande | 
 | **status** |  | 
-|  status:dedup            | Removes duplicate statuses from before unique uri migration | 
+|  status:dedup            | Uklanja duplikate statusa prije jedinstvene migracije uri-ja | 
 | **storage** | | 
-|  storage:link            | Create a symbolic link from "public/storage" to "storage/app/public" | 
+|  storage:link            | Stvorite simboličku vezu od "public/storage" na "storage/app/public" | 
 | **user** |  |
-|  user:admin              | Make a user an admin, or remove admin privileges. | 
-|  user:create             | Create a new user | 
-|  user:delete             | Delete account | 
-|  user:show               | Show user info | 
-|  user:suspend            | Suspend a local user. | 
-|  user:table              | Display latest users | 
-|  user:unsuspend          | Unsuspend a local user. | 
+|  user:admin              | Postavite korisnika za administratora ili uklonite administratorske privilegije | 
+|  user:create             | Napravite novog korisnika | 
+|  user:delete             | Izbrišite korisnika | 
+|  user:show               | Prikaži informacije od korisnika | 
+|  user:suspend            | Suspendirajte lokalnog korisnika | 
+|  user:table              | Prikaži najnovije korisnike | 
+|  user:unsuspend          | Probudite lokalnog korisnika | 
 | **video** |  | 
-|  video:thumbnail         | Generate missing video thumbnails | 
+|  video:thumbnail         | Generirajte sličice videozapisa koje nedostaju | 
 | **view** |  |
-|  view:cache              | Compile all of the application's Blade templates | 
-|  view:clear              | Clear all compiled view files | 
+|  view:cache              | Kompajlirajte sve Blade predloške aplikacije | 
+|  view:clear              | Obriši sve kompajlirane datoteke prikaza | 
