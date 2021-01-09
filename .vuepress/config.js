@@ -1,6 +1,6 @@
 module.exports = {
-  title: 'Pixelfed dokumentacija',
-  description: 'dokumentacija za pixelfed',
+  title: 'Pixelfed Documentation',
+  description: 'Documentation for pixelfed',
   base: '/',
 
   head: [
