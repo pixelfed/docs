@@ -1,7 +1,7 @@
-# Pixelfed Technical Documentation
+# Tehnička dokumentacija Pixelfed-a
 
-::: tip Warning
-The docs are still a work in progress.
+::: tip Upozorenje
+Dokumentacija još nije skroz gotova.
 :::
 
 ## [API](api-v1.md)
