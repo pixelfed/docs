@@ -1,16 +1,16 @@
 module.exports = [
   {
-    title: 'Run your own Pixelfed website',
+    title: 'Pokrenite svoju web lokaciju sa Pixelfed-om',
     collapsable: false,
     children: prefix('running-pixelfed', [
-      'prerequisites',
-      'installation',
-      'administration',
-      'troubleshooting',
+      'preduvjeti',
+      'instalacija',
+      'administracija',
+      'rješavanje-problema',
       ]),
   },
   {
-    title: 'Technical documentation',
+    title: 'tehnička dokumentacija',
     collapsable: false,
     children: prefix('technical-documentation', [
       'api-v1',
@@ -19,7 +19,7 @@ module.exports = [
       ]),
   },
   {
-    title: 'Distro-specific deploy guides',
+    title: 'Vodiči za postavljanje na specifični Distro',
     collapsable: true,
     children: prefix('install-guides', [
       'arch',
