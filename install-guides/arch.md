@@ -98,6 +98,8 @@ events {
 }
 http {
     # [...]
+    client_max_body_size 9m; # add this line to configure client upload file size
+    
     gzip on;    # uncomment this line
 
     server {    # delete this entire block
