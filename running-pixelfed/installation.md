@@ -246,7 +246,6 @@ If you want admins to be able to access the Horizon web dashboard, you will need
 
 ```bash
 php artisan horizon:install
-php artisan horizon:assets
 ```
 
 If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.

@@ -164,7 +164,6 @@ php artisan key:generate
 php artisan storage:link
 php artisan horizon:terminate
 php artisan horizon:install
-php artisan horizon:assets
 php artisan migrate --force
 ```
 Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:
