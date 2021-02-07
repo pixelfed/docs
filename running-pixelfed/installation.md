@@ -77,6 +77,10 @@ If you are running your SQL server on a different machine or port:
 - Set `DB_HOST` to the IP of the machine
 - Set `DB_PORT` to the port on which your database server is exposed
 
+Alternatively, if you are using a Unix socket:
+
+- Set `DB_SOCKET` to the path of the socket, e.g. `/run/mysqld/mysqld.sock`
+
 To connect to the database you created:
 
 - Set `DB_DATABASE` to the name of the database created for Pixelfed
@@ -93,17 +97,19 @@ If you are running Redis on another machine:
 - Set `REDIS_PORT` to the port on which Redis is exposed
 - Set `REDIS_PASSWORD` to the password of that Redis server
 
-If you are using a UNIX socket for Redis, then:
+If you are using a Unix socket for Redis, then:
 
-- Set `REDIS_SCHEME` to `unix`
-- Set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Set `REDIS_HOST` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Set `REDIS_PORT` to `null`
 
-::: tip TCP server vs. UNIX socket
+If you are using a Unix socket 
+
+::: tip TCP server vs. Unix socket
 Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
 
 Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, both the app user and web user should have permission to access the socket, e.g. by being added to the `redis` group.
 
-Using a UNIX socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
+Using a Unix socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
 :::
 
 ### Email variables
@@ -387,6 +393,7 @@ server {
     index index.html index.htm index.php;
 
     charset utf-8;
+    client_max_body_size 15M;   # or your desired limit
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;

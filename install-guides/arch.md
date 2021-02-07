@@ -18,17 +18,18 @@ You will need a machine running Arch Linux with access to the root account.
 1. Login as `root`.
 2. Create the `pixelfed` user and group:
 ```bash
-useradd -rU -s /bin/bash pixelfed
+useradd -rU -s /bin/bash -d /srv/http/pixelfed pixelfed
 ```
 3. Install dependencies:
 ```bash
-pacman -S --needed nginx mariadb redis git php-fpm php-intl php-imagick php-redis composer jpegoptim optipng pngquant imagemagick unzip certbot certbot-nginx
+pacman -S --needed nginx mariadb redis git php-fpm php-intl php-imagick php-redis composer jpegoptim optipng pngquant imagemagick ffmpeg unzip certbot certbot-nginx
 ```
 4. Setup database. During `mysql_secure_installation`, hit Enter to use the default options. Make sure to set a password for the SQL user `root` (as by default, there is no password).
 ```bash
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 systemctl enable --now mariadb
 mysql_secure_installation
+mysql -u root -p
 ```
 ```sql
 create database pixelfed;
@@ -38,6 +39,7 @@ flush privileges;
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
 ```
 extension=bcmath
+extension=exif
 extension=iconv
 extension=intl
 extension=mysqli
@@ -99,12 +101,11 @@ events {
 http {
     # [...]
     gzip on;    # uncomment this line
-
     server {    # delete this entire block
         # [...]
     }
 
-    include /usr/share/webapps/pixelfed/nginx.conf;    # we will make this file later
+    include /srv/http/pixelfed/nginx.conf;    # we will make this file later
 }
 ```
 Generate SSL cert:
@@ -114,9 +115,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/serve
 ```
 8. Add users to groups:
 ```bash
-usermod -aG pixelfed http  # give web user permission to serve pixelfed
 usermod -aG redis pixelfed # give app user access to redis for queues
-usermod -aG redis http     # allow web user to proxy php-fpm to redis
 ```
 9. Enable services:
 ```bash
@@ -134,49 +133,26 @@ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
 ```bash
 cd pixelfed
 cp contrib/nginx.conf nginx.conf
-# edit nginx.conf
+$EDITOR nginx.conf
 ## in particular, set:
 ### - the correct domain name
+### - client_max_body_size to your desired upload limit
 ### - fastcgi_pass correct path (e.g. unix:/run/php-fpm/pixelfed.sock;)
 
-systemctl start nginx
 cp .env.example .env
-# edit .env
+$EDITOR .env
 ## in particular, set:
-### REDIS_SCHEME = unix
-### REDIS_PATH = /run/redis/redis.sock
+### DB_SOCKET = /run/mysqld/mysqld.sock
+###
+### REDIS_HOST = /run/redis/redis.sock
+### REDIS_PORT = null
+###
 ### IMAGE_DRIVER = imagick
+
+$EDITOR config/database.php
+## change predis to phpredis
 ```
-3. Set permissions:
-```bash
-chown -R pixelfed:pixelfed .
-find . -type d -exec chmod 755 {} \;
-find . -type f -exec chmod 644 {} \;
-```
-4. Switch to the `pixelfed` user:
-```bash
-su - pixelfed
-```
-5. Deploy:
-```bash
-composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
-php artisan key:generate
-php artisan storage:link
-php artisan horizon:terminate
-php artisan horizon:install
-php artisan migrate --force
-```
-Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-```
-Import Places data:
-```bash
-php artisan import:cities
-```
-6. Create the following file at `/etc/systemd/system/pixelfed.conf`:
+3. Create the following file at `/etc/systemd/system/pixelfed.service`:
 ```
 [Unit]
 Description=Pixelfed task queueing via Laravel Horizon
@@ -195,7 +171,43 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
-7. Start Horizon task queue:
+4. Set permissions:
 ```bash
-sudo systemctl enable --now pixelfed
+chown -R pixelfed:pixelfed .
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+```
+5. Switch to the `pixelfed` user:
+```bash
+su - pixelfed
+```
+6. Deploy:
+```bash
+$EDITOR composer.json
+## change require php to >= instead of ^
+## remove beyondcode/laravel-self-diagnosis
+## change league/iso3166 to >= instead of ^
+## change spatie/laravel-image-optimizer to >= instead of ^
+## change laravel/ui to >= instead of ^
+composer update
+composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+php artisan key:generate
+php artisan storage:link
+php artisan horizon:install
+php artisan migrate --force
+```
+Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+Import Places data:
+```bash
+php artisan import:cities
+``` 
+7. Start web server and Horizon task queue:
+```bash
+exit
+systemctl enable --now {nginx,pixelfed}
 ```
