@@ -8,7 +8,7 @@ Before you install Pixelfed, you will need to setup a webserver with the require
 - [Composer](https://getcomposer.org/), for PHP dependency management
 - [Git](https://git-scm.com/), for fetching updates
 - [Redis](https://redis.io/), for in-memory caching and background task queueing
-- [GD](https://libgd.github.io/) or [ImageMagick](https://imagemagick.org), for image processing
+- [GD](https://libgd.github.io/), for image processing
 - [JPEGOptim](https://github.com/tjko/jpegoptim), for optimizing JPG
 - [OptiPNG](http://optipng.sourceforge.net/), for lossless PNG
 - [PNGQuant](https://pngquant.org/), for lossy PNG
@@ -73,6 +73,7 @@ You can check your currently loaded extensions by running `php-fpm -m`. Modules 
 - `ctype`
 - `curl`
 - `exif`
+- `gd`
 - `iconv`
 - `intl`
 - `json`
@@ -82,10 +83,6 @@ You can check your currently loaded extensions by running `php-fpm -m`. Modules 
 - `tokenizer`
 - `xml`
 - `zip`
-
-You will also need to enable extensions for image processing drivers:
-- For GD: enable `gd`
-- For ImageMagick: enable `imagick`
 
 Additionally, you will need to enable extensions for database drivers:
 - For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`

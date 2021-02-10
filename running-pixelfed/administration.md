@@ -34,7 +34,6 @@ For example, you can give a user the admin role with the following command:
 php artisan user:admin username_here
 ```
 
-
 ### Fix accounts with reserved names
 
 You can run this command to fix accounts created before that username was reserved.
@@ -48,4 +47,12 @@ With this command you can trigger the garbage collection on the media files. Thi
 
 ```bash
 php artisan media:gc
+```
+
+### Create an OAuth client
+
+You can create an OAuth client from the command line using this command:
+
+```bash
+php artisan passport:client --personal
 ```

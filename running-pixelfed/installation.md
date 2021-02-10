@@ -191,6 +191,10 @@ If you want to enable ActivityPub federation:
 - Set `ACTIVITY_PUB` to `true`
 - Set `AP_REMOTE_FOLLOW` to `true`
 
+If you want to enable OAuth support for external clients:
+
+- Set `OAUTH_ENABLED` to `true`
+
 ## Setting up services
 
 ### One-time setup tasks
@@ -218,7 +222,18 @@ If you want to enable support for location data:
 php artisan import:cities
 ```
 
+If you enabled ActivityPub federation:
+```bash
+php artisan instance:actor
+```
+
+If you enabled OAuth:
+```bash
+php artisan passport:keys
+```
+
 Routes should be cached whenever the source code changes or whenever you change routes:
+
 ```bash
 php artisan route:cache
 php artisan view:cache
@@ -229,7 +244,6 @@ Every time you edit your .env file, you must run this command to have the change
 ```bash
 php artisan config:cache
 ```
-
 
 ::: tip Running Pixelfed without a cache
 
@@ -252,6 +266,7 @@ If you want admins to be able to access the Horizon web dashboard, you will need
 
 ```bash
 php artisan horizon:install
+php artisan horizon:publish
 ```
 
 If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.

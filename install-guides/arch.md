@@ -5,7 +5,6 @@ These instructions will install Pixelfed with the following:
 - Nginx (instead of Apache)
 - MariaDB (instead of PostgreSQL)
 - PHP-FPM (latest version)
-- ImageMagick (instead of GD)
 - Redis and PHP-FPM running via sockets instead of TCP (same machine)
 - `pixelfed` user for running Horizon queues, `http` user for running web processes (Arch default)
 - Repo cloned at `/srv/http/pixelfed`
@@ -22,7 +21,7 @@ useradd -rU -s /bin/bash -d /srv/http/pixelfed pixelfed
 ```
 3. Install dependencies:
 ```bash
-pacman -S --needed nginx mariadb redis git php-fpm php-intl php-imagick php-redis composer jpegoptim optipng pngquant imagemagick ffmpeg unzip certbot certbot-nginx
+pacman -S --needed nginx mariadb redis git php-fpm php-intl php-gd php-imagick php-redis composer jpegoptim optipng pngquant imagemagick ffmpeg unzip certbot certbot-nginx
 ```
 4. Setup database. During `mysql_secure_installation`, hit Enter to use the default options. Make sure to set a password for the SQL user `root` (as by default, there is no password).
 ```bash
@@ -194,6 +193,7 @@ composer install --no-ansi --no-interaction --no-progress --no-scripts --optimiz
 php artisan key:generate
 php artisan storage:link
 php artisan horizon:install
+php artisan horizon:publish
 php artisan migrate --force
 ```
 Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:
