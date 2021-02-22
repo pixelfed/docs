@@ -1,7 +1,4 @@
 module.exports = {
-  title: 'Pixelfed Documentation',
-  description: 'Documentation for pixelfed',
-  base: '/',
 
   head: [
 
@@ -23,4 +20,16 @@ module.exports = {
       '/': require('./sidebar')
     },
   },
+  locales: {
+    '/': {
+      lang: 'en-US',
+      title: 'Pixelfed Documentation',
+      description: 'Documentation for pixelfed',
+    },
+    '/pl/': {
+      lang: 'pl-PL',
+      title: 'Dokumentacja Pixelfed',
+      description: 'Dokumentacja projektu Pixelfed'
+    }
+  }
 };
