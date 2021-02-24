@@ -34,11 +34,13 @@ mysql -u root -p
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
 flush privileges;
+exit
 ```
 5. Edit `/etc/php/php.ini` and uncomment the following lines:
 ```
 extension=bcmath
 extension=exif
+extension=gd
 extension=iconv
 extension=intl
 extension=mysqli
