@@ -295,7 +295,7 @@ WantedBy=multi-user.target
 ```
 
 ::: tip Using correct paths and service names
-The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /home/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
+The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /usr/share/webapps/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
 
 - Replacing `mariadb` with `postgresql` or `mysql`
 - Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php7.3-fpm`
