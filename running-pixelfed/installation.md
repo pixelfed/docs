@@ -99,10 +99,8 @@ If you are running Redis on another machine:
 
 If you are using a Unix socket for Redis, then:
 
-- Set `REDIS_HOST` to the path of the socket, e.g. `/run/redis/redis.sock`
-- Set `REDIS_PORT` to `null`
-
-If you are using a Unix socket 
+- Set `REDIS_SCHEME` to `unix`
+- Set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
 
 ::: tip TCP server vs. Unix socket
 Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
