@@ -95,6 +95,10 @@ Finally, make sure to set the desired upload limits for your PHP processes. You 
 - `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
 - `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
 
+::: tip Instagram imports
+Instagram imports are also affected by these settings. If you enable imports, you will want to raise `post_max_size` to the maximum size you expect an Instagram archive to be, `upload_max_filesize` to the maximum size you expect individual Instagram photos to be, and `max_file_uploads` to the maximum number of photos (not posts) you'd expect an Instagram archive to contain.
+:::
+
 ## Creating a dedicated app-user and using UNIX sockets (optional)
 
 For added security, you may want to create a dedicated user specifically for running Pixelfed. To do this:
