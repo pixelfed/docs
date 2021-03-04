@@ -296,7 +296,7 @@ Per-file file-size limit in KB. Defaults to `15000` (15MB).
 `30`
 ### `MAX_ALBUM_LENGTH`
 `4`
-### ENFORCE_EMAIL_VERIFICATION
+### `ENFORCE_EMAIL_VERIFICATION`
 `true`
 ### `IMAGE_QUALITY`
 0-100 value for optimization level. Defaults to `80`.
