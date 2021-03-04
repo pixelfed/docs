@@ -107,7 +107,7 @@ Redis usually comes pre-configured to listen for TCP requests on the local machi
 
 Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, both the app user and web user should have permission to access the socket, e.g. by being added to the `redis` group.
 
-Using a Unix socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
+Using a Unix socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server. Unix sockets are also helpful for running more than one Redis instance on the same machine, which you might want to do if you have more than one application using Redis (a single Redis instance [should not be used](https://redis.io/commands/select) by multiple unrelated applications).
 :::
 
 ### Email variables
