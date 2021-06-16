@@ -449,6 +449,10 @@ Make sure to use the `/public` folder as your server root. Example:`server {root
 If you set root to the install directory (example: `server {root /var/www/pixelfed;)` Pixelfed will not work.
 :::
 
+::: tip Nginx client max body size
+Make sure to set an appropriate `client_max_body_size` setting in the `nginx.conf` file. Set this slightly greater than your desired post size limit for file uploads. The `nginx.conf` file location will vary based on your server. `/etc/nginx/nginx.conf`
+Example:`http {client_max_body_size 9m;}`
+
 #### Obtaining an HTTPS certificate
 
 For testing deployments, you may generate a self-signed SSL certificate. For example:
