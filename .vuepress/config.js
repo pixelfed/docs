@@ -11,6 +11,7 @@ module.exports = {
   themeConfig: {
     logo: 'https://avatars0.githubusercontent.com/u/38410642?s=200&v=4',
     repo: 'pixelfed/docs',
+    docsBranch: 'main',
     editLinks: true,
     displayAllHeaders: false,
     sidebarDepth: 1,
