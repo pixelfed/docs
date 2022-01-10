@@ -15,4 +15,6 @@ git init
 git add .
 git commit -m 'deploy'
 
-git push -f https://github.com/pixelfed/docs.git main:gh-pages
+git push -f https://github.com/pixelfed/docs.git master:gh-pages
+
+cd -

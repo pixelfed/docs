@@ -8,3 +8,6 @@ Run either `php artisan package:discover` or `composer install`, then run `php a
 
 ## Apps using OAuth login show "Something went wrong" page
 First, check that `OAUTH_ENABLE=1` is set in `.env`. If the problem persists, try `php artisan passport:install` to regenerate the `storage/oauth-private.key` file.
+
+## 419 Session Expired error
+Make sure you have `SESSION_DOMAIN`, `APP_URL` and `APP_DOMAIN` set in your `.env`.
