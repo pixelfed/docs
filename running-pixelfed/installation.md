@@ -99,7 +99,9 @@ If you are running Redis on another machine:
 
 If you are using a Unix socket for Redis, then:
 
-- Set `REDIS_HOST` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Set `REDIS_SCHEME` to `unix`
+- Add and set `REDIS_PATH` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Set `REDIS_HOST` to `null`
 - Set `REDIS_PORT` to `null`
 
 If you are using a Unix socket 
