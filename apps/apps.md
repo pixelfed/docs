@@ -11,4 +11,4 @@ You can use Pixelfed with any of these apps!
 
 **PixelDroid**
 
-- https://apt.izzysoft.de/fdroid/index/apk/com.h.pixeldroid
+- https://f-droid.org/packages/org.pixeldroid.app/
