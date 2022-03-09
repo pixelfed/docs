@@ -7,12 +7,14 @@ module.exports = [
       'installation',
       'administration',
       'troubleshooting',
+      'ldap-authentication'
       ]),
   },
   {
     title: 'Technical documentation',
     collapsable: false,
     children: prefix('technical-documentation', [
+      'activitypub',
       'api-v1',
       'artisan',
       'env',

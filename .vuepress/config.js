@@ -7,6 +7,10 @@ module.exports = {
 
   ],
 
+  markdown: {
+    lineNumbers: true
+  },
+
   serviceWorker: false,
   themeConfig: {
     logo: 'https://avatars0.githubusercontent.com/u/38410642?s=200&v=4',
