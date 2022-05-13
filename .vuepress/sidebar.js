@@ -25,6 +25,7 @@ module.exports = [
     collapsable: true,
     children: prefix('install-guides', [
       'arch',
+      'ubuntu20',
     ]),
   },
 
