@@ -2,20 +2,20 @@
 
 * PHP 7.4
 
-## Upgrade Ubuntu 20.04 LTS
+## Part 1 - Upgrade Ubuntu 20.04 LTS
 ```
 apt update
 apt upgrade -y
 reboot now
 ```
 
-## Redis - Install
+## Part 2 - Redis - Install
 ```
 apt -y install redis-server
 systemctl enable redis-server
 ```
 
-## MariaDB - Install
+## Part 3 - MariaDB - Install
 ```
 apt -y install mariadb-server
 systemctl enable mariadb
@@ -31,14 +31,14 @@ flush privileges;
 exit;
 ```
 
-## Setup dependent packets
+## Part 4 - Setup dependent packets
 ```
 apt -y install ffmpeg 
 apt -y install jpegoptim optipng pngquant gifsicle 
 apt -y install unzip zip
 ```
 
-## PHP - Install
+## Part 5 - PHP - Install
 ```
 apt -y install php7.4-fpm php7.4-cli
 ### Install additional PHP modules not installed by default
@@ -69,14 +69,14 @@ edit these lines
     listen = /run/php/php7.4-fpm-pixelfed.sock
 ```
 
-## Composer
+## Part 6 - Install Composer
 ```
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
 
-# AS PIXELFED USER
+## Part 7 - Prepare Pixelfed (AS PIXELFED USER)
 ```
 adduser pixelfed
 su - pixelfed
@@ -134,7 +134,7 @@ php artisan horizon:install
 php artisan horizon:publish
 ```
 
-# AS ROOT USER
+## Part 8 - Prepare Pixelfed (AS ROOT)
 ```
 tee /etc/systemd/system/pixelfedhorizon.service <<EOF
 [Unit]
@@ -173,21 +173,20 @@ add this line
 ```
 * * * * * /usr/bin/php /home/pixelfed/pixelfed/artisan schedule:run >> /dev/null 2>&1
 ```
-## Nginx - Install
+
+## Part 9 - Nginx and Certbot - Install
 ```
-apt -y install nginx
+apt -y install nginx certbot python3-certbot-nginx
 systemctl enable nginx
 ```
-### Certbot
-```
-apt install certbot python3-certbot-nginx
-certbot --nginx -d pixelfed.au -d www.pixelfed.au
-```
 
-### Nginx 
 ```
 cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
 ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 nano /etc/nginx/sites-available/pixelfed.conf
 systemctl reload nginx
+```
+
+```
+certbot --nginx -d pixelfed.au -d www.pixelfed.au
 ```
