@@ -1,7 +1,11 @@
 # Deploying Pixelfed on Ubuntu 20.04.4 LTS (Focal Fossa)
 Guide by @shlee@aus.social - Version 0.1
 
+## NOTES
 * PHP 7.4
+
+## TODO
+* Update redis and mariadb to use unixsockets over tcp. (Investigate if this is worth it)
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 ![image](https://user-images.githubusercontent.com/17537000/168226273-9b89cc51-11ca-4ace-9137-99f2401b3b28.png)
