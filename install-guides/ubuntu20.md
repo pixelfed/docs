@@ -1,4 +1,5 @@
 # Deploying Pixelfed on Ubuntu 20.04.4 LTS (Focal Fossa)
+Guide by @shlee@aus.social - Version 0.1
 
 * PHP 7.4
 
