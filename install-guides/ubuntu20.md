@@ -3,6 +3,10 @@ Guide by @shlee@aus.social - Version 0.1
 
 * PHP 7.4
 
+## Part 0 - Setup the VM and update the DNS for A and AAAA records
+<img width="1246" alt="image" src="https://user-images.githubusercontent.com/17537000/83625817-21a8b180-a5c7-11ea-8eff-921289be4d23.png">
+<img width="1028" alt="image" src="https://user-images.githubusercontent.com/17537000/83625886-37b67200-a5c7-11ea-86fa-9a7c8480b23c.png">
+
 ## Part 1 - Upgrade Ubuntu 20.04 LTS
 ```
 apt update
