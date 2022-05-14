@@ -212,7 +212,7 @@ server: nginx/1.18.0 (Ubuntu)
 
 Hot cache the instance actor 
 ```
-curl pixelfed.au/i/actor
+curl https://pixelfed.au/i/actor
 ```
 
 
