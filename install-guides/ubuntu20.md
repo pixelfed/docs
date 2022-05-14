@@ -198,4 +198,21 @@ systemctl reload nginx
 
 ```
 certbot --nginx -d pixelfed.au -d www.pixelfed.au
+
+
+## Part 10 - Test your new Pixelfed
 ```
+curl -I https://pixelfed.au
+
+pixelfed@localhost:~/pixelfed$ curl -I https://pixelfed.au
+HTTP/2 200
+server: nginx/1.18.0 (Ubuntu)
+
+```
+
+Hot cache the instance actor 
+```
+curl pixelfed.au/i/actor
+```
+
+
