@@ -499,3 +499,6 @@ curl https://pixelfed.au/i/actor
 
 ![image](https://user-images.githubusercontent.com/17537000/171832652-5123b4a5-b059-48c2-93cd-aae610b5e4ca.png)
 
+## Part 14.2 - Test the Horizon Queue
+* Visit the Horizon Portal in the admin area.
+![image](https://user-images.githubusercontent.com/17537000/171842164-adca2b40-4e84-4c82-93b4-9b63abe5040a.png)
