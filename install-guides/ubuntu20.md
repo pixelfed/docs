@@ -455,6 +455,10 @@ systemctl daemon-reload
 systemctl enable pixelfedhorizon
 ```
 ```
+systemctl start pixelfedhorizon
+```
+* Wait 10 seconds for the Horizon Queue to boot the worker nodes
+```
 systemctl status pixelfedhorizon
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171827697-a2aa60bf-dd65-4765-8bc5-bd79b83208ad.png)
