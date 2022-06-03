@@ -85,6 +85,7 @@ apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring p
 ```
 
 ## Part 5.1 - PHP - Setup
+* Open the php.ini file
 ```
 nano /etc/php/7.4/fpm/php.ini
 ```
@@ -111,7 +112,7 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
 
-* Edit these parameters/keys to match these values
+* Open the pixelfed.conf file
 ```
 nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
@@ -138,29 +139,44 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ![image](https://user-images.githubusercontent.com/17537000/171808535-b0a08f87-2b73-436f-91e7-133e7074a16d.png)
 
 
-## Part 7 - Prepare Pixelfed (AS PIXELFED USER)
+## Part 7 - Prepare new Pixelfed user
+* Create a new user pixelfed
 ```
 adduser pixelfed
 ```
+![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
+
+* Login as the new pixelfed user
 ```
 su - pixelfed
 ```
+![image](https://user-images.githubusercontent.com/17537000/171809094-7d5b7b1d-13ff-4eee-bebd-b496c5590d9b.png)
+
+## Part 7.1 - Prepare Pixelfed (AS PIXELFED USER)
+* Using git, clone a copy of the repo from the dev branch
 ```
 git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed && cd pixelfed
 ```
+![image](https://user-images.githubusercontent.com/17537000/171809397-9c797416-1b33-4069-b5a6-e63569006802.png)
+
+* Install all of the php dependant packages using composer
 ```
 composer install --no-ansi --no-interaction --optimize-autoloader
 ```
+![image](https://user-images.githubusercontent.com/17537000/171809700-53d77822-bb8f-475d-812e-3e7f6c5ae086.png)
+
+## Part 8 - Prepare new Pixelfed instance
+* Copy the default .env file
 ```
 cp .env.example .env
 ```
 
-### Complete .env
+* Open the .env file
 ```
 nano .env
 
 ```
-edit these lines
+* Edit these lines to match your new instance
 ```
     APP_NAME="Pixelfed Australia"
     APP_DEBUG=false
@@ -169,10 +185,9 @@ edit these lines
     APP_DOMAIN="pixelfed.au"
     ADMIN_DOMAIN="pixelfed.au"
     SESSION_DOMAIN="pixelfed.au"
-    
 ```
 
-### PHP Artisan tasks
+## Part 9 - PHP Artisan tasks
 ```
 #One time only, you need to generate the secret APP_KEY:
 php artisan key:generate
@@ -205,7 +220,7 @@ php artisan horizon:publish
 
 ```
 
-## Part 8 - Prepare Pixelfed (AS ROOT)
+## Part 10 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
 ```
 tee /etc/systemd/system/pixelfedhorizon.service <<EOF
 [Unit]
@@ -237,7 +252,7 @@ systemctl enable pixelfedhorizon
 systemctl status pixelfedhorizon
 
 ```
-### Crontab for schedule
+## Part 11 - Crontab for schedule
 ```
 crontab -e
 
@@ -248,7 +263,7 @@ add this line
 
 ```
 
-## Part 9 - Nginx and Certbot - Install
+## Part 12 - Nginx and Certbot - Install
 ```
 apt -y install nginx certbot python3-certbot-nginx
 systemctl enable nginx
@@ -268,7 +283,7 @@ certbot --nginx -d pixelfed.au -d www.pixelfed.au
 
 ```
 
-## Part 10 - Test your new Pixelfed
+## Part 13 - Test your new Pixelfed
 
 curl -I https://pixelfed.au
 
