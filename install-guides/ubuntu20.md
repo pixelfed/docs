@@ -415,11 +415,18 @@ crontab -e
 ```
 curl -I https://pixelfed.au
 ```
+![image](https://user-images.githubusercontent.com/17537000/171829201-dc205193-515f-4cfa-adbd-4338f4ed3af9.png)
 
 
 * Hot cache the instance actor 
 ```
 curl https://pixelfed.au/i/actor
 ```
+![image](https://user-images.githubusercontent.com/17537000/171829396-ad8c402f-d752-4b17-80ec-272ad71d71dc.png)
 
+
+## Part 14 - Test on the browser!
+![image](https://user-images.githubusercontent.com/17537000/171829532-a44d949a-3bc5-491a-aea0-73e9a210f1c3.png)
+
+## Part 14.1 - Log in with the admin account
 
