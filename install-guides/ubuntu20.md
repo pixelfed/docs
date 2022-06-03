@@ -102,7 +102,8 @@ nano /etc/php/7.4/fpm/php.ini
 ```
 grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/7.4/fpm/php.ini
 ```
-![image](https://user-images.githubusercontent.com/17537000/171806745-f07e2ccd-9989-4ccc-b8c8-655fd4b1f5d4.png)
+![image](https://user-images.githubusercontent.com/17537000/171808166-400b5299-1c90-43af-aa14-5daa76398ab0.png)
+
 
 ## Part 5.2 - PHP-FPM - Setup
 * Make a copy of the php-fpm pool config file for pixelfed
