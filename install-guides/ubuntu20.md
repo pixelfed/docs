@@ -237,11 +237,22 @@ nano /home/pixelfed/pixelfed/.env
     DB_PASSWORD=secretpasswordhere
 ```
 
+## Part 8.1 - OAuth (Required for the Mobile App)
 * Add these lines to the .env file
 ```
 OAUTH_ENABLED=true
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171833196-267f2e90-22e0-48f8-8297-5e6c07729819.png)
+
+
+## Part 8.2 - Federation (Optional)
+* Edit these lines to match your new instance
+```
+ACTIVITY_PUB=true
+AP_REMOTE_FOLLOW=true
+AP_INBOX=true
+```
+![image](https://user-images.githubusercontent.com/17537000/171833887-a70f6ca2-5558-4cbb-8e12-31f3badd75c0.png)
 
 ## Part 9 - PHP Artisan tasks
 * One time only, you need to generate the secret APP_KEY:
@@ -463,20 +474,4 @@ curl https://pixelfed.au/i/actor
 * Confirm the Admin Dashboard link is visible.
 
 ![image](https://user-images.githubusercontent.com/17537000/171832652-5123b4a5-b059-48c2-93cd-aae610b5e4ca.png)
-
-
-## Part 15 - Federation (Optional)
-* Open the pixelfed .env file
-```
-nano /home/pixelfed/pixelfed/.env
-```
-
-* Edit these lines to match your new instance
-```
-ACTIVITY_PUB=true
-AP_REMOTE_FOLLOW=true
-AP_INBOX=true
-AP_OUTBOX=true
-```
-
 
