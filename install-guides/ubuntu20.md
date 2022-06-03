@@ -1,5 +1,5 @@
 # Deploying Pixelfed on Ubuntu 20.04.4 LTS (Focal Fossa)
-Guide by @shlee@aus.social - Version 0.1
+Guide by @shlee@aus.social - Version 0.5
 
 ## NOTES
 * This guide will be updated for Ubuntu 22.04 LTS (Jammy Jellyfish) once PHP 8.0 is confirmed as fully supported.
