@@ -325,11 +325,11 @@ php artisan horizon:publish
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
 
 ## Part 9.1 - Create an administrator account
-* Create a new user using php artisan
+* Create a new admin user using php artisan
 ```
 php artisan user:create
 ```
-![image](https://user-images.githubusercontent.com/17537000/171831865-b8662194-3906-43e8-8984-21cc98489aa4.png)
+![image](https://user-images.githubusercontent.com/17537000/171835654-d6d42d7f-ca0d-43ee-a397-381a0c6d7533.png)
 
 ## Part 10 - Return to the root account
 * Exit the `pixelfed` account and become root again.
