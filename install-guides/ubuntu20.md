@@ -339,7 +339,7 @@ nano /etc/nginx/sites-available/pixelfed.conf
     ssl_certificate /etc/letsencrypt/live/pixelfed.au/fullchain.pem;       # generate your own
     ssl_certificate_key /etc/letsencrypt/live/pixelfed.au/privkey.pem;   # or use letsencrypt
 
-    fastcgi_pass unix:/run/php-fpm/php-fpm-pixelfed.sock;
+    fastcgi_pass unix:/run/php/php7.4-fpm-pixelfed.sock;
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171825837-b53066f2-ffbb-4d87-9208-b66c209c30b0.png)
 
