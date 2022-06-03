@@ -112,7 +112,7 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
 
-* Open the pixelfed.conf file
+* Open the php-fpm pixelfed.conf file
 ```
 nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
@@ -175,6 +175,8 @@ cp .env.example .env
 ```
 nano .env
 ```
+
+
 * Edit these lines to match your new instance
 ```
     APP_NAME="Pixelfed Australia"
@@ -248,12 +250,61 @@ php artisan horizon:publish
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
 
 
-## Part 10 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
+## Part 10 - Return to the root account
 * Exit the `pixelfed` account and become root again.
 ```
 exit
 ```
+![image](https://user-images.githubusercontent.com/17537000/171812687-e34fd89f-6bd0-4724-aed6-ef60a7dfbdc1.png)
 
+## Part 11 - Nginx and Certbot - Install
+* Install stock nginx, Install certbot to handle the TLS certificate and enable the engine service to autostart.
+Note: certbot is configured on a systemd timer to renew the TLS certificates automaticly, and don't need to be enabled.
+```
+apt -y install nginx certbot python3-certbot-nginx
+```
+```
+systemctl enable nginx
+```
+![image](https://user-images.githubusercontent.com/17537000/171813872-b3b2066c-fa90-4e4d-98bb-8ca3f797ffed.png)
+
+# Broken here
+
+## Part 11.1 - Configure nginx
+* Copy the default nginx.conf to pixelfed.conf
+```
+cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
+```
+* Add a symlink to the nginx sites-enabled folder
+```
+ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
+```
+* Open the nginx pixelfed.conf file
+```
+nano /etc/nginx/sites-available/pixelfed.conf
+```
+
+* Edit these lines to match your new instance
+** server_name has to be changed twice
+** root needs to be changed to the correct path
+** fastcgi_pass needs to be updated to match the fpm conf
+```
+    server_name pixelfed.au;
+    root /home/pixelfed/pixelfed/public;
+    fastcgi_pass unix:/run/php-fpm/php-fpm-pixelfed.sock;
+```
+![image](https://user-images.githubusercontent.com/17537000/171814552-9c401df3-c85c-4d5e-87e3-c291bbefb197.png)
+
+## Part 11.2 - Configure certbot
+```
+certbot --nginx -d pixelfed.au -d www.pixelfed.au
+```
+
+```
+systemctl reload nginx
+```
+
+## Part 12 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
 * Create the systemd service file for Horizon
 ```
 tee /etc/systemd/system/pixelfedhorizon.service <<EOF
@@ -280,12 +331,19 @@ TimeoutStopSec=60
 WantedBy=multi-user.target
 
 EOF
-
-systemctl daemon-reload
-systemctl enable pixelfedhorizon
-systemctl status pixelfedhorizon
-
 ```
+* Reload systemd and enable the Pixelfed Horizon
+```
+systemctl daemon-reload
+```
+```
+systemctl enable pixelfedhorizon
+```
+```
+systemctl status pixelfedhorizon
+```
+
+
 ## Part 11 - Crontab for schedule
 ```
 crontab -e
@@ -297,25 +355,7 @@ add this line
 
 ```
 
-## Part 12 - Nginx and Certbot - Install
-```
-apt -y install nginx certbot python3-certbot-nginx
-systemctl enable nginx
 
-```
-
-```
-cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
-ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
-nano /etc/nginx/sites-available/pixelfed.conf
-systemctl reload nginx
-
-```
-
-```
-certbot --nginx -d pixelfed.au -d www.pixelfed.au
-
-```
 
 ## Part 13 - Test your new Pixelfed
 
