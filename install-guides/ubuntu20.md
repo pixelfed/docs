@@ -20,6 +20,7 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.5
 
 ## Part 1 - Upgrade Ubuntu 20.04 LTS
 * Install all updated default Ubuntu packages and reboot
+> Install the packages verison if you're prompted
 ```
 apt update
 ```
