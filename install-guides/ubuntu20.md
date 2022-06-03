@@ -10,6 +10,7 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.5
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 * Setup the VM
+> You can use a low spec machine for a while. Increase the instance type for additional CPU/RAM later.
 
 ![image](https://user-images.githubusercontent.com/17537000/171820544-80ed8a0e-dae3-4b4b-9c76-ff939c8a488c.png)
 * Setup the DNS for pixelfed.au
