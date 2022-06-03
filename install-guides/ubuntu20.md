@@ -249,7 +249,7 @@ DB_PASSWORD=secretpasswordhere
 <!-- * Edit these lines to match your new instance
 ```
     REDIS_SCHEME=unix
-    REDIS_PATH=/run/redis/redis.sock
+    REDIS_PATH=/var/run/redis/redis-server.sock
     REDIS_HOST=null
     REDIS_PASSWORD=null
     REDIS_PORT=null
