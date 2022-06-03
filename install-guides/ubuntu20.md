@@ -259,7 +259,7 @@ exit
 
 ## Part 11 - Nginx and Certbot - Install
 * Install stock nginx, Install certbot to handle the TLS certificate and enable the engine service to autostart.
-Note: certbot is configured on a systemd timer to renew the TLS certificates automaticly, and don't need to be enabled.
+** Note: certbot is configured on a systemd timer to renew the TLS certificates automaticly, and don't need to be enabled.
 ```
 apt -y install nginx certbot python3-certbot-nginx
 ```
