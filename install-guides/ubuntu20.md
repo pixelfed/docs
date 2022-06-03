@@ -187,6 +187,16 @@ adduser pixelfed
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
 
+* Add pixelfed to the redis group
+```
+usermod -aG redis pixelfed
+```
+* Add pixelfed to the mysql group
+```
+usermod -aG mysql pixelfed
+```
+![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
+
 * Login as the new pixelfed user
 ```
 su - pixelfed
