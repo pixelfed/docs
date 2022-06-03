@@ -36,6 +36,18 @@ reboot now
 ```
 apt -y install redis-server
 ```
+* Open the redis.config file
+```
+nano /etc/redis/redis.conf
+```
+
+* Edit these parameters/keys to match these values
+```
+    unixsocket /var/run/redis/redis-server.sock
+    unixsocketperm 770
+```
+![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png)
+
 ```
 systemctl enable redis-server
 ```
