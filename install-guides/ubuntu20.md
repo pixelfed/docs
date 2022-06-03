@@ -41,12 +41,12 @@ apt -y install redis-server
 nano /etc/redis/redis.conf
 ```
 
-<!-- * Edit these parameters/keys to match these values
+* Edit these parameters/keys to match these values
 ```
 unixsocket /var/run/redis/redis-server.sock
 unixsocketperm 770
 ```
-![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png) -->
+![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png)
 
 ```
 systemctl enable redis-server
@@ -245,8 +245,7 @@ DB_PASSWORD=secretpasswordhere
 ```
 
 ## Part 8.1 - Unix Socket (Redis and MariaDB)
-* Coming Soon
-<!-- * Edit these lines to match your new instance
+* Edit these lines to match your new instance
 ```
     REDIS_SCHEME=unix
     REDIS_PATH=/run/redis/redis.sock
@@ -254,7 +253,9 @@ DB_PASSWORD=secretpasswordhere
     REDIS_PASSWORD=null
     REDIS_PORT=null
 ```
-![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png) -->
+![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png)
+
+
 
 ## Part 8.2 - OAuth (Required for the Mobile App)
 * Add these lines to the .env file
