@@ -52,6 +52,9 @@ nano /etc/redis/redis.conf
 systemctl enable redis-server
 ```
 ```
+systemctl restart redis-server
+```
+```
 systemctl status redis-server
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171826482-04662315-3a04-4359-a0f3-68843021f14e.png)
