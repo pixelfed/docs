@@ -341,8 +341,7 @@ nano /etc/nginx/sites-available/pixelfed.conf
 
     fastcgi_pass unix:/run/php/php7.4-fpm-pixelfed.sock;
 ```
-![image](https://user-images.githubusercontent.com/17537000/171825837-b53066f2-ffbb-4d87-9208-b66c209c30b0.png)
-
+![image](https://user-images.githubusercontent.com/17537000/171829099-3541b28c-0953-471a-8385-a36fd91c1606.png)
 
 * Add a symlink to the nginx sites-enabled folder
 ```
