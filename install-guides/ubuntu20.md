@@ -2,7 +2,7 @@
 Guide by @shlee@aus.social - Version 0.1
 
 ## NOTES
-* This guide will be updated for Ubuntu 22.04 LTS (Jammy Jellyfish) once PHP 8.0 is supported.
+* This guide will be updated for Ubuntu 22.04 LTS (Jammy Jellyfish) once PHP 8.0 is confirmed as fully supported.
 
 ## TODO
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
