@@ -191,26 +191,38 @@ nano .env
 ```
 php artisan key:generate
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811406-7276ff9e-80e8-4ea0-bd74-ca4a1879b645.png)
+
 * One time only, the storage/ directory must be linked to the application:
 ```
 php artisan storage:link
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811430-f5957e34-26ca-4079-a95b-cff94a810780.png)
+
 * Database migrations must be run:
 ```
 php artisan migrate --force
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811653-329242e8-d3c5-4a37-8f13-0a6fef91183b.png)
+
 * One time only, Generate location data:
 ```
 php artisan import:cities
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811764-e2bfa6f1-9eb1-4d82-ba76-3f49082998ce.png)
+
 * One time only, Generate ActivityPub federation actor:
 ```
 php artisan instance:actor
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811803-79fa7071-71ae-4da7-8c7e-33915d8a7d6d.png)
+
 * One time only, Generate OAuth keys:
 ```
 php artisan passport:keys
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811832-8750edea-66c7-4905-8482-6506f935d0c4.png)
+
 * Routes should be cached whenever the source code changes or whenever you change routes:
 ```
 php artisan route:cache
@@ -218,11 +230,13 @@ php artisan route:cache
 ```
 php artisan view:cache
 ```
+![image](https://user-images.githubusercontent.com/17537000/171811876-a6913ac7-e50a-45fc-a5b5-42ed4e2c200b.png)
 
 * Every time you edit your .env file, you must run this command to have the changes take effect:
 ```
 php artisan config:cache
 ```
+![image](https://user-images.githubusercontent.com/17537000/171812304-e00cc29b-453e-4bff-b398-ab453260bf57.png)
 
 * Laravel Horizon
 ```
@@ -231,8 +245,16 @@ php artisan horizon:install
 ```
 php artisan horizon:publish
 ```
+![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
+
 
 ## Part 10 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
+* Exit the `pixelfed` account and become root again.
+```
+exit
+```
+
+* Create the systemd service file for Horizon
 ```
 tee /etc/systemd/system/pixelfedhorizon.service <<EOF
 [Unit]
