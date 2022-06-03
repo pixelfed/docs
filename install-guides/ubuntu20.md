@@ -271,7 +271,7 @@ AP_INBOX=true
 ![image](https://user-images.githubusercontent.com/17537000/171833887-a70f6ca2-5558-4cbb-8e12-31f3badd75c0.png)
 
 ## Part 9 - PHP Artisan tasks
-* One time only, you need to generate the secret APP_KEY:
+* One time only, Generate the secret APP_KEY:
 ```
 php artisan key:generate
 ```
