@@ -143,6 +143,15 @@ nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
+* Restart php-fpm
+```
+systemctl restart php7.4-fpm
+```
+```
+systemctl status php7.4-fpm
+```
+![image](https://user-images.githubusercontent.com/17537000/171828436-a5c41ae9-33e1-4973-84e2-e2c1d5c604ee.png)
+
 ## Part 6 - Install Composer
 * Download the composer installer to /tmp/
 ```
@@ -271,14 +280,6 @@ php artisan horizon:publish
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
 
-
-
-
-# BROKEN!
-
-
-
-
 ## Part 10 - Return to the root account
 * Exit the `pixelfed` account and become root again.
 ```
@@ -347,8 +348,6 @@ nano /etc/nginx/sites-available/pixelfed.conf
 ```
 ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 ```
-
-
 
 * Reload nginx to load the new enabled site.
 ```
