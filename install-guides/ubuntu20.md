@@ -41,12 +41,12 @@ apt -y install redis-server
 nano /etc/redis/redis.conf
 ```
 
-* Edit these parameters/keys to match these values
+<!-- * Edit these parameters/keys to match these values
 ```
-    unixsocket /var/run/redis/redis-server.sock
-    unixsocketperm 770
+unixsocket /var/run/redis/redis-server.sock
+unixsocketperm 770
 ```
-![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png)
+![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png) -->
 
 ```
 systemctl enable redis-server
@@ -124,11 +124,11 @@ nano /etc/php/7.4/fpm/php.ini
 
 * Edit these parameters/keys to match these values
 ```
-    post_max_size = 100M
-    file_uploads = On
-    upload_max_filesize = 100M
-    max_file_uploads = 20
-    max_execution_time = 120
+post_max_size = 100M
+file_uploads = On
+upload_max_filesize = 100M
+max_file_uploads = 20
+max_execution_time = 120
 ```
 
 * Test the changes using the following command
@@ -151,10 +151,10 @@ nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 
 * Edit these lines
 ```
-    [pixelfed]
-    user = pixelfed
-    group = pixelfed
-    listen = /run/php/php7.4-fpm-pixelfed.sock
+[pixelfed]
+user = pixelfed
+group = pixelfed
+listen = /run/php/php7.4-fpm-pixelfed.sock
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
@@ -223,32 +223,28 @@ nano /home/pixelfed/pixelfed/.env
 
 * Edit these lines to match your new instance
 ```
-    APP_NAME="Pixelfed Australia"
-    APP_DEBUG=false
+APP_NAME="Pixelfed Australia"
+APP_DEBUG=false
 
-    APP_URL="https://pixelfed.au"
-    APP_DOMAIN="pixelfed.au"
-    ADMIN_DOMAIN="pixelfed.au"
-    SESSION_DOMAIN="pixelfed.au"
+APP_URL="https://pixelfed.au"
+APP_DOMAIN="pixelfed.au"
+ADMIN_DOMAIN="pixelfed.au"
+SESSION_DOMAIN="pixelfed.au"
           
-    OPEN_REGISTRATION=false
-    ENFORCE_EMAIL_VERIFICATION=false
-    
-    DB_PASSWORD=secretpasswordhere
+DB_PASSWORD=secretpasswordhere
 ```
 
-## Part 8.1 - Redis Unix Socket
-* Edit these lines to match your new instance
+## Part 8.1 - Unix Socket (Redis and MariaDB)
+* Coming Soon
+<!-- * Edit these lines to match your new instance
 ```
     REDIS_SCHEME=unix
     REDIS_PATH=/run/redis/redis.sock
     REDIS_HOST=null
     REDIS_PASSWORD=null
     REDIS_PORT=null
-
 ```
-![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png)
-
+![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png) -->
 
 ## Part 8.2 - OAuth (Required for the Mobile App)
 * Add these lines to the .env file
