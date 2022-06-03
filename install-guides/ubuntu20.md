@@ -274,7 +274,7 @@ WorkingDirectory=/home/pixelfed/pixelfed/
 Restart=on-failure
 
 KillSignal=SIGCONT
-TimeoutStopSec=3600
+TimeoutStopSec=60
 
 [Install]
 WantedBy=multi-user.target
