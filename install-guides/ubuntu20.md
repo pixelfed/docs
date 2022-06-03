@@ -8,7 +8,7 @@ Guide by @shlee@aus.social - Version 0.1
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
-> www.pixelfed.au is not required
+> DNS records for www.pixelfed.au are not required.
 
 ![image](https://user-images.githubusercontent.com/17537000/171820544-80ed8a0e-dae3-4b4b-9c76-ff939c8a488c.png)
 ![image](https://user-images.githubusercontent.com/17537000/171820581-9dd5246f-47e1-4204-bf44-1c5916dd72b5.png)
