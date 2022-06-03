@@ -410,19 +410,15 @@ add this line
 
 
 ## Part 13 - Test your new Pixelfed
-
+* Test the server locally
+```
 curl -I https://pixelfed.au
-
-pixelfed@localhost:~/pixelfed$ curl -I https://pixelfed.au
-HTTP/2 200
-server: nginx/1.18.0 (Ubuntu)
-
 ```
 
-Hot cache the instance actor 
+
+* Hot cache the instance actor 
 ```
 curl https://pixelfed.au/i/actor
-
 ```
 
 
