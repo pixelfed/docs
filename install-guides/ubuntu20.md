@@ -39,6 +39,11 @@ apt -y install redis-server
 ```
 systemctl enable redis-server
 ```
+```
+systemctl status redis-server
+```
+![image](https://user-images.githubusercontent.com/17537000/171826482-04662315-3a04-4359-a0f3-68843021f14e.png)
+
 
 ## Part 3 - MariaDB - Install
 * Install stock MariaDB, and enable the service to autostart.
@@ -48,6 +53,10 @@ apt -y install mariadb-server
 ```
 systemctl enable mariadb
 ```
+```
+systemctl status mariadb
+```
+![image](https://user-images.githubusercontent.com/17537000/171826989-5e639f1d-7d42-40a4-96e5-933d1fb57010.png)
 
 ## Part 3.1 - MariaDB - Setup
 * Complete the secure installation steps
