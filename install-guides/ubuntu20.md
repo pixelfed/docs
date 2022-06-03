@@ -212,12 +212,12 @@ composer install --no-ansi --no-interaction --optimize-autoloader
 ## Part 8 - Prepare new Pixelfed instance
 * Copy the default .env file
 ```
-cp .env.example .env
+cp /home/pixelfed/pixelfed/.env.example /home/pixelfed/pixelfed/.env
 ```
 
 * Open the .env file
 ```
-nano .env
+nano /home/pixelfed/pixelfed/.env
 ```
 
 
@@ -294,6 +294,13 @@ php artisan horizon:install
 php artisan horizon:publish
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
+
+## Part 9.1 - Create an administrator account
+* Create a new user using php artisan
+```
+php artisan user:create
+```
+![image](https://user-images.githubusercontent.com/17537000/171831865-b8662194-3906-43e8-8984-21cc98489aa4.png)
 
 ## Part 10 - Return to the root account
 * Exit the `pixelfed` account and become root again.
@@ -445,3 +452,19 @@ curl https://pixelfed.au/i/actor
 
 ## Part 14.1 - Log in with the admin account
 
+
+## Part 15 - Federation (Optional)
+* Open the pixelfed .env file
+```
+nano /home/pixelfed/pixelfed/.env
+```
+
+* Edit these lines to match your new instance
+```
+ACTIVITY_PUB=true
+AP_REMOTE_FOLLOW=true
+AP_INBOX=true
+AP_OUTBOX=true
+```
+
+* 
