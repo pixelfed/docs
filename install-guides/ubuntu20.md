@@ -38,11 +38,11 @@ reboot now
 ```
 apt -y install redis-server
 ```
-* Open the redis.config file
+<!-- * Open the redis.config file
 ```
 nano /etc/redis/redis.conf
 ```
-<!-- 
+
 * Edit these parameters/keys to match these values
 ```
 unixsocket /var/run/redis/redis-server.sock
