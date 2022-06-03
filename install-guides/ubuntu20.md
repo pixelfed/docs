@@ -135,6 +135,7 @@ curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 ```
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
+![image](https://user-images.githubusercontent.com/17537000/171808535-b0a08f87-2b73-436f-91e7-133e7074a16d.png)
 
 
 ## Part 7 - Prepare Pixelfed (AS PIXELFED USER)
