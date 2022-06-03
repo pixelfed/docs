@@ -161,7 +161,10 @@ su - pixelfed
 ![image](https://user-images.githubusercontent.com/17537000/171809094-7d5b7b1d-13ff-4eee-bebd-b496c5590d9b.png)
 
 ## Part 7.1 - Prepare Pixelfed (AS PIXELFED USER)
-* Using git, clone a copy of the repo from the dev branch
+* Using git, clone a copy of the repo from the dev branch into the home folder of the new pixelfed user.
+```
+cd ~
+```
 ```
 git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed && cd pixelfed
 ```
