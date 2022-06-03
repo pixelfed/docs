@@ -59,8 +59,9 @@ flush privileges;
 exit;
 
 ```
+![image](https://user-images.githubusercontent.com/17537000/171801426-47a94540-1f71-4db7-b515-c93add487034.png)
 
-## Part 4 - Setup dependent packets
+## Part 4 - Setup dependent packages
 ```
 apt -y install ffmpeg 
 apt -y install jpegoptim optipng pngquant gifsicle 
