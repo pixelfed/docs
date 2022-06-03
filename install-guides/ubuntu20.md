@@ -116,6 +116,13 @@ apt -y install php7.4-fpm php7.4-cli
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-xml php7.4-zip php7.4-mysql php-redis
 ```
 
+* Confirm PHP installation
+```
+/usr/bin/php -v
+```
+![image](https://user-images.githubusercontent.com/17537000/171841771-9432877a-37f0-47fe-a8bc-2045c9db70a6.png)
+
+
 ## Part 5.1 - PHP - Setup
 * Open the php.ini file
 ```
