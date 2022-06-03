@@ -8,9 +8,9 @@ Guide by @shlee@aus.social - Version 0.1
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
-![image](https://user-images.githubusercontent.com/17537000/168226273-9b89cc51-11ca-4ace-9137-99f2401b3b28.png)
-![image](https://user-images.githubusercontent.com/17537000/171817207-1df320df-e414-4098-887e-9c65f0aab05f.png)
-
+> www.pixelfed.au is not required
+![image](https://user-images.githubusercontent.com/17537000/171820544-80ed8a0e-dae3-4b4b-9c76-ff939c8a488c.png)
+![image](https://user-images.githubusercontent.com/17537000/171820581-9dd5246f-47e1-4204-bf44-1c5916dd72b5.png)
 
 ## Part 1 - Upgrade Ubuntu 20.04 LTS
 * Install all updated default Ubuntu packages and reboot
@@ -283,7 +283,10 @@ systemctl status certbot.timer
 
 
 ## Part 11.1 - Configure nginx
-* Copy the default nginx.conf to pixelfed.conf
+* Copy the nginx pixelfed.conf
+```
+mv /etc/nginx/sites-enabled/default
+```
 ```
 cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
 ```
@@ -315,9 +318,9 @@ ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 
 ## Part 11.2 - Configure certbot
 ```
-certbot --nginx -d pixelfed.au -d www.pixelfed.au
+certbot -d pixelfed.au
 ```
-![image](https://user-images.githubusercontent.com/17537000/171817905-fa651a1c-e484-41f0-b0de-85d414aefc13.png)
+
 
 
 * Reload nginx to load the new enabled site.
