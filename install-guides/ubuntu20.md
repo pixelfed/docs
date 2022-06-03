@@ -251,6 +251,13 @@ php artisan horizon:publish
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
 
 
+
+
+# BROKEN!
+
+
+
+
 ## Part 10 - Return to the root account
 * Exit the `pixelfed` account and become root again.
 ```
@@ -260,7 +267,6 @@ exit
 
 ## Part 11 - Nginx and Certbot - Install
 * Install stock nginx, Install certbot to handle the TLS certificate and enable the engine service to autostart.
-> Note: certbot is configured on a systemd timer to renew the TLS certificates automaticly, and don't need to be enabled.
 ```
 apt -y install nginx certbot python3-certbot-nginx
 ```
@@ -268,6 +274,13 @@ apt -y install nginx certbot python3-certbot-nginx
 systemctl enable nginx
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171813872-b3b2066c-fa90-4e4d-98bb-8ca3f797ffed.png)
+
+* Check the certbot timer is running (Certbot will renew TLS certs automatically)
+```
+systemctl status certbot.timer
+```
+![image](https://user-images.githubusercontent.com/17537000/171818819-231ada60-060d-4eb0-8692-e9cea151307b.png)
+
 
 ## Part 11.1 - Configure nginx
 * Copy the default nginx.conf to pixelfed.conf
@@ -291,19 +304,21 @@ nano /etc/nginx/sites-available/pixelfed.conf
     server_name pixelfed.au;
     root /home/pixelfed/pixelfed/public;
     fastcgi_pass unix:/run/php-fpm/php-fpm-pixelfed.sock;
+
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171814552-9c401df3-c85c-4d5e-87e3-c291bbefb197.png)
+
+* Add a symlink to the nginx sites-enabled folder
+```
+ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
+```
 
 ## Part 11.2 - Configure certbot
 ```
 certbot --nginx -d pixelfed.au -d www.pixelfed.au
 ```
+![image](https://user-images.githubusercontent.com/17537000/171817905-fa651a1c-e484-41f0-b0de-85d414aefc13.png)
 
-## Part 11.3 - Symlink the nginx pixelfed.conf
-* Add a symlink to the nginx sites-enabled folder
-```
-ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
-```
 
 * Reload nginx to load the new enabled site.
 ```
