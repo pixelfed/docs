@@ -63,8 +63,12 @@ exit;
 
 ## Part 4 - Setup dependent packages
 ```
-apt -y install ffmpeg 
+apt -y install ffmpeg
+```
+```
 apt -y install jpegoptim optipng pngquant gifsicle 
+```
+```
 apt -y install unzip zip
 
 ```
