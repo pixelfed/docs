@@ -12,30 +12,46 @@ Guide by @shlee@aus.social - Version 0.1
 ![image](https://user-images.githubusercontent.com/17537000/168226310-e5c4f24a-f93c-4234-8e23-e2ce865ca988.png)
 
 ## Part 1 - Upgrade Ubuntu 20.04 LTS
+* Install all updated default Ubuntu packages and reboot
 ```
 apt update
+```
+```
 apt upgrade -y
+```
+```
 reboot now
-
 ```
 
 ## Part 2 - Redis - Install
+* Install stock Redis, and enable the service to autostart.
 ```
 apt -y install redis-server
+```
+```
 systemctl enable redis-server
-
 ```
 
 ## Part 3 - MariaDB - Install
+* Install stock MariaDB, and enable the service to autostart.
 ```
 apt -y install mariadb-server
+```
+```
 systemctl enable mariadb
+```
+* Complete the secure installation steps
+```
 mysql_secure_installation
+```
+![image](https://user-images.githubusercontent.com/17537000/171800985-2d712c85-197b-4fe2-adab-cd8ba21a2d5c.png)
+
+* Run the SQL query to create the pixelfed DB (using the root password you've used in the last step)
+```
 mysql -u root -p
 
 ```
-
-Run the SQL query to create the pixelfed DB
+and paste in the following SQL (Replacing secretpasswordhere with a new secure password for the pixelfed DB user).
 ```
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'secretpasswordhere';
