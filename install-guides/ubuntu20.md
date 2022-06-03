@@ -126,10 +126,14 @@ nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
 ## Part 6 - Install Composer
+* Download the composer installer to /tmp/
 ```
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
 
+* Install composer
+```
+php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 
 
