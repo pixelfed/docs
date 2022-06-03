@@ -393,6 +393,7 @@ systemctl enable pixelfedhorizon
 ```
 systemctl status pixelfedhorizon
 ```
+![image](https://user-images.githubusercontent.com/17537000/171827697-a2aa60bf-dd65-4765-8bc5-bd79b83208ad.png)
 
 
 ## Part 11 - Crontab for schedule
@@ -403,8 +404,8 @@ crontab -e
 add this line
 ```
 * * * * * /usr/bin/php /home/pixelfed/pixelfed/artisan schedule:run >> /dev/null 2>&1
-
 ```
+![image](https://user-images.githubusercontent.com/17537000/171827817-66ffa3e1-2e0d-430d-8cad-73f72a5b6122.png)
 
 
 
