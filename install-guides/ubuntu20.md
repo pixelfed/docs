@@ -237,7 +237,20 @@ nano /home/pixelfed/pixelfed/.env
     DB_PASSWORD=secretpasswordhere
 ```
 
-## Part 8.1 - OAuth (Required for the Mobile App)
+## Part 8.1 - Redis Unix Socket
+* Edit these lines to match your new instance
+```
+    REDIS_SCHEME=unix
+    REDIS_PATH=/run/redis/redis.sock
+    REDIS_HOST=null
+    REDIS_PASSWORD=null
+    REDIS_PORT=null
+
+```
+![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png)
+
+
+## Part 8.2 - OAuth (Required for the Mobile App)
 * Add these lines to the .env file
 ```
 OAUTH_ENABLED=true
@@ -245,7 +258,7 @@ OAUTH_ENABLED=true
 ![image](https://user-images.githubusercontent.com/17537000/171833196-267f2e90-22e0-48f8-8297-5e6c07729819.png)
 
 
-## Part 8.2 - Federation (Optional)
+## Part 8.3 - Federation (Optional)
 * Edit these lines to match your new instance
 ```
 ACTIVITY_PUB=true
