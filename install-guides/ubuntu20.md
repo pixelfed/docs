@@ -230,9 +230,18 @@ nano /home/pixelfed/pixelfed/.env
     APP_DOMAIN="pixelfed.au"
     ADMIN_DOMAIN="pixelfed.au"
     SESSION_DOMAIN="pixelfed.au"
+          
+    OPEN_REGISTRATION=false
+    ENFORCE_EMAIL_VERIFICATION=false
     
     DB_PASSWORD=secretpasswordhere
 ```
+
+* Add these lines to the .env file
+```
+OAUTH_ENABLED=true
+```
+![image](https://user-images.githubusercontent.com/17537000/171833196-267f2e90-22e0-48f8-8297-5e6c07729819.png)
 
 ## Part 9 - PHP Artisan tasks
 * One time only, you need to generate the secret APP_KEY:
@@ -451,6 +460,8 @@ curl https://pixelfed.au/i/actor
 ![image](https://user-images.githubusercontent.com/17537000/171829532-a44d949a-3bc5-491a-aea0-73e9a210f1c3.png)
 
 ## Part 14.1 - Log in with the admin account
+* Confirm the Admin Dashboard link is visible.
+![image](https://user-images.githubusercontent.com/17537000/171832652-5123b4a5-b059-48c2-93cd-aae610b5e4ca.png)
 
 
 ## Part 15 - Federation (Optional)
@@ -467,4 +478,4 @@ AP_INBOX=true
 AP_OUTBOX=true
 ```
 
-* 
+
