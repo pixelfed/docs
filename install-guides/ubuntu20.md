@@ -461,6 +461,7 @@ curl https://pixelfed.au/i/actor
 
 ## Part 14.1 - Log in with the admin account
 * Confirm the Admin Dashboard link is visible.
+
 ![image](https://user-images.githubusercontent.com/17537000/171832652-5123b4a5-b059-48c2-93cd-aae610b5e4ca.png)
 
 
