@@ -40,6 +40,8 @@ apt -y install mariadb-server
 ```
 systemctl enable mariadb
 ```
+
+## Part 3.1 - MariaDB - Setup
 * Complete the secure installation steps
 ```
 mysql_secure_installation
@@ -80,26 +82,26 @@ apt -y install php7.4-fpm php7.4-cli
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-mysql
 ```
 
-### PHP - Setup
+## Part 5.1 - PHP - Setup
 ```
 nano /etc/php/7.4/fpm/php.ini
+```
 
+* Edit these parameters/keys to match these values
 ```
-Edit these lines
+    post_max_size = 100M
+    file_uploads = On
+    upload_max_filesize = 100M
+    max_file_uploads = 20
+    max_execution_time = 120
 ```
-    post_max_size (default 8M, set this around or slightly greater than your desired post size limit)
-    file_uploads (default On, which it needs to be)
-    upload_max_filesize (default 2M, set this <= post_max_size)
-    max_file_uploads (default 20, but make sure it is >= your desired attachment limit)
-    max_execution_time (default 30, consider raising this to 600 or more so that longer tasks arent interrupted)
-    
-```
-### PHP-fpm - Setup
+
+## Part 5.2 - PHP-FPM - Setup
 ```
 cd /etc/php/php-fpm.d/
-
 ```
-edit these lines
+
+* Edit these lines
 ```
     [pixelfed]
     user = pixelfed
