@@ -174,7 +174,6 @@ cp .env.example .env
 * Open the .env file
 ```
 nano .env
-
 ```
 * Edit these lines to match your new instance
 ```
