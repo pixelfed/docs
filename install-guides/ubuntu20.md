@@ -197,6 +197,8 @@ nano .env
     APP_DOMAIN="pixelfed.au"
     ADMIN_DOMAIN="pixelfed.au"
     SESSION_DOMAIN="pixelfed.au"
+    
+    DB_PASSWORD=secretpasswordhere
 ```
 
 ## Part 9 - PHP Artisan tasks
