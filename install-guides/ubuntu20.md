@@ -2,10 +2,10 @@
 Guide by @shlee@aus.social - Version 0.1
 
 ## NOTES
-* PHP 7.4
+* This guide will be updated for Ubuntu 22.04 LTS (Jammy Jellyfish) once PHP 8.0 is supported.
 
 ## TODO
-* Update redis and mariadb to use unixsockets over tcp. (Investigate if this is worth it)
+* Update redis and mariadb to use unixsockets over tcp. (It's worth it)
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 ![image](https://user-images.githubusercontent.com/17537000/168226273-9b89cc51-11ca-4ace-9137-99f2401b3b28.png)
@@ -16,12 +16,14 @@ Guide by @shlee@aus.social - Version 0.1
 apt update
 apt upgrade -y
 reboot now
+
 ```
 
 ## Part 2 - Redis - Install
 ```
 apt -y install redis-server
 systemctl enable redis-server
+
 ```
 
 ## Part 3 - MariaDB - Install
@@ -30,6 +32,7 @@ apt -y install mariadb-server
 systemctl enable mariadb
 mysql_secure_installation
 mysql -u root -p
+
 ```
 
 Run the SQL query to create the pixelfed DB
@@ -38,6 +41,7 @@ create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'secretpasswordhere';
 flush privileges;
 exit;
+
 ```
 
 ## Part 4 - Setup dependent packets
@@ -45,6 +49,7 @@ exit;
 apt -y install ffmpeg 
 apt -y install jpegoptim optipng pngquant gifsicle 
 apt -y install unzip zip
+
 ```
 
 ## Part 5 - PHP - Install
@@ -52,11 +57,13 @@ apt -y install unzip zip
 apt -y install php7.4-fpm php7.4-cli
 ### Install additional PHP modules not installed by default
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-mysql
+
 ```
 
 ### PHP - Setup
 ```
 nano /etc/php/7.4/fpm/php.ini
+
 ```
 Edit these lines
 ```
@@ -65,10 +72,12 @@ Edit these lines
     upload_max_filesize (default 2M, set this <= post_max_size)
     max_file_uploads (default 20, but make sure it is >= your desired attachment limit)
     max_execution_time (default 30, consider raising this to 600 or more so that longer tasks arent interrupted)
+    
 ```
 ### PHP-fpm - Setup
 ```
 cd /etc/php/php-fpm.d/
+
 ```
 edit these lines
 ```
@@ -76,12 +85,14 @@ edit these lines
     user = pixelfed
     group = pixelfed
     listen = /run/php/php7.4-fpm-pixelfed.sock
+    
 ```
 
 ## Part 6 - Install Composer
 ```
 curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
 ```
 
 
@@ -94,11 +105,13 @@ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
 cd pixelfed
 composer install --no-ansi --no-interaction --optimize-autoloader
 cp .env.example .env
+
 ```
 
 ### Complete .env
 ```
 nano .env
+
 ```
 edit these lines
 ```
@@ -109,6 +122,7 @@ edit these lines
     APP_DOMAIN="pixelfed.au"
     ADMIN_DOMAIN="pixelfed.au"
     SESSION_DOMAIN="pixelfed.au"
+    
 ```
 
 ### PHP Artisan tasks
@@ -141,6 +155,7 @@ php artisan config:cache
 ### Laravel Horizon - Job queueing
 php artisan horizon:install
 php artisan horizon:publish
+
 ```
 
 ## Part 8 - Prepare Pixelfed (AS ROOT)
@@ -173,20 +188,24 @@ EOF
 systemctl daemon-reload
 systemctl enable pixelfedhorizon
 systemctl status pixelfedhorizon
+
 ```
 ### Crontab for schedule
 ```
 crontab -e
+
 ```
 add this line
 ```
 * * * * * /usr/bin/php /home/pixelfed/pixelfed/artisan schedule:run >> /dev/null 2>&1
+
 ```
 
 ## Part 9 - Nginx and Certbot - Install
 ```
 apt -y install nginx certbot python3-certbot-nginx
 systemctl enable nginx
+
 ```
 
 ```
@@ -194,14 +213,16 @@ cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfe
 ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 nano /etc/nginx/sites-available/pixelfed.conf
 systemctl reload nginx
+
 ```
 
 ```
 certbot --nginx -d pixelfed.au -d www.pixelfed.au
 
+```
 
 ## Part 10 - Test your new Pixelfed
-```
+
 curl -I https://pixelfed.au
 
 pixelfed@localhost:~/pixelfed$ curl -I https://pixelfed.au
@@ -213,6 +234,7 @@ server: nginx/1.18.0 (Ubuntu)
 Hot cache the instance actor 
 ```
 curl https://pixelfed.au/i/actor
+
 ```
 
 
