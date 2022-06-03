@@ -141,13 +141,18 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ## Part 7 - Prepare Pixelfed (AS PIXELFED USER)
 ```
 adduser pixelfed
+```
+```
 su - pixelfed
-git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
-
-cd pixelfed
+```
+```
+git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed && cd pixelfed
+```
+```
 composer install --no-ansi --no-interaction --optimize-autoloader
+```
+```
 cp .env.example .env
-
 ```
 
 ### Complete .env
