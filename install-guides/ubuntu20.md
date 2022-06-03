@@ -187,36 +187,50 @@ nano .env
 ```
 
 ## Part 9 - PHP Artisan tasks
+## Part 9 - PHP Artisan tasks
+* One time only, you need to generate the secret APP_KEY:
 ```
-#One time only, you need to generate the secret APP_KEY:
 php artisan key:generate
-
-#One time only, the storage/ directory must be linked to the application:
+```
+* One time only, the storage/ directory must be linked to the application:
+```
 php artisan storage:link
-
-#Database migrations must be run:
+```
+* Database migrations must be run:
+```
 php artisan migrate --force
-
-#If you want to enable support for location data:
+```
+* One time only, Generate location data:
+```
 php artisan import:cities
-
-#If you enabled ActivityPub federation:
+```
+* One time only, Generate ActivityPub federation actor:
+```
 php artisan instance:actor
-
-#If you enabled OAuth:
+```
+* One time only, Generate OAuth keys:
+```
 php artisan passport:keys
-
-#Routes should be cached whenever the source code changes or whenever you change routes:
+```
+* Routes should be cached whenever the source code changes or whenever you change routes:
+```
 php artisan route:cache
+```
+```
 php artisan view:cache
+```
 
-#Every time you edit your .env file, you must run this command to have the changes take effect:
+* Every time you edit your .env file, you must run this command to have the changes take effect:
+```
 php artisan config:cache
+```
 
-### Laravel Horizon - Job queueing
+* Laravel Horizon
+```
 php artisan horizon:install
+```
+```
 php artisan horizon:publish
-
 ```
 
 ## Part 10 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
