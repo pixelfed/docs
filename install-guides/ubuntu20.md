@@ -70,15 +70,16 @@ apt -y install jpegoptim optipng pngquant gifsicle
 ```
 ```
 apt -y install unzip zip
-
 ```
 
 ## Part 5 - PHP - Install
+* Install PHP 7.4 (FPM and CLI only)
 ```
 apt -y install php7.4-fpm php7.4-cli
-### Install additional PHP modules not installed by default
+```
+*  Install additional PHP modules not installed by default
+```
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-mysql
-
 ```
 
 ### PHP - Setup
