@@ -187,7 +187,6 @@ nano .env
 ```
 
 ## Part 9 - PHP Artisan tasks
-## Part 9 - PHP Artisan tasks
 * One time only, you need to generate the secret APP_KEY:
 ```
 php artisan key:generate
