@@ -9,7 +9,8 @@ Guide by @shlee@aus.social - Version 0.1
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 ![image](https://user-images.githubusercontent.com/17537000/168226273-9b89cc51-11ca-4ace-9137-99f2401b3b28.png)
-![image](https://user-images.githubusercontent.com/17537000/168226310-e5c4f24a-f93c-4234-8e23-e2ce865ca988.png)
+![image](https://user-images.githubusercontent.com/17537000/171817207-1df320df-e414-4098-887e-9c65f0aab05f.png)
+
 
 ## Part 1 - Upgrade Ubuntu 20.04 LTS
 * Install all updated default Ubuntu packages and reboot
@@ -269,17 +270,12 @@ systemctl enable nginx
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171813872-b3b2066c-fa90-4e4d-98bb-8ca3f797ffed.png)
 
-# Broken here
-
 ## Part 11.1 - Configure nginx
 * Copy the default nginx.conf to pixelfed.conf
 ```
 cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
 ```
-* Add a symlink to the nginx sites-enabled folder
-```
-ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
-```
+
 * Open the nginx pixelfed.conf file
 ```
 nano /etc/nginx/sites-available/pixelfed.conf
@@ -301,6 +297,13 @@ nano /etc/nginx/sites-available/pixelfed.conf
 certbot --nginx -d pixelfed.au -d www.pixelfed.au
 ```
 
+## Part 11.3 - Symlink the nginx pixelfed.conf
+* Add a symlink to the nginx sites-enabled folder
+```
+ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
+```
+
+* Reload nginx to load the new enabled site.
 ```
 systemctl reload nginx
 ```
