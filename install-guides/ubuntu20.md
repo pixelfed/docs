@@ -294,11 +294,18 @@ systemctl status certbot.timer
 ![image](https://user-images.githubusercontent.com/17537000/171818819-231ada60-060d-4eb0-8692-e9cea151307b.png)
 
 
-## Part 11.1 - Configure nginx
+## Part 11.1 - Configure certbot
+```
+rm /etc/nginx/sites-enabled/default
+```
+* Generate a new TLS Certificate for `pixelfed.au`.
+```
+certbot -d pixelfed.au
+```
+![image](https://user-images.githubusercontent.com/17537000/171825178-c453a2db-ad03-4ba8-8536-b794898c272a.png)
+
+## Part 11.2 - Configure nginx
 * Copy the nginx pixelfed.conf
-```
-mv /etc/nginx/sites-enabled/default
-```
 ```
 cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
 ```
@@ -310,27 +317,26 @@ nano /etc/nginx/sites-available/pixelfed.conf
 
 * Edit these lines to match your new instance
 
-
 > * server_name has to be changed twice
 > * root needs to be changed to the correct path
 > * fastcgi_pass needs to be updated to match the fpm conf
+> * ssl_certificate and ssl_certificate_key need to be updated with the certbot path
 
 ```
     server_name pixelfed.au;
     root /home/pixelfed/pixelfed/public;
-    fastcgi_pass unix:/run/php-fpm/php-fpm-pixelfed.sock;
+        
+    ssl_certificate /etc/letsencrypt/live/pixelfed.au/fullchain.pem;       # generate your own
+    ssl_certificate_key /etc/letsencrypt/live/pixelfed.au/privkey.pem;   # or use letsencrypt
 
+    fastcgi_pass unix:/run/php-fpm/php-fpm-pixelfed.sock;
 ```
-![image](https://user-images.githubusercontent.com/17537000/171814552-9c401df3-c85c-4d5e-87e3-c291bbefb197.png)
+![image](https://user-images.githubusercontent.com/17537000/171825837-b53066f2-ffbb-4d87-9208-b66c209c30b0.png)
+
 
 * Add a symlink to the nginx sites-enabled folder
 ```
 ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
-```
-
-## Part 11.2 - Configure certbot
-```
-certbot -d pixelfed.au
 ```
 
 
