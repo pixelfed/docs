@@ -6,6 +6,7 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.9
 * I will be using `pixelfed.au` as the example domain, because this is the instance I've used to test and confirm this guide. I am running this guide in production. Just replace `pixelfed.au` with your name.
 
 ## TODO
+* Email setup
 * Test and confirm S3 bucket (including Linode Object Storage and other third partys)
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
 
