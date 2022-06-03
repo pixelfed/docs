@@ -52,7 +52,8 @@ mysql_secure_installation
 ```
 mysql -u root -p
 ```
-and paste in the following SQL (Replacing secretpasswordhere with a new secure password for the pixelfed DB user).
+
+* Paste in the following SQL (Replacing secretpasswordhere with a new secure password for the pixelfed DB user).
 ```
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'secretpasswordhere';
@@ -77,6 +78,7 @@ apt -y install unzip zip
 ```
 apt -y install php7.4-fpm php7.4-cli
 ```
+
 *  Install additional PHP modules not installed by default
 ```
 apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-redis php7.4-xml php7.4-zip php7.4-mysql
@@ -96,9 +98,21 @@ nano /etc/php/7.4/fpm/php.ini
     max_execution_time = 120
 ```
 
-## Part 5.2 - PHP-FPM - Setup
+* Test the changes using the following command
 ```
-cd /etc/php/php-fpm.d/
+grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/7.4/fpm/php.ini
+```
+![image](https://user-images.githubusercontent.com/17537000/171806745-f07e2ccd-9989-4ccc-b8c8-655fd4b1f5d4.png)
+
+## Part 5.2 - PHP-FPM - Setup
+* Make a copy of the php-fpm pool config file for pixelfed
+```
+cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/pixelfed.conf
+```
+
+* Edit these parameters/keys to match these values
+```
+nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 ```
 
 * Edit these lines
@@ -107,8 +121,8 @@ cd /etc/php/php-fpm.d/
     user = pixelfed
     group = pixelfed
     listen = /run/php/php7.4-fpm-pixelfed.sock
-    
 ```
+![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
 ## Part 6 - Install Composer
 ```
