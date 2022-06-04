@@ -26,6 +26,7 @@ module.exports = [
     children: prefix('install-guides', [
       'arch',
       'ubuntu20',
+      'ubuntu22',
     ]),
   },
 
