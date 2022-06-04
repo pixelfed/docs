@@ -141,7 +141,7 @@ max_execution_time = 120
 
 * Test the changes using the following command
 ```
-grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/7.4/fpm/php.ini
+grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/8.1/fpm/php.ini
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171808166-400b5299-1c90-43af-aa14-5daa76398ab0.png)
 
@@ -149,12 +149,12 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 ## Part 5.2 - PHP-FPM - Setup
 * Make a copy of the php-fpm pool config file for pixelfed
 ```
-cp /etc/php/7.4/fpm/pool.d/www.conf /etc/php/7.4/fpm/pool.d/pixelfed.conf
+cp /etc/php/8.1/fpm/pool.d/www.conf /etc/php/8.1/fpm/pool.d/pixelfed.conf
 ```
 
 * Open the php-fpm pixelfed.conf file
 ```
-nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
+nano /etc/php/8.1/fpm/pool.d/pixelfed.conf
 ```
 
 * Edit these lines
@@ -162,16 +162,16 @@ nano /etc/php/7.4/fpm/pool.d/pixelfed.conf
 [pixelfed]
 user = pixelfed
 group = pixelfed
-listen = /run/php/php7.4-fpm-pixelfed.sock
+listen = /run/php/php8.1-fpm-pixelfed.sock
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
 * Restart php-fpm
 ```
-systemctl restart php7.4-fpm
+systemctl restart php8.1-fpm
 ```
 ```
-systemctl status php7.4-fpm
+systemctl status php8.1-fpm
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171828436-a5c41ae9-33e1-4973-84e2-e2c1d5c604ee.png)
 
@@ -405,7 +405,7 @@ nano /etc/nginx/sites-available/pixelfed.conf
     ssl_certificate /etc/letsencrypt/live/pixelfed.au/fullchain.pem;       # generate your own
     ssl_certificate_key /etc/letsencrypt/live/pixelfed.au/privkey.pem;   # or use letsencrypt
 
-    fastcgi_pass unix:/run/php/php7.4-fpm-pixelfed.sock;
+    fastcgi_pass unix:/run/php/php8.1-fpm-pixelfed.sock;
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171829099-3541b28c-0953-471a-8385-a36fd91c1606.png)
 
@@ -427,7 +427,7 @@ tee /etc/systemd/system/pixelfedhorizon.service <<EOF
 Description=Pixelfed task queueing via Laravel Horizon
 After=network.target
 Requires=mariadb
-Requires=php7.4-fpm
+Requires=php8.1-fpm
 Requires=redis
 Requires=nginx
 
