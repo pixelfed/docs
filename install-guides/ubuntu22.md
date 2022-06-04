@@ -79,7 +79,7 @@ systemctl status mariadb
 ```
 mysql_secure_installation
 ```
-![image](https://user-images.githubusercontent.com/17537000/171800985-2d712c85-197b-4fe2-adab-cd8ba21a2d5c.png)
+![image](https://user-images.githubusercontent.com/17537000/171971795-f89a6a59-391c-45a5-8187-5dc9cf123785.png)
 
 * Run the SQL query to create the pixelfed DB (using the root password you've used in the last step)
 ```
