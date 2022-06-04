@@ -1,4 +1,4 @@
-# Deploying Pixelfed on Ubuntu 22.04 LTS (Jammy Jellyfish) with PHP 8.0
+# Deploying Pixelfed on Ubuntu 22.04 LTS (Jammy Jellyfish) with PHP 8.1
 Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 
 ## NOTES
@@ -108,27 +108,26 @@ apt -y install unzip zip
 ```
 
 ## Part 5 - PHP - Install
-* Install PHP 8.0 (FPM and CLI only)
+* Install PHP 8.1 (FPM and CLI only)
 ```
-apt -y install php8.0-fpm php8.0-cli
+apt -y install php8.1-fpm php8.1-cli
 ```
 
 *  Install additional PHP modules not installed by default
 ```
-apt -y install php7.4-bcmath php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-xml php7.4-zip php7.4-mysql php-redis
+apt -y install php8.1-bcmath php8.1-curl php8.1-gd php8.1-intl php8.1-mbstring php8.1-xml php8.1-zip php8.1-mysql php-redis
 ```
 
 * Confirm PHP installation
 ```
 /usr/bin/php -v
 ```
-![image](https://user-images.githubusercontent.com/17537000/171841771-9432877a-37f0-47fe-a8bc-2045c9db70a6.png)
-
+![image](https://user-images.githubusercontent.com/17537000/171971995-d94a4278-68d6-4d1c-9a81-9fb7404779d6.png)
 
 ## Part 5.1 - PHP - Setup
 * Open the php.ini file
 ```
-nano /etc/php/7.4/fpm/php.ini
+nano /etc/php/8.1/fpm/php.ini
 ```
 
 * Edit these parameters/keys to match these values
