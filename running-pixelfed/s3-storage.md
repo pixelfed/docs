@@ -51,6 +51,11 @@ Read the Linode documentation here: https://www.linode.com/docs/products/storage
 
 ![image](https://user-images.githubusercontent.com/17537000/172040619-e4df59e7-bc3e-4aaf-adb4-9e1595d76be4.png)
 
+### Creating a Linode Bucket
+* Set the default Access Control List (ACL) to public read.
+![image](https://user-images.githubusercontent.com/17537000/172041581-6e3b80bd-7c7b-4d39-87fa-208f8d5505a4.png)
+
+
 #### Example configuration for Linode
 * Edit the .env
 ```
