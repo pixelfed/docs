@@ -58,8 +58,7 @@ systemctl restart redis-server
 ```
 systemctl status redis-server
 ```
-![image](https://user-images.githubusercontent.com/17537000/171826482-04662315-3a04-4359-a0f3-68843021f14e.png)
-
+![image](https://user-images.githubusercontent.com/17537000/172032011-9a6f093d-f7f5-4138-b07e-2419618b9808.png)
 
 ## Part 3 - MariaDB - Install
 * Install stock MariaDB, and enable the service to autostart.
@@ -72,7 +71,7 @@ systemctl enable mariadb
 ```
 systemctl status mariadb
 ```
-![image](https://user-images.githubusercontent.com/17537000/171826989-5e639f1d-7d42-40a4-96e5-933d1fb57010.png)
+![image](https://user-images.githubusercontent.com/17537000/172032032-0ab2fb53-e08c-465b-8781-3036cf762b61.png)
 
 ## Part 3.1 - MariaDB - Setup
 * Complete the secure installation steps
