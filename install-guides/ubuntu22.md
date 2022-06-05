@@ -161,6 +161,14 @@ max_file_uploads = 20
 max_execution_time = 120
 ```
 
+<!-- ```
+sed -i "s/post_max_size = .*/post_max_size = 100M/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/file_uploads = .*/file_uploads = On/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 100M/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/max_file_uploads = .*/max_file_uploads = 20/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/max_execution_time = .*/max_execution_time = 120/g" /etc/php/8.1/fpm/php.ini
+``` -->
+
 * Test the changes using the following command
 ```
 grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/8.1/fpm/php.ini
@@ -194,7 +202,8 @@ systemctl restart php8.1-fpm
 ```
 systemctl status php8.1-fpm --no-pager 
 ```
-![image](https://user-images.githubusercontent.com/17537000/171828436-a5c41ae9-33e1-4973-84e2-e2c1d5c604ee.png)
+![image](https://user-images.githubusercontent.com/17537000/172035654-4365f84f-38a7-4490-b2cb-23dec345cb98.png)
+
 
 ## Part 7 - Install Composer
 * Download the composer installer to /tmp/
