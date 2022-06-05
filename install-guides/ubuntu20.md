@@ -2,7 +2,6 @@
 Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.9
 
 ## NOTES
-* This guide will be updated for Ubuntu 22.04 LTS (Jammy Jellyfish) once PHP 8.0 is confirmed as fully supported.
 * I will be using `pixelfed.au` as the example domain, because this is the instance I've used to test and confirm this guide. I am running this guide in production. Just replace `pixelfed.au` with your name.
 
 ## TODO
