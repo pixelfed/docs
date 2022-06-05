@@ -391,7 +391,7 @@ exit
 ## Part 11.1 - Fix ownership of folders
 * chmod all of the pixelfed instance to include the www-data group.
 ```
-chown -R pixelfed:www-data /home/pixelfed/pixelfed
+chown -R pixelfed:www-data /home/pixelfed
 ```
 ```
 ls -lA /home/pixelfed/pixelfed
