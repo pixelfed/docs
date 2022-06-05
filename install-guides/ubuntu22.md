@@ -8,6 +8,7 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 * Email setup
 * Test and confirm S3 bucket (including Linode Object Storage and other third partys)
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
+* Add UFW
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 * Setup the VM
@@ -390,9 +391,11 @@ rm /etc/nginx/sites-enabled/default
 ```
 * Generate a new TLS Certificate for `pixelfed.au`.
 ```
+# Ignore the error about the matching server block. We will create this next.
 certbot -d pixelfed.au
 ```
-![image](https://user-images.githubusercontent.com/17537000/171825178-c453a2db-ad03-4ba8-8536-b794898c272a.png)
+![image](https://user-images.githubusercontent.com/17537000/172035752-f11476f8-5bae-4754-8f90-e5bdec594ff1.png)
+
 
 ## Part 12.2 - Configure nginx
 * Copy the nginx pixelfed.conf
