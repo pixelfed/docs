@@ -56,7 +56,7 @@ systemctl enable redis-server
 systemctl restart redis-server
 ```
 ```
-systemctl status redis-server
+systemctl status redis-server --no-pager 
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172032011-9a6f093d-f7f5-4138-b07e-2419618b9808.png)
 
@@ -69,7 +69,7 @@ apt -y install mariadb-server
 systemctl enable mariadb
 ```
 ```
-systemctl status mariadb
+systemctl status mariadb --no-pager 
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172032032-0ab2fb53-e08c-465b-8781-3036cf762b61.png)
 
@@ -187,7 +187,7 @@ listen = /run/php/php8.1-fpm-pixelfed.sock
 systemctl restart php8.1-fpm
 ```
 ```
-systemctl status php8.1-fpm
+systemctl status php8.1-fpm --no-pager 
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171828436-a5c41ae9-33e1-4973-84e2-e2c1d5c604ee.png)
 
@@ -365,7 +365,7 @@ systemctl enable nginx
 
 * Check the certbot timer is running (Certbot will renew TLS certs automatically)
 ```
-systemctl status certbot.timer
+systemctl status certbot.timer --no-pager 
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171818819-231ada60-060d-4eb0-8692-e9cea151307b.png)
 
@@ -459,7 +459,7 @@ systemctl start pixelfedhorizon
 ```
 * Wait 10 seconds for the Horizon Queue to boot the worker nodes
 ```
-systemctl status pixelfedhorizon
+systemctl status pixelfedhorizon --no-pager 
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171827697-a2aa60bf-dd65-4765-8bc5-bd79b83208ad.png)
 
