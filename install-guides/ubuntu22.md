@@ -2,7 +2,7 @@
 Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 
 ## NOTES
-* I will be using `pixelfed.au` as the example domain, because this is the instance I've used to test and confirm this guide. I am running this guide in production. Just replace `pixelfed.au` with your name.
+* I will be using `pixelfed.au` as the example domain, because this is the instance I've used to test and confirm this guide. I am running this guide in production. Just replace `pixelfed.au` with your new instance domain.
 
 ## TODO
 * Email setup
