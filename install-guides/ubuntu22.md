@@ -119,7 +119,7 @@ groups pixelfed
 ![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
 
 
-## Part 5- Setup dependent packages
+## Part 5 - Setup dependent packages
 ```
 apt -y install ffmpeg
 ```
