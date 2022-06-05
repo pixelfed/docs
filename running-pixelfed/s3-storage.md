@@ -44,7 +44,7 @@ AWS_ENDPOINT=https://<ClusterID>.linodeobjects.com
 ----
 
 ### Vultr Object Storage
-Read the Vultr documentation here: 
+Read the Vultr documentation here: https://www.vultr.com/docs/vultr-object-storage/
 
 #### Example configuration for Vultr
 * Edit the .env
@@ -61,8 +61,8 @@ AWS_ENDPOINT=
 
 ----
 
-### Exoscale Object Storage
-Read the Exoscale documentation here: 
+### Exoscale Simple Object Storage (SOS)
+Read the Exoscale documentation here: https://community.exoscale.com/documentation/storage/
 
 #### Example configuration for Exoscale
 * Edit the .env
@@ -80,7 +80,7 @@ AWS_ENDPOINT=
 ----
 
 ### OVH Object Storage
-Read the OVH documentation here: 
+Read the OVH documentation here: https://docs.ovh.com/au/en/storage/s3/getting-started-with-s3/
 
 #### Example configuration for OVH
 * Edit the .env
@@ -91,14 +91,14 @@ AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
 AWS_BUCKET=<BucketName>
 AWS_URL=
-AWS_ENDPOINT=
+AWS_ENDPOINT=https://s3.<public cloud region>.cloud.ovh.net
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
 ----
 
 ### Wasabi Cloud Storage
-Read the Wasabi documentation here: 
+Read the Wasabi documentation here: https://wasabi.com/help/
 
 #### Example configuration for Wasabi
 * Edit the .env
@@ -116,7 +116,7 @@ AWS_ENDPOINT=
 ----
 
 ### Backblaze Cloud Storage
-Read the Backblaze documentation here: 
+Read the Backblaze documentation here: https://www.backblaze.com/b2/docs/
 
 #### Example configuration for Backblaze
 * Edit the .env
