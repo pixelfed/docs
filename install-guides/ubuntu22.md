@@ -247,18 +247,7 @@ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed && cd pixelfe
 ![image](https://user-images.githubusercontent.com/17537000/171809397-9c797416-1b33-4069-b5a6-e63569006802.png)
 
 
-## Part 8.2 - Fix ownership of folders
-* chmod all of the pixelfed instance to include the www-data group.
-```
-chown -R pixelfed:www-data /home/pixelfed/pixelfed
-```
-```
-ls -lA /home/pixelfed/pixelfed
-```
-![image](https://user-images.githubusercontent.com/17537000/172037133-592798eb-20d7-4f9e-82da-c77682396eaf.png)
-
-
-## Part 8.3 - composer install
+## Part 8.2 - composer install
 * Install all of the php dependant packages using composer
 ```
 composer install --no-ansi --no-interaction --optimize-autoloader
@@ -398,6 +387,16 @@ php artisan user:create
 exit
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171812687-e34fd89f-6bd0-4724-aed6-ef60a7dfbdc1.png)
+
+## Part 11.1 - Fix ownership of folders
+* chmod all of the pixelfed instance to include the www-data group.
+```
+chown -R pixelfed:www-data /home/pixelfed/pixelfed
+```
+```
+ls -lA /home/pixelfed/pixelfed
+```
+![image](https://user-images.githubusercontent.com/17537000/172037133-592798eb-20d7-4f9e-82da-c77682396eaf.png)
 
 ----
 
