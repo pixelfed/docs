@@ -7,6 +7,7 @@ module.exports = [
       'installation',
       'administration',
       'troubleshooting',
+      's3-storage',
       'ldap-authentication'
       ]),
   },
