@@ -15,6 +15,7 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 
 ## S3 Compatible Providers (Untested)
 * [Amazon Simple Storage Service (S3)](https://aws.amazon.com/s3/)
+* [Digital Ocean Spaces](https://www.digitalocean.com/products/spaces)
 * [Linode Object Storage](https://www.linode.com/products/object-storage/)
 * [Vultr Object Storage](https://www.vultr.com/products/object-storage/)
 * [Exoscale Simple Object Storage (SOS)](https://www.exoscale.com/object-storage/)
@@ -38,6 +39,26 @@ FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
+AWS_BUCKET=<BucketName>
+AWS_URL=
+AWS_ENDPOINT=
+#AWS_USE_PATH_STYLE_ENDPOINT=false
+```
+
+----
+
+### Digital Ocean Spaces
+Read the Spaces documentation here: https://docs.digitalocean.com/products/spaces/
+
+#### Example configuration for Spaces
+* Edit the .env
+```
+PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=US
 AWS_BUCKET=<BucketName>
 AWS_URL=
 AWS_ENDPOINT=
