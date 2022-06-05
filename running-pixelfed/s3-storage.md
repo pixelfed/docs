@@ -5,6 +5,10 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 [[toc]]
 
 ## Notes
+> `FILESYSTEM_DRIVER` should ALWAYS be `local`
+
+> `FILESYSTEM_CLOUD` should ALWAYS be `s3`
+
 > Never put dots in your bucket name. `pixelfedau` is correct. `pixelfed.au` is wrong. The dot will break the S3 providers TLS.
 
 > Jortage does NOT work with Pixelfed as of writing this documentation.
@@ -29,6 +33,8 @@ Read the Linode documentation here: https://docs.aws.amazon.com/s3/index.html
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
@@ -49,6 +55,8 @@ Read the Linode documentation here: https://www.linode.com/docs/products/storage
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=6UD7Yxxxxxxxxx1D5L
 AWS_SECRET_ACCESS_KEY=bDK1XxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxsGOCh8
 AWS_DEFAULT_REGION=US
@@ -67,6 +75,8 @@ Read the Vultr documentation here: https://www.vultr.com/docs/vultr-object-stora
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
@@ -85,6 +95,8 @@ Read the Exoscale documentation here: https://community.exoscale.com/documentati
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
@@ -103,6 +115,8 @@ Read the OVH documentation here: https://docs.ovh.com/au/en/storage/s3/getting-s
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
@@ -121,6 +135,8 @@ Read the Wasabi documentation here: https://wasabi.com/help/
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
@@ -139,6 +155,8 @@ Read the Backblaze documentation here: https://www.backblaze.com/b2/docs/
 * Edit the .env
 ```
 PF_ENABLE_CLOUD=true
+FILESYSTEM_DRIVER=local
+FILESYSTEM_CLOUD=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=
