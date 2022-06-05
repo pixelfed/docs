@@ -93,7 +93,8 @@ flush privileges;
 exit;
 
 ```
-![image](https://user-images.githubusercontent.com/17537000/171801426-47a94540-1f71-4db7-b515-c93add487034.png)
+![image](https://user-images.githubusercontent.com/17537000/172032110-5d43fad2-ac8b-4a4e-9939-fc6c476e47b2.png)
+
 
 ## Part 4 - Setup dependent packages
 ```
@@ -142,8 +143,7 @@ max_execution_time = 120
 ```
 grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/8.1/fpm/php.ini
 ```
-![image](https://user-images.githubusercontent.com/17537000/171808166-400b5299-1c90-43af-aa14-5daa76398ab0.png)
-
+![image](https://user-images.githubusercontent.com/17537000/172032160-7b1f88a5-a9e5-4345-b5e9-55da39826530.png)
 
 ## Part 5.2 - PHP-FPM - Setup
 * Make a copy of the php-fpm pool config file for pixelfed
