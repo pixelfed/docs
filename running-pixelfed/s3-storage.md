@@ -21,6 +21,8 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 
 ## Provider Specific Configuration
 
+----
+
 ### Linode Object Storage
 Read the Linode documentation here: https://www.linode.com/docs/products/storage/object-storage/guides/urls/
 
@@ -39,6 +41,7 @@ AWS_ENDPOINT=https://<ClusterID>.linodeobjects.com
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
+----
 
 ### Vultr Object Storage
 Read the Vultr documentation here: 
@@ -56,6 +59,7 @@ AWS_ENDPOINT=
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
+----
 
 ### Exoscale Object Storage
 Read the Exoscale documentation here: 
@@ -73,6 +77,7 @@ AWS_ENDPOINT=
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
+----
 
 ### OVH Object Storage
 Read the OVH documentation here: 
@@ -90,6 +95,8 @@ AWS_ENDPOINT=
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
+----
+
 ### Wasabi Cloud Storage
 Read the Wasabi documentation here: 
 
@@ -106,6 +113,8 @@ AWS_ENDPOINT=
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
 
+----
+
 ### Backblaze Cloud Storage
 Read the Backblaze documentation here: 
 
@@ -121,6 +130,8 @@ AWS_URL=
 AWS_ENDPOINT=
 #AWS_USE_PATH_STYLE_ENDPOINT=false
 ```
+
+----
 
 ### Jortage Communal Cloud
 > Does not work with Pixelfed
