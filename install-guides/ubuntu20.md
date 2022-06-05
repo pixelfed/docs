@@ -97,7 +97,24 @@ exit;
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171801426-47a94540-1f71-4db7-b515-c93add487034.png)
 
-## Part 4 - Setup dependent packages
+## Part 4 - Prepare new Pixelfed user
+* Create a new user pixelfed
+```
+adduser pixelfed
+```
+![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
+
+* Add pixelfed to the redis group
+```
+usermod -aG redis pixelfed
+```
+* Add pixelfed to the mysql group
+```
+usermod -aG mysql pixelfed
+```
+![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
+
+## Part 5 - Setup dependent packages
 ```
 apt -y install ffmpeg
 ```
@@ -190,23 +207,7 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ![image](https://user-images.githubusercontent.com/17537000/171808535-b0a08f87-2b73-436f-91e7-133e7074a16d.png)
 
 
-## Part 7 - Prepare new Pixelfed user
-* Create a new user pixelfed
-```
-adduser pixelfed
-```
-![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
-
-* Add pixelfed to the redis group
-```
-usermod -aG redis pixelfed
-```
-* Add pixelfed to the mysql group
-```
-usermod -aG mysql pixelfed
-```
-![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
-
+## Part 8 - Installation of Pixelfed
 * Login as the new pixelfed user
 ```
 su - pixelfed
