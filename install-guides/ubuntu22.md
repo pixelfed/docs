@@ -10,6 +10,8 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 * Update redis and mariadb to use unixsockets over tcp. (It's worth it)
 * Add UFW
 
+----
+
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
 * Setup the VM
 > You can use a low spec machine for a while. Increase the instance type for additional CPU/RAM later.
@@ -20,9 +22,10 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 
 ![image](https://user-images.githubusercontent.com/17537000/171820581-9dd5246f-47e1-4204-bf44-1c5916dd72b5.png)
 
+----
+
 ## Part 1 - Upgrade Ubuntu 22.04 LTS
 * Install all updated default Ubuntu packages and reboot
-> Install the packages verison if you're prompted
 ```
 apt update
 ```
@@ -32,6 +35,8 @@ apt upgrade -y
 ```
 reboot now
 ```
+
+----
 
 ## Part 2 - Redis - Install
 * Install stock Redis, and enable the service to autostart.
@@ -61,6 +66,7 @@ systemctl status redis-server --no-pager
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172035220-2c9f9ad8-d9b3-4109-b2de-adb38010acae.png)
 
+----
 
 ## Part 3 - MariaDB - Install
 * Install stock MariaDB, and enable the service to autostart.
@@ -97,6 +103,8 @@ exit;
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172032110-5d43fad2-ac8b-4a4e-9939-fc6c476e47b2.png)
 
+----
+
 ## Part 4 - Prepare new Pixelfed user
 * Create a new user pixelfed
 ```
@@ -118,6 +126,7 @@ groups pixelfed
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
 
+----
 
 ## Part 5 - Setup dependent packages
 ```
@@ -129,6 +138,8 @@ apt -y install jpegoptim optipng pngquant gifsicle
 ```
 apt -y install unzip zip
 ```
+
+----
 
 ## Part 6 - PHP - Install
 * Install PHP 8.1 (FPM and CLI only)
@@ -205,6 +216,7 @@ systemctl status php8.1-fpm --no-pager
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172035654-4365f84f-38a7-4490-b2cb-23dec345cb98.png)
 
+----
 
 ## Part 7 - Install Composer
 * Download the composer installer to /tmp/
@@ -218,6 +230,7 @@ php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171808535-b0a08f87-2b73-436f-91e7-133e7074a16d.png)
 
+----
 
 ## Part 8 - Installation of Pixelfed
 * Login as the new pixelfed user
@@ -252,6 +265,8 @@ composer install --no-ansi --no-interaction --optimize-autoloader
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171809700-53d77822-bb8f-475d-812e-3e7f6c5ae086.png)
 
+----
+
 ## Part 9 - Prepare new Pixelfed instance
 * Copy the default .env file
 ```
@@ -262,7 +277,6 @@ cp /home/pixelfed/pixelfed/.env.example /home/pixelfed/pixelfed/.env
 ```
 nano /home/pixelfed/pixelfed/.env
 ```
-
 
 * Edit these lines to match your new instance
 ```
@@ -305,6 +319,8 @@ AP_REMOTE_FOLLOW=true
 AP_INBOX=true
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171833887-a70f6ca2-5558-4cbb-8e12-31f3badd75c0.png)
+
+----
 
 ## Part 10 - PHP Artisan tasks
 * One time only, Generate the secret APP_KEY:
@@ -374,12 +390,16 @@ php artisan user:create
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171835654-d6d42d7f-ca0d-43ee-a397-381a0c6d7533.png)
 
+----
+
 ## Part 11 - Return to the root account
 * Exit the `pixelfed` account and become root again.
 ```
 exit
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171812687-e34fd89f-6bd0-4724-aed6-ef60a7dfbdc1.png)
+
+----
 
 ## Part 12 - Nginx and Certbot - Install
 * Install stock nginx, Install certbot to handle the TLS certificate and enable the engine service to autostart.
@@ -449,6 +469,8 @@ ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 systemctl reload nginx
 ```
 
+----
+
 ## Part 13 - Prepare systemd Pixelfed Horizon service file (AS ROOT)
 * Create the systemd service file for Horizon
 ```
@@ -508,7 +530,7 @@ crontab -e
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171827817-66ffa3e1-2e0d-430d-8cad-73f72a5b6122.png)
 
-
+----
 
 ## Part 14 - Test your new Pixelfed
 * Test the server locally
@@ -524,6 +546,7 @@ curl https://pixelfed.au/i/actor
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171829396-ad8c402f-d752-4b17-80ec-272ad71d71dc.png)
 
+----
 
 ## Part 15 - Test on the browser!
 ![image](https://user-images.githubusercontent.com/17537000/171829532-a44d949a-3bc5-491a-aea0-73e9a210f1c3.png)
@@ -536,4 +559,3 @@ curl https://pixelfed.au/i/actor
 ## Part 15.2 - Test the Horizon Queue
 * Visit the Horizon Portal in the admin area.
 ![image](https://user-images.githubusercontent.com/17537000/172037006-ab6801f3-90d8-44d6-889c-aaf233e154fa.png)
-
