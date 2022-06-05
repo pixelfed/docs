@@ -58,7 +58,8 @@ systemctl restart redis-server
 ```
 systemctl status redis-server --no-pager 
 ```
-![image](https://user-images.githubusercontent.com/17537000/172032011-9a6f093d-f7f5-4138-b07e-2419618b9808.png)
+![image](https://user-images.githubusercontent.com/17537000/172035220-2c9f9ad8-d9b3-4109-b2de-adb38010acae.png)
+
 
 ## Part 3 - MariaDB - Install
 * Install stock MariaDB, and enable the service to autostart.
@@ -71,7 +72,7 @@ systemctl enable mariadb
 ```
 systemctl status mariadb --no-pager 
 ```
-![image](https://user-images.githubusercontent.com/17537000/172032032-0ab2fb53-e08c-465b-8781-3036cf762b61.png)
+![image](https://user-images.githubusercontent.com/17537000/172035232-8b0b17a3-9460-404a-945d-9df33cc135af.png)
 
 ## Part 3.1 - MariaDB - Setup
 * Complete the secure installation steps
@@ -109,6 +110,10 @@ usermod -aG redis pixelfed
 * Add pixelfed to the mysql group
 ```
 usermod -aG mysql pixelfed
+```
+* Test - Confirm the pixelfed user is in those two new groups
+```
+groups pixelfed
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
 
