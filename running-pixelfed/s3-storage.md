@@ -9,17 +9,34 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 
 > Jortage does NOT work with Pixelfed as of writing this documentation.
 
-## Compatible S3 Providers
-
-* https://www.linode.com/products/object-storage/
-* https://www.vultr.com/products/object-storage/
-* https://www.exoscale.com/object-storage/
-* https://www.ovhcloud.com/en-au/public-cloud/object-storage/
-* https://wasabi.com/s3-compatible-cloud-storage/
-* https://www.backblaze.com/b2/cloud-storage.html
-* https://jortage.com/
+## S3 Compatible Providers (Untested)
+* [Amazon Simple Storage Service (S3)](https://aws.amazon.com/s3/)
+* [Linode Object Storage](https://www.linode.com/products/object-storage/)
+* [Vultr Object Storage](https://www.vultr.com/products/object-storage/)
+* [Exoscale Simple Object Storage (SOS)](https://www.exoscale.com/object-storage/)
+* [OVH Object Storage](https://www.ovhcloud.com/en-au/public-cloud/object-storage/)
+* [Wasabi Cloud Storage](https://wasabi.com/s3-compatible-cloud-storage/)
+* [Backblaze Cloud Storage](https://www.backblaze.com/b2/cloud-storage.html)
+* [Jortage Communal Cloud](https://jortage.com/)
 
 ## Provider Specific Configuration
+----
+
+### Amazon Simple Storage Service (S3)
+Read the Linode documentation here: https://docs.aws.amazon.com/s3/index.html
+
+#### Example configuration for AWS S3
+* Edit the .env
+```
+PF_ENABLE_CLOUD=true
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=
+AWS_BUCKET=<BucketName>
+AWS_URL=
+AWS_ENDPOINT=
+#AWS_USE_PATH_STYLE_ENDPOINT=false
+```
 
 ----
 
