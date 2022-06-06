@@ -60,9 +60,9 @@ unixsocketperm 770
 ```
 systemctl enable redis-server
 ```
-```
+<!-- ```
 systemctl restart redis-server
-```
+``` -->
 ```
 systemctl status redis-server --no-pager 
 ```
@@ -114,7 +114,7 @@ adduser pixelfed
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
 
-* Add pixelfed to the redis group
+<!-- * Add pixelfed to the redis group
 ```
 usermod -aG redis pixelfed
 ```
@@ -126,7 +126,7 @@ usermod -aG mysql pixelfed
 ```
 groups pixelfed
 ```
-![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png)
+![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png) -->
 
 ----
 
