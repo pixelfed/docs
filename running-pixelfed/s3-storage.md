@@ -7,8 +7,6 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 ## Notes
 > `FILESYSTEM_DRIVER` should ALWAYS be `local`
 
-> `FILESYSTEM_CLOUD` should ALWAYS be `s3`
-
 > Never put dots in your bucket name. `pixelfedau` is correct. `pixelfed.au` is wrong. The dot will break the S3 providers TLS.
 
 > Jortage does NOT work with Pixelfed as of writing this documentation.
