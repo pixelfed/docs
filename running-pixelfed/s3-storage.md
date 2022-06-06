@@ -30,6 +30,8 @@ You can configure your Pixelfed server to store the media in a S3 Compatible Sto
 ### Amazon Simple Storage Service (S3)
 Read the Linode documentation here: https://docs.aws.amazon.com/s3/index.html
 
+* STATUS: Untested
+
 #### Example configuration for AWS S3
 * Edit the .env
 ```
@@ -50,6 +52,8 @@ AWS_ENDPOINT=
 ### Digital Ocean Spaces
 Read the Spaces documentation here: https://docs.digitalocean.com/products/spaces/
 
+* STATUS: Untested
+
 #### Example configuration for Spaces
 * Edit the .env
 ```
@@ -69,6 +73,8 @@ AWS_ENDPOINT=
 
 ### Linode Object Storage
 Read the Linode documentation here: https://www.linode.com/docs/products/storage/object-storage/guides/urls/
+
+* STATUS: Tested
 
 ![image](https://user-images.githubusercontent.com/17537000/172040619-e4df59e7-bc3e-4aaf-adb4-9e1595d76be4.png)
 
@@ -97,6 +103,8 @@ AWS_ENDPOINT=https://<ClusterID>.linodeobjects.com
 ### Vultr Object Storage
 Read the Vultr documentation here: https://www.vultr.com/docs/vultr-object-storage/
 
+* STATUS: Untested
+
 #### Example configuration for Vultr
 * Edit the .env
 ```
@@ -116,6 +124,8 @@ AWS_ENDPOINT=
 
 ### Exoscale Simple Object Storage (SOS)
 Read the Exoscale documentation here: https://community.exoscale.com/documentation/storage/
+
+* STATUS: Untested
 
 #### Example configuration for Exoscale
 * Edit the .env
@@ -137,6 +147,8 @@ AWS_ENDPOINT=
 ### OVH Object Storage
 Read the OVH documentation here: https://docs.ovh.com/au/en/storage/s3/getting-started-with-s3/
 
+* STATUS: Untested
+
 #### Example configuration for OVH
 * Edit the .env
 ```
@@ -157,6 +169,8 @@ AWS_ENDPOINT=https://s3.<public cloud region>.cloud.ovh.net
 ### Wasabi Cloud Storage
 Read the Wasabi documentation here: https://wasabi.com/help/
 
+* STATUS: Untested
+
 #### Example configuration for Wasabi
 * Edit the .env
 ```
@@ -176,6 +190,8 @@ AWS_ENDPOINT=
 
 ### Backblaze Cloud Storage
 Read the Backblaze documentation here: https://www.backblaze.com/b2/docs/
+
+* STATUS: Untested
 
 #### Example configuration for Backblaze
 * Edit the .env
