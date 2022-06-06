@@ -1,6 +1,8 @@
 # Deploying Pixelfed on Ubuntu 20.04.4 LTS (Focal Fossa) + PHP 7.4 (OUTDATED)
 Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.9
 
+# Please install Ubuntu 22.04 LTS + PHP 8.1 instead on a new instance!
+
 ## NOTES
 * I will be using `pixelfed.au` as the example domain, because this is the instance I've used to test and confirm this guide. I am running this guide in production. Just replace `pixelfed.au` with your name.
 
