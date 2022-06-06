@@ -72,12 +72,14 @@ mysql_secure_installation
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171971795-f89a6a59-391c-45a5-8187-5dc9cf123785.png)
 
-* Run the SQL query to create the pixelfed DB (using the root password you've used in the last step)
+* Run the SQL cli tool
 ```
 mysql -u root -p
 ```
 
-* Paste in the following SQL (Replacing secretpasswordhere with a new secure password for the pixelfed DB user).
+* Paste in the following SQL to create the pixelfed DB, and DB user.
+> **Warning**
+> Replace `secretpasswordhere` for the pixelfed DB user.
 ```
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'secretpasswordhere';
