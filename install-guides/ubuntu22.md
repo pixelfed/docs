@@ -29,10 +29,7 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 ## Part 1 - Upgrade Ubuntu 22.04 LTS
 * Install all updated default Ubuntu packages and reboot
 ```
-apt update
-```
-```
-apt upgrade -y
+apt update && apt upgrade -y
 ```
 ```
 reboot now
@@ -45,24 +42,9 @@ reboot now
 ```
 apt -y install redis-server
 ```
-<!-- * Open the redis.config file
 ```
-nano /etc/redis/redis.conf
+systemctl enable --now redis-server
 ```
-
-* Edit these parameters/keys to match these values
-```
-unixsocket /var/run/redis/redis-server.sock
-unixsocketperm 770
-```
-![image](https://user-images.githubusercontent.com/17537000/171830166-3ee9e4ac-17fd-4a01-a88d-3476cf98f487.png) -->
-
-```
-systemctl enable redis-server
-```
-<!-- ```
-systemctl restart redis-server
-``` -->
 ```
 systemctl status redis-server --no-pager 
 ```
@@ -76,7 +58,7 @@ systemctl status redis-server --no-pager
 apt -y install mariadb-server
 ```
 ```
-systemctl enable mariadb
+systemctl enable --now mariadb
 ```
 ```
 systemctl status mariadb --no-pager 
@@ -90,12 +72,14 @@ mysql_secure_installation
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171971795-f89a6a59-391c-45a5-8187-5dc9cf123785.png)
 
-* Run the SQL query to create the pixelfed DB (using the root password you've used in the last step)
+* Run the SQL cli tool
 ```
 mysql -u root -p
 ```
 
-* Paste in the following SQL (Replacing secretpasswordhere with a new secure password for the pixelfed DB user).
+* Paste in the following SQL to create the pixelfed DB, and DB user.
+> **Warning**
+> Replace `secretpasswordhere` for the pixelfed DB user.
 ```
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'secretpasswordhere';
@@ -113,20 +97,6 @@ exit;
 adduser pixelfed
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171809063-fd22194d-3d2a-446c-9b51-26aadce99ef1.png)
-
-<!-- * Add pixelfed to the redis group
-```
-usermod -aG redis pixelfed
-```
-* Add pixelfed to the mysql group
-```
-usermod -aG mysql pixelfed
-```
-* Test - Confirm the pixelfed user is in those two new groups
-```
-groups pixelfed
-```
-![image](https://user-images.githubusercontent.com/17537000/171838222-466f774a-fa04-4011-b8d3-29c16cf3a93e.png) -->
 
 ----
 
@@ -282,19 +252,7 @@ SESSION_DOMAIN="pixelfed.au"
 DB_PASSWORD=secretpasswordhere
 ```
 
-## Part 9.1 - Unix Socket (Redis and MariaDB)
-* Coming soon
-<!-- * Edit these lines to match your new instance
-```
-    REDIS_SCHEME=unix
-    REDIS_PATH=/var/run/redis/redis-server.sock
-    REDIS_HOST=null
-    REDIS_PASSWORD=null
-    REDIS_PORT=null
-```
-![image](https://user-images.githubusercontent.com/17537000/171834219-cb27183d-374d-4c61-b987-c09bfa29b797.png) -->
-
-## Part 9.2 - OAuth (Required for the Mobile App)
+## Part 9.1 - OAuth (Required for the Mobile App)
 * Add these lines to the .env file
 ```
 OAUTH_ENABLED=true
@@ -302,7 +260,7 @@ OAUTH_ENABLED=true
 ![image](https://user-images.githubusercontent.com/17537000/171833196-267f2e90-22e0-48f8-8297-5e6c07729819.png)
 
 
-## Part 9.3 - Federation (Optional)
+## Part 9.2 - Federation (Optional)
 * Edit these lines to match your new instance
 ```
 ACTIVITY_PUB=true
@@ -408,7 +366,7 @@ ls -lA /home/pixelfed/pixelfed
 apt -y install nginx certbot python3-certbot-nginx
 ```
 ```
-systemctl enable nginx
+systemctl enable --now nginx
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171813872-b3b2066c-fa90-4e4d-98bb-8ca3f797ffed.png)
 
@@ -505,10 +463,7 @@ EOF
 systemctl daemon-reload
 ```
 ```
-systemctl enable pixelfedhorizon
-```
-```
-systemctl start pixelfedhorizon
+systemctl enable --now pixelfedhorizon
 ```
 * Wait 10 seconds for the Horizon Queue to boot the worker nodes
 ```
