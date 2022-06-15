@@ -21,7 +21,10 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
 ![image](https://user-images.githubusercontent.com/17537000/171820544-80ed8a0e-dae3-4b4b-9c76-ff939c8a488c.png)
 * Setup the DNS for pixelfed.au
 > DNS records for www.pixelfed.au are not required.
-
+```
+A @ <ipv4 address above>
+AAAA @ <ipv6 address above> 
+```
 ![image](https://user-images.githubusercontent.com/17537000/171820581-9dd5246f-47e1-4204-bf44-1c5916dd72b5.png)
 
 ----
@@ -102,13 +105,7 @@ adduser pixelfed
 
 ## Part 5 - Setup dependent packages
 ```
-apt -y install ffmpeg
-```
-```
-apt -y install jpegoptim optipng pngquant gifsicle 
-```
-```
-apt -y install unzip zip
+apt -y install ffmpeg unzip zip jpegoptim optipng pngquant gifsicle 
 ```
 
 ----
