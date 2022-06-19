@@ -52,6 +52,7 @@ apt -y install redis-server
 ```
 systemctl enable --now redis-server
 ```
+* Confirm Redis is running.
 ```
 systemctl status redis-server --no-pager 
 ```
@@ -67,6 +68,7 @@ apt -y install mariadb-server
 ```
 systemctl enable --now mariadb
 ```
+* Confirm MariaDB is running.
 ```
 systemctl status mariadb --no-pager 
 ```
@@ -198,6 +200,7 @@ listen = /run/php/php8.1-fpm-pixelfed.sock
 ```
 systemctl restart php8.1-fpm
 ```
+* Confirm FPM is running.
 ```
 systemctl status php8.1-fpm --no-pager 
 ```
@@ -385,7 +388,7 @@ systemctl enable --now nginx
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171813872-b3b2066c-fa90-4e4d-98bb-8ca3f797ffed.png)
 
-* Check the certbot timer is running (Certbot will renew TLS certs automatically)
+* Confirm the certbot timer is running (Certbot will renew TLS certs automatically)
 ```
 systemctl status certbot.timer --no-pager 
 ```
@@ -404,13 +407,13 @@ certbot -d pixelfed.au
 ![image](https://user-images.githubusercontent.com/17537000/172035752-f11476f8-5bae-4754-8f90-e5bdec594ff1.png)
 
 
-## Part 12.2 - Configure nginx
-* Copy the nginx pixelfed.conf
+## Part 12.2 - Configure NGIИX
+* Copy the Nginx pixelfed.conf
 ```
 cp /home/pixelfed/pixelfed/contrib/nginx.conf /etc/nginx/sites-available/pixelfed.conf
 ```
 
-* Open the nginx pixelfed.conf file
+* Open the Nginx pixelfed.conf file
 ```
 nano /etc/nginx/sites-available/pixelfed.conf
 ```
@@ -433,15 +436,20 @@ nano /etc/nginx/sites-available/pixelfed.conf
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171829099-3541b28c-0953-471a-8385-a36fd91c1606.png)
 
-* Add a symlink to the nginx sites-enabled folder
+* Add a symlink to the Nginx sites-enabled folder
 ```
 ln -s /etc/nginx/sites-available/pixelfed.conf /etc/nginx/sites-enabled/
 ```
 
-* Reload nginx to load the new enabled site.
+* Reload Nginx to load the new enabled site.
 ```
 systemctl reload nginx
 ```
+* Confirm Nginx is running.
+```
+systemctl status nginx --no-pager 
+```
+![image](https://user-images.githubusercontent.com/17537000/174468284-08129a3f-c68b-4684-afef-45637748fd9f.png)
 
 ----
 
@@ -481,6 +489,7 @@ systemctl daemon-reload
 systemctl enable --now pixelfedhorizon
 ```
 * Wait 10 seconds for the Horizon Queue to boot the worker nodes
+* Confirm MariaDB is running.
 ```
 systemctl status pixelfedhorizon --no-pager 
 ```
