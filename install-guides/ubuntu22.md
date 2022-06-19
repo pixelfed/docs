@@ -74,6 +74,11 @@ systemctl status mariadb --no-pager
 
 ## Part 3.1 - MariaDB - Secure MariaDB
 * Complete the secure installation steps
+> **Note**
+> You can use the default options for all of these questions.
+
+> **Warning**
+> Remember to write down the root password!
 ```
 mysql_secure_installation
 ```
