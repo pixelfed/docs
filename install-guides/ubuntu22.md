@@ -138,28 +138,34 @@ apt -y install php8.1-bcmath php8.1-curl php8.1-gd php8.1-intl php8.1-mbstring p
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171971995-d94a4278-68d6-4d1c-9a81-9fb7404779d6.png)
 
-## Part 6.1 - PHP - Setup
-* Open the php.ini file
+## Part 6.1 - PHP - Configure php.ini for CLI
+* Tweak the php.ini file (using sed automation)
 ```
-nano /etc/php/8.1/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 100M/g" /etc/php/8.1/cli/php.ini
+sed -i "s/file_uploads = .*/file_uploads = On/g" /etc/php/8.1/cli/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 100M/g" /etc/php/8.1/cli/php.ini
+sed -i "s/max_file_uploads = .*/max_file_uploads = 20/g" /etc/php/8.1/cli/php.ini
+sed -i "s/max_execution_time = .*/max_execution_time = 120/g" /etc/php/8.1/cli/php.ini
 ```
+or manually by editing the `/etc/php/8.1/cli/php.ini` file.
 
-* Edit these parameters/keys to match these values
+* Test the changes using the following command
 ```
-post_max_size = 100M
-file_uploads = On
-upload_max_filesize = 100M
-max_file_uploads = 20
-max_execution_time = 120
+grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_execution_time" /etc/php/8.1/cli/php.ini
 ```
+![image](https://user-images.githubusercontent.com/17537000/174467902-5e82c270-8510-4896-839f-38205fb0f1e6.png)
 
-<!-- ```
+
+## Part 6.2 - PHP - Configure php.ini for FPM
+* Tweak the php.ini file (using sed automation)
+```
 sed -i "s/post_max_size = .*/post_max_size = 100M/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/file_uploads = .*/file_uploads = On/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/upload_max_filesize = .*/upload_max_filesize = 100M/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/max_file_uploads = .*/max_file_uploads = 20/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 120/g" /etc/php/8.1/fpm/php.ini
-``` -->
+```
+or manually by editing the `/etc/php/8.1/fpm/php.ini` file.
 
 * Test the changes using the following command
 ```
@@ -167,7 +173,7 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172032160-7b1f88a5-a9e5-4345-b5e9-55da39826530.png)
 
-## Part 6.2 - PHP-FPM - Setup
+## Part 6.3 - PHP-FPM - Setup
 * Make a copy of the php-fpm pool config file for pixelfed
 ```
 cp /etc/php/8.1/fpm/pool.d/www.conf /etc/php/8.1/fpm/pool.d/pixelfed.conf
