@@ -70,12 +70,14 @@ systemctl status mariadb --no-pager
 ```
 ![image](https://user-images.githubusercontent.com/17537000/172035232-8b0b17a3-9460-404a-945d-9df33cc135af.png)
 
-## Part 3.1 - MariaDB - Setup
+## Part 3.1 - MariaDB - Secure MariaDB
 * Complete the secure installation steps
 ```
 mysql_secure_installation
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171971795-f89a6a59-391c-45a5-8187-5dc9cf123785.png)
+
+## Part 3.2 - MariaDB - Setup Pixelfed DB
 
 * Run the SQL cli tool
 ```
