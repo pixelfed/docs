@@ -523,3 +523,8 @@ curl https://pixelfed.au/i/actor
 ## Part 15.2 - Test the Horizon Queue
 * Visit the Horizon Portal in the admin area.
 ![image](https://user-images.githubusercontent.com/17537000/172037006-ab6801f3-90d8-44d6-889c-aaf233e154fa.png)
+
+
+## Part 16 - Post-Installation Tasks
+* Setup Email
+* Setup Cloud Storage (S3 bucket)
