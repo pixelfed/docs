@@ -246,102 +246,19 @@ composer install --no-ansi --no-interaction --optimize-autoloader
 
 ----
 
-## Part 9 - Prepare new Pixelfed instance
-* Copy the default .env file
+## Part 9 - Prepare new Pixelfed instance (using Laravel artisan installer)
+* Run the installer wizard
 ```
-cp /home/pixelfed/pixelfed/.env.example /home/pixelfed/pixelfed/.env
+php artisan install
 ```
-
-* Open the .env file
-```
-nano /home/pixelfed/pixelfed/.env
-```
-
-* Edit these lines to match your new instance
-```
-APP_NAME="Pixelfed Australia"
-APP_DEBUG=false
-
-APP_URL="https://pixelfed.au"
-APP_DOMAIN="pixelfed.au"
-ADMIN_DOMAIN="pixelfed.au"
-SESSION_DOMAIN="pixelfed.au"
-          
-DB_PASSWORD=secretpasswordhere
-```
-
-## Part 9.1 - OAuth (Required for the Mobile App)
-* Add these lines to the .env file
-```
-OAUTH_ENABLED=true
-```
-![image](https://user-images.githubusercontent.com/17537000/171833196-267f2e90-22e0-48f8-8297-5e6c07729819.png)
+![image](https://user-images.githubusercontent.com/17537000/175801755-fb42797e-04f8-45c1-ab52-cf074a384318.png)
 
 
-## Part 9.2 - Federation (Optional)
-* Edit these lines to match your new instance
-```
-ACTIVITY_PUB=true
-AP_REMOTE_FOLLOW=true
-AP_INBOX=true
-```
-![image](https://user-images.githubusercontent.com/17537000/171833887-a70f6ca2-5558-4cbb-8e12-31f3badd75c0.png)
+* Select Advanced, and complete the installation wizard.
 
 ----
 
-## Part 10 - PHP Artisan tasks
-* One time only, Generate the secret APP_KEY:
-```
-php artisan key:generate
-```
-![image](https://user-images.githubusercontent.com/17537000/171811406-7276ff9e-80e8-4ea0-bd74-ca4a1879b645.png)
-
-* One time only, the storage/ directory must be linked to the application:
-```
-php artisan storage:link
-```
-![image](https://user-images.githubusercontent.com/17537000/171811430-f5957e34-26ca-4079-a95b-cff94a810780.png)
-
-* Database migrations must be run:
-```
-php artisan migrate --force
-```
-![image](https://user-images.githubusercontent.com/17537000/171811653-329242e8-d3c5-4a37-8f13-0a6fef91183b.png)
-
-* One time only, Generate location data:
-```
-php artisan import:cities
-```
-![image](https://user-images.githubusercontent.com/17537000/171811764-e2bfa6f1-9eb1-4d82-ba76-3f49082998ce.png)
-
-* One time only, Generate ActivityPub federation actor:
-```
-php artisan instance:actor
-```
-![image](https://user-images.githubusercontent.com/17537000/171811803-79fa7071-71ae-4da7-8c7e-33915d8a7d6d.png)
-
-* One time only, Generate OAuth keys:
-```
-php artisan passport:keys
-```
-![image](https://user-images.githubusercontent.com/17537000/171811832-8750edea-66c7-4905-8482-6506f935d0c4.png)
-
-* Routes should be cached whenever the source code changes or whenever you change routes:
-```
-php artisan route:cache
-```
-```
-php artisan view:cache
-```
-![image](https://user-images.githubusercontent.com/17537000/171811876-a6913ac7-e50a-45fc-a5b5-42ed4e2c200b.png)
-
-* Every time you edit your .env file, you must run this command to have the changes take effect:
-```
-php artisan config:cache
-```
-![image](https://user-images.githubusercontent.com/17537000/171812304-e00cc29b-453e-4bff-b398-ab453260bf57.png)
-
-* Laravel Horizon
+## Part 10 - Install Laravel Horizon
 ```
 php artisan horizon:install
 ```
@@ -349,13 +266,6 @@ php artisan horizon:install
 php artisan horizon:publish
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171812367-970fea18-4150-46b2-9a3b-798cdaba464b.png)
-
-## Part 10.1 - Create an administrator account
-* Create a new admin user using php artisan
-```
-php artisan user:create
-```
-![image](https://user-images.githubusercontent.com/17537000/171835654-d6d42d7f-ca0d-43ee-a397-381a0c6d7533.png)
 
 ----
 
