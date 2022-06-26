@@ -1,5 +1,5 @@
 # Deploying Pixelfed on Ubuntu 22.04 LTS (Jammy Jellyfish) + PHP 8.1
-Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.1
+Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.2
 
 [[toc]]
 
