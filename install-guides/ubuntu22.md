@@ -253,6 +253,16 @@ php artisan install
 
 * Select Advanced, and complete the installation wizard.
 
+### Part 9.1 - Running the installer again (if you didn't complete the whole wizard)
+
+> **Note**
+> Clean your instance and start the installer from the beginning.
+```
+rm .env
+php artisan config:cache  # Required to clear the previously generated APP_KEY from cache.
+php artisan install
+```
+
 ----
 
 ## Part 10 - Install Laravel Horizon
