@@ -77,7 +77,7 @@ systemctl status mariadb --no-pager
 ## Part 3.1 - MariaDB - Secure MariaDB
 * Complete the secure installation steps
 > **Note**
-> You can use the default options for all of these questions.
+> Select No (n) for `Switch to unix_socket authentication [Y/n]`.
 
 > **Warning**
 > Remember to write down the root password!
