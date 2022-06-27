@@ -143,9 +143,9 @@ apt -y install php8.1-bcmath php8.1-curl php8.1-gd php8.1-intl php8.1-mbstring p
 ## Part 6.1 - PHP - Configure php.ini for CLI
 * Tweak the CLI php.ini file (using sed automation)
 ```
-sed -i "s/post_max_size = .*/post_max_size = 100M/g" /etc/php/8.1/cli/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 300M/g" /etc/php/8.1/cli/php.ini
 sed -i "s/file_uploads = .*/file_uploads = On/g" /etc/php/8.1/cli/php.ini
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 100M/g" /etc/php/8.1/cli/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 300M/g" /etc/php/8.1/cli/php.ini
 sed -i "s/max_file_uploads = .*/max_file_uploads = 20/g" /etc/php/8.1/cli/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 120/g" /etc/php/8.1/cli/php.ini
 ```
@@ -161,9 +161,9 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 ## Part 6.2 - PHP - Configure php.ini for FPM
 * Tweak the FPM php.ini file (using sed automation)
 ```
-sed -i "s/post_max_size = .*/post_max_size = 100M/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/post_max_size = .*/post_max_size = 300M/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/file_uploads = .*/file_uploads = On/g" /etc/php/8.1/fpm/php.ini
-sed -i "s/upload_max_filesize = .*/upload_max_filesize = 100M/g" /etc/php/8.1/fpm/php.ini
+sed -i "s/upload_max_filesize = .*/upload_max_filesize = 300M/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/max_file_uploads = .*/max_file_uploads = 20/g" /etc/php/8.1/fpm/php.ini
 sed -i "s/max_execution_time = .*/max_execution_time = 120/g" /etc/php/8.1/fpm/php.ini
 ```
@@ -249,6 +249,7 @@ composer install --no-ansi --no-interaction --optimize-autoloader
 ## Part 9 - Prepare new Pixelfed instance (using Laravel artisan installer)
 * Run the installer wizard
 ```
+php artisan config:cache
 php artisan install
 ```
 ![image](https://user-images.githubusercontent.com/17537000/175801755-fb42797e-04f8-45c1-ab52-cf074a384318.png)
