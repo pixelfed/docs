@@ -248,12 +248,13 @@ composer install --no-ansi --no-interaction --optimize-autoloader
 
 ## Part 9 - Prepare new Pixelfed instance (using Laravel artisan installer)
 * Run the installer wizard
+> **Note**
+> Almost all of the default options can be selected.
 ```
 php artisan config:cache
 php artisan install
 ```
 ![image](https://user-images.githubusercontent.com/17537000/175801755-fb42797e-04f8-45c1-ab52-cf074a384318.png)
-
 
 * Select Advanced, and complete the installation wizard.
 
