@@ -129,7 +129,7 @@ apt -y install ffmpeg unzip zip jpegoptim optipng pngquant gifsicle
 apt -y install php8.1-fpm php8.1-cli
 ```
 ```
-systemctl enable --now mariadb
+systemctl enable --now php8.1-fpm
 ```
 
 *  Install additional PHP modules not installed by default
