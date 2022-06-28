@@ -47,5 +47,5 @@ reboot now
 ## Part 2 - Run the auto-install script (on a brand new Ubuntu 22.04 VM)
 * Download and run the script as root
 ```
-curl -sSL https://raw.githubusercontent.com/shleeable/autofed/main/autofed-ubuntu22.sh | bash
+bash -c "$(curl -sSL https://raw.githubusercontent.com/shleeable/autofed/main/autofed-ubuntu22.sh)"
 ```
