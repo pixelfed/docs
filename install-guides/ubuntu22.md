@@ -124,9 +124,12 @@ apt -y install ffmpeg unzip zip jpegoptim optipng pngquant gifsicle
 ----
 
 ## Part 6 - PHP - Install
-* Install PHP 8.1 (FPM and CLI only)
+* Install PHP 8.1 (FPM and CLI only), and enable the service to autostart.
 ```
 apt -y install php8.1-fpm php8.1-cli
+```
+```
+systemctl enable --now mariadb
 ```
 
 *  Install additional PHP modules not installed by default
