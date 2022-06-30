@@ -7,6 +7,8 @@ module.exports = [
       'installation',
       'administration',
       'troubleshooting',
+      'livestreaming',
+      'websockets',
       'ldap-authentication'
       ]),
   },
