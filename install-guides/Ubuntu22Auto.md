@@ -11,9 +11,6 @@ Guide by [@shlee@aus.social](https://aus.social/@shlee) - Version 0.2
 * Cloud Storage (S3 bucket)
 * Unix Sockets for redis and mariadb to use unixsockets over tcp. (Optional)
 
-## TODO For the guide
-* Add UFW
-
 ----
 
 ## Part 0 - Setup the VM and update the DNS for A and AAAA records
