@@ -32,6 +32,9 @@ AAAA @ <ipv6 address above>
 
 ## Part 1 - Upgrade Ubuntu 22.04 LTS
 * Install all updated default Ubuntu packages and reboot to use the latest kernel.
+
+> Notice
+> Restart all of the services (if prompted)
 ```
 apt update && apt upgrade -y
 ```
