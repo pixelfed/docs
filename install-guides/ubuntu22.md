@@ -190,17 +190,12 @@ grep "post_max_size\|file_uploads\|upload_max_filesize\|max_file_uploads\|max_ex
 cp /etc/php/8.1/fpm/pool.d/www.conf /etc/php/8.1/fpm/pool.d/pixelfed.conf
 ```
 
-* Open the php-fpm pixelfed.conf file
+* Tweak the php-fpm pixelfed.conf file (using sed automation)
 ```
-nano /etc/php/8.1/fpm/pool.d/pixelfed.conf
-```
-
-* Edit these lines
-```
-[pixelfed]
-user = pixelfed
-group = pixelfed
-listen = /run/php/php8.1-fpm-pixelfed.sock
+sed -i 's/\[www\]/[pixelfed]/' /etc/php/8.1/fpm/pool.d/pixelfed.conf
+sed -i 's/^user = .*/user = pixelfed/' /etc/php/8.1/fpm/pool.d/pixelfed.conf
+sed -i 's/^group = .*/group = pixelfed/' /etc/php/8.1/fpm/pool.d/pixelfed.conf
+sed -i 's/^listen = .*/listen = \/run\/php\/php8.1-fpm-pixelfed.sock/' /etc/php/8.1/fpm/pool.d/pixelfed.conf
 ```
 ![image](https://user-images.githubusercontent.com/17537000/171807724-84a5d028-a6d2-48f9-9a83-19a4345406fb.png)
 
