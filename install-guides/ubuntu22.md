@@ -43,7 +43,8 @@ reboot now
 ```
 
 > **Note**
-> Restart all of the services if prompted in bright pink
+> Restart all of the services if prompted in bright pink (Press space to select)
+
 ![image](https://user-images.githubusercontent.com/17537000/177735539-54c3c9c7-c264-4658-80a6-6f691b097313.png)
 
 ----
