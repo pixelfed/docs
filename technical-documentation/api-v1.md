@@ -23,6 +23,7 @@ You can then create a new token on this page `/settings/applications`
 - Link Header Pagination is not supported
 - Custom limits for captions and albums, they are listed on the /api/v1/instance endpoint
 - OAuth Tokens will expire after 15 days, and must be refreshed after that
+- Statuses do not honor the (optional) `idempotency-key`
 
 ## Libraries
 ### PHP
