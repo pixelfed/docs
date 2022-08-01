@@ -1,1 +1,4 @@
 .vuepress/dist
+.vitepress/dist
+.vite/*
+node_modules/*

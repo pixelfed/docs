@@ -116,7 +116,7 @@ php artisan websockets:serve
 
 When broadcasting events from your Pixelfed server to the WebSocket server, you also need to tell Pixelfed to make use of HTTPS instead of HTTP. You can do this by setting the `PUSHER_APP_SCHEME` variable to `https`
 
-```env
+```
 PUSHER_APP_SCHEME=https
 ```
 

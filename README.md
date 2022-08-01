@@ -32,3 +32,10 @@ We would like to extend our thanks to the following sponsors for funding Pixelfe
 - [NLnet Foundation](https://nlnet.nl) and [NGI0
 Discovery](https://nlnet.nl/discovery/), part of the [Next Generation
 Internet](https://ngi.eu) initiative.
+
+## Development
+
+To hack on these docs:
+
+- Install vuepress with `npm i -D vuepress`
+- Run `vuepress dev .` to start a live development server
