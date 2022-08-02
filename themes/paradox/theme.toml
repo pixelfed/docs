@@ -1,0 +1,12 @@
+name = "paradox"
+license = "MIT"
+licenselink = "https://github.com/trwnh/hugo-theme-paradox/blob/main/LICENSE"
+description = "A clean and simple documentation theme with all the right features and none of the wrong ones."
+homepage = "http://github.com/trwnh/hugo-theme-paradox"
+tags = ["documentation"]
+features = []
+min_version = "0.41.0"
+
+[author]
+  name = "trwnh"
+  homepage = "https://trwnh.com"

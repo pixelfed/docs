@@ -1,0 +1,102 @@
+{{ $icon := "images/icon.png" | absURL }}
+<link rel="shortcut icon" href='{{ $icon }}' sizes="765x765">
+{{ if .IsPage }}
+	{{ with .Params.tags }}
+	<meta name="keywords" content='{{ delimit . " "}}'>
+	{{ end }}
+{{ end }}
+{{ if .IsHome }}<title>{{ .Site.Title }}</title>
+<title itemprop="name">{{ .Site.Title }}</title>
+<meta property="og:title" content="{{ .Site.Title }}" />
+<meta name="twitter:title" content="{{ .Site.Title }}" />
+<meta itemprop="name" content="{{ .Site.Title }}" />
+{{ else }}<title>{{ .Title }} | {{ .Site.Title }}</title>
+<title itemprop="name">{{ .Title }} | {{ .Site.Title }}</title>
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
+<meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />{{ end }}
+<meta name="application-name" content="{{ .Site.Title }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta name="description" content="{{ .Summary }}">
+<meta itemprop="description" content="{{ .Summary }}" />
+<meta property="og:description" content="{{ .Summary }}" />
+<meta name="twitter:description" content="{{ .Summary }}" />
+<base href="{{ .Permalink }}">
+<link rel="canonical" href="{{ .Permalink }}" itemprop="url" /> 
+<meta name="url" content="{{ .Permalink }}" />
+<meta name="twitter:url" content="{{ .Permalink }}" /> 
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ with .Params.cover }}<meta itemprop="image" content="{{ . | absURL }}" />
+<meta property="og:image" content="{{ . | absURL }}" /> 
+<meta name="twitter:image" content="{{ . | absURL }}" />
+<meta name="twitter:image:src" content="{{ . | absURL }}" />{{ else }}
+<meta itemprop="image" content='{{ $icon }}' />
+<meta property="og:image" content='{{ $icon }}' />
+<meta name="twitter:image" content='{{ $icon }}' />
+<meta name="twitter:image:src" content='{{ $icon }}' />{{ end }}
+<meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+{{ if isset .Params "date" }}<meta property="og:type" content="article" />
+<script defer type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Article",
+		"headline": {{ .Title }},
+		"author": {
+			"@type": "Person",
+			"name": "{{ .Params.author }}"
+		},
+		"datePublished": "{{ .Date.Format "2006-01-02" }}",
+		"description": {{ .Summary }},
+		"wordCount": {{ .WordCount }},
+		"mainEntityOfPage": "True",
+		"dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+		"image": {
+			"@type": "imageObject",
+			"url": "{{ with .Params.cover }}{{ . }}{{ end }}"
+		},
+		"publisher": {
+			"@type": "Person",
+			"name": "{{ .Site.Title }}",
+			"logo": {
+			"@type": "imageObject",
+			"url": {{ $icon }}
+			}
+		}
+	}
+	</script>
+{{ else }}<meta property="og:type" content="website" /> 
+<meta name="author" content="{{ .Params.author }}" />
+<script defer type="application/ld+json">
+	{ 
+		"@context": "http://schema.org", 
+		"@type": "WebSite", 
+		"url": {{ .Permalink }}, 
+		"name": "{{ .Title }}", 
+		"logo": {{ $icon }}
+	}
+</script>{{ end }}
+<meta property="article:publisher" content="{{ .Params.author }}" />
+{{ with.Params.author }}<meta property="og:article:author" content="{{ . }}" />
+<meta property="article:author" content="{{ . }}" /> 
+<meta name="author" content="{{ . }}" />{{ end }}
+{{ with.Params.category }}<meta name="news_keywords" content="{{ . }}" />
+<meta property="article:section" content="{{ . }}" />{{ end }}
+<meta property="og:article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} /> 
+<meta property="article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ .Site.BaseURL }}sitemap.xml" /> 
+{{ with .OutputFormats.Get "RSS" }}<link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+<link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />{{ end }}
+<meta name="robots" content="index,follow" /> 
+<meta name="googlebot" content="index,follow" />
+<link rel="manifest" href="{{ .Site.BaseURL }}manifest.json" />
+<meta name="theme-color" content="#ffffff" /> 
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />

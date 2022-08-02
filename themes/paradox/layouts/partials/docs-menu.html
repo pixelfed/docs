@@ -1,0 +1,42 @@
+<nav class="site-nav">
+	<div class="container">
+		<input type="checkbox" class="toggle-menu" name="toggle" id="toggle">
+		<label class="toggle-menu__label" for="toggle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+		 </svg> Menu</label>
+		<ul class="menu">
+			<a id="menu" href="#top">Skip menu</a>
+			{{ $currentPage := . }}
+			{{ range .Site.Menus.docs }}
+				{{ if .HasChildren}}
+				<li class='section-title{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }} active{{ end }}'>
+				 <a href="{{ .URL | absLangURL }}">
+					{{ .Pre }}
+					<span>{{ .Name }}</span>
+					{{ .Post }}
+				 </a>
+				 <ul class="sub-menu">
+						{{ range .Children }}
+						<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
+							 <a href="{{ .URL | absLangURL }}">
+								{{ .Pre }}
+								<span>{{ .Name }}</span>
+								{{ .Post }}
+							 </a>
+							 </li>
+						{{ end }}
+				 </ul>
+			</li>
+				{{ else }}
+				<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
+				 <a href="{{ .URL | absLangURL }}">
+					{{ .Pre }}
+					<span>{{ .Name }}</span>
+					{{ .Post }}
+				 </a>
+			</li>
+				{{ end }}
+			{{ end }}
+	  </ul>
+	</div>
+</nav>

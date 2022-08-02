@@ -1,0 +1,507 @@
+/*==============================================================================
+Paradox - Hugo theme for simple, clean documentation
+         with an opinionated feature set.
+
+Table of contents:
+
+	0 - Reset
+	1 - Base
+	2 - Page content
+	3 - Site structure
+==============================================================================*/
+
+/*==============================================================================
+0 - Reset
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*==============================================================================
+1 - Base
+
+This section contains foundational styles
+for the structure of the website.
+*/
+
+:root {
+	--container-width: 1280px;
+	--nav-height: 4rem;
+	--header-height: 4rem;
+	--footer-height: 3rem;
+	--link-color: #3371cf;
+	--link-visited: #594288;
+	--primary-accent: rgb(0, 123, 255);
+	--primary-accent-transparent: rgba(0, 123, 255,0.25);
+	--primary-accent-text: #fff;
+	--ui-background: #fff;
+	--ui-text: #111;
+	--ui-text-muted: #666;
+	--ui-text-bold: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--link-color: #8fb1df;
+		--link-visited: #a089d4;
+		--primary-accent: rgb(0, 123, 255);
+		--primary-accent-transparent: rgba(0, 123, 255,0.25);
+		--primary-accent-text: #fff;
+		--ui-background: #212121;
+		--ui-text: #eee;
+		--ui-text-muted: #999;
+		--ui-text-bold: #fff;
+	}
+}
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	scroll-behavior: smooth;
+	background: var(--ui-background);
+	color: var(--ui-text);
+}
+
+/* Single column layout, where main content stretches to fill. */
+body {
+	display: flex;
+	flex-flow: column;
+	min-height: calc(var(--vh, 1vh) * 100);
+	max-width: var(--container-width);
+	margin: auto;
+}
+main {flex-grow: 1;}
+
+/*
+Sections are primary block units, usually of type <section>.
+Containers are an immediate child <div>, purely for constraining width.
+*/
+.section {
+	padding: 2em 0; /* we apply a vertical padding only to sections */
+}
+.container {
+	width: 100%;
+	max-width: var(--container-width);
+	margin: 0 auto;
+	padding: 0 1em; /* and we apply a horizontal padding only to containers */
+}
+
+/*==============================================================================
+2 - Page content
+
+This section contains foundational styles
+for a single web page's content.
+*/
+
+.page h1 {font-size: 1.8em}
+.page h2 {font-size: 1.6em}
+.page h3 {font-size: 1.423em}
+.page h4 {font-size: 1.265em}
+.page h5 {font-size: 1.125em}
+.page h6 {font-size: 1em}
+
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6 {
+	line-height: 1.2;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
+	font-weight: 700;
+}
+.page p {
+	line-height: 2;
+	margin-bottom: 1em;
+}
+.page a {word-wrap: break-word;}
+.page blockquote {
+	font-style: italic;
+	font-size: 1em;
+	margin: 1em 0;
+	border-left: 0.25rem solid black;
+	padding-left: 0.75em;
+	line-height: 1.4;
+}
+.page pre {
+	font-family: monospace;
+	background: #333;
+	color: white;
+	padding: 1em;
+	line-height: 1.4;
+	overflow-x: scroll;
+	margin-bottom: 1em;
+}
+.page ul {list-style: disc; margin: 1em 0;}
+.page li {margin-bottom: 1em; line-height: 1.4; margin-left: 1em;}
+.page ol {list-style: decimal; margin: 1em 0;}
+.page dl {margin: 1em 0; line-height: 1.4;}
+.page dt {font-weight: 700;}
+.page dd {margin-left: 1em;}
+.page em {font-style: italic}
+.page strong {font-weight: 700}
+.page sup {
+	position: relative;
+	font-size: 0.8em;
+}
+.page sup a {position: relative; top: -0.5em;}
+.page table {text-align: center;}
+.page thead {font-weight: 700;}
+.page th,
+.page td {
+	border: 1px solid black;
+	padding: 0.5em;
+}
+
+.page img {
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+.page figure {margin-bottom: 1em;}
+.page figure img {
+	width: 100%;
+	margin-bottom: -0.125em;
+}
+.page figcaption {
+	background: #212121;
+	color: white;
+	font-style: italic;
+	padding: 1em;
+	font-size: 0.8em;
+	line-height: 1.2;
+}
+
+.page .hint {
+	padding: 1em;
+}
+
+/*==============================================================================
+3 - Site structure
+
+This section contains styles
+for laying out the structural elements.
+*/
+
+/* site header */
+.site-header {padding: 1em 0;}
+
+.site-header a {
+	text-decoration: none;
+}
+.site-header .container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.site-masthead {
+	display: inline-flex;
+	flex-flow: row;
+	align-items: center;
+	gap: 1em;
+}
+.site-icon {
+	height: 2em;
+}
+.site-title {
+	font-weight: 900;
+	letter-spacing: -0.5px;
+	font-size: 1.25em;
+}
+
+/* navigation menu */
+
+.site-nav {
+	padding: 1em 0;
+}
+.site-nav .menu {margin-top: 1em;}
+.site-nav .menu > li {
+	margin-bottom: 1em;
+}
+#menu {margin-bottom: 1em;}
+#menu:not(:focus) {
+	clip: rect(0 0 0 0); 
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap; 
+	width: 1px;
+}	
+.site-nav .section-title > a {
+	font-weight: 700;
+	text-decoration: none;
+	color: inherit;
+}
+.site-nav li {line-height: 2}
+.site-nav .sub-menu {margin-left: 1em;}
+
+/* navigation menu toggle */
+
+.toggle-menu {
+	display: none;
+}
+
+.toggle-menu:not(:checked) ~ .menu {
+	display: none;
+}
+.toggle-menu__label {
+	display: flex;
+	align-items: center;
+}
+
+/* page */
+
+.page .content p {
+	max-width: 80ch;
+}
+
+/* footer */
+
+.site-footer {
+	height: var(--footer-height);
+	display: flex;
+	align-items: center;
+}
+.site-footer hr {display: none;}
+.site-footer .container {
+	display: flex;
+	justify-content: space-between;
+}
+.breadcrumbs {display: flex; flex-flow: row wrap;}
+
+/*==============================================================================
+4 - Aesthetic
+
+This section contains aesthetic styles
+such as typography and color.
+*/
+
+a:link {
+	transition: all 0.1s ease-out;
+	color: var(--link-color);
+	text-decoration-thickness: .0625rem;
+	text-underline-offset: 0.125em;
+	text-decoration-skip-ink: none;
+}
+
+a:visited {
+	color: var(--link-visited);
+}
+
+a:focus {
+	outline: none;
+	background: var(--primary-accent);
+	color: var(--primary-accent-text);	
+	padding: 4px;
+	border-radius: 2px;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration-thickness: 0.125em;
+	text-underline-offset: 0.25em;
+}
+
+@media (prefers-reduced-motion) {
+	a:link {transition: none}
+}
+
+.site-masthead, .site-masthead:visited {
+	color: inherit
+}
+
+.site-masthead:focus {
+	color: var(--primary-accent-text);		
+}
+
+.toggle-menu__label {
+	font-weight: 900;
+	gap: 0.25rem;
+	text-transform: uppercase;
+}
+
+.page .page-title {
+	margin-top: 0;
+}
+
+.page .toc-title {
+	margin-bottom: 0.5em;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: var(--ui-text-muted);
+}
+#TableOfContents ul {
+	list-style:  none;
+	margin: 0;
+}
+#TableOfContents li {
+	margin: 0;
+	line-height: 1.5;
+}
+#TableOfContents li > ul {
+	margin: 0;
+	margin-left: 1em;
+}
+
+.page blockquote {
+	border-color: var(--ui-text-bold)
+}
+
+.page code {
+	font-family: monospace;
+	padding: 4px;
+	background: rgba(0,0,0,0.1);
+}
+
+.page .hint {
+	line-height: 2;
+}
+
+.page .hint, .page .hint.info, .page .hint.tip {
+	background: rgba(142, 226, 142, 0.2);
+	border-left: 4px solid rgb(142, 226, 142);
+}
+
+.page .hint.warning {
+	background: rgba(218, 226, 142, 0.2);
+	border-left: 4px solid rgb(218, 226, 142);
+}
+
+.page .hint.danger {
+	background: rgba(226, 142, 142, 0.2);
+	border-left: 4px solid rgb(226, 142, 142);
+}
+
+.page ul.language-list {
+	display: flex;
+	flex-flow: wrap;
+	list-style: none;
+}
+
+.page .lastmod {
+	margin-top: 1em;
+	color: var(--ui-text-muted)
+}
+
+/*==============================================================================
+5 - Responsive
+
+This section contains responsive styles
+for wider screens.
+*/
+
+@media (min-width: 60rem) {
+	body {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		height: 100 * var(--vh, 1vh);
+	}
+	.site-header, .scroll-margin, .site-footer {
+		grid-column: span 2
+	}
+	.site-nav {
+		grid-column: 1;
+		height: calc(100 * var(--vh, 1vh) - var(--header-height) - var(--footer-height));
+		overflow-y: auto;
+		scrollbar-width: none;
+		padding: 0;
+	}
+	main {
+		grid-column: 2;
+		height: calc(100 * var(--vh, 1vh) - var(--header-height) - var(--footer-height));
+		overflow-y: auto;
+		scrollbar-width: none;
+	}
+	.site-nav::-webkit-scrollbar,
+	main::-webkit-scrollbar {
+		display: none;
+	}
+
+	.site-nav .menu {margin-top: 0;}
+
+	.page-header {
+		padding: 0;
+	}
+ 
+	/* re-show the navigation menu as a sidebar */
+
+	.toggle-menu {
+		display: none;
+	}
+	
+	.toggle-menu:not(:checked) ~ .menu {
+		display: unset;
+	}
+	.toggle-menu__label {
+		display: none;
+	}
+
+}
+
+@media (min-width: 75rem) {
+	body {
+		grid-template-columns: 20rem 1fr;
+	}
+	.page {
+		display: grid;
+		grid-template-columns: 1fr 15rem;
+	}
+	.page .page-header {
+		grid-column: span 2
+	}
+	.page .section {
+		grid-column: 1;
+	}
+	.page .toc {
+		grid-column: 2;
+		position: relative;
+		padding: 0;
+	}
+	.page .toc .container {
+		position: fixed;
+		width: 15rem;
+	}
+}

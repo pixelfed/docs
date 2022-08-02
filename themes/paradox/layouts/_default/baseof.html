@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{.Site.Language.Lang }}" xml:lang="{{.Site.Language.Lang }}">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.screen.css" media="screen" />
+		<script type="text/javascript" href="{{ .Site.BaseURL }}js/script.js"></script>
+		{{ partial "seo.html" . }}
+		{{ block "head" . }}
+		{{ end }}
+	</head>
+	<body>
+		{{ partial "site-header.html" . }}
+		{{ block "main" . }}
+		{{ end }}
+		{{ partial "site-footer.html" . }}
+	</body>
+</html>

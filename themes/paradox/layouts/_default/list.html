@@ -1,0 +1,26 @@
+{{ define "main" }}
+<main>
+	<header class="section page-header">
+		<div class="container">
+			<h1 class="page-title">{{ .Title }}</h1>
+			{{ partial "i18nlist.html" . }}
+		</div>
+	</header>
+	<section class="section list">
+		<div class="container">
+			{{ range .Pages }}
+				<article class="list-item">
+					<a class="list-item__link" href="{{ .Permalink }}">
+				{{ with .Params.cover }}
+				<img class="list-item__image" src="{{.}}">
+				{{end}}
+				<h2 class="list-item__title">{{ .Title }}</h2>
+					</a>
+				<p class="list-item__summary">{{.Summary}}</p>
+				<datetime class="list-item__date">{{ .Date.Format "January 2, 2006" }}</datetime>
+			</article>
+			{{ end }}
+		</div>
+	</section>
+</main>
+{{ end }}

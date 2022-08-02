@@ -1,0 +1,21 @@
+baseURL = 'https://docs.pixelfed.org/'
+languageCode = 'en-us'
+title = 'Pixelfed Documentation'
+theme = 'paradox'
+defaultContentLanguage = 'en'
+enableGitInfo = true
+
+[frontmatter]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
+
+[languages]
+[languages.en]
+contentDir = 'content/en'
+languageName = 'English'
+weight = 1
+
+[params]
+icon = "https://avatars0.githubusercontent.com/u/38410642?s=200&amp;v=4"
+title = "Pixelfed Documentation"
+repo = "https://github.com/pixelfed/docs"
+branch = "hugo"
