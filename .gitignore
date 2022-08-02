@@ -2,3 +2,4 @@
 .vitepress/dist
 .vite/*
 node_modules/*
+.hugo_build.lock
