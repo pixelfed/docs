@@ -6,6 +6,7 @@ module.exports = [
       'prerequisites',
       'installation',
       'administration',
+      's3-storage',
       'troubleshooting',
       'livestreaming',
       'websockets',
