@@ -24,8 +24,9 @@ module.exports = [
   },
   {
     title: 'Distro-specific deploy guides',
-    collapsable: true,
+    collapsable: false,
     children: prefix('install-guides', [
+      'ubuntu22',
       'arch',
     ]),
   },
