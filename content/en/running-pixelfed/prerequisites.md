@@ -1,4 +1,12 @@
-# Preparing your machine
++++
+title = "Preparing your machine"
+summary = "Download, install, and configure some pre-requisites."
+[menu]
+[menu.docs]
+identifier = "admin/prerequisites"
+parent = "admin"
+weight = 10
++++
 
 Before you install Pixelfed, you will need to setup a webserver with the required dependencies:
 
@@ -14,11 +22,13 @@ Before you install Pixelfed, you will need to setup a webserver with the require
 - [PNGQuant](https://pngquant.org/), for lossy PNG
 - [ffmpeg](https://ffmpeg.org/), for generating video thumbnails
 
-::: tip Shared Hosting
+{{<hint style="warning">}}
+**Shared Hosting**
+
 At this stage, it's not possible to install Pixelfed by downloading a ZIP file and uploading the files to your web server. This is because Composer needs to run on the command line.
 
 This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH access, through which you should be able to install Composer and Pixelfed just fine.
-:::
+{{</hint>}}
 
 
 ## HTTP Web server
@@ -60,9 +70,11 @@ CREATE USER pixelfed CREATEDB;
 \q
 ```
 
-::: tip Changing database drivers:
+{{<hint style="warning">}}
+**Changing database drivers**
+
 If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
-:::
+{{</hint>}}
 
 ## PHP-FPM
 
@@ -95,9 +107,11 @@ Finally, make sure to set the desired upload limits for your PHP processes. You 
 - `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
 - `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
 
-::: tip Instagram imports
+{{<hint style="tip">}}
+**Instagram imports**
+
 Instagram imports are also affected by these settings. If you enable imports, you will want to raise `post_max_size` to the maximum size you expect an Instagram archive to be, `upload_max_filesize` to the maximum size you expect individual Instagram photos to be, and `max_file_uploads` to the maximum number of photos (not posts) you'd expect an Instagram archive to contain.
-:::
+{{</hint>}}
 
 ## Creating a dedicated app-user and using UNIX sockets (optional)
 
@@ -115,12 +129,14 @@ cp www.conf pixelfed.conf
 $EDITOR pixelfed.conf
 ```
 
-::: tip Where to define custom PHP-FPM pools
+{{<hint style="tip">}}
+**Where to define custom PHP-FPM pools**
+
 The exact directory you should `cd` to will vary according to your distribution:
 - Arch Linux uses `/etc/php/php-fpm.d`
 - Debian and Ubuntu use `/etc/php/7.3/fpm/pool.d/` (dependent on PHP version)
 - For other distributions, check your php-fpm.conf to see where exactly you can define `*.conf` with `include=`
-:::
+{{</hint>}}
 
 
 Make the following changes to the PHP-FPM pool:
@@ -150,9 +166,11 @@ unixsocket /run/redis/redis.sock    #
 unixsocketperm 770                  # give permission to "redis" user and group
 ```
 
-::: tip Where to find redis.conf
+{{<hint style="tip">}}
+**Where to find redis.conf**
+
 The exact location will vary according to your distribution:
 - Arch Linux uses `/etc/redis.conf`
 - Debian and Ubuntu use `/etc/redis/redis.conf`
 - For other distributions, check your documentation
-:::
+{{</hint>}}

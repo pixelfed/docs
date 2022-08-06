@@ -1,3 +1,13 @@
++++
+title = "Setting up your environment"
+summary = "Download and install the pre-requisites, then run these commands."
+[menu]
+[menu.docs]
+identifier = "development/intro"
+parent = "development"
+weight = 10
++++
+
 ## Requirements
 - Git
 - PHP

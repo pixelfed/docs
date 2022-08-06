@@ -1,13 +1,6 @@
 {{ define "main" }}
 <main>
 	<article class="page">
-		<header class="section page-header">
-			<div class="container">
-				<h1 class="page-title">{{ .Title }}</h1>
-				<p class="page-summary">{{.Summary}}</p>
-				{{ partial "i18nlist.html" . }}
-			</div>
-		</header>
 		<aside class="toc section">
 			<div class="container">
 				<p class="toc-title">Page outline</p>
@@ -18,6 +11,7 @@
 			<div class="container">
 				{{ .Content }}
 				<p class="lastmod">Last modified <datetime class="date"> {{ .Lastmod.Format "Mon Jan 2, 2006" }} </datetime> - <a href="{{.Site.Params.repo}}/edit/{{.Site.Params.branch}}/content/{{.File.Lang}}/{{.File.Path}}">Edit this page on Github</a></p>
+				{{ partial "i18nlist.html" . }}
 			</div>
 		</section>
 	</article>

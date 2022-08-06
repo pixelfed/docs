@@ -5,11 +5,14 @@ theme = 'paradox'
 defaultContentLanguage = 'en'
 enableGitInfo = true
 
+[markup.tableOfContents]
+ordered = true
+
 [markup.goldmark.renderer]
 unsafe = true
 
 [frontmatter]
-  lastmod = ["lastmod", ":git", "date", "publishDate"]
+lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [languages]
 [languages.en]

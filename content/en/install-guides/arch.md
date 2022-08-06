@@ -1,4 +1,12 @@
-# Deploying Pixelfed on Arch Linux
++++
+title = "Deploying Pixelfed on Arch Linux"
+summary = "End-to-end guide for installing Pixelfed on Arch Linux"
+[menu]
+[menu.docs]
+identifier = "install-guides/arch"
+parent = "install-guides"
+name = "Arch Linux"
++++
 
 ## Assumptions
 These instructions will install Pixelfed with the following:

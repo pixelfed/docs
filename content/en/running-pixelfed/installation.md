@@ -1,12 +1,20 @@
-# Generic installation guide
++++
+title = "Generic installation guide"
+summary = "How to set up everything you need to run your own Pixelfed instance."
+[menu]
+[menu.docs]
+identifier = "admin/installation"
+parent = "admin"
+weight = 20
++++
 
 Make sure you have all prerequisites installed and the appropriate services running/enabled before continuing.
 
-::: warning WARNING
-Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
-:::
+{{<hint style="warning">}}
+**WARNING**
 
-[[toc]]
+Pixelfed is still a work in progress. We do not recommending running an instance in production at this stage unless you know what you are doing!
+{{</hint>}}
 
 ## Setting up Pixelfed files
 
@@ -30,9 +38,11 @@ sudo find . -type d -exec chmod 755 {} \; # set all directories to rwx by user/g
 sudo find . -type f -exec chmod 644 {} \; # set all files to rw by user/group
 ```
 
-::: danger User and group permissions
+{{<hint style="danger">}}
+**User and group permissions**
+
 Make sure to use the correct user/group name for your system. This may be `http`, `www-data`, or `pixelfed` (if using a dedicated user).
-:::
+{{</hint>}}
 
 ### Initialize PHP dependencies
 
@@ -53,9 +63,11 @@ cp .env.testing .env # for debug deployments
 
 You can now edit `.env` and change values for your setup.
 
-::: tip List of environment variables
+{{<hint style="tip">}}
+**List of environment variables**
+
 You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/env.md) page, but the important variables will be listed in the below subsections.
-:::
+{{</hint>}}
 
 ### App variables
 
@@ -104,15 +116,15 @@ If you are using a Unix socket for Redis, then:
 - Set `REDIS_HOST` to `null`
 - Set `REDIS_PORT` to `null`
 
-If you are using a Unix socket 
+{{<hint style="tip">}}
+**TCP server vs. Unix socket**
 
-::: tip TCP server vs. Unix socket
 Redis usually comes pre-configured to listen for TCP requests on the local machine over port 6379. In your Redis configuration, typically at `/etc/redis.conf`, the relevant lines are `bind 127.0.0.1` and `port 6379`.
 
 Changing the latter line to `port 0` will disable TCP listening, in which case Redis must be configured for socket access. Lines such as `unixsocket /run/redis/redis.sock` and `unixsocketperm 770` must be set to enable socket access. Additionally, both the app user and web user should have permission to access the socket, e.g. by being added to the `redis` group.
 
 Using a Unix socket is optional, but may provide faster access since it does not have to create TCP packets. TCP is usually used over a network, and would be required if Redis were running on a different machine than your web server.
-:::
+{{</hint>}}
 
 ### Email variables
 
@@ -247,7 +259,8 @@ Every time you edit your .env file, you must run this command to have the change
 php artisan config:cache
 ```
 
-::: tip Running Pixelfed without a cache
+{{<hint style="tip">}}
+**Running Pixelfed without a cache**
 
 It is possible to not use a cache by not running the above cache commands, but it is recommended to run these for production deployments. If you choose not to run these commands, then you can freely edit the .env file and source code instead, and your changes will be reflected instantly, but performance may take a slight hit. You can also undo these commands by running `:clear` commands:
 
@@ -256,7 +269,7 @@ php artisan route:clear
 php artisan view:clear
 php artisan config:clear
 ```
-:::
+{{</hint>}}
 
 ### Job queueing
 
@@ -296,7 +309,9 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-::: tip Using correct paths and service names
+{{<hint style="tip">}}
+**Using correct paths and service names**
+
 The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /usr/share/webapps/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
 
 - Replacing `mariadb` with `postgresql` or `mysql`
@@ -304,7 +319,7 @@ The example above assumes you are using MariaDB and Nginx, that your distributio
 - Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
 - Replacing `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
 - Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
-:::
+{{</hint>}}
 
 You can now use systemd to manage Pixelfed like any other background service:
 
@@ -323,9 +338,11 @@ redirect_stderr=true
 stdout_logfile=/usr/share/webapps/pixelfed/horizon.log
 stopwaitsecs=3600
 ```
-:::tip Using correct paths
+{{<hint style="tip">}}
+**Using correct paths**
+
 You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
-:::
+{{</hint>}}
 
 You will then need to run these commands:
 
@@ -360,9 +377,11 @@ Paste the following cronjob into your crontab:
 * * * * * /usr/bin/php /usr/share/webapps/pixelfed/artisan schedule:run >> /dev/null 2>&1
 ```
 
-:::tip Using correct paths
+{{<hint style="tip">}}
+**Using correct paths**
+
 You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
-:::
+{{</hint>}}
 
 ### Handling web requests
 
@@ -442,18 +461,32 @@ server {                                             # Redirect http to https
 }
 ```
 
-::: tip FastCGI path
+{{<hint style="tip">}}
+**FastCGI path**
+
 Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php7.3-fpm.sock`, on Debian it may be `/var/run/php/php7.3-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
-:::
+{{</hint>}}
 
-::: tip Nginx web root
-Make sure to use the `/public` folder as your server root. Example:`server {root /var/www/pixelfed/public;)`.
-If you set root to the install directory (example: `server {root /var/www/pixelfed;)` Pixelfed will not work.
-:::
+{{<hint style="warning">}}
+**Nginx web root**
 
-::: tip Nginx client max body size
+Make sure to use the `/public` folder as your server root. For example:
+
+```
+server {
+    root /var/www/pixelfed/public;
+````
+
+If you set root to the install directory (example: `root /var/www/pixelfed;`) Pixelfed will not work.
+{{</hint>}}
+
+{{<hint style="tip">}}
+**Nginx client max body size**
+
 Make sure to set an appropriate `client_max_body_size` setting in the `nginx.conf` file. Set this slightly greater than your desired post size limit for file uploads. The `nginx.conf` file location will vary based on your server. `/etc/nginx/nginx.conf`
+
 Example:`http {client_max_body_size 9m;}`
+{{</hint>}}
 
 #### Obtaining an HTTPS certificate
 
