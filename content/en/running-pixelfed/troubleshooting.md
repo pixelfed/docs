@@ -1,4 +1,12 @@
-# Troubleshooting
++++
+title = "Troubleshooting"
+summary = "Frequently asked questions about things going wrong"
+[menu]
+[menu.docs]
+identifier = "admin/troubleshooting"
+parent = "admin"
+weight = 30
++++
 
 ## Horizon is not working
 This means that your permissions are wrong somewhere. Make sure that you have run `php artisan horizon` as a user that has access to both your repo and to Redis.

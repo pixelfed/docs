@@ -17,13 +17,34 @@
 				 </a>
 				 <ul class="sub-menu">
 						{{ range .Children }}
-						<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
-							 <a href="{{ .URL | absLangURL }}">
-								{{ .Pre }}
-								<span>{{ .Name }}</span>
-								{{ .Post }}
-							 </a>
-							 </li>
+							{{if .HasChildren }}
+							<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
+								<a href="{{ .URL | absLangURL }}">
+								  {{ .Pre }}
+								  <span>{{ .Name }}</span>
+								  {{ .Post }}
+								</a>
+								<ul class="sub-menu">
+									{{range .Children}}
+									<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
+										<a href="{{ .URL | absLangURL }}">
+										  {{ .Pre }}
+										  <span>{{ .Name }}</span>
+										  {{ .Post }}
+										</a>
+								  </li>
+									{{end}}
+								</ul>
+						  </li>
+							{{else}}
+							<li class='{{ if or ($currentPage.IsMenuCurrent "docs" .) (eq $currentPage.Section .Identifier) }}active{{ end }}'>
+								<a href="{{ .URL | absLangURL }}">
+								  {{ .Pre }}
+								  <span>{{ .Name }}</span>
+								  {{ .Post }}
+								</a>
+						  </li>
+							{{end}}
 						{{ end }}
 				 </ul>
 			</li>
@@ -34,7 +55,7 @@
 					<span>{{ .Name }}</span>
 					{{ .Post }}
 				 </a>
-			</li>
+				</li>
 				{{ end }}
 			{{ end }}
 	  </ul>

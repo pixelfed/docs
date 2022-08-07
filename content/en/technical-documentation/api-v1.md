@@ -1,6 +1,11 @@
-# v1 API
-
-[[toc]]
++++
+title = "v1 API"
+summary = "Information about Pixelfed's REST API"
+[menu]
+[menu.docs]
+identifier = "tech/api-v1"
+parent = "tech"
++++
 
 Our v1 API is based on the [mastodon v1 API](https://docs.joinmastodon.org/methods/apps/). You can reference the Mastodon documentation, we listed the differences below.
 

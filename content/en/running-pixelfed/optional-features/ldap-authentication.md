@@ -1,11 +1,14 @@
-# LDAP Authentication
++++
+title = "LDAP Authentication"
+summary = "You can configure your Pixelfed server to authenticate with an LDAP Server!"
+[menu]
+[menu.docs]
+identifier = "admin/optional/ldap"
+parent = "admin/optional"
+weight = 30
++++
 
-You can configure your Pixelfed server to authenticate with an LDAP Server!
-
-[[toc]]
-
-
-### Prerequisites
+## Prerequisites
 
 - Enable the `ext-ldap` PHP extension in your servers `php.ini` configuration
 

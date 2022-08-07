@@ -1,12 +1,20 @@
-# Configuration
+
++++
+title = "Configuration"
+summary = "A list of environment variables"
+[menu]
+[menu.docs]
+identifier = "tech/config"
+parent = "tech"
++++
 
 All configuration files are located in the `config/` folder of your Pixelfed installation. These are the environment variables you can set in your `.env` file; note that some variables are currently unused and do nothing.
 
-::: tip Summary of important variables
-For a user-facing guide to which environment variables you might want to set, check out the [installation guide](../running-pixelfed/installation.md#configure-environment-variables) instead.
-:::
+{{<hint style="tip">}}
+**Summary of important variables**
 
-[[toc]]
+For a user-facing guide to which environment variables you might want to set, check out the [installation guide](../running-pixelfed/installation.md#configure-environment-variables) instead.
+{{</hint>}}
 
 ## app
 ### `APP_NAME`

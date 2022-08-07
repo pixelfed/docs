@@ -6,11 +6,12 @@ Table of contents:
 
 	0 - Reset
 	1 - Base
-	2 - Page content
-	3 - Site structure
-	4 - Aesthetic
-	5 - Responsive
-	6 - Override
+	2 - Site structure
+	3 - Page content
+	4 - List section
+	5 - Aesthetic
+	6 - Responsive
+	7 - Override
 ==============================================================================*/
 
 /*==============================================================================
@@ -131,7 +132,150 @@ Containers are an immediate child <div>, purely for constraining width.
 }
 
 /*==============================================================================
-2 - Page content
+2 - Site structure
+
+This section contains styles
+for laying out the structural elements.
+*/
+
+main {
+	line-height: 2;
+}
+
+.site-nav {
+	line-height: 1.75;
+}
+
+/* site header */
+.site-header {padding: 1em 0;}
+
+.site-header a {
+	text-decoration: none;
+}
+.site-header .container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.site-masthead {
+	display: inline-flex;
+	flex-flow: row;
+	align-items: center;
+	gap: 1em;
+}
+.site-icon {
+	height: 2em;
+}
+.site-title {
+	font-weight: 900;
+	letter-spacing: -0.5px;
+	font-size: 1.25em;
+}
+
+.extra-nav {
+	display: grid;
+	place-items: center;
+	padding: 1em 0;
+}
+
+.extra-nav .menu {
+	display: flex;
+	gap: 1em;
+}
+
+.scroll-margin {
+	display: none;
+}
+
+/* navigation menu */
+
+.site-nav .menu {margin-top: 1em;}
+.site-nav .menu > li {
+	margin-bottom: 1em;
+}
+#menu {margin-bottom: 1em;}
+#menu:not(:focus) {
+	clip: rect(0 0 0 0); 
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap; 
+	width: 1px;
+}	
+.site-nav .section-title > a {
+	font-weight: 700;
+	text-decoration: none;
+	color: inherit;
+}
+
+.site-nav .sub-menu .sub-menu {
+	margin-left: 1em;
+}
+
+.site-nav .sub-menu {
+	margin-left: 1em;
+}
+
+.site-nav .sub-menu li::marker {
+	content: '⟣ '
+}
+
+.site-nav .sub-menu .sub-menu li::marker {
+	content: '↳ '
+}
+
+/* navigation menu toggle */
+
+.toggle-menu {
+	display: none;
+}
+
+.toggle-menu:not(:checked) ~ .menu {
+	display: none;
+}
+.toggle-menu__label {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* footer */
+
+.site-footer {
+	height: var(--footer-height);
+	display: flex;
+	align-items: center;
+}
+.site-footer hr {display: none;}
+.site-footer .container {
+	display: flex;
+	justify-content: space-between;
+}
+.breadcrumbs {display: flex; flex-flow: row wrap;}
+
+/* article footer */
+
+.section-nav {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.section-nav a {
+	flex-basis: 30ch;
+	flex-grow: 1;
+}
+
+.section-nav .previous {
+	text-align: left;
+}
+
+.section-nav .next {
+	
+	text-align: right;
+}
+
+/*==============================================================================
+3 - Page content
 
 This section contains foundational styles
 for a single web page's content.
@@ -158,6 +302,11 @@ for a single web page's content.
 	margin-bottom: 1rem;
 	margin-top: 2rem;
 	font-weight: 700;
+}
+
+.content h1, .content h2 {
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .content p {
@@ -234,98 +383,16 @@ for a single web page's content.
 }
 
 /*==============================================================================
-3 - Site structure
+4 - List pages
 
-This section contains styles
-for laying out the structural elements.
+This section contains foundational styles
+for a section page's list of content.
 */
 
-main {
-	line-height: 2;
-}
 
-.site-nav {
-	line-height: 1.75;
-}
-
-/* site header */
-.site-header {padding: 1em 0;}
-
-.site-header a {
-	text-decoration: none;
-}
-.site-header .container {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-}
-.site-masthead {
-	display: inline-flex;
-	flex-flow: row;
-	align-items: center;
-	gap: 1em;
-}
-.site-icon {
-	height: 2em;
-}
-.site-title {
-	font-weight: 900;
-	letter-spacing: -0.5px;
-	font-size: 1.25em;
-}
-
-/* navigation menu */
-
-.site-nav .menu {margin-top: 1em;}
-.site-nav .menu > li {
-	margin-bottom: 1em;
-}
-#menu {margin-bottom: 1em;}
-#menu:not(:focus) {
-	clip: rect(0 0 0 0); 
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap; 
-	width: 1px;
-}	
-.site-nav .section-title > a {
-	font-weight: 700;
-	text-decoration: none;
-	color: inherit;
-}
-
-/* navigation menu toggle */
-
-.toggle-menu {
-	display: none;
-}
-
-.toggle-menu:not(:checked) ~ .menu {
-	display: none;
-}
-.toggle-menu__label {
-	display: inline-flex;
-	align-items: center;
-}
-
-/* footer */
-
-.site-footer {
-	height: var(--footer-height);
-	display: flex;
-	align-items: center;
-}
-.site-footer hr {display: none;}
-.site-footer .container {
-	display: flex;
-	justify-content: space-between;
-}
-.breadcrumbs {display: flex; flex-flow: row wrap;}
 
 /*==============================================================================
-4 - Aesthetic
+5 - Aesthetic
 
 This section contains aesthetic styles
 such as typography and color.
@@ -466,17 +533,8 @@ h1, h2, h3, h4, h5, h6 {
 	justify-content: space-between;
 }
 
-h1 span,
-h2 span,
-h3 span,
-h4 span,
-h5 span,
-h6 span {
-	
-}
-
 /*==============================================================================
-5 - Responsive
+6 - Responsive
 
 This section contains responsive styles
 for wider screens.
@@ -503,6 +561,7 @@ for wider screens.
 		display: grid;
 		grid-template-columns: 1fr 3fr;
 		position: relative;
+		grid-template-rows: var(--header-height) 1fr auto
 	}
 
 	.site-nav {
@@ -531,6 +590,10 @@ for wider screens.
 		z-index: 3;
 	}
 
+	.extra-nav {
+		padding: 0;
+	}
+
 	.page {
 		z-index: 1;
 	}
@@ -555,6 +618,7 @@ for wider screens.
 	.toc .container,
 	.content .container,
 	.list .container,
+	.page footer .container,
 	.site-footer .container {
 		display: grid;
 		grid-template-columns: minmax(1em,1fr) minmax(0,80ch) minmax(1em,1fr);
@@ -564,6 +628,7 @@ for wider screens.
 	.toc .container > *,
 	.content .container > *,
 	.list .container > *,
+	.page footer .container > *,
 	.site-footer .container > * {
 		grid-column: 2;
 	}
@@ -592,7 +657,7 @@ for wider screens.
 
 	body {
 		grid-template-columns: minmax(0,280px) minmax(80ch,1fr) minmax(0,280px);
-		grid-template-rows: var(--header-height) auto 1fr;
+		grid-template-rows: var(--header-height) auto 1fr auto
 	}
 
 	.site-header {
@@ -621,6 +686,10 @@ for wider screens.
 		overflow-y: auto;
 	}
 
+	.page footer {
+		grid-column: 2;
+	}
+
 	.page-header, .content {
 		grid-column: 2;
 		grid-row: 2;
@@ -628,6 +697,10 @@ for wider screens.
 
 	.page-header ~ .content {
 		grid-row: 3;
+	}
+
+	.list {
+		grid-column: 2;
 	}
 
 	/* uncenter the table of contents */
@@ -645,7 +718,7 @@ for wider screens.
 }
 
 /*==============================================================================
-6 - Overrides
+7 - Overrides
 
 This section contains styles
 that modify the final layout.

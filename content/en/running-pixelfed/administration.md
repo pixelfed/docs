@@ -1,6 +1,12 @@
-# Administering your website
-
-[[toc]]
++++
+title = "Administering your website"
+summary = "Tips and instructions for managing your Pixelfed installation"
+[menu]
+[menu.docs]
+identifier = "admin/administration"
+parent = "admin"
+weight = 30
++++
 
 ## Updating Pixelfed
 

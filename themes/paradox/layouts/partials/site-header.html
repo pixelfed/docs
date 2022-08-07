@@ -4,9 +4,10 @@
 			<img class="site-icon" height="32" src="{{.Site.Params.icon}}">
 			<p class="site-title">{{.Site.Params.title}}</p>
 		</a>
+		{{ partial "menu-extra.html" .}}
 	</div>
 </header>
 <div class="scroll-margin" style="position: relative;">
 	<div id="top" style="scroll-margin-top: var(--header-height);"></div>
 </div>
-{{ partial "docs-menu.html" .}}
+{{ partial "menu-docs.html" .}}

@@ -8,14 +8,12 @@
 	</header>
 	<section class="section list">
 		<div class="container">
-			{{ range .Pages }}
+			{{.Content}}
+			{{ range .Pages.Reverse }}
 				<article class="list-item">
-					<a class="list-item__link" href="{{ .Permalink }}">
-				{{ with .Params.cover }}
-				<img class="list-item__image" src="{{.}}">
-				{{end}}
-				<h2 class="list-item__title">{{ .Title }}</h2>
-					</a>
+				<a class="list-item__title" href="{{ .Permalink }}">
+				{{ .Title }}
+				</a>
 				<p class="list-item__summary">{{.Summary}}</p>
 			</article>
 			{{ end }}

@@ -1,8 +1,17 @@
-# ActivityPub Federation
++++
+title = "ActivityPub"
+summary = "Information about how Pixelfed federates"
+[menu]
+[menu.docs]
+identifier = "tech/activitypub"
+parent = "tech"
++++
 
-::: tip WIP
+{{<hint style="warning">}}
+**WIP**
+
 This document is not yet finished.
-:::
+{{</hint>}}
 
 Pixelfed largely follows the ActivityPub server-to-server specification but it makes uses of some non-standard extensions, some of which are required for interacting with Pixelfed at all.
 

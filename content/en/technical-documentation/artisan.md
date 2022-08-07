@@ -1,6 +1,12 @@
-# Laravel Artisan
++++
+title = "Laravel Artisan"
+summary = "Laravel Artisan is a command line tool that you use to run migrations, cache the config and more."
+[menu]
+[menu.docs]
+identifier = "tech/artisan"
+parent = "tech"
++++
 
-Laravel Artisan is a command line tool that you use to run migrations, cache the config and more.
 ## Base commands
 
 ### clear-compiled

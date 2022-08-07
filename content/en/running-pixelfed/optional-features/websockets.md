@@ -1,12 +1,16 @@
-# Websockets
++++
+title = "Websockets"
+summary = "Websockets provide real time chat for Live Streaming and in the future, other aspects of the frontend UI and mobile apps."
+[menu]
+[menu.docs]
+identifier = "admin/optional/websockets"
+parent = "admin/optional"
+weight = 30
++++
 
-Websockets provide real time chat for Live Streaming and in the future, other aspects of the frontend UI and mobile apps.
-
-[[toc]]
-
-::: danger
+{{<hint style="danger">}}
 When using websockets as a Pusher replacement without having used Pusher before, **it does not matter what you set as your `PUSHER_` variables. Just make sure they are unique and not empty**.
-:::
+{{</hint>}}
 
 ## Pusher Configuration
 
