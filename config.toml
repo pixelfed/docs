@@ -14,6 +14,10 @@ unsafe = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+
 [languages]
 [languages.en]
 contentDir = 'content/en'

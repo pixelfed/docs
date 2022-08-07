@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="https://docs.pixelfed.org/css/theme.screen.css" media="screen" />
+		<script type="text/javascript" href="https://docs.pixelfed.org/js/script.js"></script>
+		
+<link rel="shortcut icon" href='https://docs.pixelfed.org/images/icon.png' sizes="765x765">
+
+	
+
+<title>Deploying Pixelfed on Arch Linux | Pixelfed Documentation</title>
+<title itemprop="name">Deploying Pixelfed on Arch Linux | Pixelfed Documentation</title>
+<meta property="og:title" content="Deploying Pixelfed on Arch Linux | Pixelfed Documentation" />
+<meta name="twitter:title" content="Deploying Pixelfed on Arch Linux | Pixelfed Documentation" />
+<meta itemprop="name" content="Deploying Pixelfed on Arch Linux | Pixelfed Documentation" />
+<meta name="application-name" content="Pixelfed Documentation" />
+<meta property="og:site_name" content="Pixelfed Documentation" />
+<meta name="description" content="End-to-end guide for installing Pixelfed on Arch Linux">
+<meta itemprop="description" content="End-to-end guide for installing Pixelfed on Arch Linux" />
+<meta property="og:description" content="End-to-end guide for installing Pixelfed on Arch Linux" />
+<meta name="twitter:description" content="End-to-end guide for installing Pixelfed on Arch Linux" />
+<base href="https://docs.pixelfed.org/install-guides/arch/">
+<link rel="canonical" href="https://docs.pixelfed.org/install-guides/arch/" itemprop="url" /> 
+<meta name="url" content="https://docs.pixelfed.org/install-guides/arch/" />
+<meta name="twitter:url" content="https://docs.pixelfed.org/install-guides/arch/" /> 
+<meta property="og:url" content="https://docs.pixelfed.org/install-guides/arch/" />
+
+<meta itemprop="image" content='https://docs.pixelfed.org/images/icon.png' />
+<meta property="og:image" content='https://docs.pixelfed.org/images/icon.png' />
+<meta name="twitter:image" content='https://docs.pixelfed.org/images/icon.png' />
+<meta name="twitter:image:src" content='https://docs.pixelfed.org/images/icon.png' />
+<meta property="og:updated_time" content=2022-08-06T09:40:16-0500 />
+<meta property="og:type" content="website" /> 
+<meta name="author" content="" />
+<script defer type="application/ld+json">
+	{ 
+		"@context": "http://schema.org", 
+		"@type": "WebSite", 
+		"url": "https://docs.pixelfed.org/install-guides/arch/", 
+		"name": "Deploying Pixelfed on Arch Linux", 
+		"logo": "https://docs.pixelfed.org/images/icon.png"
+	}
+</script>
+<meta property="article:publisher" content="" />
+
+
+<meta property="og:article:published_time" content=0001-01-01T00:00:00Z /> 
+<meta property="article:published_time" content=0001-01-01T00:00:00Z />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="https://docs.pixelfed.org/sitemap.xml" /> 
+
+<meta name="robots" content="index,follow" /> 
+<meta name="googlebot" content="index,follow" />
+<link rel="manifest" href="https://docs.pixelfed.org/manifest.json" />
+<meta name="theme-color" content="#ffffff" /> 
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="imagemode" content="force" />
+<meta name="coverage" content="Worldwide" /> 
+<meta name="distribution" content="Global" />
+<meta name="HandheldFriendly" content="True" /> 
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="apple-mobile-web-app-title" content="Pixelfed Documentation" /> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-touch-fullscreen" content="yes" />
+		
+		
+	</head>
+	<body>
+		<header class="site-header">
+	<div class="container">
+		<a href="/" class="site-masthead">
+			<img class="site-icon" height="32" src="https://avatars0.githubusercontent.com/u/38410642?s=200&amp;amp;v=4">
+			<p class="site-title">Pixelfed Documentation</p>
+		</a>
+		<nav class="extra-nav">
+	<div class="container">
+		<ul class="menu">
+			
+			<li>
+				<a href="https://pixelfed.org">
+					
+					<span>pixelfed.org</span>
+					
+				 </a>
+			</li>
+			
+			<li>
+				<a href="https://github.com/pixelfed/pixelfed">
+					
+					<span>Github</span>
+					
+				 </a>
+			</li>
+			
+		</ul>
+	</div>
+</nav>
+	</div>
+</header>
+<div class="scroll-margin" style="position: relative;">
+	<div id="top" style="scroll-margin-top: var(--header-height);"></div>
+</div>
+<nav class="site-nav section">
+	<div class="container">
+		<input type="checkbox" class="toggle-menu" name="toggle" id="toggle">
+		<label class="toggle-menu__label" for="toggle"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+		 </svg> Menu</label>
+		<ul class="menu">
+			<a id="menu" href="#top">Skip menu</a>
+			
+			
+				
+				<li class='section-title'>
+				 <a href="https://docs.pixelfed.org/running-pixelfed/">
+					
+					<span>Run your own Pixelfed website</span>
+					
+				 </a>
+				 <ul class="sub-menu">
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/running-pixelfed/prerequisites/">
+								  
+								  <span>Preparing your machine</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/running-pixelfed/installation/">
+								  
+								  <span>Generic installation guide</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/running-pixelfed/administration/">
+								  
+								  <span>Administering your website</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/running-pixelfed/troubleshooting/">
+								  
+								  <span>Troubleshooting</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/running-pixelfed/optional-features/">
+								  
+								  <span>Optional features</span>
+								  
+								</a>
+								<ul class="sub-menu">
+									
+									<li class=''>
+										<a href="https://docs.pixelfed.org/running-pixelfed/optional-features/livestreaming/">
+										  
+										  <span>Livestreaming (Pixelfed Live)</span>
+										  
+										</a>
+								  </li>
+									
+									<li class=''>
+										<a href="https://docs.pixelfed.org/running-pixelfed/optional-features/ldap-authentication/">
+										  
+										  <span>LDAP Authentication</span>
+										  
+										</a>
+								  </li>
+									
+									<li class=''>
+										<a href="https://docs.pixelfed.org/running-pixelfed/optional-features/websockets/">
+										  
+										  <span>Websockets</span>
+										  
+										</a>
+								  </li>
+									
+								</ul>
+						  </li>
+							
+						
+				 </ul>
+			</li>
+				
+			
+				
+				<li class='section-title'>
+				 <a href="https://docs.pixelfed.org/developing-pixelfed/">
+					
+					<span>Developing for Pixelfed</span>
+					
+				 </a>
+				 <ul class="sub-menu">
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/developing-pixelfed/intro/">
+								  
+								  <span>Setting up your environment</span>
+								  
+								</a>
+						  </li>
+							
+						
+				 </ul>
+			</li>
+				
+			
+				
+				<li class='section-title'>
+				 <a href="https://docs.pixelfed.org/technical-documentation/">
+					
+					<span>Technical documentation</span>
+					
+				 </a>
+				 <ul class="sub-menu">
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/technical-documentation/activitypub/">
+								  
+								  <span>ActivityPub</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/technical-documentation/config/">
+								  
+								  <span>Configuration</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/technical-documentation/artisan/">
+								  
+								  <span>Laravel Artisan</span>
+								  
+								</a>
+						  </li>
+							
+						
+							
+							<li class=''>
+								<a href="https://docs.pixelfed.org/technical-documentation/api-v1/">
+								  
+								  <span>v1 API</span>
+								  
+								</a>
+						  </li>
+							
+						
+				 </ul>
+			</li>
+				
+			
+				
+				<li class='section-title active'>
+				 <a href="https://docs.pixelfed.org/install-guides/">
+					
+					<span>Distro-specific install guides</span>
+					
+				 </a>
+				 <ul class="sub-menu">
+						
+							
+							<li class='active'>
+								<a href="https://docs.pixelfed.org/install-guides/arch/">
+								  
+								  <span>Arch Linux</span>
+								  
+								</a>
+						  </li>
+							
+						
+				 </ul>
+			</li>
+				
+			
+	  </ul>
+	</div>
+</nav>
+		
+<main>
+	<article class="page">
+		<header class="page-header section">
+			<div class="container">
+				<h1 class="page-title">Deploying Pixelfed on Arch Linux</h1>
+				<p class="page-summary">End-to-end guide for installing Pixelfed on Arch Linux</p>
+				<p class="lastmod">Last modified <datetime class="date"> Sat Aug 6, 2022 </datetime> - <a href="https://github.com/pixelfed/docs/edit/hugo/content/en/install-guides/arch.md">Edit this page on Github</a></p>
+				
+
+			</div>
+		</header>
+		<aside class="toc section">
+			<div class="container">
+				<p class="toc-title">Page outline</p>
+			<nav id="TableOfContents">
+  <ol>
+    <li><a href="#assumptions">Assumptions</a></li>
+    <li><a href="#preparing-a-machine">Preparing a machine</a></li>
+    <li><a href="#pixelfed-setup">Pixelfed setup</a></li>
+  </ol>
+</nav>
+			</div>
+		</aside>
+		<section class="content section">
+			<div class="container">
+				<h2 id="assumptions">
+    <span>Assumptions</span>
+	 <a class="heading-anchor" href="#assumptions">
+		⛓
+    </a>
+</h2><p>These instructions will install Pixelfed with the following:</p>
+<ul>
+<li>Nginx (instead of Apache)</li>
+<li>MariaDB (instead of PostgreSQL)</li>
+<li>PHP-FPM (latest version)</li>
+<li>Redis and PHP-FPM running via sockets instead of TCP (same machine)</li>
+<li><code>pixelfed</code> user for running Horizon queues, <code>http</code> user for running web processes (Arch default)</li>
+<li>Repo cloned at <code>/srv/http/pixelfed</code></li>
+<li>No other sites/services running on this machine</li>
+</ul>
+<h2 id="preparing-a-machine">
+    <span>Preparing a machine</span>
+	 <a class="heading-anchor" href="#preparing-a-machine">
+		⛓
+    </a>
+</h2><p>You will need a machine running Arch Linux with access to the root account.</p>
+<ol>
+<li>Login as <code>root</code>.</li>
+<li>Create the <code>pixelfed</code> user and group:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>useradd -rU -s /bin/bash -d /srv/http/pixelfed pixelfed
+</span></span></code></pre></div><ol start="3">
+<li>Install dependencies:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S --needed nginx mariadb redis git php-fpm php-intl php-gd php-imagick php-redis composer jpegoptim optipng pngquant imagemagick ffmpeg unzip certbot certbot-nginx
+</span></span></code></pre></div><ol start="4">
+<li>Setup database. During <code>mysql_secure_installation</code>, hit Enter to use the default options. Make sure to set a password for the SQL user <code>root</code> (as by default, there is no password).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql_install_db --user<span style="color:#f92672">=</span>mysql --basedir<span style="color:#f92672">=</span>/usr --datadir<span style="color:#f92672">=</span>/var/lib/mysql
+</span></span><span style="display:flex;"><span>systemctl enable --now mariadb
+</span></span><span style="display:flex;"><span>mysql_secure_installation
+</span></span><span style="display:flex;"><span>mysql -u root -p
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">create</span> <span style="color:#66d9ef">database</span> pixelfed;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">grant</span> <span style="color:#66d9ef">all</span> <span style="color:#66d9ef">privileges</span> <span style="color:#66d9ef">on</span> pixelfed.<span style="color:#f92672">*</span> <span style="color:#66d9ef">to</span> <span style="color:#e6db74">&#39;pixelfed&#39;</span><span style="color:#f92672">@</span><span style="color:#e6db74">&#39;localhost&#39;</span> identified <span style="color:#66d9ef">by</span> <span style="color:#e6db74">&#39;strong_password&#39;</span>;
+</span></span><span style="display:flex;"><span>flush <span style="color:#66d9ef">privileges</span>;
+</span></span><span style="display:flex;"><span>exit
+</span></span></code></pre></div><ol start="5">
+<li>Edit <code>/etc/php/php.ini</code> and uncomment the following lines:</li>
+</ol>
+<pre tabindex="0"><code>extension=bcmath
+extension=exif
+extension=gd
+extension=iconv
+extension=intl
+extension=mysqli
+extension=pdo_mysql
+</code></pre><p>Edit the following lines to your desired upload limits:</p>
+<pre tabindex="0"><code>post_max_size = 8M
+upload_max_filesize = 2M
+max_file_uploads = 20
+</code></pre><p>Edit <code>/etc/php/conf.d/imagick.ini</code> and uncomment:</p>
+<pre tabindex="0"><code>extension=imagick
+</code></pre><p>Edit <code>/etc/php/conf.d/redis.ini</code> and uncomment:</p>
+<pre tabindex="0"><code>extension=redis
+</code></pre><p>Edit <code>/etc/php/conf.d/igbinary.ini</code> and uncomment:</p>
+<pre tabindex="0"><code>extension=igbinary
+</code></pre><p>Create a PHP-FPM pool for Pixelfed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /etc/php/php-fpm.d/
+</span></span><span style="display:flex;"><span>cp www.conf pixelfed.conf
+</span></span><span style="display:flex;"><span>$EDITOR pixelfed.conf
+</span></span></code></pre></div><p>Make the following changes to the PHP-FPM pool:</p>
+<pre tabindex="0"><code>;     use the username of the app-user as the pool name, e.g. pixelfed
+[pixelfed]
+user = pixelfed
+group = pixelfed
+;    to use a tcp socket, e.g. if running php-fpm on a different machine than your app:
+;    (note that the port 9001 is used, since php-fpm defaults to running on port 9000;)
+;    (however, the port can be whatever you want)
+; listen = 127.0.0.1:9001;
+;    but it&#39;s better to use a socket if you&#39;re running locally on the same machine:
+listen = /run/php-fpm/pixelfed.sock
+listen.owner = http
+listen.group = http
+listen.mode = 0660
+[...]
+</code></pre><ol start="6">
+<li>Edit <code>/etc/redis.conf</code> and edit the following lines:</li>
+</ol>
+<pre tabindex="0"><code>port 6379                           # change this to &#34;port 0&#34; to disable network packets
+unixsocket /run/redis/redis.sock    # 
+unixsocketperm 770                  # give permission to &#34;redis&#34; user and group
+</code></pre><ol start="7">
+<li>Edit <code>/etc/nginx/nginx.conf</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">worker_processes</span> <span style="color:#ae81ff">1</span>;    <span style="color:#75715e"># change to auto, or 1 x your CPU cores, but 1 is enough
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">events</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">worker_connections</span> <span style="color:#ae81ff">1024</span>;    <span style="color:#75715e"># 512-1024 is fine for a small site, but you may want to use up to 10k or more, if running in production with many users
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">http</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># [...]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">client_max_body_size</span> <span style="color:#ae81ff">9m</span>; <span style="color:#75715e"># add this line to configure client upload file size
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">gzip</span> <span style="color:#66d9ef">on</span>;    <span style="color:#75715e"># uncomment this line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">server</span> {    <span style="color:#75715e"># delete this entire block
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e"># [...]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">include</span> <span style="color:#e6db74">/srv/http/pixelfed/nginx.conf</span>;    <span style="color:#75715e"># we will make this file later
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Generate SSL cert:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir /etc/nginx/ssl
+</span></span><span style="display:flex;"><span>openssl req -x509 -nodes -days <span style="color:#ae81ff">365</span> -newkey rsa:2048 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt
+</span></span></code></pre></div><ol start="8">
+<li>Add users to groups:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>usermod -aG redis pixelfed <span style="color:#75715e"># give app user access to redis for queues</span>
+</span></span></code></pre></div><ol start="9">
+<li>Enable services:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemctl enable <span style="color:#f92672">{</span>nginx,redis,php-fpm<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>systemctl start <span style="color:#f92672">{</span>redis,php-fpm<span style="color:#f92672">}</span> <span style="color:#75715e"># nginx will fail if started now</span>
+</span></span></code></pre></div><h2 id="pixelfed-setup">
+    <span>Pixelfed setup</span>
+	 <a class="heading-anchor" href="#pixelfed-setup">
+		⛓
+    </a>
+</h2><ol>
+<li>Clone the repo:</li>
+</ol>
+<pre tabindex="0"><code>cd /srv/http
+git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed
+</code></pre><ol start="2">
+<li>Setup environment variables and nginx:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd pixelfed
+</span></span><span style="display:flex;"><span>cp contrib/nginx.conf nginx.conf
+</span></span><span style="display:flex;"><span>$EDITOR nginx.conf
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## in particular, set:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### - the correct domain name</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### - client_max_body_size to your desired upload limit</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### - fastcgi_pass correct path (e.g. unix:/run/php-fpm/pixelfed.sock;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp .env.example .env
+</span></span><span style="display:flex;"><span>$EDITOR .env
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## in particular, set:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### DB_SOCKET = /run/mysqld/mysqld.sock</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### REDIS_HOST = /run/redis/redis.sock</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### REDIS_PORT = null</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">###</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### IMAGE_DRIVER = imagick</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$EDITOR config/database.php
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## change predis to phpredis</span>
+</span></span></code></pre></div><ol start="3">
+<li>Create the following file at <code>/etc/systemd/system/pixelfed.service</code>:</li>
+</ol>
+<pre tabindex="0"><code>[Unit]
+Description=Pixelfed task queueing via Laravel Horizon
+After=network.target
+Requires=mariadb
+Requires=php-fpm
+Requires=redis
+Requires=nginx
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /srv/http/pixelfed/artisan horizon
+User=pixelfed
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><ol start="4">
+<li>Set permissions:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chown -R pixelfed:pixelfed .
+</span></span><span style="display:flex;"><span>find . -type d -exec chmod <span style="color:#ae81ff">755</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</span></span><span style="display:flex;"><span>find . -type f -exec chmod <span style="color:#ae81ff">644</span> <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</span></span></code></pre></div><ol start="5">
+<li>Switch to the <code>pixelfed</code> user:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>su - pixelfed
+</span></span></code></pre></div><ol start="6">
+<li>Deploy:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$EDITOR composer.json
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## change require php to &gt;= instead of ^</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## remove beyondcode/laravel-self-diagnosis</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## change league/iso3166 to &gt;= instead of ^</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## change spatie/laravel-image-optimizer to &gt;= instead of ^</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## change laravel/ui to &gt;= instead of ^</span>
+</span></span><span style="display:flex;"><span>composer update
+</span></span><span style="display:flex;"><span>composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
+</span></span><span style="display:flex;"><span>php artisan key:generate
+</span></span><span style="display:flex;"><span>php artisan storage:link
+</span></span><span style="display:flex;"><span>php artisan horizon:install
+</span></span><span style="display:flex;"><span>php artisan horizon:publish
+</span></span><span style="display:flex;"><span>php artisan migrate --force
+</span></span></code></pre></div><p>Optionally, use cache [NOTE: if you run these commands, you will need to run them every time you change .env or update Pixelfed]:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>php artisan config:cache
+</span></span><span style="display:flex;"><span>php artisan route:cache
+</span></span><span style="display:flex;"><span>php artisan view:cache
+</span></span></code></pre></div><p>Import Places data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>php artisan import:cities
+</span></span></code></pre></div><ol start="7">
+<li>Start web server and Horizon task queue:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>exit
+</span></span><span style="display:flex;"><span>systemctl enable --now <span style="color:#f92672">{</span>nginx,pixelfed<span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+			</div>
+		</section>
+		<footer class="section">
+			<div class="container">
+				<nav class="section-nav">
+	
+	
+</nav>
+			</div>
+		</footer>
+	</article>
+</main>
+
+		<footer class="site-footer">
+	<hr>
+	<div class="container">
+		
+		<a href="#top">back to top</a>
+	</div>
+</footer>
+	</body>
+</html>

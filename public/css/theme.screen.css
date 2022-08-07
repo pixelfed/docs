@@ -619,8 +619,7 @@ for wider screens.
 	.content .container,
 	.list .container,
 	.page footer .container,
-	.site-footer .container,
-	.search-results .container {
+	.site-footer .container {
 		display: grid;
 		grid-template-columns: minmax(1em,1fr) minmax(0,80ch) minmax(1em,1fr);
 	}
@@ -630,8 +629,7 @@ for wider screens.
 	.content .container > *,
 	.list .container > *,
 	.page footer .container > *,
-	.site-footer .container > *,
-	.search-results .container > * {
+	.site-footer .container > * {
 		grid-column: 2;
 	}
 
@@ -762,12 +760,4 @@ that modify the final layout.
 #TableOfContents ol li::marker {
 	content: counters(listCounter, '.', decimal) ' ';
 	font-family: monospace;
-}
-
-.search-results__title {
-	display: block;
-}
-
-.search-results strong {
-	font-weight: 900;
 }
