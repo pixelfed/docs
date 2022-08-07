@@ -38,8 +38,4 @@ Internet](https://ngi.eu) initiative.
 
 ## Development
 
-Fork this repo and clone the `hugo` branch:
-
-```sh
-
-```
+Run `hugo serve` to start a live development server.

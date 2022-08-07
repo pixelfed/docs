@@ -35,7 +35,4 @@ Internet](https://ngi.eu) initiative.
 
 ## Development
 
-To hack on these docs:
-
-- Install vuepress with `npm i -D vuepress`
-- Run `vuepress dev .` to start a live development server
+Run `hugo serve` to start a live development server.
