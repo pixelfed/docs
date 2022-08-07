@@ -533,6 +533,41 @@ h1, h2, h3, h4, h5, h6 {
 	justify-content: space-between;
 }
 
+/* search */
+
+.search-results__title {
+	display: block;
+}
+
+.search-results strong {
+	font-weight: 900;
+}
+
+#search-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1em 0;
+	max-width: 100%;
+}
+
+#search-input {
+	background: #ddd;
+	border-radius: 100rem;
+	border: 0;
+	padding: 0.5rem 1rem;
+	margin-right: 0.5rem;
+	flex-shrink: 1;
+}
+
+#search-submit {
+	padding: 0.5rem 1rem;
+	border: 0;
+	background: var(--primary-accent);
+	color: var(--primary-accent-text);
+	border-radius: 4px;
+}
+
 /*==============================================================================
 6 - Responsive
 
@@ -590,7 +625,7 @@ for wider screens.
 		z-index: 3;
 	}
 
-	.extra-nav {
+	.extra-nav, #search-form {
 		padding: 0;
 	}
 
@@ -762,12 +797,4 @@ that modify the final layout.
 #TableOfContents ol li::marker {
 	content: counters(listCounter, '.', decimal) ' ';
 	font-family: monospace;
-}
-
-.search-results__title {
-	display: block;
-}
-
-.search-results strong {
-	font-weight: 900;
 }
