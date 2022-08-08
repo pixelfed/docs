@@ -32,6 +32,7 @@ This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH acc
 
 
 ## HTTP Web server
+
 The following web servers are officially supported:
 - Apache (with `mod_rewrite` enabled)
 - nginx
@@ -53,19 +54,21 @@ sudo mysql -u root -p
 
 You can then create a database and grant privileges to your SQL user. The following SQL commands will create a database named `pixelfed` and allow it to be managed by a user `pixelfed` with password `strong_password`:
 
-```sql{1,2}
+```sql {linenos=inline,hl_lines=["1-2"]}
 create database pixelfed;
 grant all privileges on pixelfed.* to 'pixelfed'@'localhost' identified by 'strong_password';
 flush privileges;
 ```
 
 To do this with PostgreSQL instead, do the following:
+
 ```bash
 sudo -u postgres psql
 ```
 
 Once in the psql shell, do the following:
-```
+
+```sql
 CREATE USER pixelfed CREATEDB;
 \q
 ```
@@ -123,7 +126,7 @@ useradd -rU -s /bin/bash pixelfed
 
 ### Configuring PHP-FPM pool and socket
 
-```bash{1}
+```bash
 cd /etc/php/php-fpm.d/
 cp www.conf pixelfed.conf
 $EDITOR pixelfed.conf
@@ -140,12 +143,13 @@ The exact directory you should `cd` to will vary according to your distribution:
 
 
 Make the following changes to the PHP-FPM pool:
-```
-;     use the username of the app-user as the pool name, e.g. pixelfed
+
+```ini
+; use the username of the app-user as the pool name, e.g. pixelfed
 [pixelfed]
 user = pixelfed
 group = pixelfed
-;    to use a tcp socket, e.g. if running php-fpm on a different machine than your app:
+; to use a tcp socket, e.g. if running php-fpm on a different machine than your app:
 ;    (note that the port 9001 is used, since php-fpm defaults to running on port 9000;)
 ;    (however, the port can be whatever you want)
 ; listen = 127.0.0.1:9001;
@@ -154,12 +158,13 @@ listen = /run/php-fpm/pixelfed.sock
 listen.owner = http
 listen.group = http
 listen.mode = 0660
-[...]
+; [...]
 ```
 
 ### Configuring Redis socket
 
 Edit `redis.conf` and edit the following lines:
+
 ```
 port 6379                           # change this to "port 0" to disable network packets
 unixsocket /run/redis/redis.sock    # 

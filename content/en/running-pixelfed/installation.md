@@ -22,7 +22,7 @@ Pixelfed is still a work in progress. We do not recommending running an instance
 
 Pixelfed Beta currently uses the `dev` branch for deployable code. When v1.0 is released, the stable branch will be changed to `stable`, with `dev` branch being used for development and testing.
 
-```bash{1}
+```bash {hl_lines=[1]}
 cd /usr/share/webapps # or wherever you choose to install web applications
 git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout dev branch into "pixelfed" folder
 ```
@@ -31,7 +31,7 @@ git clone -b dev https://github.com/pixelfed/pixelfed.git pixelfed # checkout de
 
 Your web server and app processes need to be able to write to the Pixelfed directory. Make sure to set the appropriate permissions. For example, if you are running your processes through the `http` user/group, then run the following:
 
-```bash{2}
+```bash {hl_lines=[2]}
 cd pixelfed
 sudo chown -R http:http . # change user/group to http user and http group
 sudo find . -type d -exec chmod 755 {} \; # set all directories to rwx by user/group
@@ -157,7 +157,7 @@ Create an account with [Mailgun](https://mailgun.com/).
 
 If you are not using the "US" [Mailgun region](https://documentation.mailgun.com/en/latest/api-intro.html#mailgun-regions), you may define your region's endpoint in the `services.php` configuration file located in the `config/` directory:
 
-```php{4}
+```php {hl_lines=[4]}
 'mailgun' => [
     'domain' => env('MAILGUN_DOMAIN'),
     'secret' => env('MAILGUN_SECRET'),
@@ -290,7 +290,7 @@ If you are running in production, it is more ideal to create a background servic
 
 Most distributions will already come with systemd, so you may set up this unit file at `/etc/systemd/system/pixelfed.service`:
 
-```{4-7,11-12}
+```ini {hl_lines=["4-7","11-12"]}
 [Unit]
 Description=Pixelfed task queueing via Laravel Horizon
 After=network.target
@@ -329,7 +329,7 @@ sudo systemctl enable --now pixelfed
 
 Alternatively, if you do not wish to use systemd, then you can install Supervisor and create this sample Supervisor configuration file at `/etc/supervisor/conf.d/pixelfed.conf`, making sure to use the correct path to your Pixelfed installation and the appropriate app-user:
 
-```{2,3,6}
+```ini {hl_lines=[2,3,6]}
 [program:pixelfed]
 command=/usr/bin/php /usr/share/webapps/pixelfed/artisan horizon
 user=http
@@ -408,7 +408,7 @@ RewriteRule ^ index.php [L]
 
 Pixelfed includes a sample NGINX configuration at `contrib/nginx.conf`. You can copy the contents of this file or include it within your `nginx.conf`. Take note of the comments, and make sure to set the correct domain name and root path.
 
-```nginx{4,5,7,8,33,36,45}
+```nginx {hl_lines=[4,5,7,8,34,37,46]}
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
@@ -472,7 +472,7 @@ Make sure to use the correct `fastcgi_pass` socket path for your distribution an
 
 Make sure to use the `/public` folder as your server root. For example:
 
-```
+```nginx
 server {
     root /var/www/pixelfed/public;
 ````
@@ -500,6 +500,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/
 For production deployments, you will need to obtain a certificate from a certificate authority. You may automate certification from LetsEncrypt, a free certificate authority, by using a utility such as [EFF Certbot](https://certbot.eff.org/) or [acme.sh](https://acme.sh).
 
 Sample usage of certbot:
+
 ```bash
 certbot --nginx -d pixelfed.example
 ```

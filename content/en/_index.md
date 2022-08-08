@@ -22,7 +22,7 @@ Pixelfed is freely licensed under the AGPL license.
 ## Communication
 
 The ways you can communicate on the project are below. Before interacting, please
-read through the [Code Of Conduct](CODE_OF_CONDUCT.md).
+read through the [Code Of Conduct](https://github.com/pixelfed/pixelfed/blob/dev/CODE_OF_CONDUCT.md).
 
 * Project on Mastodon: [@pixelfed@mastodon.social](https://mastodon.social/@pixelfed)
 * E-mail: [hello@pixelfed.org](mailto:hello@pixelfed.org)
@@ -30,11 +30,17 @@ read through the [Code Of Conduct](CODE_OF_CONDUCT.md).
 
 ## Pixelfed Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Pixelfed development. If you are interested in becoming a sponsor, please visit the Pixelfed [Patreon Page](https://www.patreon.com/dansup/overview)
+We would like to extend our thanks to the following sponsors for funding Pixelfed development.
 
 - [NLnet Foundation](https://nlnet.nl) and [NGI0
 Discovery](https://nlnet.nl/discovery/), part of the [Next Generation
 Internet](https://ngi.eu) initiative.
+
+If you are interested in becoming a sponsor, please visit one of the following links:
+
+- [Patreon](https://www.patreon.com/dansup/overview)
+- [Liberapay](https://liberapay.com/pixelfed)
+- [OpenCollective](https://opencollective.com/pixelfed)
 
 ## Development
 
