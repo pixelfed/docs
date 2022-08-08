@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{.Site.Language.Lang }}" xml:lang="{{.Site.Language.Lang }}">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		{{ $style := resources.Get "scss/theme.screen.scss" | toCSS | minify | fingerprint }}
+		{{ $js := resources.Get "js/script.js" | minify | minify | fingerprint }}
+		<link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}" media="screen">
+		{{/*  <link rel="stylesheet" href="{{ .Site.BaseURL }}css/syntax.css" />  */}}
+		<script type="text/javascript" src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+		{{ partial "seo.html" . }}
+		{{ partial "external-links.html" .}}
+		{{ block "head" . }}
+		{{ end }}
+	</head>
+	<body>
+		{{ partial "site-header.html" . }}
+		{{ block "main" . }}
+		{{ end }}
+		{{ partial "site-footer.html" . }}
+	</body>
+</html>

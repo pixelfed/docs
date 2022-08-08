@@ -1,0 +1,15 @@
+<nav class="extra-nav">
+	<div class="container">
+		<ul class="menu">
+			{{ range .Site.Menus.extra }}
+			<li>
+				<a href="{{ .URL | absLangURL }}">
+					{{ .Pre }}
+					<span>{{ .Name }}</span>
+					{{ .Post }}
+				 </a>
+			</li>
+			{{ end }}
+		</ul>
+	</div>
+</nav>

@@ -1,0 +1,3 @@
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+{{ $js := resources.Get "js/search.js" | minify | minify | fingerprint }}
+<script type="text/javascript" src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}"></script>

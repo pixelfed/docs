@@ -1,0 +1,8 @@
+<nav class="section-nav">
+	{{ with .PrevInSection }}
+	<a class="previous" href="{{.Permalink}}"><span class="arrow">←</span><span class="text">Previous page:<br/>{{.Title}}</span></a>
+	{{ end }}
+	{{ with .NextInSection }}
+	<a class="next" href="{{.Permalink}}"><span class="text">Next page:<br/>{{.Title}}</span><span class="arrow">→</span></a>
+	{{ end }}
+</nav>
