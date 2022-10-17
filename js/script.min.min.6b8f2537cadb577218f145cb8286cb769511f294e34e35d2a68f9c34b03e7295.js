@@ -1,1 +1,0 @@
-var root=document.documentElement;let vh=window.innerHeight*.01;root.style.setProperty("--vh",`${vh}px`),window.addEventListener("resize",()=>{let e=window.innerHeight*.01;root.style.setProperty("--vh",`${e}px`)})
