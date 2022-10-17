@@ -1,11 +1,14 @@
 +++
-title = "Laravel Artisan"
+title = "CLI"
 summary = "Laravel Artisan is a command line tool that you use to run migrations, cache the config and more."
+autonumbering = false
 [menu]
 [menu.docs]
 identifier = "tech/artisan"
 parent = "tech"
 +++
+
+All commands are prefixed with `php artisan`
 
 ## Base commands
 

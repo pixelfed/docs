@@ -1,11 +1,11 @@
 +++
 title = "Livestreaming (Pixelfed Live)"
 summary = "Pixelfed Live is a mobile based livestreaming feature."
+weight = 41
 [menu]
 [menu.docs]
 identifier = "admin/optional/live"
 parent = "admin/optional"
-weight = 20
 +++
 
 ## Installing and Configuring Nginx-RTMP

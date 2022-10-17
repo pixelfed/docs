@@ -1,11 +1,11 @@
 +++
 title = "Preparing your machine"
 summary = "Download, install, and configure some pre-requisites."
+weight = 10
 [menu]
 [menu.docs]
 identifier = "admin/prerequisites"
 parent = "admin"
-weight = 10
 +++
 
 Before you install Pixelfed, you will need to setup a webserver with the required dependencies:
@@ -48,7 +48,7 @@ You can choose one of three supported database drivers:
 
 You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
 
-```bash
+```sh
 sudo mysql -u root -p
 ```
 
@@ -62,7 +62,7 @@ flush privileges;
 
 To do this with PostgreSQL instead, do the following:
 
-```bash
+```sh
 sudo -u postgres psql
 ```
 
@@ -120,13 +120,13 @@ Instagram imports are also affected by these settings. If you enable imports, yo
 
 For added security, you may want to create a dedicated user specifically for running Pixelfed. To do this:
 
-```bash
+```sh
 useradd -rU -s /bin/bash pixelfed
 ```
 
 ### Configuring PHP-FPM pool and socket
 
-```bash
+```sh
 cd /etc/php/php-fpm.d/
 cp www.conf pixelfed.conf
 $EDITOR pixelfed.conf

@@ -1,9 +1,9 @@
 +++
-title = "v1 API"
+title = "API"
 summary = "Information about Pixelfed's REST API"
 [menu]
 [menu.docs]
-identifier = "tech/api-v1"
+identifier = "tech/api"
 parent = "tech"
 +++
 

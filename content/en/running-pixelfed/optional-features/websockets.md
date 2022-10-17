@@ -1,11 +1,11 @@
 +++
 title = "Websockets"
 summary = "Websockets provide real time chat for Live Streaming and in the future, other aspects of the frontend UI and mobile apps."
+weight = 42
 [menu]
 [menu.docs]
 identifier = "admin/optional/websockets"
 parent = "admin/optional"
-weight = 30
 +++
 
 {{<hint style="danger">}}

@@ -1,11 +1,11 @@
 +++
 title = "Administering your website"
 summary = "Tips and instructions for managing your Pixelfed installation"
+weight = 30
 [menu]
 [menu.docs]
 identifier = "admin/administration"
 parent = "admin"
-weight = 30
 +++
 
 ## Updating Pixelfed

@@ -1,11 +1,11 @@
 +++
 title = "Troubleshooting"
 summary = "Frequently asked questions about things going wrong"
+weight = 50
 [menu]
 [menu.docs]
 identifier = "admin/troubleshooting"
 parent = "admin"
-weight = 30
 +++
 
 ## Horizon is not working

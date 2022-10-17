@@ -1,11 +1,11 @@
 +++
 title = "Generic installation guide"
 summary = "How to set up everything you need to run your own Pixelfed instance."
+weight = 20
 [menu]
 [menu.docs]
 identifier = "admin/installation"
 parent = "admin"
-weight = 20
 +++
 
 Make sure you have all prerequisites installed and the appropriate services running/enabled before continuing.

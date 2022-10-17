@@ -1,11 +1,11 @@
 +++
 title = "LDAP Authentication"
 summary = "You can configure your Pixelfed server to authenticate with an LDAP Server!"
+weight = 43
 [menu]
 [menu.docs]
 identifier = "admin/optional/ldap"
 parent = "admin/optional"
-weight = 30
 +++
 
 ## Prerequisites
