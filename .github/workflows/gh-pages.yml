@@ -20,6 +20,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Update theme
+        run: git submodule update --init --recursive
+
       - name: Build
         run: hugo --minify
 
