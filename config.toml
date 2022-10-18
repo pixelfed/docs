@@ -41,6 +41,7 @@ forge = "github" # github, gitea
 repo = "pixelfed/docs"
 branch = "main"
 autonumbering = true
+# borders = true
 
 [menu]
 [[menu.main]]
