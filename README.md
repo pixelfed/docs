@@ -35,4 +35,14 @@ Internet](https://ngi.eu) initiative.
 
 ## Development
 
-Run `hugo serve` to start a live development server.
+This documentation is built using [Hugo](https://gohugo.io/) and uses the [Paradox theme](https://github.com/trwnh/hugo-theme-paradox).
+
+1. Install Hugo, following the [instructions for your environment](https://gohugo.io/getting-started/installing/)
+2. Clone the repository `git clone git@github.com:pixelfed/docs.git`
+3. Initiate the git submodules   
+    ```
+    cd docs
+    git submodule init
+    git submodule update
+    ```
+4. Run `hugo serve` to start a live development server on [localhost:1313](http://localhost:1313/)
