@@ -14,6 +14,8 @@ weight = 10
 - Composer
 - Node
 - NPM
+- MySQL/MariaDB
+- Redis
 
 ## Development Setup
 For local/non-production use only.
