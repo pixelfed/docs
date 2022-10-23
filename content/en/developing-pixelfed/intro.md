@@ -13,7 +13,11 @@ weight = 10
 - [PHP](https://www.php.net/manual/en/install.php)
 - [Composer](https://getcomposer.org/download/)
 - [Node](https://nodejs.org/en/download/)
-- [MySQL](https://www.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download/?t=mariadb)
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- Database
+  - [MariaDB](https://mariadb.org/download/?t=mariadb)
+  - [MySQL](https://www.mysql.com/downloads/)
+  - [PostgreSQL]https://www.postgresql.org/download/
 - [Redis](https://redis.io/docs/getting-started/)
 
 ## Development Setup
@@ -26,4 +30,4 @@ php artisan install
 php artisan serve
 ```
 
-The development server will start on: [http://localhost:8000](http://localhost:8000)
+The development server will start on: http://localhost:8000
