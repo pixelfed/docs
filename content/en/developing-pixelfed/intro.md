@@ -1,11 +1,11 @@
 +++
 title = "Setting up your environment"
 summary = "Download and install the pre-requisites, then run these commands."
+weight = 10
 [menu]
 [menu.docs]
 identifier = "development/intro"
 parent = "development"
-weight = 10
 +++
 
 ## Requirements
