@@ -17,7 +17,7 @@ parent = "development"
 - Database
   - [MariaDB](https://mariadb.org/download/?t=mariadb)
   - [MySQL](https://www.mysql.com/downloads/)
-  - [PostgreSQL]https://www.postgresql.org/download/
+  - [PostgreSQL](https://www.postgresql.org/download/)
 - [Redis](https://redis.io/docs/getting-started/)
 
 ## Development Setup
