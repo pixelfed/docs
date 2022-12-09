@@ -314,9 +314,9 @@ WantedBy=multi-user.target
 The example above assumes you are using MariaDB and Nginx, that your distribution's PHP packages do not have versioned names, and that your distribution uses the `http` user to serve Nginx. It also assumes that you have installed Pixelfed in /usr/share/webapps/pixelfed in accordance with the rest of the installation process documentation. Some changes you may need to make include:
 
 - Replacing `mariadb` with `postgresql` or `mysql`
-- Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php7.3-fpm`
+- Replacing `php-fpm` with your distro's PHP-FPM package name, e.g. `php8.1-fpm`
 - Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
-- Replacing `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
+- Replacing `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php8.1` or `/path/to/pixelfed/artisan`
 - Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
 {{</hint>}}
 
@@ -340,7 +340,7 @@ stopwaitsecs=3600
 {{<hint style="tip">}}
 **Using correct paths**
 
-You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php7.3` or `/path/to/pixelfed/artisan`
+You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php8.1` or `/path/to/pixelfed/artisan`
 {{</hint>}}
 
 You will then need to run these commands:
@@ -463,7 +463,7 @@ server {                                             # Redirect http to https
 {{<hint style="tip">}}
 **FastCGI path**
 
-Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php7.3-fpm.sock`, on Debian it may be `/var/run/php/php7.3-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
+Make sure to use the correct `fastcgi_pass` socket path for your distribution and version of PHP-FPM. For example, on Arch, this is `/run/php-fpm/php-fpm.sock`, but on Ubuntu it may be `/run/php/php8.1-fpm.sock`, on Debian it may be `/var/run/php/php8.1-fpm.sock`, and so on. If you have configured a PHP server over TCP, you may also pass to its IP and port, e.g. `localhost:9000` by default.
 {{</hint>}}
 
 {{<hint style="warning">}}

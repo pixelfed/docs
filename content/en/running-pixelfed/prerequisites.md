@@ -32,7 +32,7 @@ This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH acc
 
 ## PHP-FPM
 
-You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 8.0**.
+You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 8.1**.
 
 You can check your currently loaded extensions by running `php-fpm -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
 
@@ -137,7 +137,7 @@ $EDITOR pixelfed.conf
 
 The exact directory you should `cd` to will vary according to your distribution:
 - Arch Linux uses `/etc/php/php-fpm.d`
-- Debian and Ubuntu use `/etc/php/7.3/fpm/pool.d/` (dependent on PHP version)
+- Debian and Ubuntu use `/etc/php/8.1/fpm/pool.d/` (dependent on PHP version)
 - For other distributions, check your php-fpm.conf to see where exactly you can define `*.conf` with `include=`
 {{</hint>}}
 
