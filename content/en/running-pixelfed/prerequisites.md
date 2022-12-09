@@ -10,9 +10,9 @@ parent = "admin"
 
 Before you install Pixelfed, you will need to setup a webserver with the required dependencies:
 
-- An HTTP server
-- An SQL database server
 - A PHP-FPM server
+- An SQL database server
+- An HTTPS server
 - [Composer](https://getcomposer.org/), for PHP dependency management
 - [Git](https://git-scm.com/), for fetching updates
 - [Redis](https://redis.io/), for in-memory caching and background task queueing
@@ -30,20 +30,49 @@ At this stage, it's not possible to install Pixelfed by downloading a ZIP file a
 This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH access, through which you should be able to install Composer and Pixelfed just fine.
 {{</hint>}}
 
+## PHP-FPM
 
-## HTTP Web server
+You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 8.0**.
 
-The following web servers are officially supported:
-- Apache (with `mod_rewrite` enabled)
-- nginx
+You can check your currently loaded extensions by running `php-fpm -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
 
-Pixelfed uses HTTPS URIs, so you will need to have HTTPS set up at the perimeter of your network before you proxy requests internally.
+- `bcmath`
+- `ctype`
+- `curl`
+- `exif`
+- `gd`
+- `iconv`
+- `intl`
+- `json`
+- `mbstring`
+- `openssl`
+- `redis`
+- `tokenizer`
+- `xml`
+- `zip`
+
+Additionally, you will need to enable extensions for database drivers:
+- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
+- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
+
+Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
+- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
+- `file_uploads` (default On, which it needs to be)
+- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
+- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
+- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
+
+{{<hint style="tip">}}
+**Instagram imports**
+
+Instagram imports are also affected by these settings. If you enable imports, you will want to raise `post_max_size` to the maximum size you expect an Instagram archive to be, `upload_max_filesize` to the maximum size you expect individual Instagram photos to be, and `max_file_uploads` to the maximum number of photos (not posts) you'd expect an Instagram archive to contain.
+{{</hint>}}
 
 ## Database
 
-You can choose one of three supported database drivers:
+You can choose one of three [supported database drivers for Laravel 9](https://laravel.com/docs/9.x/database#introduction), the framework used by Pixelfed:
 - MySQL (5.7+)
-- MariaDB (10.2.7+ -- 10.3.5+ recommended)
+- MariaDB (10.3+)
 - PostgreSQL (10+)
 
 You will need to create a database and grant permission to an SQL user identified by a password. To do this with MySQL or MariaDB, do the following:
@@ -79,42 +108,13 @@ CREATE USER pixelfed CREATEDB;
 If you decide to change database drivers later, please run a backup first! You can do this with `php artisan backup:run --only-db`
 {{</hint>}}
 
-## PHP-FPM
+## HTTP Web server
 
-You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 7.3**.
+The following web servers are officially supported:
+- Apache (with `mod_rewrite` enabled)
+- nginx
 
-You can check your currently loaded extensions by running `php-fpm -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
-- `bcmath`
-- `ctype`
-- `curl`
-- `exif`
-- `gd`
-- `iconv`
-- `intl`
-- `json`
-- `mbstring`
-- `openssl`
-- `redis`
-- `tokenizer`
-- `xml`
-- `zip`
-
-Additionally, you will need to enable extensions for database drivers:
-- For MySQL or MariaDB: enable `pdo_mysql` and `mysqli`
-- For PostgreSQL: enable `pdo_pgsql` and `pgsql`
-
-Finally, make sure to set the desired upload limits for your PHP processes. You will want to check the following:
-- `post_max_size` (default 8M, set this around or slightly greater than your desired post size limit)
-- `file_uploads` (default On, which it needs to be)
-- `upload_max_filesize` (default 2M, set this <= `post_max_size`)
-- `max_file_uploads` (default 20, but make sure it is >= your desired attachment limit)
-- `max_execution_time` (default 30, consider raising this to 600 or more so that longer tasks aren't interrupted)
-
-{{<hint style="tip">}}
-**Instagram imports**
-
-Instagram imports are also affected by these settings. If you enable imports, you will want to raise `post_max_size` to the maximum size you expect an Instagram archive to be, `upload_max_filesize` to the maximum size you expect individual Instagram photos to be, and `max_file_uploads` to the maximum number of photos (not posts) you'd expect an Instagram archive to contain.
-{{</hint>}}
+Pixelfed uses HTTPS URIs, so you will need to have HTTPS set up at the perimeter of your network before you proxy requests internally.
 
 ## Creating a dedicated app-user and using UNIX sockets (optional)
 
