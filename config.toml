@@ -24,8 +24,8 @@ noClasses = false
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
-  page = ["HTML"]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML"]
 
 [languages]
 [languages.en]

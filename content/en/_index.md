@@ -3,13 +3,13 @@ title = "Pixelfed Documentation"
 summary = "Welcome to the Pixelfed documentation!"
 +++
 
-<p align="center"><img src="https://pixelfed.nyc3.cdn.digitaloceanspaces.com/logos/pixelfed-full-color.svg" width="300px" style="width: 300px"></p>
+<div align="center"><img src="https://pixelfed.nyc3.cdn.digitaloceanspaces.com/logos/pixelfed-full-color.svg" width="300px" style="width: 300px"></div>
 
-<p align="center">
+<div align="center">
 <a href="https://circleci.com/gh/pixelfed/pixelfed"><img src="https://circleci.com/gh/pixelfed/pixelfed.svg?style=svg" alt="Build Status" style="height: 24px; width: auto;"></a>
 <a href="https://packagist.org/packages/pixelfed/pixelfed"><img src="https://poser.pugx.org/pixelfed/pixelfed/v/stable.svg" alt="Latest Stable Version" style="height: 24px; width: auto;"></a>
 <a href="https://packagist.org/packages/pixelfed/pixelfed"><img src="https://poser.pugx.org/pixelfed/pixelfed/license.svg" alt="License" style="height: 24px; width: auto;"></a>
-</p>
+</div>
 
 ## Introduction
 
