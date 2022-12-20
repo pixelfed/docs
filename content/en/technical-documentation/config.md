@@ -49,6 +49,16 @@ The fallback locale determines the locale to use when the current one is not ava
 
 A random 32-character string to be used as an encryption key. No default value; use `php artisan key:generate` to generate. This key is used by the Illuminate encrypter service and should be set to a random, 32 character string, otherwise these encrypted strings will not be safe. Please do this before deploying an application!
 
+## BACKUP[^1]
+
+### `BACKUP_ARCHIVE_PASSWORD`[^1]
+
+The password to be used for archive encryption. Set to `null` to disable encryption.
+
+### `BACKUP_EMAIL_ADDRESS`[^1]
+
+Defaults to `""`.
+
 ## BROADCASTING
 
 ### `BROADCAST_DRIVER`
@@ -148,6 +158,18 @@ Defaults to `6379`.
 #### `REDIS_DATABASE`[^1]
 
 Defaults to `0`.
+
+## CAPTCHA[^1]
+
+Use [hCaptcha](https://www.hcaptcha.com/) to protect your login from bots.
+
+### `CAPTCHA_ENABLED`[^1]
+
+Defaults to `false`.
+
+### `CAPTCHA_SECRET`[^1]
+
+### `CAPTCHA_SITEKEY`[^1]
 
 ## COSTAR[^1]
 
@@ -783,6 +805,64 @@ Defaults to `false`.
 
 See [`CACHE`](#cache). Defaults to `"file"`.
 
+## LIVESTREAMING[^1]
+
+### `HLS_LIVE`[^1]
+
+Defaults to `false`.
+
+### `HLS_LIVE_HOST`[^1]
+
+Defaults to `APP_DOMAIN` or `"localhost"`.
+
+### `HLS_LIVE_PORT`[^1]
+
+Defaults to `1935`.
+
+### `HLS_LIVE_PATH`[^1]
+
+Defaults to `"live"`.
+
+### `HLS_LIVE_BROADCAST_DELETE_TOKEN_AFTER`[^1]
+
+Defaults to `true`.
+
+### `HLS_LIVE_BROADCAST_MAX_DURATION`[^1]
+
+Defaults to `60`.
+
+### `HLS_LIVE_BROADCAST_MAX_ACTIVE`[^1]
+
+Defaults to `10`.
+
+### `HLS_LIVE_BROADCAST_LIMITS`[^1]
+
+Defaults to `true`.
+
+### `HLS_LIVE_BROADCAST_LIMITS_MIN_FOLLOWERS`[^1]
+
+Defaults to `100`.
+
+### `HLS_LIVE_BROADCAST_LIMITS_MIN_ACCOUNT_AGE`[^1]
+
+Defaults to `14`.
+
+### `HLS_LIVE_BROADCAST_LIMITS_ADMINS_ONLY`[^1]
+
+Defaults to `true`.
+
+### `HLS_LIVE_BROADCAST_SOURCE_APP`[^1]
+
+Defaults to `false`.
+
+### `HLS_LIVE_BROADCAST_SOURCE_WEB`[^1]
+
+Defaults to `false`.
+
+### `HLS_LIVE_COMMENTS_MAX_FALLOFF`[^1]
+
+Defaults to `50`.
+
 ## LOGGING
 
 ### `LOG_CHANNEL`
@@ -1015,6 +1095,20 @@ Defaults to `1000`.
 
 Defaults to `true`.
 
+## PORTFOLIO[^1]
+
+### `PORTFOLIO_DOMAIN`[^1]
+
+This value is the domain used for the portfolio feature. Only change the default value if you have a subdomain configured. You must use a subdomain on the same app domain. Defaults to `APP_DOMAIN`.
+
+### `PORTFOLIO_PATH`[^1]
+
+This value is the path used for the portfolio feature. Only change the default value if you have a subdomain configured. If you want to use the root path of the subdomain, leave this value empty.
+
+WARNING: SETTING THIS VALUE WITHOUT A SUBDOMAIN COULD BREAK YOUR INSTANCE, SO ONLY CHANGE THIS IF YOU KNOW WHAT YOU'RE DOING.
+
+Defaults to `"/i/portfolio"`.
+
 ## PURIFY
 
 ### `RESTRICT_HTML_TYPES`
@@ -1108,6 +1202,80 @@ Here you may specify the number of minutes that you wish the session to be allow
 
 Here you may change the domain of the cookie used to identify a session in your application. This will determine which domains the cookie is available to in your application. A sensible default has been set. Defaults to the value of `APP_DOMAIN`, or `null`.
 
+## TELESCOPE[^1]
+
+### `TELESCOPE_DRIVER`[^1]
+
+This configuration options determines the storage driver that will be used to store Telescope's data. In addition, you may set any custom options as needed by the particular driver you choose. Defaults to `"database"`.
+
+### `TELESCOPE_ENABLED`[^1]
+
+This option may be used to disable all Telescope watchers regardless of their individual configuration, which simply provides a single and convenient way to enable or disable Telescope data storage. Defaults to `false`.
+
+### `TELESCOPE_CACHE_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_COMMAND_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_DUMP_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_EVENT_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_EXCEPTION_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_JOB_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_LOG_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_MAIL_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_MODEL_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_NOTIFICATION_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_QUERY_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_REDIS_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_REQUEST_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_RESPONSE_SIZE_LIMIT`[^1]
+
+Defaults to `64`.
+
+### `TELESCOPE_GATE_WATCHER`[^1]
+
+Defaults to `true`.
+
+### `TELESCOPE_SCHEDULE_WATCHER`[^1]
+
+Defaults to `true`.
+
 ## TRUSTEDPROXY
 
 ### `TRUST_PROXIES`
@@ -1195,174 +1363,6 @@ Defaults to `null`.
 #### `LARAVEL_WEBSOCKETS_SSL_PASSPHRASE`[^1]
 
 Defaults to `null`.
-
-## BACKUP[^1]
-
-### `BACKUP_ARCHIVE_PASSWORD`[^1]
-
-The password to be used for archive encryption. Set to `null` to disable encryption.
-
-### `BACKUP_EMAIL_ADDRESS`[^1]
-
-Defaults to `""`.
-
-## CAPTCHA[^1]
-
-Use [hCaptcha](https://www.hcaptcha.com/) to protect your login from bots.
-
-### `CAPTCHA_ENABLED`[^1]
-
-Defaults to `false`.
-
-### `CAPTCHA_SECRET`[^1]
-
-### `CAPTCHA_SITEKEY`[^1]
-
-## LIVESTREAMING[^1]
-
-### `HLS_LIVE`[^1]
-
-Defaults to `false`.
-
-### `HLS_LIVE_HOST`[^1]
-
-Defaults to `APP_DOMAIN` or `"localhost"`.
-
-### `HLS_LIVE_PORT`[^1]
-
-Defaults to `1935`.
-
-### `HLS_LIVE_PATH`[^1]
-
-Defaults to `"live"`.
-
-### `HLS_LIVE_BROADCAST_DELETE_TOKEN_AFTER`[^1]
-
-Defaults to `true`.
-
-### `HLS_LIVE_BROADCAST_MAX_DURATION`[^1]
-
-Defaults to `60`.
-
-### `HLS_LIVE_BROADCAST_MAX_ACTIVE`[^1]
-
-Defaults to `10`.
-
-### `HLS_LIVE_BROADCAST_LIMITS`[^1]
-
-Defaults to `true`.
-
-### `HLS_LIVE_BROADCAST_LIMITS_MIN_FOLLOWERS`[^1]
-
-Defaults to `100`.
-
-### `HLS_LIVE_BROADCAST_LIMITS_MIN_ACCOUNT_AGE`[^1]
-
-Defaults to `14`.
-
-### `HLS_LIVE_BROADCAST_LIMITS_ADMINS_ONLY`[^1]
-
-Defaults to `true`.
-
-### `HLS_LIVE_BROADCAST_SOURCE_APP`[^1]
-
-Defaults to `false`.
-
-### `HLS_LIVE_BROADCAST_SOURCE_WEB`[^1]
-
-Defaults to `false`.
-
-### `HLS_LIVE_COMMENTS_MAX_FALLOFF`[^1]
-
-Defaults to `50`.
-
-## PORTFOLIO[^1]
-
-### `PORTFOLIO_DOMAIN`[^1]
-
-This value is the domain used for the portfolio feature. Only change the default value if you have a subdomain configured. You must use a subdomain on the same app domain. Defaults to `APP_DOMAIN`.
-
-### `PORTFOLIO_PATH`[^1]
-
-This value is the path used for the portfolio feature. Only change the default value if you have a subdomain configured. If you want to use the root path of the subdomain, leave this value empty.
-
-WARNING: SETTING THIS VALUE WITHOUT A SUBDOMAIN COULD BREAK YOUR INSTANCE, SO ONLY CHANGE THIS IF YOU KNOW WHAT YOU'RE DOING.
-
-Defaults to `"/i/portfolio"`.
-
-## TELESCOPE[^1]
-
-### `TELESCOPE_DRIVER`[^1]
-
-This configuration options determines the storage driver that will be used to store Telescope's data. In addition, you may set any custom options as needed by the particular driver you choose. Defaults to `"database"`.
-
-### `TELESCOPE_ENABLED`[^1]
-
-This option may be used to disable all Telescope watchers regardless of their individual configuration, which simply provides a single and convenient way to enable or disable Telescope data storage. Defaults to `false`.
-
-### `TELESCOPE_CACHE_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_COMMAND_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_DUMP_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_EVENT_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_EXCEPTION_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_JOB_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_LOG_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_MAIL_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_MODEL_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_NOTIFICATION_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_QUERY_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_REDIS_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_REQUEST_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_RESPONSE_SIZE_LIMIT`[^1]
-
-Defaults to `64`.
-
-### `TELESCOPE_GATE_WATCHER`[^1]
-
-Defaults to `true`.
-
-### `TELESCOPE_SCHEDULE_WATCHER`[^1]
-
-Defaults to `true`.
 
 [^1]: Not listed on `/i/admin/diagnostics/home`
 [^2]: Variable is ignored
