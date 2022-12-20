@@ -33,9 +33,9 @@ When your application is in debug mode, detailed error messages with stack trace
 
 This URL is used by the console to properly generate URLs when using the Artisan command line tool. You should set this to the root of your application so that it is used when running Artisan tasks. Defaults to `"https://localhost"`.
 
-### `APP_TIMEZONE`[^1]
+### `APP_TIMEZONE`
 
-Defaults to `"UTC"`. Do not edit your timezone or things will break!
+(Not listed on Admin > Diagnostics.) Defaults to `"UTC"`. Do not edit your timezone or things will break!
 
 ### `APP_LOCALE`
 
@@ -45,19 +45,21 @@ The application locale determines the default locale that will be used by the tr
 
 The fallback locale determines the locale to use when the current one is not available. You may change the value to correspond to any of the language folders that are provided through your application. Defaults to `"en"`.
 
-### `APP_KEY`[^1]
+### `APP_KEY`
 
-A random 32-character string to be used as an encryption key. No default value; use `php artisan key:generate` to generate. This key is used by the Illuminate encrypter service and should be set to a random, 32 character string, otherwise these encrypted strings will not be safe. Please do this before deploying an application!
+(Not listed on Admin > Diagnostics.) A random 32-character string to be used as an encryption key. No default value; use `php artisan key:generate` to generate. This key is used by the Illuminate encrypter service and should be set to a random, 32 character string, otherwise these encrypted strings will not be safe. Please do this before deploying an application!
 
-## BACKUP[^1]
+## BACKUP
 
-### `BACKUP_ARCHIVE_PASSWORD`[^1]
+(Not listed on Admin > Diagnostics.)
 
-The password to be used for archive encryption. Set to `null` to disable encryption.
+### `BACKUP_ARCHIVE_PASSWORD`
 
-### `BACKUP_EMAIL_ADDRESS`[^1]
+(Not listed on Admin > Diagnostics.) The password to be used for archive encryption. Set to `null` to disable encryption.
 
-Defaults to `""`.
+### `BACKUP_EMAIL_ADDRESS`
+
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
 ## BROADCASTING
 
@@ -72,29 +74,37 @@ This option controls the default broadcaster that will be used by the framework 
 
 ### PUSHER
 
-#### `PUSHER_APP_KEY`[^1]
+#### `PUSHER_APP_KEY`
 
-#### `PUSHER_APP_SECRET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `PUSHER_APP_ID`[^1]
+#### `PUSHER_APP_SECRET`
 
-#### `PUSHER_APP_CLUSTER`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `PUSHER_APP_ENCRYPTED`[^1]
+#### `PUSHER_APP_ID`
 
-Defaults to `false`.
+(Not listed on Admin > Diagnostics.)
 
-#### `PUSHER_HOST`[^1]
+#### `PUSHER_APP_CLUSTER`
 
-Defaults to `APP_DOMAIN`.
+(Not listed on Admin > Diagnostics.)
 
-#### `PUSHER_PORT`[^1]
+#### `PUSHER_APP_ENCRYPTED`
 
-Defaults to `443`.
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-#### `PUSHER_SCHEME`[^1]
+#### `PUSHER_HOST`
 
-Defaults to `"https"`.
+(Not listed on Admin > Diagnostics.) Defaults to `APP_DOMAIN`.
+
+#### `PUSHER_PORT`
+
+(Not listed on Admin > Diagnostics.) Defaults to `443`.
+
+#### `PUSHER_SCHEME`
+
+(Not listed on Admin > Diagnostics.) Defaults to `"https"`.
 
 ## CACHE
 
@@ -109,107 +119,119 @@ This option controls the default cache connection that gets used while using thi
 - `"memcached"`
 - `"redis"`
 
-### `CACHE_PREFIX`[^1]
+### `CACHE_PREFIX`
 
-Defaults to `${APP_NAME}_cache`, or `laravel_cache` if no `APP_NAME` is set.
+(Not listed on Admin > Diagnostics.) Defaults to `${APP_NAME}_cache`, or `laravel_cache` if no `APP_NAME` is set.
 
-### MEMCACHED[^1]
+### MEMCACHED
 
-#### `MEMCACHED_PERSISTENT_ID`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `MEMCACHED_USERNAME`[^1]
+#### `MEMCACHED_PERSISTENT_ID`
 
-#### `MEMCACHED_PASSWORD`[^1]
+(Not listed on Admin > Diagnostics.)
+
+#### `MEMCACHED_USERNAME`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `MEMCACHED_PASSWORD`
+
+(Not listed on Admin > Diagnostics.)
 
 #### `MEMCACHED_HOST`
 
 Defaults to `"127.0.0.1"`.
 
-#### `MEMCACHED_PORT`[^1]
+#### `MEMCACHED_PORT`
 
-Defaults to `11211`.
+(Not listed on Admin > Diagnostics.) Defaults to `11211`.
 
 ### REDIS
 
-#### `REDIS_CLIENT`[^1]
+#### `REDIS_CLIENT`
 
-Defaults to `"phpredis"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"phpredis"`.
 
-#### `REDIS_SCHEME`[^1]
+#### `REDIS_SCHEME`
 
-Defaults to `"tcp"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"tcp"`.
 
-#### `REDIS_PATH`[^1]
+#### `REDIS_PATH`
 
-No default value.
+(Not listed on Admin > Diagnostics.) No default value.
 
-#### `REDIS_HOST`[^1]
+#### `REDIS_HOST`
 
-Defaults to `"localhost"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"localhost"`.
 
-#### `REDIS_PASSWORD`[^1]
+#### `REDIS_PASSWORD`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-#### `REDIS_PORT`[^1]
+#### `REDIS_PORT`
 
-Defaults to `6379`.
+(Not listed on Admin > Diagnostics.) Defaults to `6379`.
 
-#### `REDIS_DATABASE`[^1]
+#### `REDIS_DATABASE`
 
-Defaults to `0`.
+(Not listed on Admin > Diagnostics.) Defaults to `0`.
 
-## CAPTCHA[^1]
+## CAPTCHA
 
-Use [hCaptcha](https://www.hcaptcha.com/) to protect your login from bots.
+(Not listed on Admin > Diagnostics.) Use [hCaptcha](https://www.hcaptcha.com/) to protect your login from bots.
 
-### `CAPTCHA_ENABLED`[^1]
+### `CAPTCHA_ENABLED`
 
-Defaults to `false`.
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-### `CAPTCHA_SECRET`[^1]
+### `CAPTCHA_SECRET`
 
-### `CAPTCHA_SITEKEY`[^1]
+(Not listed on Admin > Diagnostics.)
 
-## COSTAR[^1]
+### `CAPTCHA_SITEKEY`
 
-COSTAR - Confirm Object Sentiment Transform and Reduce
+(Not listed on Admin > Diagnostics.)
 
-### `CS_BLOCKED_DOMAINS`[^1]
+## COSTAR
 
-Comma-separated list of domains to block. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) COSTAR - Confirm Object Sentiment Transform and Reduce
 
-### `CS_CW_DOMAINS`[^1]
+### `CS_BLOCKED_DOMAINS`
 
-Comma-separated list of domains to add warnings. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of domains to block. Defaults to `null`.
 
-### `CS_UNLISTED_DOMAINS`[^1]
+### `CS_CW_DOMAINS`
 
-Comma-separated list of domains to remove from public timelines. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of domains to add warnings. Defaults to `null`.
 
-### `CS_BLOCKED_KEYWORDS`[^1]
+### `CS_UNLISTED_DOMAINS`
 
-Comma-separated list of keywords to block. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of domains to remove from public timelines. Defaults to `null`.
 
-### `CS_CW_KEYWORDS`[^1]
+### `CS_BLOCKED_KEYWORDS`
 
-Comma-separated list of keywords to add warnings. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of keywords to block. Defaults to `null`.
 
-### `CS_UNLISTED_KEYWORDS`[^1]
+### `CS_CW_KEYWORDS`
 
-Comma-separated list of keywords to remove from public timelines. Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of keywords to add warnings. Defaults to `null`.
 
-### `CS_BLOCKED_ACTOR`[^1]
+### `CS_UNLISTED_KEYWORDS`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Comma-separated list of keywords to remove from public timelines. Defaults to `null`.
 
-### `CS_CW_ACTOR`[^1]
+### `CS_BLOCKED_ACTOR`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-### `CS_UNLISTED_ACTOR`[^1]
+### `CS_CW_ACTOR`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
+
+### `CS_UNLISTED_ACTOR`
+
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
 ## DATABASE
 
@@ -222,118 +244,118 @@ Here you may specify which of the database connections below you wish to use as 
 - `"pgsql"`
 - `"sqlsrv"`
 
-### SQLITE[^1]
+### SQLITE
 
-When using `sqlite` for `DB_CONNECTION`.
+(Not listed on Admin > Diagnostics.) When using `sqlite` for `DB_CONNECTION`.
 
-#### `DB_DATABASE`[^1]
+#### `DB_DATABASE`
 
-Defaults to `"database.sqlite"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"database.sqlite"`.
 
-### MYSQL[^1]
+### MYSQL
 
-When using `"mysql"` for `DB_CONNECTION`.
+(Not listed on Admin > Diagnostics.) When using `"mysql"` for `DB_CONNECTION`.
 
-#### `DB_HOST`[^1]
+#### `DB_HOST`
 
-Defaults to `"127.0.0.1"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"127.0.0.1"`.
 
-#### `DB_PORT`[^1]
+#### `DB_PORT`
 
-Defaults to `"3306"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"3306"`.
 
-#### `DB_DATABASE`[^1]
+#### `DB_DATABASE`
 
-Defaults to `"forge"`
+(Not listed on Admin > Diagnostics.) Defaults to `"forge"`
 
-#### `DB_USERNAME`[^1]
+#### `DB_USERNAME`
 
-Defaults to `"forge"`
+(Not listed on Admin > Diagnostics.) Defaults to `"forge"`
 
-#### `DB_PASSWORD`[^1]
+#### `DB_PASSWORD`
 
-Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
-#### `DB_SOCKET`[^1]
+#### `DB_SOCKET`
 
-Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
-### PGSQL[^1]
+### PGSQL
 
-When using `"pgsql"` for `DB_CONNECTION`.
+(Not listed on Admin > Diagnostics.) When using `"pgsql"` for `DB_CONNECTION`.
 
-#### `DB_HOST`[^1]
+#### `DB_HOST`
 
-Defaults to `"127.0.0.1"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"127.0.0.1"`.
 
-#### `DB_PORT`[^1]
+#### `DB_PORT`
 
-Defaults to `"5432"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"5432"`.
 
-#### `DB_DATABASE`[^1]
+#### `DB_DATABASE`
 
-Defaults to `forge`.
+(Not listed on Admin > Diagnostics.) Defaults to `forge`.
 
-#### `DB_USERNAME`[^1]
+#### `DB_USERNAME`
 
-Defaults to `forge`.
+(Not listed on Admin > Diagnostics.) Defaults to `forge`.
 
-#### `DB_PASSWORD`[^1]
+#### `DB_PASSWORD`
 
-Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
 ### SQLSRV
 
 When using `"sqlsrv"` for `DB_CONNECTION`.
 
-#### `DB_HOST`[^1]
+#### `DB_HOST`
 
-Defaults to `"localhost"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"localhost"`.
 
-#### `DB_PORT`[^1]
+#### `DB_PORT`
 
-Defaults to `"1433"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"1433"`.
 
-#### `DB_DATABASE`[^1]
+#### `DB_DATABASE`
 
-Defaults to `forge`.
+(Not listed on Admin > Diagnostics.) Defaults to `forge`.
 
-#### `DB_USERNAME`[^1]
+#### `DB_USERNAME`
 
-Defaults to `forge`.
+(Not listed on Admin > Diagnostics.) Defaults to `forge`.
 
-#### `DB_PASSWORD`[^1]
+#### `DB_PASSWORD`
 
-Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
 ### `REDIS_CLIENT`
 
 - `"predis"` (default)
 - `"phpredis"`
 
-#### `REDIS_SCHEME`[^1]
+#### `REDIS_SCHEME`
 
-Defaults to `"tcp"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"tcp"`.
 
-#### `REDIS_PATH`[^1]
+#### `REDIS_PATH`
 
-No default value.
+(Not listed on Admin > Diagnostics.) No default value.
 
-#### `REDIS_HOST`[^1]
+#### `REDIS_HOST`
 
-Defaults to `"127.0.0.1"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"127.0.0.1"`.
 
-#### `REDIS_PASSWORD`[^1]
+#### `REDIS_PASSWORD`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-#### `REDIS_PORT`[^1]
+#### `REDIS_PORT`
 
-Defaults to `6379`.
+(Not listed on Admin > Diagnostics.) Defaults to `6379`.
 
-#### `REDIS_DATABASE`[^1]
+#### `REDIS_DATABASE`
 
-Defaults to `0`.
+(Not listed on Admin > Diagnostics.) Defaults to `0`.
 
 ## EXP
 
@@ -343,13 +365,13 @@ Experimental configuration options. (Use at your own risk.)
 
 Hidden like counts (deprecated). Defaults to `false`.
 
-### `EXP_REC`[^2]
+### `EXP_REC`
 
-Recommendations (deprecated). Defaults to `false`.
+(Variable is ignored.) Recommendations (deprecated). Defaults to `false`.
 
-### `EXP_LOOPS`[^2]
+### `EXP_LOOPS`
 
-Loops feature (deprecated). Defaults to `false`.
+(Variable is ignored.) Loops feature (deprecated). Defaults to `false`.
 
 ### `EXP_TOP`
 
@@ -367,9 +389,9 @@ Cached public timeline for larger instances (beta). Defaults to `false`.
 
 Groups (unreleased). Defaults to `false`.
 
-### `spa`[^2]
+### `spa`
 
-Single page application (beta). Defaults to `true`.
+(Variable is ignored.) Single page application (beta). Defaults to `true`.
 
 ### `EXP_EMC`
 
@@ -461,63 +483,105 @@ Here you may specify the default filesystem disk that should be used by the fram
 
 Many applications store files both locally and in the cloud. For this reason, you may specify a default "cloud" driver here. This driver will be bound as the Cloud disk implementation in the container. Defaults to `"s3"`.
 
-### S3[^1]
+### S3
 
-#### `AWS_ACCESS_KEY_ID`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `AWS_SECRET_ACCESS_KEY`[^1]
+#### `AWS_ACCESS_KEY_ID`
 
-#### `AWS_DEFAULT_REGION`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `AWS_BUCKET`[^1]
+#### `AWS_SECRET_ACCESS_KEY`
 
-#### `AWS_URL`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `AWS_ENDPOINT`[^1]
+#### `AWS_DEFAULT_REGION`
 
-#### `AWS_USE_PATH_STYLE_ENDPOINT`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `false`.
+#### `AWS_BUCKET`
 
-### SPACES[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `DO_SPACES_KEY`[^1]
+#### `AWS_URL`
 
-#### `DO_SPACES_SECRET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `DO_SPACES_ENDPOINT`[^1]
+#### `AWS_ENDPOINT`
 
-#### `DO_SPACES_REGION`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `DO_SPACES_BUCKET`[^1]
+#### `AWS_USE_PATH_STYLE_ENDPOINT`
 
-#### `DO_SPACES_ROOT`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-### BACKUP[^1]
+### SPACES
 
-#### `PF_BACKUP_DRIVER`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `"s3"`.
+#### `DO_SPACES_KEY`
 
-#### `PF_BACKUP_ROOT`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `"/"`.
+#### `DO_SPACES_SECRET`
 
-#### `PF_BACKUP_KEY`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `PF_BACKUP_SECRET`[^1]
+#### `DO_SPACES_ENDPOINT`
 
-#### `PF_BACKUP_ENDPOINT`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `PF_BACKUP_REGION`[^1]
+#### `DO_SPACES_REGION`
 
-#### `PF_BACKUP_BUCKET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-## HASHIDS[^1]
+#### `DO_SPACES_BUCKET`
 
-### `APP_HASHID_SALT`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `"v3MsJ1Hgnlma8YPrD3f4sW6vAn6zLnkuh6vOpKnR5IKkLqDGIk7TCADS2igpEN4ADrtXkkzV2E8HBfzpz7BreDzQqVOYDMeb4cJ1xhDhDwDeicZVUPyrxihHDaMWpTsP"`.
+#### `DO_SPACES_ROOT`
+
+(Not listed on Admin > Diagnostics.)
+
+### BACKUP
+
+(Not listed on Admin > Diagnostics.)
+
+#### `PF_BACKUP_DRIVER`
+
+(Not listed on Admin > Diagnostics.) Defaults to `"s3"`.
+
+#### `PF_BACKUP_ROOT`
+
+(Not listed on Admin > Diagnostics.) Defaults to `"/"`.
+
+#### `PF_BACKUP_KEY`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `PF_BACKUP_SECRET`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `PF_BACKUP_ENDPOINT`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `PF_BACKUP_REGION`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `PF_BACKUP_BUCKET`
+
+(Not listed on Admin > Diagnostics.)
+
+## HASHIDS
+
+(Not listed on Admin > Diagnostics.)
+
+### `APP_HASHID_SALT`
+
+(Not listed on Admin > Diagnostics.) Defaults to `"v3MsJ1Hgnlma8YPrD3f4sW6vAn6zLnkuh6vOpKnR5IKkLqDGIk7TCADS2igpEN4ADrtXkkzV2E8HBfzpz7BreDzQqVOYDMeb4cJ1xhDhDwDeicZVUPyrxihHDaMWpTsP"`.
 
 ## HASHING
 
@@ -529,19 +593,21 @@ This option controls the default hash driver that will be used to hash passwords
 
 How many rounds of hashing to use. Defaults to `10`.
 
-### ARGON[^1]
+### ARGON
 
-#### `ARGON_MEM`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `1024`.
+#### `ARGON_MEM`
 
-#### `ARGON_THREADS`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `1024`.
 
-Defaults to `2`.
+#### `ARGON_THREADS`
 
-#### `ARGON_TIME`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `2`.
 
-Defaults to `2`.
+#### `ARGON_TIME`
+
+(Not listed on Admin > Diagnostics.) Defaults to `2`.
 
 ## HORIZON
 
@@ -593,9 +659,9 @@ Pixelfed supports [GD](https://libgd.github.io/) or [ImageMagick](https://imagem
 
 ## INSTANCE
 
-### `FORCE_HTTPS_URLS`[^1]
+### `FORCE_HTTPS_URLS`
 
-Defaults to `true`.
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
 ### `INSTANCE_DESCRIPTION`
 
@@ -753,39 +819,41 @@ Here you may specify which of the LDAP connections below you wish to use as your
 
 Defaults to `"default"`.
 
-### DEFAULT[^1]
+### DEFAULT
 
-#### `LDAP_HOST`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `"127.0.0.1"`.
+#### `LDAP_HOST`
 
-#### `LDAP_USERNAME`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"127.0.0.1"`.
 
-Defaults `"cn=user,dc=local,dc=com"`.
+#### `LDAP_USERNAME`
 
-#### `LDAP_PASSWORD`[^1]
+(Not listed on Admin > Diagnostics.) Defaults `"cn=user,dc=local,dc=com"`.
 
-Defaults to `"secret"`.
+#### `LDAP_PASSWORD`
 
-#### `LDAP_PORT`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"secret"`.
 
-Defaults to `389`.
+#### `LDAP_PORT`
 
-#### `LDAP_BASE_DN`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `389`.
 
-Defaults to `"dc=local,dc=com"`.
+#### `LDAP_BASE_DN`
 
-#### `LDAP_TIMEOUT`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"dc=local,dc=com"`.
 
-Defaults to `5`.
+#### `LDAP_TIMEOUT`
 
-#### `LDAP_SSL`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `5`.
 
-Defaults to `false`.
+#### `LDAP_SSL`
 
-#### `LDAP_TLS`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-Defaults to `false`.
+#### `LDAP_TLS`
+
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
 ### `LDAP_LOGGING`
 
@@ -805,63 +873,65 @@ Defaults to `false`.
 
 See [`CACHE`](#cache). Defaults to `"file"`.
 
-## LIVESTREAMING[^1]
+## LIVESTREAMING
 
-### `HLS_LIVE`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `false`.
+### `HLS_LIVE`
 
-### `HLS_LIVE_HOST`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-Defaults to `APP_DOMAIN` or `"localhost"`.
+### `HLS_LIVE_HOST`
 
-### `HLS_LIVE_PORT`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `APP_DOMAIN` or `"localhost"`.
 
-Defaults to `1935`.
+### `HLS_LIVE_PORT`
 
-### `HLS_LIVE_PATH`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `1935`.
 
-Defaults to `"live"`.
+### `HLS_LIVE_PATH`
 
-### `HLS_LIVE_BROADCAST_DELETE_TOKEN_AFTER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"live"`.
 
-Defaults to `true`.
+### `HLS_LIVE_BROADCAST_DELETE_TOKEN_AFTER`
 
-### `HLS_LIVE_BROADCAST_MAX_DURATION`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `60`.
+### `HLS_LIVE_BROADCAST_MAX_DURATION`
 
-### `HLS_LIVE_BROADCAST_MAX_ACTIVE`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `60`.
 
-Defaults to `10`.
+### `HLS_LIVE_BROADCAST_MAX_ACTIVE`
 
-### `HLS_LIVE_BROADCAST_LIMITS`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `10`.
 
-Defaults to `true`.
+### `HLS_LIVE_BROADCAST_LIMITS`
 
-### `HLS_LIVE_BROADCAST_LIMITS_MIN_FOLLOWERS`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `100`.
+### `HLS_LIVE_BROADCAST_LIMITS_MIN_FOLLOWERS`
 
-### `HLS_LIVE_BROADCAST_LIMITS_MIN_ACCOUNT_AGE`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `100`.
 
-Defaults to `14`.
+### `HLS_LIVE_BROADCAST_LIMITS_MIN_ACCOUNT_AGE`
 
-### `HLS_LIVE_BROADCAST_LIMITS_ADMINS_ONLY`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `14`.
 
-Defaults to `true`.
+### `HLS_LIVE_BROADCAST_LIMITS_ADMINS_ONLY`
 
-### `HLS_LIVE_BROADCAST_SOURCE_APP`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `false`.
+### `HLS_LIVE_BROADCAST_SOURCE_APP`
 
-### `HLS_LIVE_BROADCAST_SOURCE_WEB`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-Defaults to `false`.
+### `HLS_LIVE_BROADCAST_SOURCE_WEB`
 
-### `HLS_LIVE_COMMENTS_MAX_FALLOFF`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `false`.
 
-Defaults to `50`.
+### `HLS_LIVE_COMMENTS_MAX_FALLOFF`
+
+(Not listed on Admin > Diagnostics.) Defaults to `50`.
 
 ## LOGGING
 
@@ -884,13 +954,13 @@ Possible values:
 
 Used by `single`, `stderr` and `syslog`. Defaults to `"debug"` for all of those.
 
-### `LOG_SLACK_WEBHOOK_URL`[^1]
+### `LOG_SLACK_WEBHOOK_URL`
 
-Used by `slack`. Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Used by `slack`. Defaults to `""`.
 
-### `LOG_STDERR_FORMATTER`[^1]
+### `LOG_STDERR_FORMATTER`
 
-Used by `stderr`. Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Used by `stderr`. Defaults to `""`.
 
 ## MAIL
 
@@ -927,31 +997,35 @@ Defaults to `"Example"`.
 
 Here you may specify the encryption protocol that should be used when the application send e-mail messages. A sensible default using the transport layer security protocol should provide great security. Defaults to `"tls"`.
 
-### `MAIL_USERNAME`[^1]
+### `MAIL_USERNAME`
 
-If your SMTP server requires a username for authentication, you should set it here. This will get used to authenticate with your server on connection. You may also set the "password" value below this one. Defaults to `""`.
+(Not listed on Admin > Diagnostics.) If your SMTP server requires a username for authentication, you should set it here. This will get used to authenticate with your server on connection. You may also set the "password" value below this one. Defaults to `""`.
 
-### `MAIL_PASSWORD`[^1]
+### `MAIL_PASSWORD`
 
-Defaults to `""`.
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
 ## MEDIA
 
-### `MEDIA_DELETE_LOCAL_AFTER_CLOUD`[^1]
+### `MEDIA_DELETE_LOCAL_AFTER_CLOUD`
 
-Defaults to `true`.
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
 ### `MEDIA_EXIF_DATABASE`
 
 Defaults to `false`.
 
-## PASSPORT[^1]
+## PASSPORT
 
-Passport uses encryption keys while generating secure access tokens for your application. By default, the keys are stored as local files but can be set via environment variables when that is more convenient.
+(Not listed on Admin > Diagnostics.) Passport uses encryption keys while generating secure access tokens for your application. By default, the keys are stored as local files but can be set via environment variables when that is more convenient.
 
-### `PASSPORT_PRIVATE_KEY`[^1]
+### `PASSPORT_PRIVATE_KEY`
 
-### `PASSPORT_PUBLIC_KEY`[^1]
+(Not listed on Admin > Diagnostics.)
+
+### `PASSPORT_PUBLIC_KEY`
+
+(Not listed on Admin > Diagnostics.)
 
 ## PIXELFED
 
@@ -1095,15 +1169,17 @@ Defaults to `1000`.
 
 Defaults to `true`.
 
-## PORTFOLIO[^1]
+## PORTFOLIO
 
-### `PORTFOLIO_DOMAIN`[^1]
+(Not listed on Admin > Diagnostics.)
 
-This value is the domain used for the portfolio feature. Only change the default value if you have a subdomain configured. You must use a subdomain on the same app domain. Defaults to `APP_DOMAIN`.
+### `PORTFOLIO_DOMAIN`
 
-### `PORTFOLIO_PATH`[^1]
+(Not listed on Admin > Diagnostics.) This value is the domain used for the portfolio feature. Only change the default value if you have a subdomain configured. You must use a subdomain on the same app domain. Defaults to `APP_DOMAIN`.
 
-This value is the path used for the portfolio feature. Only change the default value if you have a subdomain configured. If you want to use the root path of the subdomain, leave this value empty.
+### `PORTFOLIO_PATH`
+
+(Not listed on Admin > Diagnostics.) This value is the path used for the portfolio feature. Only change the default value if you have a subdomain configured. If you want to use the root path of the subdomain, leave this value empty.
 
 WARNING: SETTING THIS VALUE WITHOUT A SUBDOMAIN COULD BREAK YOUR INSTANCE, SO ONLY CHANGE THIS IF YOU KNOW WHAT YOU'RE DOING.
 
@@ -1126,59 +1202,85 @@ Defaults to `true`.
 - `"redis"`
 - `"null"`
 
-### SQS[^1]
+### SQS
 
-#### `SQS_KEY`[^1]
+(Not listed on Admin > Diagnostics.)
 
-Defaults to `"your-public-key"`.
+#### `SQS_KEY`
 
-#### `SQS_SECRET`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"your-public-key"`.
 
-Defaults to `"your-secret-key"`.
+#### `SQS_SECRET`
 
-#### `SQS_PREFIX`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"your-secret-key"`.
 
-Defaults to `"https://sqs.us-east-1.amazonaws.com/your-account-id"`.
+#### `SQS_PREFIX`
 
-#### `SQS_QUEUE`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"https://sqs.us-east-1.amazonaws.com/your-account-id"`.
 
-Defaults to `"your-queue-name"`.
+#### `SQS_QUEUE`
 
-#### `SQS_REGION`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"your-queue-name"`.
 
-Defaults to `"us-east-1"`.
+#### `SQS_REGION`
 
-### DB_CONNECTION[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"us-east-1"`.
 
-See [`DB_CONNECTION`](#db_connection). These options configure the behavior of failed queue job logging so you can control which database and table are used to store the jobs that have failed. You may change them to any database / table you wish. Defaults to `"mysql"`.
+### DB_CONNECTION
 
-## SERVICES[^1]
+(Not listed on Admin > Diagnostics.) See [`DB_CONNECTION`](#db_connection). These options configure the behavior of failed queue job logging so you can control which database and table are used to store the jobs that have failed. You may change them to any database / table you wish. Defaults to `"mysql"`.
 
-### MAILGUN[^1]
+## SERVICES
 
-#### `MAILGUN_DOMAIN`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `MAILGUN_SECRET`[^1]
+### MAILGUN
 
-### SES[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `SES_KEY`[^1]
+#### `MAILGUN_DOMAIN`
 
-#### `SES_SECRET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `SES_REGION`[^1]
+#### `MAILGUN_SECRET`
 
-Defaults to `"us-east-1"`.
+(Not listed on Admin > Diagnostics.)
 
-### SPARKPOST[^1]
+### SES
 
-#### `SPARKPOST_SECRET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-### STRIPE[^1]
+#### `SES_KEY`
 
-#### `STRIPE_KEY`[^1]
+(Not listed on Admin > Diagnostics.)
 
-#### `STRIPE_SECRET`[^1]
+#### `SES_SECRET`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `SES_REGION`
+
+(Not listed on Admin > Diagnostics.) Defaults to `"us-east-1"`.
+
+### SPARKPOST
+
+(Not listed on Admin > Diagnostics.)
+
+#### `SPARKPOST_SECRET`
+
+(Not listed on Admin > Diagnostics.)
+
+### STRIPE
+
+(Not listed on Admin > Diagnostics.)
+
+#### `STRIPE_KEY`
+
+(Not listed on Admin > Diagnostics.)
+
+#### `STRIPE_SECRET`
+
+(Not listed on Admin > Diagnostics.)
 
 ## SESSION
 
@@ -1202,79 +1304,81 @@ Here you may specify the number of minutes that you wish the session to be allow
 
 Here you may change the domain of the cookie used to identify a session in your application. This will determine which domains the cookie is available to in your application. A sensible default has been set. Defaults to the value of `APP_DOMAIN`, or `null`.
 
-## TELESCOPE[^1]
+## TELESCOPE
 
-### `TELESCOPE_DRIVER`[^1]
+(Not listed on Admin > Diagnostics.)
 
-This configuration options determines the storage driver that will be used to store Telescope's data. In addition, you may set any custom options as needed by the particular driver you choose. Defaults to `"database"`.
+### `TELESCOPE_DRIVER`
 
-### `TELESCOPE_ENABLED`[^1]
+(Not listed on Admin > Diagnostics.) This configuration options determines the storage driver that will be used to store Telescope's data. In addition, you may set any custom options as needed by the particular driver you choose. Defaults to `"database"`.
 
-This option may be used to disable all Telescope watchers regardless of their individual configuration, which simply provides a single and convenient way to enable or disable Telescope data storage. Defaults to `false`.
+### `TELESCOPE_ENABLED`
 
-### `TELESCOPE_CACHE_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) This option may be used to disable all Telescope watchers regardless of their individual configuration, which simply provides a single and convenient way to enable or disable Telescope data storage. Defaults to `false`.
 
-Defaults to `true`.
+### `TELESCOPE_CACHE_WATCHER`
 
-### `TELESCOPE_COMMAND_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_COMMAND_WATCHER`
 
-### `TELESCOPE_DUMP_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_DUMP_WATCHER`
 
-### `TELESCOPE_EVENT_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_EVENT_WATCHER`
 
-### `TELESCOPE_EXCEPTION_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_EXCEPTION_WATCHER`
 
-### `TELESCOPE_JOB_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_JOB_WATCHER`
 
-### `TELESCOPE_LOG_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_LOG_WATCHER`
 
-### `TELESCOPE_MAIL_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_MAIL_WATCHER`
 
-### `TELESCOPE_MODEL_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_MODEL_WATCHER`
 
-### `TELESCOPE_NOTIFICATION_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_NOTIFICATION_WATCHER`
 
-### `TELESCOPE_QUERY_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_QUERY_WATCHER`
 
-### `TELESCOPE_REDIS_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_REDIS_WATCHER`
 
-### `TELESCOPE_REQUEST_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_REQUEST_WATCHER`
 
-### `TELESCOPE_RESPONSE_SIZE_LIMIT`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `64`.
+### `TELESCOPE_RESPONSE_SIZE_LIMIT`
 
-### `TELESCOPE_GATE_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `64`.
 
-Defaults to `true`.
+### `TELESCOPE_GATE_WATCHER`
 
-### `TELESCOPE_SCHEDULE_WATCHER`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
-Defaults to `true`.
+### `TELESCOPE_SCHEDULE_WATCHER`
+
+(Not listed on Admin > Diagnostics.) Defaults to `true`.
 
 ## TRUSTEDPROXY
 
@@ -1290,79 +1394,84 @@ The "**" character is syntactic sugar within TrustedProxy to trust not just any 
 
 Defaults to `"*"`.
 
-## WEBSOCKETS[^1]
+## WEBSOCKETS
 
-### DASHBOARD SETTINGS[^1]
+(Not listed on Admin > Diagnostics.)
 
-You can configure the dashboard settings from here.
+### DASHBOARD SETTINGS
 
-#### `LARAVEL_WEBSOCKETS_PORT`[^1]
+(Not listed on Admin > Diagnostics.) You can configure the dashboard settings from here.
 
-Defaults to `6001`.
+#### `LARAVEL_WEBSOCKETS_PORT`
 
-#### `LARAVEL_WEBSOCKETS_DOMAIN`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `6001`.
 
-Defaults to `""`.
+#### `LARAVEL_WEBSOCKETS_DOMAIN`
 
-#### `LARAVEL_WEBSOCKETS_PATH`[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `""`.
 
-Defaults to `"laravel-websockets"`.
+#### `LARAVEL_WEBSOCKETS_PATH`
 
-### APPLICATIONS REPOSITORY[^1]
+(Not listed on Admin > Diagnostics.) Defaults to `"laravel-websockets"`.
 
-#### `PUSHER_APP_ID`[^1]
+### APPLICATIONS REPOSITORY
 
-See [PUSHER](#pusher).
+(Not listed on Admin > Diagnostics.)
 
-#### `APP_NAME`[^1]
+#### `PUSHER_APP_ID`
 
-See [APP](#app).
+(Not listed on Admin > Diagnostics.) See [PUSHER](#pusher).
 
-#### `PUSHER_APP_HOST`[^1]
+#### `APP_NAME`
 
-#### `PUSHER_APP_KEY`[^1]
+(Not listed on Admin > Diagnostics.) See [APP](#app).
 
-See [PUSHER](#pusher).
+#### `PUSHER_APP_HOST`
 
-#### `PUSHER_APP_SECRET`[^1]
+(Not listed on Admin > Diagnostics.)
 
-See [PUSHER](#pusher).
+#### `PUSHER_APP_KEY`
 
-#### `PUSHER_APP_PATH`[^1]
+(Not listed on Admin > Diagnostics.) See [PUSHER](#pusher).
 
-### BROADCASTING REPLICATION PUBSUB[^1]
+#### `PUSHER_APP_SECRET`
 
-You can enable replication to publish and subscribe to messages across the driver.
+(Not listed on Admin > Diagnostics.) See [PUSHER](#pusher).
+
+#### `PUSHER_APP_PATH`
+
+(Not listed on Admin > Diagnostics.)
+
+### BROADCASTING REPLICATION PUBSUB
+
+(Not listed on Admin > Diagnostics.) You can enable replication to publish and subscribe to messages across the driver.
 
 By default, it is set to `"local"`, but you can configure it to use drivers like Redis to ensure connection between multiple instances of WebSocket servers. Just set the driver to `"redis"` to enable the PubSub using Redis.
 
-#### `WEBSOCKETS_REPLICATION_MODE`[^1]
+#### `WEBSOCKETS_REPLICATION_MODE`
 
-Defaults to `"local"`.
+(Not listed on Admin > Diagnostics.) Defaults to `"local"`.
 
-#### `WEBSOCKETS_REDIS_REPLICATION_CONNECTION`[^1]
+#### `WEBSOCKETS_REDIS_REPLICATION_CONNECTION`
 
-See [REDIS](#redis). Defaults to `"default"`.
+(Not listed on Admin > Diagnostics.) See [REDIS](#redis). Defaults to `"default"`.
 
-### SSL CONFIGURATION[^1]
+### SSL CONFIGURATION
 
-By default, the configuration allows only on HTTP. For SSL, you need to set up the the certificate, the key, and optionally, the passphrase for the private key. You will need to restart the server for the settings to take place.
+(Not listed on Admin > Diagnostics.) By default, the configuration allows only on HTTP. For SSL, you need to set up the the certificate, the key, and optionally, the passphrase for the private key. You will need to restart the server for the settings to take place.
 
-#### `LARAVEL_WEBSOCKETS_SSL_LOCAL_CERT`[^1]
+#### `LARAVEL_WEBSOCKETS_SSL_LOCAL_CERT`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-#### `LARAVEL_WEBSOCKETS_SSL_CA`[^1]
+#### `LARAVEL_WEBSOCKETS_SSL_CA`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-#### `LARAVEL_WEBSOCKETS_SSL_LOCAL_PK`[^1]
+#### `LARAVEL_WEBSOCKETS_SSL_LOCAL_PK`
 
-Defaults to `null`.
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
 
-#### `LARAVEL_WEBSOCKETS_SSL_PASSPHRASE`[^1]
+#### `LARAVEL_WEBSOCKETS_SSL_PASSPHRASE`
 
-Defaults to `null`.
-
-[^1]: Not listed on `/i/admin/diagnostics/home`
-[^2]: Variable is ignored
+(Not listed on Admin > Diagnostics.) Defaults to `null`.
