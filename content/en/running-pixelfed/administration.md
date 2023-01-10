@@ -1,7 +1,7 @@
 +++
 title = "Administering your website"
 summary = "Tips and instructions for managing your Pixelfed installation"
-weight = 30
+weight = 40
 [menu]
 [menu.docs]
 identifier = "admin/administration"
@@ -45,7 +45,7 @@ php artisan user:admin username_here
 You can run this command to fix accounts created before that username was reserved.
 ```bash
 php artisan fix:usernames
-``` 
+```
 
 ### Remove unused media
 
