@@ -59,6 +59,7 @@ By default Pixelfed comes with a `.env.example` file for production deployments,
 ```bash
 cp .env.example .env # for production deployments
 cp .env.testing .env # for debug deployments
+chown http:http .env # replace http user with www-data or pixelfed
 ```
 
 You can now edit `.env` and change values for your setup.
