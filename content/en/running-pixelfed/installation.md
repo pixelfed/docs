@@ -66,7 +66,7 @@ You can now edit `.env` and change values for your setup.
 {{<hint style="tip">}}
 **List of environment variables**
 
-You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/env.md) page, but the important variables will be listed in the below subsections.
+You can find a list of additional configuration settings in-depth on the [Configuration](../technical-documentation/config.md) page, but the important variables will be listed in the below subsections.
 {{</hint>}}
 
 ### App variables
