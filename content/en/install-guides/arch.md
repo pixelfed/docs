@@ -5,7 +5,7 @@ summary = "End-to-end guide for installing Pixelfed on Arch Linux"
 [menu.docs]
 identifier = "install-guides/arch"
 parent = "install-guides"
-name = "Arch Linux"
+name = "Arch Linux"is 
 +++
 
 ## Assumptions
