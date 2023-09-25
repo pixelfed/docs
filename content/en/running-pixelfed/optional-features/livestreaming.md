@@ -27,7 +27,7 @@ sudo nano /etc/nginx/nginx.conf
 
 Make sure you edit lines **16**, **17** with your domain (leave http:// and the path as is), and line **29** with the path to your `storage/app/public/live-hls` directory
 
-```bash{16,17,29}
+```bash
 rtmp {
     server {
         listen 1935;

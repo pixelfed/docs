@@ -106,7 +106,7 @@ All Activity Types inherit the properties of the base Activity type. Some specif
 
 Indicates that the actor has created the object. Supported object sub-types are **Note** and **Question**.
 
-```json{4,8}
+```json
 {
   "@context": "https://www.w3.org/ns/activitystreams",
   "id": "https://example.org/p/dansup/2/activity",
@@ -157,7 +157,7 @@ Indicates that the actor has created the object. Supported object sub-types are 
 
 Images are used to represent `Status` media
 
-```json {2}
+```json
 {
     "type": "Image",
     "mediaType": "image/jpeg",
@@ -170,7 +170,7 @@ Images are used to represent `Status` media
 
 Notes are converted to `Status` models internally
 
-```json {26}
+```json
 {
     "@context": [
         "https://www.w3.org/ns/activitystreams",

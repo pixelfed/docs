@@ -1191,6 +1191,26 @@ Defaults to `"/i/portfolio"`.
 
 Defaults to `true`.
 
+## `RESILIENT_MODE`
+
+(Not listed on Admin > Diagnostics.) This mode allows you to define up to 2 alternate S3 cloud providers for a total of 3 S3 providers for redundancy.
+
+To enable the primary alternate S3 driver, ensure you set the following .env variables:
+- `ALT_PRI_ENABLED=true` 
+- `ALT_PRI_AWS_ACCESS_KEY_ID=KEYID` 
+- `ALT_PRI_AWS_SECRET_ACCESS_KEY=SECRET`
+- `ALT_PRI_AWS_DEFAULT_REGION=REGION`
+- `ALT_PRI_AWS_URL=URL`
+- `ALT_PRI_AWS_ENDPOINT=ENDPOINT` 
+
+To enable the secondary alternate S3 driver, ensure you set the following .env variables:
+- `ALT_SEC_ENABLED=true` 
+- `ALT_SEC_AWS_ACCESS_KEY_ID=KEYID` 
+- `ALT_SEC_AWS_SECRET_ACCESS_KEY=SECRET`
+- `ALT_SEC_AWS_DEFAULT_REGION=REGION`
+- `ALT_SEC_AWS_URL=URL`
+- `ALT_SEC_AWS_ENDPOINT=ENDPOINT` 
+
 ## QUEUE
 
 ### `QUEUE_DRIVER`
