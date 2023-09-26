@@ -1,0 +1,1 @@
+(()=>{(()=>{var e=document.documentElement,t=window.innerHeight*.01;e.style.setProperty("--vh",`${t}px`),window.addEventListener("resize",()=>{let t=window.innerHeight*.01;e.style.setProperty("--vh",`${t}px`)})})()})()
