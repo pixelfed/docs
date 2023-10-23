@@ -1324,6 +1324,38 @@ Here you may specify the number of minutes that you wish the session to be allow
 
 Here you may change the domain of the cookie used to identify a session in your application. This will determine which domains the cookie is available to in your application. A sensible default has been set. Defaults to the value of `APP_DOMAIN`, or `null`.
 
+## VIDEO WEBP2P
+
+(Not listed on Admin > Diagnostics.) WebP2P support for local video that uses peer-to-peer technology to reduce load on individual servers when viewing video.
+
+### `MEDIA_HLS_ENABLED`
+
+Set to `true` to enable HLS generation, required for WebP2P support and alone allows for better viewing experiences. **Disabled by default.**
+
+### `MEDIA_HLS_P2P`
+
+Set to `true` to enable WebP2P support. Requires `MEDIA_HLS_ENABLED=true`. **Disabled by default.**
+
+### `MEDIA_HLS_BITRATE`
+
+Set the default HLS bitrate. We recommend using the default value of `1000` unless you know what you are doing.
+
+### `MEDIA_HLS_P2P_TRACKER`
+
+Set the WebP2P torrent tracker. The default tracker is `wss://tracker.webtorrent.dev`
+
+### `MEDIA_HLS_P2P_ICE_SERVER`
+
+Set the WebP2P signaling server. The default server is `stun:stun.l.google.com:19302`
+
+### `MEDIA_HLS_DEBUG`
+
+Set to `true` to enable debug mode that logs to browser console log. **Disabled by default.**
+
+### `MEDIA_HLS_P2P_DEBUG`
+
+Set to `true` to enable debug mode that logs WebP2P events to browser console log. **Disabled by default.**
+
 ## TELESCOPE
 
 (Not listed on Admin > Diagnostics.)
