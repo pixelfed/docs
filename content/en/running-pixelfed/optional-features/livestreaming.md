@@ -1,7 +1,7 @@
 +++
 title = "Livestreaming (Pixelfed Live)"
 summary = "Pixelfed Live is a mobile based livestreaming feature."
-weight = 41
+weight = 51
 [menu]
 [menu.docs]
 identifier = "admin/optional/live"
@@ -38,11 +38,11 @@ rtmp {
             record off;
             interleave on;
             wait_key on;
-            
+
             deny play all;
 
             push rtmp://127.0.0.1:1935/hls-live flashver=FMLE/3.0;
-            
+
             on_publish http://localhost/api/live/broadcast/publish;
             on_publish_done http://localhost/api/live/broadcast/finish;
         }
@@ -57,7 +57,7 @@ rtmp {
             deny publish all;
 
             hls_path /home/pixelfed/storage/app/public/live-hls;
-        
+
             hls_nested on;
             hls_fragment 5s;
             hls_playlist_length 30s;

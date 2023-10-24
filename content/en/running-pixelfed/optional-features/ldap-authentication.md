@@ -1,7 +1,7 @@
 +++
 title = "LDAP Authentication"
 summary = "You can configure your Pixelfed server to authenticate with an LDAP Server!"
-weight = 43
+weight = 53
 [menu]
 [menu.docs]
 identifier = "admin/optional/ldap"
@@ -128,7 +128,7 @@ php artisan config:cache
 
 You are now ready to login via LDAP!
 
-To test your connection you can run 
+To test your connection you can run
 
 ```
 php artisan ldap:test

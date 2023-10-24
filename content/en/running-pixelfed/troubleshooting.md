@@ -1,7 +1,7 @@
 +++
 title = "Troubleshooting"
 summary = "Frequently asked questions about things going wrong"
-weight = 50
+weight = 60
 [menu]
 [menu.docs]
 identifier = "admin/troubleshooting"
