@@ -1,0 +1,10 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/p/admin/1#delete",
+    "type": "Delete",
+    "actor": "https://pixelfed.test/users/admin",
+    "object": {
+        "id": "https://pixelfed.test/p/admin/1",
+        "type": "Tombstone"
+    }
+}

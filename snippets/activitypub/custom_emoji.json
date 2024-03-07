@@ -1,0 +1,26 @@
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji", // [!code focus]
+        }
+    ],
+
+    "id": "https://pixelfed.test/p/dansup/647727972628135937",
+    "type": "Note",
+    "content": "test :pixelfed: custom emoji", // [!code focus]
+    "tag": [
+        {
+            "id": "https://pixelfed.test/emojis/12",
+            "type": "Emoji",
+            "name": ":pixelfed:", // [!code focus]
+            "updated": "2022-01-21T02:01:03+00:00",
+            "icon": {
+                "type": "Image",
+                "mediaType": "image/png",
+                "url": "https://pixelfed.test/storage/emoji/12.png"
+            }
+        }
+    ]
+}

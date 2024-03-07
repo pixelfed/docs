@@ -1,0 +1,10 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/stories/dansup/123456#delete",
+    "type": "Delete",
+    "actor": "https://pixelfed.test/users/dansup",
+    "object": {
+        "id": "https://pixelfed.test/stories/dansup/123456",
+        "type": "Story"
+    }
+}

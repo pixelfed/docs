@@ -1,0 +1,30 @@
+{
+    "id": "https://example.org/users/dansup",
+    "type": "Person",
+    "following": "https://example.org/users/dansup/following",
+    "followers": "https://example.org/users/dansup/followers",
+    "inbox": "https://example.org/users/dansup/inbox",
+    "outbox": "https://example.org/users/dansup/outbox",
+    "preferredUsername": "dansup",
+    "name": "dansup",
+    "summary": "Example summary",
+    "url": "https://example.org/dansup",
+    "manuallyApprovesFollowers": false,
+    "indexable": true,
+    "publicKey": {
+        "id": "https://example.org/users/dansup#main-key",
+        "owner": "https://example.org/users/dansup",
+        "publicKeyPem": "-----BEGIN PUBLIC KEY--..."
+    },
+    "icon": {
+        "type": "Image",
+        "mediaType": "image/jpeg",
+        "url": "https://example.org/avatars/avatar.jpg"
+    },
+    "endpoints": {
+        "sharedInbox": "https://example.org/f/inbox"
+    },
+    "alsoKnownAs": [
+        "https://example.net/users/dansup"
+    ]
+}

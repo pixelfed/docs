@@ -1,0 +1,21 @@
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "toot": "http://joinmastodon.org/ns#",
+            "blurhash": "toot:blurhash"
+        }
+    ],
+
+    "id": "https://pixelfed.test/p/dansup/618893826647911311",
+    "type": "Note",
+    "content": "Happy #caturday!",
+    "attachment": [
+        {
+            "type": "Image",
+            "mediaType": "image/jpeg",
+            "url": "https://example.org/media/caturday.jpg",
+            "blurhash": "UEE:0k_2oexa~pIVtRM{oH%L?bM{9F4nWB~W", // [!code focus]
+        }
+    ]
+}

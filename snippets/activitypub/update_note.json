@@ -1,0 +1,92 @@
+{
+    "@context": [
+        "https://w3id.org/security/v1",
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "Hashtag": "as:Hashtag",
+            "sensitive": "as:sensitive",
+            "schema": "http://schema.org/",
+            "pixelfed": "http://pixelfed.org/ns#",
+            "commentsEnabled": {
+                "@id": "pixelfed:commentsEnabled",
+                "@type": "schema:Boolean"
+            },
+            "capabilities": {
+                "@id": "pixelfed:capabilities",
+                "@container": "@set"
+            },
+            "announce": {
+                "@id": "pixelfed:canAnnounce",
+                "@type": "@id"
+            },
+            "like": {
+                "@id": "pixelfed:canLike",
+                "@type": "@id"
+            },
+            "reply": {
+                "@id": "pixelfed:canReply",
+                "@type": "@id"
+            },
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji"
+        }
+    ],
+    "id": "https://pixelfed.test/p/dansup/567257798031955417#updates/4269",
+    "type": "Update",
+    "actor": "https://pixelfed.test/users/dansup",
+    "published": "2023-05-26T21:01:10+00:00",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "cc": [
+        "https://pixelfed.test/users/dansup/followers",
+        "https://example.net/users/pixelfed"
+    ],
+    "object": {
+        "id": "https://pixelfed.test/p/dansup/567257798031955417",
+        "type": "Note",
+        "summary": null,
+        "content": "Don't mind me, just testing post editing on <a class=\"u-url list-slug\" href=\"https://pixelfed.test/@pixelfed@example.net\" rel=\"external nofollow noopener\" target=\"_blank\">@pixelfed@example.net</a> \ud83d\ude09<br />\n<br />\nEdit: It works!!",
+        "inReplyTo": null,
+        "published": "2023-05-25T01:59:58+00:00",
+        "url": "https://pixelfed.test/p/dansup/567257798031955417",
+        "attributedTo": "https://pixelfed.test/users/dansup",
+        "to": [
+            "https://www.w3.org/ns/activitystreams#Public"
+        ],
+        "cc": [
+            "https://pixelfed.test/users/dansup/followers",
+            "https://example.net/users/pixelfed"
+        ],
+        "sensitive": false,
+        "attachment": [
+            {
+                "type": "Image",
+                "mediaType": "image/jpeg",
+                "url": "https://example.org/m/1.jpg",
+                "name": "Night sky"
+            },
+            {
+                "type": "Image",
+                "mediaType": "image/jpeg",
+                "url": "https://example.org/m/2.jpg",
+                "name": "Sunrise at dawn"
+            }
+        ],
+        "tag": [
+            {
+                "type": "Mention",
+                "href": "https://example.net/users/pixelfed",
+                "name": "@pixelfed@example.net"
+            }
+        ],
+        "commentsEnabled": true,
+        "updated": "2023-05-26T21:01:10+00:00",
+        "capabilities": {
+            "announce": "https://www.w3.org/ns/activitystreams#Public",
+            "like": "https://www.w3.org/ns/activitystreams#Public",
+            "reply": "https://www.w3.org/ns/activitystreams#Public"
+        },
+        "location": null
+    }
+}

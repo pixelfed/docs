@@ -1,0 +1,14 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/stories/dansup/123456/activity",
+    "type": "Add",
+    "actor": "https://pixelfed.test/users/dansup",
+    "to": [
+        "https://pixelfed.test/users/dansup/followers"
+    ],
+    "object": {
+        "id": "https://pixelfed.test/stories/dansup/123456",
+        "type": "Story",
+        "object": "bear:?t=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&u=https://pixelfed.test/stories/dansup/123456"
+    }
+}

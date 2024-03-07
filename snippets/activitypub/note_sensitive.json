@@ -1,0 +1,13 @@
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "sensitive": "as:sensitive", // [!code focus]
+        }
+    ],
+    "id": "https://pixelfed.test/p/dansup/618893826647911311",
+    "type": "Note",
+    "summary": null,
+    "content": "Happy #caturday!",
+    "sensitive": false // [!code focus]
+}

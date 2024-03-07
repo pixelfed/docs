@@ -1,0 +1,16 @@
+{
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+    ],
+    "id": "https://pixelfed.test/p/dansup/75783646421848064",
+    "type": "Note",
+    "summary": null,
+    "content": "Menlo Park, aka Pixelfed Park",
+    "location": { // [!code focus]
+        "type": "Place", // [!code focus]
+        "name": "Menlo Park", // [!code focus]
+        "longitude": "-122.182190", // [!code focus]
+        "latitude": "37.453830", // [!code focus]
+        "country": "USA" // [!code focus]
+    } // [!code focus]
+}

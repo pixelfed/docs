@@ -1,0 +1,89 @@
+{
+    "@context": [
+        "https://w3id.org/security/v1",
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "Hashtag": "as:Hashtag",
+            "sensitive": "as:sensitive",
+            "schema": "http://schema.org/",
+            "pixelfed": "http://pixelfed.org/ns#",
+            "commentsEnabled": {
+                "@id": "pixelfed:commentsEnabled",
+                "@type": "schema:Boolean"
+            },
+            "capabilities": {
+                "@id": "pixelfed:capabilities",
+                "@container": "@set"
+            },
+            "announce": {
+                "@id": "pixelfed:canAnnounce",
+                "@type": "@id"
+            },
+            "like": {
+                "@id": "pixelfed:canLike",
+                "@type": "@id"
+            },
+            "reply": {
+                "@id": "pixelfed:canReply",
+                "@type": "@id"
+            },
+            "toot": "http://joinmastodon.org/ns#",
+            "Emoji": "toot:Emoji",
+            "blurhash": "toot:blurhash"
+        }
+    ],
+    "id": "https://pixelfed.test/p/admin/1/activity",
+    "type": "Create",
+    "actor": "https://pixelfed.test/users/admin",
+    "published": "2018-05-31T21:57:27+00:00",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public"
+    ],
+    "cc": [
+        "https://pixelfed.test/users/admin/followers"
+    ],
+    "object": {
+        "id": "https://pixelfed.test/p/admin/1",
+        "type": "Note",
+        "summary": null,
+        "content": "Hello Fediverse! <a href='https://pixelfed.test/discover/tags/pixelfed' class='mention hashtag status-link' rel='noopener'>#pixelfed</a> <a href='https://pixelfed.test/discover/tags/dogsOfPixelFed' class='mention hashtag status-link' rel='noopener'>#dogsOfPixelFed</a>",
+        "inReplyTo": null,
+        "published": "2018-05-31T21:57:27+00:00",
+        "url": "https://pixelfed.test/p/admin/1",
+        "attributedTo": "https://pixelfed.test/users/admin",
+        "to": [
+            "https://www.w3.org/ns/activitystreams#Public"
+        ],
+        "cc": [
+            "https://pixelfed.test/users/admin/followers"
+        ],
+        "sensitive": false,
+        "attachment": [
+            {
+                "type": "Image",
+                "mediaType": "image/jpeg",
+                "url": "https://pixelfed.test/storage/m/image.jpeg",
+                "name": null
+            }
+        ],
+        "tag": [
+            {
+                "type": "Hashtag",
+                "href": "https://pixelfed.test/discover/tags/pixelfed",
+                "name": "#pixelfed"
+            },
+            {
+                "type": "Hashtag",
+                "href": "https://pixelfed.test/discover/tags/dogsofpixelfed",
+                "name": "#dogsOfPixelFed"
+            }
+        ],
+        "commentsEnabled": true,
+        "capabilities": {
+            "announce": "https://www.w3.org/ns/activitystreams#Public",
+            "like": "https://www.w3.org/ns/activitystreams#Public",
+            "reply": "https://www.w3.org/ns/activitystreams#Public"
+        },
+        "location": null
+    }
+}

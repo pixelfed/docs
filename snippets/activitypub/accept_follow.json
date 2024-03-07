@@ -1,0 +1,12 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "type": "Accept",
+    "id": "https://pixelfed.test/users/john#accepts/follows/2985",
+    "actor": "https://pixelfed.test/users/john",
+    "object": {
+        "type": "Follow",
+        "id": "https://other.test/35860bf0-9930-4131-b5b4-31d2f31df873",
+        "actor": "https://other.test/users/jane",
+        "object": "https://pixelfed.test/users/john"
+    }
+}

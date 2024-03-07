@@ -1,0 +1,12 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/users/pixelfed#follow/1/undo",
+    "type": "Undo",
+    "actor": "https://pixelfed.test/users/pixelfed",
+    "object": {
+        "id": "https://pixelfed.test/users/pixelfed#follows/1",
+        "actor": "https://pixelfed.test/users/pixelfed",
+        "object": "https://pixelfed.test/users/admin",
+        "type": "Follow"
+    }
+}

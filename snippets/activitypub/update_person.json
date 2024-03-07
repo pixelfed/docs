@@ -1,0 +1,49 @@
+{
+    "@context": [
+        "https://w3id.org/security/v1",
+        "https://www.w3.org/ns/activitystreams",
+        {
+            "pixelfed": "http://pixelfed.org/ns#",
+            "manuallyApprovesFollowers": "as:manuallyApprovesFollowers",
+            "alsoKnownAs": {
+                "@id": "as:alsoKnownAs",
+                "@type": "@id"
+            },
+            "movedTo": {
+                "@id": "as:movedTo",
+                "@type": "@id"
+            },
+            "indexable": "pixelfed:indexable"
+        }
+    ],
+    "id": "https://pixelfed.test/users/admin#updates/1704185077",
+    "actor": "https://pixelfed.test/users/admin",
+    "type": "Update",
+    "object": {
+        "id": "https://pixelfed.test/users/admin",
+        "type": "Person",
+        "following": "https://pixelfed.test/users/admin/following",
+        "followers": "https://pixelfed.test/users/admin/followers",
+        "inbox": "https://pixelfed.test/users/admin/inbox",
+        "outbox": "https://pixelfed.test/users/admin/outbox",
+        "preferredUsername": "admin",
+        "name": "Admin",
+        "summary": "pixelfed.social Admin. Managed by @dansup",
+        "url": "https://pixelfed.test/admin",
+        "manuallyApprovesFollowers": false,
+        "indexable": false,
+        "publicKey": {
+            "id": "https://pixelfed.test/users/admin#main-key",
+            "owner": "https://pixelfed.test/users/admin",
+            "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwrugl5+u144q5Lkpfajl\ntx32cSFxYoA0BpMCEThiq195kpMw3h7kAUIOatI9IpoXb70mQr27l1L7kMXoj3nQ\nGy1EvIpZ/8tjH6cGxh65Ld+PXI42qyjyHeGRXWpfKqVxiB3ip9gtDQyWSAjVbt33\nfjJcMXFQXxUeX8eUZ/EJ/6hlK7okfzP55w1UGBfrQETCmf7P2egqM1dCbx7cfZdJ\n4dcGULEAxwYSTtfmUTih/djT5oE7kif8GIr9pdMuobiHrI6BP/ELwFU9t3nIQhjv\nfYGS/I5qIMeF/hvZDcak3aXXejcAwF8MJSiqDJtWeB2t8+xi8HsfMm5NbSmFv6o5\nBwIDAQAB\n-----END PUBLIC KEY-----\n"
+        },
+        "icon": {
+            "type": "Image",
+            "mediaType": "image/jpeg",
+            "url": "https://pixelfed.test/storage/avatars/avatar.png"
+        },
+        "endpoints": {
+            "sharedInbox": "https://pixelfed.test/f/inbox"
+        }
+    }
+}

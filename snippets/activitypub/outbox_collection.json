@@ -1,0 +1,6 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/users/pixelfed/outbox",
+    "type": "OrderedCollection",
+    "totalItems": 22
+}

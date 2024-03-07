@@ -1,0 +1,6 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/users/pixelfed/followers",
+    "type": "OrderedCollection",
+    "totalItems": 18189
+}

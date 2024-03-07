@@ -1,0 +1,6 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "type": "Follow",
+    "actor": "https://pixelfed.test/users/pixelfed",
+    "object": "https://pixelfed.test/users/admin"
+}

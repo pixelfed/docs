@@ -1,0 +1,12 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "type": "Reject",
+    "id": "https://pixelfed.test/users/example#rejects/follows/4284",
+    "actor": "https://pixelfed.test/users/example",
+    "object": {
+        "type": "Follow",
+        "id": "https://other.test/follows/9k2hoq7pj105mcdm",
+        "actor": "https://other.test/users/john",
+        "object": "https://pixelfed.test/users/example"
+    }
+}
