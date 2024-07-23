@@ -1,0 +1,20 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/groups/687201346065063941",
+    "inbox": "https://pixelfed.test/groups/687201346065063941/inbox",
+    "name": "Test",
+    "outbox": "https://pixelfed.test/groups/687201346065063941/outbox",
+    "summary": "Test Group",
+    "type": "Group",
+    "attributedTo": {
+        "type": "Person",
+        "id": "https://pixelfed.test/users/dansup"
+    },
+    "preferredUsername": "gid_687201346065063941",
+    "publicKey": {
+        "id": "https://pixelfed.test/groups/687201346065063941#main-key",
+        "owner": "https://pixelfed.test/groups/687201346065063941",
+        "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8NNVngXISNiZFIAHhDU/\nye/2g7bVn045BbR6L0izftITaOas7eg+ZF976ahJ5udojaHpHonaTFp/x9zZltH2\n6/cc7/s37tdiIcTFuuGKM2n/zxrSd6sy/URFhwLaQkxTqWYugEmV/+jkdBTLz173\nyC1b9Gi5UfK8CyYrV5Po1xYYh9ZCB5NFZcvRwllcudWLpp+/5IH5D49O8C9kLqUc\nPgHw3ClHeRb7cN17o9ExKj+RtEn+fNqd1yBBgRXgMM5yC/aPhoZ86TF23/G1r6ia\nPLahR9Tgil+Oqae/SkQrEBEdy+TYICRITbjrsTK2WUhR4JYE2YFm9aiGzyeEhA2K\nAwIDAQAB\n-----END PUBLIC KEY-----\n"
+    },
+    "url": "https://pixelfed.test/groups/687201346065063941"
+}

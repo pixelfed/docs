@@ -1,0 +1,23 @@
+{
+    "@context": "https://www.w3.org/ns/activitystreams",
+    "id": "https://pixelfed.test/groups/687201346065063941/p/721271403909644290",
+    "type": "Note",
+    "summary": null,
+    "content": "Hello World!",
+    "inReplyTo": null,
+    "published": "2024-07-23T07:55:03+00:00",
+    "url": "https://pixelfed.test/groups/687201346065063941/p/721271403909644290",
+    "attributedTo": "https://pixelfed.test/users/dansup",
+    "to": [
+        "https://www.w3.org/ns/activitystreams#Public",
+        "https://pixelfed.test/groups/687201346065063941/followers"
+    ],
+    "cc": [],
+    "sensitive": false,
+    "attachment": [],
+    "target": {
+        "type": "Collection",
+        "id": "https://pixelfed.test/groups/687201346065063941/wall",
+        "attributedTo": "https://pixelfed.test/groups/687201346065063941"
+    }
+}

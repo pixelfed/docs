@@ -285,6 +285,22 @@ Pixelfed supports location geo-tagging statuses by selecting a location from a s
 <<< @/snippets/activitypub/location_note.json
 :::
 
+## Groups
+
+Pixelfed supports federated Groups, allowing users to create and join communities that can interact across different Pixelfed instances and other ActivityPub-compatible platforms. This functionality is enabled by the `FEP-400e` and `FEP-1b12` extensions, which provide the necessary protocols and standards for seamless federation.
+
+### Group Actor
+
+::: details Click to expand group actor example
+<<< @/snippets/activitypub/group_actor.json
+:::
+
+### Group Activity
+
+::: details Click to expand group activity example
+<<< @/snippets/activitypub/group_activity.json
+:::
+
 ## Authorized Fetch
 
 Pixelfed, like other platforms in the Fediverse including Mastodon, uses digital signatures to ensure secure and authenticated federation requests. This compatibility with Mastodon's Authorized Fetch protocol is a crucial aspect of maintaining a secure and interoperable federated network. 
