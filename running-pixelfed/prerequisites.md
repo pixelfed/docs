@@ -101,6 +101,8 @@ Once in the psql shell, do the following:
 
 ```sql
 CREATE USER pixelfed CREATEDB;
+CREATE DATABASE pixelfed;
+GRANT ALL PRIVILEGES ON DATABASE pixelfed TO pixelfed;
 \q
 ```
 
