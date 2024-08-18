@@ -28,6 +28,13 @@ export default defineConfig({
 
     sidebar: [
       {
+        text: '',
+        items: [
+          { text: 'Introduction', link: '/project/introduction' },
+          { text: 'Community', link: '/project/community' },
+        ]
+      },
+      {
         text: 'Running Pixelfed',
         items: [
           { text: 'Prerequisites', link: '/running-pixelfed/prerequisites' },

@@ -8,6 +8,9 @@ hero:
   tagline: "The official Pixelfed documentation"
   actions:
     - theme: brand
+      text: Introduction
+      link: /project/introduction
+    - theme: alt
       text: Installation Guide
       link: /running-pixelfed/prerequisites
     - theme: alt
