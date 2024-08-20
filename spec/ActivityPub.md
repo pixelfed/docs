@@ -1,6 +1,6 @@
 # ActivityPub
 
-A decentralized social networking protocol based upon the ActivityStreams 2.0 data format and JSON-LD. Pixelfed uses ActivityPub to send and recieve activities from other Pixelfed servers and other fediverse software like Mastodon.
+A decentralized social networking protocol based upon the ActivityStreams 2.0 data format and JSON-LD. Pixelfed uses ActivityPub to send and receive activities from other Pixelfed servers and other fediverse software like Mastodon.
 
 ## Context
 
