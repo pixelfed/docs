@@ -41,6 +41,7 @@ export default defineConfig({
           { text: 'Installation', link: '/running-pixelfed/installation' },
           { text: 'Configuration', link: '/running-pixelfed/configuration' },
           { text: 'Administration', link: '/running-pixelfed/administration' },
+          { text: 'Push Notifications', link: '/running-pixelfed/push-notifications' },
           { text: 'CLI Cheatsheet', link: '/running-pixelfed/cli-cheatsheet' },
           { text: 'Troubleshooting', link: '/running-pixelfed/troubleshooting' }
         ]
