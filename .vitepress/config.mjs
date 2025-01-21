@@ -31,6 +31,7 @@ export default defineConfig({
         text: '',
         items: [
           { text: 'Introduction', link: '/project/introduction' },
+          { text: 'Code of Conduct', link: '/CODE_OF_CONDUCT' },
           { text: 'Community', link: '/project/community' },
         ]
       },
