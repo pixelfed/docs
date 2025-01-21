@@ -265,7 +265,7 @@ php artisan config:clear
 
 ### Job queueing
 
-Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/6.x/horizon) and [Queue Workers](https://laravel.com/docs/6.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
+Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/11.x/horizon) and [Queue Workers](https://laravel.com/docs/11.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
 
 #### Using Laravel Horizon
 
@@ -278,7 +278,7 @@ php artisan horizon:publish
 
 If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.
 
-If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue. You will need to use a task manager like systemd or Supervisor. For more information, refer to the [Laravel Documentation](https://laravel.com/docs/6.x/horizon#deploying-horizon).
+If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue. You will need to use a task manager like systemd or Supervisor. For more information, refer to the [Laravel Documentation](https://laravel.com/docs/11.x/horizon#deploying-horizon).
 
 Most distributions will already come with systemd, so you may set up this unit file at `/etc/systemd/system/pixelfed.service`:
 
