@@ -32,6 +32,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/project/introduction' },
           { text: 'Community', link: '/project/community' },
+          { text: 'Documentation', link: '/project/documentation' },
         ]
       },
       {
