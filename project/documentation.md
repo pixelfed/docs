@@ -1,8 +1,8 @@
 # Documentation
 
 The Pixelfed documentation can be found at [docs.pixelfed.org].
-The source code repository for the documentation is hosted on GitHub at [pixelfed/docs].
-If you find any mistakes in the documentation, please have a look at the [open issues](https://github.com/pixelfed/pixelfed-docs) and open a new one if yours does not exist.
+The source code repository for the documentation is hosted on GitHub at [https://github.com/pixelfed/docs].
+If you find any mistakes in the documentation, please have a look at the [open issues](https://github.com/pixelfed/docs) and open a new one if yours does not exist.
 
 ## Contributing to Documentation
 
@@ -12,7 +12,7 @@ Before getting started, please read the [Code of Conduct].
 ## Writing Documentation Online
 
 To get started writing the documentation, you only need a GitHub account.
-You can find the documentation in its [GitHub repository][pixelfed/docs].
+You can find the documentation in its [GitHub repository][https://github.com/pixelfed/docs].
 Find the right page and after log-in, you can see an edit button above the document.
 Please create a Pull Request with your changes.
 We are using [Markdown] as the format for the documentation files (`.md`).
@@ -25,7 +25,7 @@ For most additions and changes to the documentation, you do not need to build th
 
 If you choose to build the documentation website on your own computer, follow these steps:
 
-1. Clone the [pixelfed/docs] repository.
+1. Clone the [https://github.com/pixelfed/docs] repository.
 
     ```sh
     git clone https://github.com/pixelfed/docs.git pixelfed-docs
@@ -56,7 +56,7 @@ If you choose to build the documentation website on your own computer, follow th
 - [VitePress]
 - [Code of Conduct]
 - [The official documentation][docs.pixelfed.org]
-- [The documenation repository][pixelfed/docs]
+- [The documenation repository][https://github.com/pixelfed/docs]
 
 [VitePress]: https://vitepress.dev/
 [docs.pixelfed.org]: https://docs.pixelfed.org
