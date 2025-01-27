@@ -116,7 +116,7 @@ Using a Unix socket is optional, but may provide faster access since it does not
 
 ### Email variables
 
-By default, Pixelfed will not send any emails, but will instead write messages to the Laravel log. 
+By default, Pixelfed will not send any emails, but will instead write messages to the Laravel log.
 
 To setup a mailer for production deployments, you have several options for supported mail services. Pixelfed currently supports SMTP, Mailgun, Postmark, Amazon SES, and `sendmail` for sending emails to users.
 
@@ -220,16 +220,19 @@ php artisan migrate --force
 ```
 
 If you want to enable support for location data:
+
 ```bash
 php artisan import:cities
 ```
 
 If you enabled ActivityPub federation:
+
 ```bash
 php artisan instance:actor
 ```
 
 If you enabled OAuth:
+
 ```bash
 php artisan passport:keys
 ```
@@ -257,11 +260,12 @@ php artisan route:clear
 php artisan view:clear
 php artisan config:clear
 ```
+
 :::
 
 ### Job queueing
 
-Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/6.x/horizon) and [Queue Workers](https://laravel.com/docs/6.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
+Pixelfed supports both [Laravel Horizon](https://laravel.com/docs/11.x/horizon) and [Queue Workers](https://laravel.com/docs/11.x/queues) to power the job queue. The main difference between Horizon and Queue Worker is the dashboard provided by Horizon as well as advanced load balancing. We recommend using Horizon. Horizon provides a beautiful dashboard which allows you to easily monitor key metrics of your queue system such as job throughput, runtime, and job failures.
 
 #### Using Laravel Horizon
 
@@ -274,7 +278,7 @@ php artisan horizon:publish
 
 If your user has the correct permissions to access Redis and the Pixelfed installation folder, then you can simply run `php artisan horizon` as that user in a terminal. This may be fine, but if you close the terminal then Horizon will also be terminated. Running directly is recommended only in deployments where a terminal can run uninterrupted, e.g. in a VM or using a utility such as GNU Screen or tmux.
 
-If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue. You will need to use a task manager like systemd or Supervisor. For more information, refer to the [Laravel Documentation](https://laravel.com/docs/6.x/horizon#deploying-horizon).
+If you are running in production, it is more ideal to create a background service for running Pixelfed's task queue. You will need to use a task manager like systemd or Supervisor. For more information, refer to the [Laravel Documentation](https://laravel.com/docs/11.x/horizon#deploying-horizon).
 
 Most distributions will already come with systemd, so you may set up this unit file at `/etc/systemd/system/pixelfed.service`:
 
@@ -307,7 +311,7 @@ The example above assumes you are using MariaDB and Nginx, that your distributio
 - Replacing `nginx` with `apache`, or replacing `Requires` with `Wants` if you are not running in a production environment
 - Replacing `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` with the correct paths, e.g. `/usr/bin/php8.1` or `/path/to/pixelfed/artisan`
 - Replacing `User=http` to reflect the app user, e.g. `User=pixelfed` or commenting this line in order to run in the system slice.
-:::
+  :::
 
 You can now use systemd to manage Pixelfed like any other background service:
 
@@ -326,6 +330,7 @@ redirect_stderr=true
 stdout_logfile=/usr/share/webapps/pixelfed/horizon.log
 stopwaitsecs=3600
 ```
+
 ::: tip
 **Using correct paths**
 
@@ -341,10 +346,14 @@ sudo supervisorctl start pixelfed
 ```
 
 #### Using Queue Worker
-Pixelfed also includes a queue worker that will process new jobs as they are pushed onto the queue. You may run the worker using the `queue:work` command. Note that once the command has started, it will continue to run until it is manually stopped or you close your terminal:
+
+Pixelfed also includes a queue worker that will process new jobs as they are pushed onto the queue. You may run the worker using the `queue:work` command. Note that once the command has started, it will continue to run until it is manually stopped or you close your terminal. This is not recommended for production use, but can be useful to debug any issues with workers.
+
+**Warning**
+There are a large number of queues! The list of queues that horizon uses is stored in the [horizon.php](https://github.com/pixelfed/pixelfed/blob/dev/config/horizon.php#L180) configuration file. You should check that all queues in that file are listed on the worker command line, or jobs will not launch!
 
 ```bash
-php artisan queue:work
+php artisan queue:work --queue=high,default,follow,shared,inbox,feed,low,story,delete,mmo,intbg,groups,adelete,move,pushnotify
 ```
 
 Again, you can use Supervisor or systemd as described above, substituting `horizon` for `queue:work`.
@@ -376,6 +385,7 @@ You may need to replace `/usr/bin/php` or `/usr/share/webapps/pixelfed/artisan` 
 To translate HTTPS web requests to PHP workers, you will need to configure a reverse proxy.
 
 #### Apache
+
 Pixelfed includes a `public/.htaccess` file that is used to provide URLs without the index.php front controller in the path. Before serving Pixelfed with Apache, be sure to enable the `mod_rewrite` module in your Apache configuration so the `.htaccess` file will be honored by the server.
 
 If the `.htaccess` file that ships with Pixelfed does not work with your Apache installation, try this alternative:
@@ -463,7 +473,7 @@ Make sure to use the `/public` folder as your server root. For example:
 ```nginx
 server {
     root /var/www/pixelfed/public;
-````
+```
 
 If you set root to the install directory (example: `root /var/www/pixelfed;`) Pixelfed will not work.
 :::
