@@ -34,7 +34,7 @@ This doesn't necessarily mean you need a VPS. Some shared hosts give you SSH acc
 
 ## PHP-FPM
 
-You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 8.2**.
+You can check your currently installed version of PHP-FPM by running `php-fpm -v`. Make sure you are running **PHP >= 8.3**.
 
 You can check your currently loaded extensions by running `php-fpm -m`. Modules are usually enabled by editing your PHP configuration file and uncommenting the appropriate lines under the "Dynamic extensions" section. Make sure the following extensions are installed and loaded:
 
