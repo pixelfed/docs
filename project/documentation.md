@@ -46,7 +46,7 @@ If you choose to build the documentation website on your own computer, follow th
     npm run docs:dev
     ```
 
-    Then, visit [localhost:5173](http://localhost:5173/) in your browser.
+    Then, visit `http://localhost:5173/` in your browser.
     It should look like [docs.pixelfed.org].
     Now, whenever you change a file, it should automatically reload with the changes.
 
