@@ -56,7 +56,7 @@ If you choose to build the documentation website on your own computer, follow th
 - [VitePress]
 - [Code of Conduct]
 - [The official documentation][docs.pixelfed.org]
-- [The documenation repository][https://github.com/pixelfed/docs]
+- [The documenation repository](https://github.com/pixelfed/docs)
 
 [VitePress]: https://vitepress.dev/
 [docs.pixelfed.org]: https://docs.pixelfed.org
