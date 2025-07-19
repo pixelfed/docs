@@ -6,7 +6,7 @@ We maintain a public Discord and Matrix channel.
 
 > Before interacting, please read through the [Code Of Conduct](https://github.com/pixelfed/pixelfed/blob/dev/CODE_OF_CONDUCT.md).
 
-- [Discord](https://discord.gg/VDhM32hbUK)
+- [Discord](https://discord.gg/msXs3MumsK)
 - [Matrix](https://matrix.to/#/#pixeldev:matrix.org)
 
 ## Social media
