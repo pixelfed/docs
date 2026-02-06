@@ -101,7 +101,7 @@ If you are running Redis on another machine:
 If you are using a Unix socket for Redis, then:
 
 - Set `REDIS_SCHEME` to `unix`
-- Set `REDIS_HOST` to the path of the socket, e.g. `/run/redis/redis.sock`
+- Set either `REDIS_PATH` (if using predis) or `REDIS_HOST` (if using phpredis) to the path of the socket, e.g. `/run/redis/redis.sock`
 - Set `REDIS_PORT` to `0`
 
 ::: tip
