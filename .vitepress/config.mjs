@@ -58,7 +58,7 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/pixelfed' },
-      { icon: 'discord', link: 'https://discord.gg/MHvDHaSzmc' },
+      { icon: 'discord', link: 'https://discord.gg/msXs3MumsK' },
       { 
         icon: {
           svg: '<svg width="20" height="20" version="1.1" id="svg161" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <defs id="defs165" /> <path d="M 10,20 C 4.4772,20 0,15.5228 0,10 0,4.4772 4.4772,0 10,0 15.5228,0 20,4.4772 20,10 20,15.5228 15.5228,20 10,20 Z M 9.206,12.1832 h 1.8344 c 1.728,0 3.1292,-1.364 3.1292,-3.046 0,-1.6824 -1.4008,-3.0464 -3.1292,-3.0464 H 8.3928 c -0.9968,0 -1.8052,0.7868 -1.8052,1.7576 v 6.84 z" fill-rule="evenodd" id="path159" style="stroke-width:0.4" /></svg>'
