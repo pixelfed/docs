@@ -295,7 +295,7 @@ Requires=nginx
 Type=simple
 ExecStart=/usr/bin/php /usr/share/webapps/pixelfed/artisan horizon
 User=http
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
