@@ -72,7 +72,7 @@ Instagram imports are also affected by these settings. If you enable imports, yo
 
 ## Database
 
-You can choose one of three [supported database drivers for Laravel 9](https://laravel.com/docs/9.x/database#introduction), the framework used by Pixelfed:
+You can choose one of three [supported database drivers for Laravel 12](https://laravel.com/docs/12.x/database#introduction), the framework used by Pixelfed:
 - MySQL (5.7+)
 - MariaDB (10.3+)
 - PostgreSQL (10+)
