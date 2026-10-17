@@ -14,7 +14,9 @@ hero:
       text: Installation Guide
       link: /running-pixelfed/prerequisites
     - theme: alt
+      text: API Developer Docs
+      link: https://developers.pixelfed.org
+    - theme: alt
       text: ActivityPub Documentation
       link: /spec/ActivityPub.html
 ---
-
